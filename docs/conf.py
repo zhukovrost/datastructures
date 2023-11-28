@@ -19,6 +19,7 @@ author = 'zhukovrost'
 extensions = [
     "sphinx_rtd_theme",
     "sphinx.ext.autodoc",
+    "external_library"
 ]
 
 templates_path = ['_templates']
