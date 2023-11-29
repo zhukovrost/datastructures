@@ -89,9 +89,18 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-datastructures.Arrays">datastructures.Arrays module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#datastructures.Arrays.Queue"><code class="docutils literal notranslate"><span class="pre">Queue</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.Arrays.Queue.__init__"><code class="docutils literal notranslate"><span class="pre">Queue.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.Arrays.Queue.dequeue"><code class="docutils literal notranslate"><span class="pre">Queue.dequeue()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.Arrays.Queue.enqueue"><code class="docutils literal notranslate"><span class="pre">Queue.enqueue()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.Arrays.Queue.peek_back"><code class="docutils literal notranslate"><span class="pre">Queue.peek_back()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.Arrays.Queue.peek_front"><code class="docutils literal notranslate"><span class="pre">Queue.peek_front()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#datastructures.Arrays.Stack"><code class="docutils literal notranslate"><span class="pre">Stack</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.Arrays.Stack.__init__"><code class="docutils literal notranslate"><span class="pre">Stack.__init__()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.Arrays.Stack.peek"><code class="docutils literal notranslate"><span class="pre">Stack.peek()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.Arrays.Stack.peek_bottom"><code class="docutils literal notranslate"><span class="pre">Stack.peek_bottom()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.Arrays.Stack.pop"><code class="docutils literal notranslate"><span class="pre">Stack.pop()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.Arrays.Stack.push"><code class="docutils literal notranslate"><span class="pre">Stack.push()</span></code></a></li>
 </ul>
@@ -549,10 +558,87 @@
 <section id="module-datastructures.Arrays">
 <span id="datastructures-arrays-module"></span><h2>datastructures.Arrays module<a class="headerlink" href="#module-datastructures.Arrays" title="Permalink to this heading"></a></h2>
 <dl class="py class">
+<dt class="sig sig-object py" id="datastructures.Arrays.Queue">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.Arrays.</span></span><span class="sig-name descname"><span class="pre">Queue</span></span><a class="headerlink" href="#datastructures.Arrays.Queue" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><strong>First in - First out</strong> список (FIFO). Альтернативное название: очередь. Работает так же, как очередь в пивнушке.</p>
+<a class="reference internal image-reference" href="_images/queue.png"><img alt="_images/queue.png" src="_images/queue.png" style="width: 400px;" /></a>
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.Arrays.Queue.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.Arrays.Queue.__init__" title="Ссылка на это определение"></a></dt>
+<dd><p>Инициализатор. Очередь работает с помощью
+<a class="reference internal" href="#datastructures.LinkedLists.DoublyLinkedList" title="datastructures.LinkedLists.DoublyLinkedList"><code class="xref py py-class docutils literal notranslate"><span class="pre">DoublyLinkedList</span></code></a>
+,
+чтобы всё работало со сложностью алгоритма <strong>O(1)</strong>, вместо O(n). Такое решение было принято в связи с тем,
+что очереди работают на <em>сдвигах</em> и с <em>крайними элементами списка</em>. Если вы хотите работать с очередью как
+просто со списком, обращайтесь к параметру <cite>data</cite>: там находится
+<a class="reference internal" href="#datastructures.LinkedLists.DoublyLinkedList" title="datastructures.LinkedLists.DoublyLinkedList"><code class="xref py py-class docutils literal notranslate"><span class="pre">DoublyLinkedList</span></code></a>
+, на котором всё работает.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.Arrays.Queue.dequeue">
+<span class="sig-name descname"><span class="pre">dequeue</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.Arrays.Queue.dequeue" title="Ссылка на это определение"></a></dt>
+<dd><p>Вынуть из очереди следующий (первый) элемент.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Значение элемента, которого мы вынимаем</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.Arrays.Queue.enqueue">
+<span class="sig-name descname"><span class="pre">enqueue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.Arrays.Queue.enqueue" title="Ссылка на это определение"></a></dt>
+<dd><p>Поставить в очередь предмет.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>item</strong> – Значение элемента очереди, который мы ставим</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.Arrays.Queue.peek_back">
+<span class="sig-name descname"><span class="pre">peek_back</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.Arrays.Queue.peek_back" title="Ссылка на это определение"></a></dt>
+<dd><p>Узнать последний элемент очереди. Он же хвост, он же конечный элемент очереди.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Последний элемент очереди</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.Arrays.Queue.peek_front">
+<span class="sig-name descname"><span class="pre">peek_front</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.Arrays.Queue.peek_front" title="Ссылка на это определение"></a></dt>
+<dd><p>Узнать первый элемент очереди. Он же голова, он же следующий элемент очереди.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Первый элемент очереди</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="datastructures.Arrays.Stack">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.Arrays.</span></span><span class="sig-name descname"><span class="pre">Stack</span></span><a class="headerlink" href="#datastructures.Arrays.Stack" title="Ссылка на это определение"></a></dt>
 <dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p><strong>Last in - First out</strong> список (LIFO). Работает так же, как и стопка тарелок.</p>
+<p><strong>Last in - First out</strong> список (LIFO). Альтернативное название: стак/стэк. Работает так же, как и стопка тарелок.</p>
 <a class="reference internal image-reference" href="_images/stack.png"><img alt="_images/stack.png" src="_images/stack.png" style="width: 400px;" /></a>
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.Arrays.Stack.__init__">
@@ -561,8 +647,8 @@
 <a class="reference internal" href="#datastructures.LinkedLists.SinglyLinkedList" title="datastructures.LinkedLists.SinglyLinkedList"><code class="xref py py-class docutils literal notranslate"><span class="pre">SinglyLinkedList</span></code></a>
 ,
 чтобы всё работало со сложностью алгоритма <strong>O(1)</strong>, вместо O(n). Такое решение было принято в связи с тем,
-что стаки работают на <em>сдвигах</em>. Если вы хотите работать со стаком как просто со списком, обращайтесь
-к параметру data: там находится
+что стаки работают на <em>сдвигах</em> и с <em>крайними элементами списка</em>. Если вы хотите работать со стаком как просто со списком, обращайтесь
+к параметру <cite>data</cite>: там находится
 <a class="reference internal" href="#datastructures.LinkedLists.SinglyLinkedList" title="datastructures.LinkedLists.SinglyLinkedList"><code class="xref py py-class docutils literal notranslate"><span class="pre">SinglyLinkedList</span></code></a>
 , на котором всё работает.</p>
 </dd></dl>
@@ -577,6 +663,20 @@
 </dd>
 <dt class="field-even">Результат<span class="colon">:</span></dt>
 <dd class="field-even"><p>Значение верхнего элемента</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.Arrays.Stack.peek_bottom">
+<span class="sig-name descname"><span class="pre">peek_bottom</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.Arrays.Stack.peek_bottom" title="Ссылка на это определение"></a></dt>
+<dd><p>Узнать нижний элемент.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(n)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Значение нижнего элемента</p>
 </dd>
 </dl>
 </dd></dl>
