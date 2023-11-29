@@ -16,11 +16,3 @@ datastructures.Arrays module
    :members:
    :undoc-members:
    :show-inheritance:
-
-Module contents
----------------
-
-.. automodule:: datastructures
-   :members:
-   :undoc-members:
-   :show-inheritance:
