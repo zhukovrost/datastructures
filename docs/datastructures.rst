@@ -12,6 +12,14 @@ datastructures.LinkedLists module
    :undoc-members:
    :show-inheritance:
 
+datastructures.Arrays module
+---------------------------------
+
+.. automodule:: datastructures.Arrays
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 
