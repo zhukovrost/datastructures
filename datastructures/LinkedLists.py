@@ -4,6 +4,11 @@ class SinglyLinkedListNode:
     """
 
     def __init__(self, data):
+        """
+        Инициализация узла
+
+        :param data: данные, которые хранит узел
+        """
         self.data = data
         self.next = None
 
@@ -24,6 +29,8 @@ class SinglyLinkedListNode:
 class SinglyLinkedList:
     """
     Список связан единичными узлами: они хранят указатели **только** на следующий узел.
+
+    .. image:: images/singly-linked-list.png
     """
     def __init__(self):
         self.head = None
@@ -175,9 +182,16 @@ class DoublyLinkedListNode(SinglyLinkedListNode):
     """
     Этот класс представляет собой узел двойного связанного списка.
     Он занимает в два раза больше памяти, потому что имеет указатель как и на следующий, так и на предыдущий узел.
+
+    .. image:: images/doubly-linked-list.png
     """
 
     def __init__(self, data):
+        """
+        Инициализация узла
+
+        :param data: данные, которые хранит узел
+        """
         super().__init__(data)
         self.previous = None
 
