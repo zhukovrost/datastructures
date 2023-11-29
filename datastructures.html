@@ -56,6 +56,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.LinkedLists.SinglyLinkedListNode"><code class="docutils literal notranslate"><span class="pre">SinglyLinkedListNode</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#module-datastructures.Arrays">datastructures.Arrays module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.Arrays.StaticArray"><code class="docutils literal notranslate"><span class="pre">StaticArray</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-datastructures">Module contents</a></li>
 </ul>
 </li>
@@ -496,6 +500,79 @@
 </dd>
 <dt class="field-odd">Результат<span class="colon">:</span></dt>
 <dd class="field-odd"><p>i-ый узел последовательности</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-datastructures.Arrays">
+<span id="datastructures-arrays-module"></span><h2>datastructures.Arrays module<a class="headerlink" href="#module-datastructures.Arrays" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="datastructures.Arrays.StaticArray">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.Arrays.</span></span><span class="sig-name descname"><span class="pre">StaticArray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.Arrays.StaticArray" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Обычный нерасширяемый список</p>
+<a class="reference internal image-reference" href="_images/static-array.png"><img alt="_images/static-array.png" src="_images/static-array.png" style="width: 300px;" /></a>
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.Arrays.StaticArray.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.Arrays.StaticArray.__init__" title="Ссылка на это определение"></a></dt>
+<dd><p>Инициализация статичного списка.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>n</strong> – Длина списка</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.Arrays.StaticArray.get_at">
+<span class="sig-name descname"><span class="pre">get_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.Arrays.StaticArray.get_at" title="Ссылка на это определение"></a></dt>
+<dd><p>Получить элемент.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>i</strong> – Индекс элемента</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Данные под i-ым индексом</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.Arrays.StaticArray.search">
+<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.Arrays.StaticArray.search" title="Ссылка на это определение"></a></dt>
+<dd><p>Поиск данных.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(n)</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>item</strong> – Искомые данные</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Индекс искомых данных</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.Arrays.StaticArray.set_at">
+<span class="sig-name descname"><span class="pre">set_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.Arrays.StaticArray.set_at" title="Ссылка на это определение"></a></dt>
+<dd><p>Установить значение элемента.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>i</strong> – Индекс элемента</p></li>
+<li><p><strong>item</strong> – Значение элемента</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
