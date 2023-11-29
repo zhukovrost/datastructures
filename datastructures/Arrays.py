@@ -1,4 +1,4 @@
-from datastructures.LinkedLists import SinglyLinkedList
+from datastructures.LinkedLists import SinglyLinkedList, DoublyLinkedList
 
 
 class StaticArray:
@@ -62,7 +62,7 @@ class StaticArray:
 
 class Stack:
     """
-    **Last in - First out** список (LIFO). Работает так же, как и стопка тарелок.
+    **Last in - First out** список (LIFO). Альтернативное название: стак/стэк. Работает так же, как и стопка тарелок.
 
     .. image:: images/stack.png
         :width: 400px
@@ -73,8 +73,8 @@ class Stack:
         :class:`~datastructures.LinkedLists.SinglyLinkedList`
         ,
         чтобы всё работало со сложностью алгоритма **O(1)**, вместо O(n). Такое решение было принято в связи с тем,
-        что стаки работают на *сдвигах*. Если вы хотите работать со стаком как просто со списком, обращайтесь
-        к параметру data: там находится
+        что стаки работают на *сдвигах* и с *крайними элементами списка*. Если вы хотите работать со стаком как просто со списком, обращайтесь
+        к параметру `data`: там находится
         :class:`~datastructures.LinkedLists.SinglyLinkedList`
         , на котором всё работает.
         """
@@ -112,3 +112,75 @@ class Stack:
         :return: Значение верхнего элемента
         """
         return self.data.get_at(0)
+
+    def peek_bottom(self):
+        """
+        Узнать нижний элемент.
+
+        :Сложность: O(n)
+        :return: Значение нижнего элемента
+        """
+        return self.data.get_at(len(self))
+
+
+class Queue:
+    """
+    **First in - First out** список (FIFO). Альтернативное название: очередь. Работает так же, как очередь в пивнушке.
+
+    .. image:: images/queue.png
+        :width: 400px
+    """
+    def __init__(self):
+        """
+        Инициализатор. Очередь работает с помощью
+        :class:`~datastructures.LinkedLists.DoublyLinkedList`
+        ,
+        чтобы всё работало со сложностью алгоритма **O(1)**, вместо O(n). Такое решение было принято в связи с тем,
+        что очереди работают на *сдвигах* и с *крайними элементами списка*. Если вы хотите работать с очередью как
+        просто со списком, обращайтесь к параметру `data`: там находится
+        :class:`~datastructures.LinkedLists.DoublyLinkedList`
+        , на котором всё работает.
+        """
+        self.data = DoublyLinkedList()
+
+    def __len__(self):
+        return len(self.data)
+
+    def __iter__(self):
+        return self.data.__iter__()
+
+    def enqueue(self, item):
+        """
+        Поставить в очередь предмет.
+
+        :Сложность: O(1)
+        :param item: Значение элемента очереди, который мы ставим
+        """
+        self.data.insert_last(item)
+
+    def dequeue(self):
+        """
+        Вынуть из очереди следующий (первый) элемент.
+
+        :Сложность: O(1)
+        :return: Значение элемента, которого мы вынимаем
+        """
+        return self.data.delete_first()
+
+    def peek_front(self):
+        """
+        Узнать первый элемент очереди. Он же голова, он же следующий элемент очереди.
+
+        :Сложность: O(1)
+        :return: Первый элемент очереди
+        """
+        return self.data.get_at(0)
+
+    def peek_back(self):
+        """
+        Узнать последний элемент очереди. Он же хвост, он же конечный элемент очереди.
+
+        :Сложность: O(1)
+        :return: Последний элемент очереди
+        """
+        return self.data.get_at(len(self) - 1)
