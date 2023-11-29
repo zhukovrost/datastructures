@@ -182,8 +182,6 @@ class DoublyLinkedListNode(SinglyLinkedListNode):
     """
     Этот класс представляет собой узел двойного связанного списка.
     Он занимает в два раза больше памяти, потому что имеет указатель как и на следующий, так и на предыдущий узел.
-
-    .. image:: images/doubly-linked-list.png
     """
 
     def __init__(self, data):
@@ -212,6 +210,8 @@ class DoublyLinkedListNode(SinglyLinkedListNode):
 class DoublyLinkedList(SinglyLinkedList):
     """
     Список связан двойными узлами: они хранят указатели как на предыдущий узел, так и на следующий.
+
+    .. image:: images/doubly-linked-list.png
     """
     def __init__(self):
         super().__init__()
