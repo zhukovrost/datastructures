@@ -1,6 +1,3 @@
-datastructures
-==============
-
 .. toctree::
    :maxdepth: 4
 
