@@ -1,9 +1,6 @@
 datastructures package
 ======================
 
-Submodules
-----------
-
 datastructures.LinkedLists module
 ---------------------------------
 
