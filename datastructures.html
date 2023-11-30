@@ -114,6 +114,25 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#module-datastructures.BinaryTrees">datastructures.BinaryTrees module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#datastructures.BinaryTrees.BinaryTree"><code class="docutils literal notranslate"><span class="pre">BinaryTree</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.BinaryTrees.BinaryTree.__init__"><code class="docutils literal notranslate"><span class="pre">BinaryTree.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#datastructures.BinaryTrees.BinaryTreeNode"><code class="docutils literal notranslate"><span class="pre">BinaryTreeNode</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.BinaryTrees.BinaryTreeNode.__init__"><code class="docutils literal notranslate"><span class="pre">BinaryTreeNode.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.BinaryTrees.BinaryTreeNode.predecessor"><code class="docutils literal notranslate"><span class="pre">BinaryTreeNode.predecessor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.BinaryTrees.BinaryTreeNode.subtree_delete"><code class="docutils literal notranslate"><span class="pre">BinaryTreeNode.subtree_delete()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.BinaryTrees.BinaryTreeNode.subtree_first"><code class="docutils literal notranslate"><span class="pre">BinaryTreeNode.subtree_first()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.BinaryTrees.BinaryTreeNode.subtree_insert_after"><code class="docutils literal notranslate"><span class="pre">BinaryTreeNode.subtree_insert_after()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.BinaryTrees.BinaryTreeNode.subtree_insert_before"><code class="docutils literal notranslate"><span class="pre">BinaryTreeNode.subtree_insert_before()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.BinaryTrees.BinaryTreeNode.subtree_iter"><code class="docutils literal notranslate"><span class="pre">BinaryTreeNode.subtree_iter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.BinaryTrees.BinaryTreeNode.subtree_last"><code class="docutils literal notranslate"><span class="pre">BinaryTreeNode.subtree_last()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.BinaryTrees.BinaryTreeNode.successor"><code class="docutils literal notranslate"><span class="pre">BinaryTreeNode.successor()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -151,7 +170,9 @@
 <dt class="sig sig-object py" id="datastructures.LinkedLists.DoublyLinkedList">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.LinkedLists.</span></span><span class="sig-name descname"><span class="pre">DoublyLinkedList</span></span><a class="headerlink" href="#datastructures.LinkedLists.DoublyLinkedList" title="Ссылка на это определение"></a></dt>
 <dd><p>Базовые классы: <a class="reference internal" href="#datastructures.LinkedLists.SinglyLinkedList" title="datastructures.LinkedLists.SinglyLinkedList"><code class="xref py py-class docutils literal notranslate"><span class="pre">SinglyLinkedList</span></code></a></p>
-<p>Список связан двойными узлами: они хранят указатели как на предыдущий узел, так и на следующий.</p>
+<p>Список связан двойными узлами (
+<a class="reference internal" href="#datastructures.LinkedLists.DoublyLinkedListNode" title="datastructures.LinkedLists.DoublyLinkedListNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">DoublyLinkedListNode</span></code></a>
+): они хранят указатели как на предыдущий узел, так и на следующий.</p>
 <img alt="_images/doubly-linked-list.png" src="_images/doubly-linked-list.png" />
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.LinkedLists.DoublyLinkedList.__init__">
@@ -302,8 +323,9 @@
 <dt class="sig sig-object py" id="datastructures.LinkedLists.DoublyLinkedListNode">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.LinkedLists.</span></span><span class="sig-name descname"><span class="pre">DoublyLinkedListNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.LinkedLists.DoublyLinkedListNode" title="Ссылка на это определение"></a></dt>
 <dd><p>Базовые классы: <a class="reference internal" href="#datastructures.LinkedLists.SinglyLinkedListNode" title="datastructures.LinkedLists.SinglyLinkedListNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">SinglyLinkedListNode</span></code></a></p>
-<p>Этот класс представляет собой узел двойного связанного списка.
-Он занимает в два раза больше памяти, потому что имеет указатель как и на следующий, так и на предыдущий узел.</p>
+<p>Этот класс представляет собой узел двойного связанного списка (
+<a class="reference internal" href="#datastructures.LinkedLists.DoublyLinkedList" title="datastructures.LinkedLists.DoublyLinkedList"><code class="xref py py-class docutils literal notranslate"><span class="pre">DoublyLinkedList</span></code></a>
+). Он занимает в два раза больше памяти, потому что имеет указатель как и на следующий, так и на предыдущий узел.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.LinkedLists.DoublyLinkedListNode.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.LinkedLists.DoublyLinkedListNode.__init__" title="Ссылка на это определение"></a></dt>
@@ -338,7 +360,9 @@
 <dt class="sig sig-object py" id="datastructures.LinkedLists.SinglyLinkedList">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.LinkedLists.</span></span><span class="sig-name descname"><span class="pre">SinglyLinkedList</span></span><a class="headerlink" href="#datastructures.LinkedLists.SinglyLinkedList" title="Ссылка на это определение"></a></dt>
 <dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Список связан единичными узлами: они хранят указатели <strong>только</strong> на следующий узел.</p>
+<p>Список связан единичными узлами (
+<a class="reference internal" href="#datastructures.LinkedLists.SinglyLinkedListNode" title="datastructures.LinkedLists.SinglyLinkedListNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">SinglyLinkedListNode</span></code></a>
+): они хранят указатели <strong>только</strong> на следующий узел.</p>
 <img alt="_images/singly-linked-list.png" src="_images/singly-linked-list.png" />
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.LinkedLists.SinglyLinkedList.__init__">
@@ -523,7 +547,9 @@
 <dt class="sig sig-object py" id="datastructures.LinkedLists.SinglyLinkedListNode">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.LinkedLists.</span></span><span class="sig-name descname"><span class="pre">SinglyLinkedListNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.LinkedLists.SinglyLinkedListNode" title="Ссылка на это определение"></a></dt>
 <dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Этот класс представляет собой узел связанного списка.</p>
+<p>Этот класс представляет собой узел связанного списка (
+<a class="reference internal" href="#datastructures.LinkedLists.SinglyLinkedList" title="datastructures.LinkedLists.SinglyLinkedList"><code class="xref py py-class docutils literal notranslate"><span class="pre">SinglyLinkedList</span></code></a>
+).</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.LinkedLists.SinglyLinkedListNode.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.LinkedLists.SinglyLinkedListNode.__init__" title="Ссылка на это определение"></a></dt>
@@ -775,6 +801,188 @@
 <li><p><strong>i</strong> – Индекс элемента</p></li>
 <li><p><strong>item</strong> – Значение элемента</p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-datastructures.BinaryTrees">
+<span id="datastructures-binarytrees-module"></span><h2>datastructures.BinaryTrees module<a class="headerlink" href="#module-datastructures.BinaryTrees" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="datastructures.BinaryTrees.BinaryTree">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.BinaryTrees.</span></span><span class="sig-name descname"><span class="pre">BinaryTree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">TreeNodeType=&lt;class</span> <span class="pre">'datastructures.BinaryTrees.BinaryTreeNode'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.BinaryTrees.BinaryTree" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Бинарное дерево. Дерево называется бинарным, потому что у каждого узла не может быть более чем 2 ребёнка.</p>
+<a class="reference internal image-reference" href="_images/binary-tree.png"><img alt="_images/binary-tree.png" src="_images/binary-tree.png" style="width: 500px;" /></a>
+<dl class="simple">
+<dt>Немного терминологии:</dt><dd><ul class="simple">
+<li><p>Узел - элемент дерева</p></li>
+<li><p>Корень - самый верхний элемент, из которого идет всё дерево</p></li>
+<li><p>Лист - узел без детей</p></li>
+<li><p>Поддерево - дерево внутри другого дерева.</p></li>
+<li><p>Ребёнок - один из узлов, выходящих из определённого</p></li>
+<li><p>Родитель - узел, из которого выходит определённый</p></li>
+<li><p>Грань - связь между ребёнком и родителем</p></li>
+<li><p>Предшественник - тот, кто идёт раньше определённого узла по порядку обхода в глубину in order <a class="reference internal" href="#datastructures.BinaryTrees.BinaryTreeNode.subtree_iter" title="datastructures.BinaryTrees.BinaryTreeNode.subtree_iter"><code class="xref py py-class docutils literal notranslate"><span class="pre">subtree_iter</span></code></a></p></li>
+<li><p>Преемник - тот, кто идёт позже определённого узла по порядку обхода в глубину in order <a class="reference internal" href="#datastructures.BinaryTrees.BinaryTreeNode.subtree_iter" title="datastructures.BinaryTrees.BinaryTreeNode.subtree_iter"><code class="xref py py-class docutils literal notranslate"><span class="pre">subtree_iter</span></code></a></p></li>
+</ul>
+</dd>
+<dt>Типы деревьев:</dt><dd><ul class="simple">
+<li><p>Полное: у каждого узла либо 0, либо 2 ребёнка.</p></li>
+<li><p>Дегенеративное: у каждого узла либо 0, либо 1 ребёнок</p></li>
+<li><p>Перекошенное: дегенеративное дерево, у узлов которого есть либо <strong>только</strong> правый ребёнок или нет ребёнка, либо <strong>только</strong> левый ребёнок или нет ребёнка</p></li>
+<li><p>Полное: все слои дереве, кроме, возможно, последнего, полностью заполнены</p></li>
+<li><p>Идеальное: полное дерево, у которого все листья на одном уровне</p></li>
+<li><p>Сбалансированное: дерево, у которого разница между высотой левого и правого поддерева меньше или равна 1</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Специальные типы деревьев я вынес в отдельные классы</strong></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.BinaryTrees.BinaryTree.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">TreeNodeType=&lt;class</span> <span class="pre">'datastructures.BinaryTrees.BinaryTreeNode'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.BinaryTrees.BinaryTree.__init__" title="Ссылка на это определение"></a></dt>
+<dd><p>Инициализатор.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>TreeNodeType</strong> – Тип узлов дерева. По умолчанию <a class="reference internal" href="#datastructures.BinaryTrees.BinaryTreeNode" title="datastructures.BinaryTrees.BinaryTreeNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinaryTreeNode</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datastructures.BinaryTrees.BinaryTreeNode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.BinaryTrees.</span></span><span class="sig-name descname"><span class="pre">BinaryTreeNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.BinaryTrees.BinaryTreeNode" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.BinaryTrees.BinaryTreeNode.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.BinaryTrees.BinaryTreeNode.__init__" title="Ссылка на это определение"></a></dt>
+<dd><p>Инициализатор.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>item</strong> – Значение узла</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.BinaryTrees.BinaryTreeNode.predecessor">
+<span class="sig-name descname"><span class="pre">predecessor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.BinaryTrees.BinaryTreeNode.predecessor" title="Ссылка на это определение"></a></dt>
+<dd><p>Найти предшественника этого узла (узел, который идёт предыдущий по порядку).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(h), где h – высота дерева</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Предшественник этого узла</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.BinaryTrees.BinaryTreeNode.subtree_delete">
+<span class="sig-name descname"><span class="pre">subtree_delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.BinaryTrees.BinaryTreeNode.subtree_delete" title="Ссылка на это определение"></a></dt>
+<dd><p>Рекурсивная функция удаления узла дерева.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Удаляемый узел</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.BinaryTrees.BinaryTreeNode.subtree_first">
+<span class="sig-name descname"><span class="pre">subtree_first</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.BinaryTrees.BinaryTreeNode.subtree_first" title="Ссылка на это определение"></a></dt>
+<dd><p>Получить первый по порядку узел дерева (самый левый).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(h), где h – высота дерева</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Первый узел дерева</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.BinaryTrees.BinaryTreeNode.subtree_insert_after">
+<span class="sig-name descname"><span class="pre">subtree_insert_after</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.BinaryTrees.BinaryTreeNode.subtree_insert_after" title="Ссылка на это определение"></a></dt>
+<dd><p>Вставить узел (node) после текущего по порядку.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(h), где h – высота дерева</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>node</strong> – Узел, который мы хотим вставить после текущего</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.BinaryTrees.BinaryTreeNode.subtree_insert_before">
+<span class="sig-name descname"><span class="pre">subtree_insert_before</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.BinaryTrees.BinaryTreeNode.subtree_insert_before" title="Ссылка на это определение"></a></dt>
+<dd><p>Вставить узел (node) перед текущим по порядку.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(h), где h – высота дерева</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>node</strong> – Узел, который мы хотим вставить перед текущим</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.BinaryTrees.BinaryTreeNode.subtree_iter">
+<span class="sig-name descname"><span class="pre">subtree_iter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.BinaryTrees.BinaryTreeNode.subtree_iter" title="Ссылка на это определение"></a></dt>
+<dd><p>Рекурсивный обход дерева <cite>по порядку</cite> (in-order traversal).
+Является одним из трёх обходов в глубину (<strong>DFS</strong> - <cite>Depth First Search</cite>).</p>
+<dl class="simple">
+<dt>Алгоритм обхода по порядку:</dt><dd><ol class="arabic simple">
+<li><p>Обойти левое <em>поддерево</em> (рекурсивно).</p></li>
+<li><p><em>Выбросить</em> (оператор yield) <em>корень</em>.</p></li>
+<li><p>Обойти правое <em>поддерево</em> (рекурсивно).</p></li>
+</ol>
+</dd>
+</dl>
+<a class="reference internal image-reference" href="_images/inorder-traversal.gif"><img alt="_images/inorder-traversal.gif" src="_images/inorder-traversal.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(n)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Итерационный объект, состоящий из узлов бинарного дерева по порядку.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.BinaryTrees.BinaryTreeNode.subtree_last">
+<span class="sig-name descname"><span class="pre">subtree_last</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.BinaryTrees.BinaryTreeNode.subtree_last" title="Ссылка на это определение"></a></dt>
+<dd><p>Получить последний по порядку узел дерева (самый правый).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(h), где h – высота дерева</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Последний узел дерева</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.BinaryTrees.BinaryTreeNode.successor">
+<span class="sig-name descname"><span class="pre">successor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.BinaryTrees.BinaryTreeNode.successor" title="Ссылка на это определение"></a></dt>
+<dd><p>Найти преемника этого узла (узел, который идёт следующий по порядку).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(h), где h – высота дерева</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Преемник этого узла</p>
 </dd>
 </dl>
 </dd></dl>

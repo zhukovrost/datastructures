@@ -16,3 +16,11 @@ datastructures.Arrays module
    :members:
    :undoc-members:
    :show-inheritance:
+
+datastructures.BinaryTrees module
+---------------------------------
+
+.. automodule:: datastructures.BinaryTrees
+   :members:
+   :undoc-members:
+   :show-inheritance:
