@@ -1,6 +1,8 @@
 class SinglyLinkedListNode:
     """
-    Этот класс представляет собой узел связанного списка.
+    Этот класс представляет собой узел связанного списка (
+    :class:`~datastructures.LinkedLists.SinglyLinkedList`
+    ).
     """
 
     def __init__(self, data):
@@ -28,7 +30,9 @@ class SinglyLinkedListNode:
 
 class SinglyLinkedList:
     """
-    Список связан единичными узлами: они хранят указатели **только** на следующий узел.
+    Список связан единичными узлами (
+    :class:`~datastructures.LinkedLists.SinglyLinkedListNode`
+    ): они хранят указатели **только** на следующий узел.
 
     .. image:: images/singly-linked-list.png
     """
@@ -180,8 +184,9 @@ class SinglyLinkedList:
 
 class DoublyLinkedListNode(SinglyLinkedListNode):
     """
-    Этот класс представляет собой узел двойного связанного списка.
-    Он занимает в два раза больше памяти, потому что имеет указатель как и на следующий, так и на предыдущий узел.
+    Этот класс представляет собой узел двойного связанного списка (
+    :class:`~datastructures.LinkedLists.DoublyLinkedList`
+    ). Он занимает в два раза больше памяти, потому что имеет указатель как и на следующий, так и на предыдущий узел.
     """
 
     def __init__(self, data):
@@ -209,7 +214,9 @@ class DoublyLinkedListNode(SinglyLinkedListNode):
 
 class DoublyLinkedList(SinglyLinkedList):
     """
-    Список связан двойными узлами: они хранят указатели как на предыдущий узел, так и на следующий.
+    Список связан двойными узлами (
+    :class:`~datastructures.LinkedLists.DoublyLinkedListNode`
+    ): они хранят указатели как на предыдущий узел, так и на следующий.
 
     .. image:: images/doubly-linked-list.png
     """
