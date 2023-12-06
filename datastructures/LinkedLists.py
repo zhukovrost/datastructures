@@ -14,7 +14,7 @@ class SinglyLinkedListNode:
         self.data = data
         self.next = None
 
-    def later_node(self, i):
+    def later_node(self, i: int):
         """
         Рекурсивная функция обхода списка. От начала до конца.
 
@@ -49,7 +49,7 @@ class SinglyLinkedList:
             yield trav.data
             trav = trav.next
 
-    def build(self, datalist):
+    def build(self, datalist: list):
         """
         Преобразует входящий список в LinkedList.
 
@@ -59,7 +59,7 @@ class SinglyLinkedList:
         for data in reversed(datalist):
             self.insert_first(data)
 
-    def get_at(self, i):
+    def get_at(self, i: int):
         """
         Получить данные i-го узла.
 
@@ -70,7 +70,7 @@ class SinglyLinkedList:
         node = self.head.later_node(i)
         return node.data
 
-    def set_at(self, i, data):
+    def set_at(self, i: int, data):
         """
         Меняет данные на data в i-ом узле.
 
@@ -105,7 +105,7 @@ class SinglyLinkedList:
         self.size -= 1
         return temp
 
-    def insert_at(self, i, data):
+    def insert_at(self, i: int, data):
         """
         Вставляет новый узел на i-ую позицию.
 
@@ -123,7 +123,7 @@ class SinglyLinkedList:
         prev_node.next = new_node
         self.size += 1
 
-    def delete_at(self, i):
+    def delete_at(self, i: int):
         """
         Удаляет узел на i-ой позиции.
 
@@ -198,7 +198,7 @@ class DoublyLinkedListNode(SinglyLinkedListNode):
         super().__init__(data)
         self.previous = None
 
-    def earlier_node(self, i):
+    def earlier_node(self, i: int):
         """
         Рекурсивная функция обхода списка от конца до начала.
 
@@ -226,7 +226,7 @@ class DoublyLinkedList(SinglyLinkedList):
 
     # __len__ и __iter__ из наследуемого класса
 
-    def build(self, datalist):
+    def build(self, datalist: list):
         """
         Преобразует входящий список в LinkedList.
 
@@ -236,7 +236,7 @@ class DoublyLinkedList(SinglyLinkedList):
         for data in datalist:
             self.insert_last(data)
 
-    def get_at(self, i):
+    def get_at(self, i: int):
         """
         Получить данные i-го узла.
 
@@ -250,7 +250,7 @@ class DoublyLinkedList(SinglyLinkedList):
             node = self.head.later_node(i)
         return node.data
 
-    def set_at(self, i, data):
+    def set_at(self, i: int, data):
         """
         Меняет данные на data в i-ом узле.
 
@@ -327,7 +327,7 @@ class DoublyLinkedList(SinglyLinkedList):
         self.size -= 1
         return data
 
-    def insert_at(self, i, data):
+    def insert_at(self, i: int, data):
         """
         Вставляет новый узел на i-ую позицию.
 
@@ -354,7 +354,7 @@ class DoublyLinkedList(SinglyLinkedList):
         new_node.next.previous = new_node
         self.size += 1
 
-    def delete_at(self, i):
+    def delete_at(self, i: int):
         """
         Удаляет узел на i-ой позиции.
 

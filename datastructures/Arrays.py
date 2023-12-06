@@ -8,7 +8,7 @@ class StaticArray:
     .. image:: images/static-array.png
         :width: 300px
     """
-    def __init__(self, n):
+    def __init__(self, n: int):
         """
         Инициализация статичного списка.
 
@@ -20,7 +20,7 @@ class StaticArray:
         for item in self.data:
             yield item
 
-    def get_at(self, i):
+    def get_at(self, i: int):
         """
         Получить элемент.
 
@@ -32,7 +32,7 @@ class StaticArray:
             raise IndexError
         return self.data[i]
 
-    def set_at(self, i, item):
+    def set_at(self, i: int, item):
         """
         Установить значение элемента.
 
