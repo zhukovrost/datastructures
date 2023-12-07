@@ -88,7 +88,7 @@ class BinaryTreeNode:
 
         return trav
 
-    def subtree_insert_before(self, node):
+    def subtree_insert_before(self, node: "BinaryTreeNode"):
         """
         Вставить узел (node) перед текущим по порядку.
 
@@ -103,7 +103,7 @@ class BinaryTreeNode:
             self.left = node
             node.parent = self
 
-    def subtree_insert_after(self, node):
+    def subtree_insert_after(self, node: "BinaryTreeNode"):
         """
         Вставить узел (node) после текущего по порядку.
 
@@ -185,3 +185,129 @@ class BinaryTree:
         if self.root:
             for node in self.root.subtree_iter():
                 yield node
+
+
+class BSTNode(BinaryTreeNode):
+    def subtree_find(self, item):
+        if item < self.data:
+            if self.left is not None:
+                return self.left.subtree_find(item)
+
+        elif item > self.data:
+            if self.right is not None:
+                return self.right.subtree_find(item)
+
+        else:
+            return self
+
+        return None
+
+    def subtree_find_next(self, item):
+        if self.data <= item:
+            # идти вправо, чтобы увеличить значение узла
+            if self.right:
+                return self.right.subtree_find_next(item)
+            else:
+                return None
+        else:
+            # когда значение узла больше:
+            # самый левый элемент поддерева (если он есть),
+            # чтобы максимально приблизиться к искомому значению (убывание)
+            if self.left:
+                node = self.left.subtree_find_next(item)
+                if node:
+                    return node
+
+        # если нет узлов в левом поддереве, вернуть текущий узел
+        return self
+
+    def subtree_find_prev(self, item):
+        if self.data >= item:
+            if self.left:
+                return self.left.subtree_find_prev(item)
+            else:
+                return None
+        else:
+            if self.right:
+                node = self.right.subtree_find_prev(item)
+                if node:
+                    return node
+        return self
+
+    def subtree_insert(self, new_node: "BSTNode"):
+        if new_node.data < self.data:
+            if self.left:
+                self.left.subtree_insert(new_node)
+            else:
+                self.subtree_insert_before(new_node)
+
+        elif new_node.data > self.data:
+            if self.right:
+                self.right.subtree_insert_before(new_node)
+            else:
+                self.subtree_insert_after(new_node)
+
+        else:
+            # if new_node.data == self.data:
+            self.data = new_node.data
+
+
+class SetBinaryTree(BinaryTree):
+    def __init__(self):
+        """
+        Инициализатор дерева с типом узлов :class:`~datastructures.BinaryTree.BSTNode`
+        """
+        super().__init__(BSTNode)
+
+    def build(self, arr: list):
+        for item in arr:
+            self.insert(item)
+
+    def find_min(self):
+        if self.root:
+            return self.root.subtree_first().data
+
+    def find_max(self):
+        if self.root:
+            return self.root.subtree_last().data
+
+    def find(self, item):
+        if self.root:
+            node = self.root.subtree_find(item)
+            if node is not None:
+                return node.data
+
+    def find_next(self, item):
+        if self.root:
+            node = self.root.subtree_find_next(item)
+            if node is not None:
+                return node.data
+
+    def find_prev(self, item):
+        if self.root:
+            node = self.root.subtree_find_prev(item)
+            if node is not None:
+                return node.data
+
+    def insert(self, item) -> bool:
+        new_node = BSTNode(item)
+        if self.root:
+            self.root.subtree_insert(new_node)
+            if new_node.parent is None:
+                # if the value repeats
+                return False
+        else:
+            self.root = new_node
+
+        self.size += 1
+        return True
+
+    def delete(self, item):
+        assert self.root
+        node = self.root.subtree_find(item)
+        assert node
+        temp = node.subtree_delete()
+        if temp.parent is None:
+            self.root = None
+        self.size -= 1
+        return temp.data
