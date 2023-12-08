@@ -137,7 +137,6 @@ class BinaryTreeNode:
             else:
                 self.parent.right = None
 
-        self.parent = None
         return self
 
 
@@ -243,7 +242,7 @@ class BSTNode(BinaryTreeNode):
 
         elif new_node.data > self.data:
             if self.right:
-                self.right.subtree_insert_before(new_node)
+                self.right.subtree_insert(new_node)
             else:
                 self.subtree_insert_after(new_node)
 
