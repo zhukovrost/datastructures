@@ -8,6 +8,7 @@ datastructures.LinkedLists module
    :members:
    :undoc-members:
    :show-inheritance:
+   :inherited-members:
 
 datastructures.Arrays module
 ---------------------------------
@@ -16,6 +17,7 @@ datastructures.Arrays module
    :members:
    :undoc-members:
    :show-inheritance:
+   :inherited-members:
 
 datastructures.BinaryTrees module
 ---------------------------------
@@ -24,3 +26,4 @@ datastructures.BinaryTrees module
    :members:
    :undoc-members:
    :show-inheritance:
+   :inherited-members:

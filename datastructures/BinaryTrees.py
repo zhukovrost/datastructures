@@ -1,3 +1,6 @@
+from typing import Any
+
+
 class BinaryTreeNode:
 
     def __init__(self, item):
@@ -187,7 +190,14 @@ class BinaryTree:
 
 
 class BSTNode(BinaryTreeNode):
-    def subtree_find(self, item):
+    def subtree_find(self, item: int) -> "BSTNode":
+        """
+        Найти узел.
+
+        :Сложность: O(h)
+        :param item: значение искомого узла
+        :return: искомый узел
+        """
         if item < self.data:
             if self.left is not None:
                 return self.left.subtree_find(item)
@@ -201,7 +211,14 @@ class BSTNode(BinaryTreeNode):
 
         return None
 
-    def subtree_find_next(self, item):
+    def subtree_find_next(self, item: int):
+        """
+        Найти следующий узел.
+
+        :Сложность: O(h)
+        :param item: значение, после которого идет значение искомого узла
+        :return: узел, значение которого идёт после входного значения
+        """
         if self.data <= item:
             # идти вправо, чтобы увеличить значение узла
             if self.right:
@@ -220,7 +237,14 @@ class BSTNode(BinaryTreeNode):
         # если нет узлов в левом поддереве, вернуть текущий узел
         return self
 
-    def subtree_find_prev(self, item):
+    def subtree_find_prev(self, item: int):
+        """
+        Найти предыдущий узел.
+
+        :Сложность: O(h)
+        :param item: значение, перед которым идет значение искомого узла
+        :return: узел, значение которого идёт перед входным значением
+        """
         if self.data >= item:
             if self.left:
                 return self.left.subtree_find_prev(item)
@@ -234,6 +258,14 @@ class BSTNode(BinaryTreeNode):
         return self
 
     def subtree_insert(self, new_node: "BSTNode"):
+        """
+        Добавить новый узел и не нарушить порядок возрастания при обходе по порядку.
+
+        .. image:: images/bst_insert.gif
+
+        :Сложность: O(h)
+        :param new_node: новый узел, который мы добавляем
+        """
         if new_node.data < self.data:
             if self.left:
                 self.left.subtree_insert(new_node)
@@ -254,41 +286,97 @@ class BSTNode(BinaryTreeNode):
 class SetBinaryTree(BinaryTree):
     def __init__(self):
         """
-        Инициализатор дерева с типом узлов :class:`~datastructures.BinaryTree.BSTNode`
+        Инициализатор дерева с типом узлов :class:`~datastructures.BinaryTrees.BSTNode`.
+        Это то же самое бинарное дерево, но значения узлов будут возрастать в порядке обхода.
+        Повторяющиеся элементы пропадают. По другому это дерево можно назвать бинарное дерево-множество или
+        дерево бинарного поиска.
+
+        .. image:: /images/bst.png
+            :width: 500px
+
+        Если обойти это дерево по порядку (:class:`~datastructures.BinaryTrees.BinaryTreeNode.subtree_iter`),
+        то на выходе мы получим узлы в порядке возрастания:
+        **2 4 6 8 9 10 11 12 14 16 18**
         """
         super().__init__(BSTNode)
 
     def build(self, arr: list):
+        """
+        Строит дерево бинарного поиска из входящего списка.
+
+        :Сложность: O(n)
+        :param arr: входящий список значений узлов
+        """
         for item in arr:
             self.insert(item)
 
     def find_min(self):
+        """
+        Минимальный элемент - первый, поэтому вызываем :class:`~datastructures.BinaryTrees.BSTNode.subtree_first`
+
+        :Сложность: O(h)
+        :return: значение минимального узла
+        """
         if self.root:
             return self.root.subtree_first().data
 
     def find_max(self):
+        """
+        Максимальный элемент - последний, поэтому вызываем :class:`~datastructures.BinaryTrees.BSTNode.subtree_last`
+
+        :Сложность: O(h)
+        :return: значение максимального узла
+        """
         if self.root:
             return self.root.subtree_last().data
 
-    def find(self, item):
+    def find(self, item: int):
+        """
+        Найти элемент.
+
+        :Сложность: O(h)
+        :param item: искомое значение
+        :return: значение искомого элемента, если элемент не найден возвращает None
+        """
         if self.root:
             node = self.root.subtree_find(item)
             if node is not None:
                 return node.data
 
-    def find_next(self, item):
+    def find_next(self, item: int):
+        """
+        Найти элемент, идущий после данного.
+
+        :Сложность: O(h)
+        :param item: значение элемента, после которого идёт искомый
+        :return: значение искомого элемента, если элемент не найден возвращает None
+        """
         if self.root:
             node = self.root.subtree_find_next(item)
             if node is not None:
                 return node.data
 
-    def find_prev(self, item):
+    def find_prev(self, item: int):
+        """
+        Найти элемент, идущий перед данным.
+
+        :Сложность: O(h)
+        :param item: значение элемента, перед которым идёт искомый
+        :return: значение искомого элемента, если элемент не найден возвращает None
+        """
         if self.root:
             node = self.root.subtree_find_prev(item)
             if node is not None:
                 return node.data
 
-    def insert(self, item) -> bool:
+    def insert(self, item: int) -> bool:
+        """
+        Вставить узел.
+
+        :Сложность: O(h)
+        :param item: значение нового узла
+        :return: *True*, если узел был добавлен, иначе *False*
+        """
         new_node = BSTNode(item)
         if self.root:
             self.root.subtree_insert(new_node)
@@ -301,7 +389,14 @@ class SetBinaryTree(BinaryTree):
         self.size += 1
         return True
 
-    def delete(self, item):
+    def delete(self, item: int):
+        """
+        Удалить узел.
+
+        :Сложность: O(h)
+        :param item: значение удаляемого узла
+        :return: значение удаляемого узла
+        """
         assert self.root
         node = self.root.subtree_find(item)
         assert node
