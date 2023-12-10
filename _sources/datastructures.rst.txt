@@ -1,28 +1,19 @@
 datastructures package
 ======================
 
-datastructures.LinkedLists module
----------------------------------
+datastructures.linearDataStructures module
+------------------------------------------
 
-.. automodule:: datastructures.LinkedLists
+.. automodule:: datastructures.linearDataStructures
    :members:
    :undoc-members:
    :show-inheritance:
    :inherited-members:
 
-datastructures.Arrays module
+datastructures.binaryTrees module
 ---------------------------------
 
-.. automodule:: datastructures.Arrays
-   :members:
-   :undoc-members:
-   :show-inheritance:
-   :inherited-members:
-
-datastructures.BinaryTrees module
----------------------------------
-
-.. automodule:: datastructures.BinaryTrees
+.. automodule:: datastructures.binaryTrees
    :members:
    :undoc-members:
    :show-inheritance:
