@@ -1,4 +1,17 @@
-from typing import Any
+def height(node) -> int:
+    """
+    Возвращает высоту входящего узла. Сложность алгоритма является **O(1)**
+    вместо O(h), потому что каждый узел хранит в себе значение его высоты.
+    При каждом изменении дерева это значение обновляется при необходимости.
+
+    :Сложность: O(1)
+    :param node: узел, высоту которого надо узнать
+    :return: высота узла и, если узла нет, -1
+    """
+    if node:
+        return node.height
+    else:
+        return -1
 
 
 class BinaryTreeNode:
@@ -13,6 +26,28 @@ class BinaryTreeNode:
         self.parent = None
         self.right = None
         self.left = None
+        self.height = None
+        self.subtree_update()
+
+    def subtree_update(self):
+        self.height = 1 + max(height(self.left), height(self.right))
+
+    def rebalance(self):
+        if self.skew() == 2:
+            if self.right.skew() < 0:
+                self.right.subtree_rotate_right()
+            self.subtree_rotate_left()
+
+        elif self.skew() == -2:
+            if self.left.skew() > 0:
+                self.left.subtree_rotate_left()
+            self.subtree_rotate_right()
+
+    def maintain(self):
+        self.rebalance()
+        self.subtree_update()
+        if self.parent:
+            self.parent.maintain()
 
     def subtree_iter(self):
         """
@@ -40,7 +75,7 @@ class BinaryTreeNode:
         """
         Получить первый по порядку узел дерева (самый левый).
 
-        :Сложность: O(h), где h -- высота дерева
+        :Сложность: O(log n), *(если дерево не сбалансировано - O(h))*
         :return: Первый узел дерева
         """
         if self.left:
@@ -52,7 +87,7 @@ class BinaryTreeNode:
         """
         Получить последний по порядку узел дерева (самый правый).
 
-        :Сложность: O(h), где h -- высота дерева
+        :Сложность: O(log n), *(если дерево не сбалансировано - O(h))*
         :return: Последний узел дерева
         """
         if self.right:
@@ -64,67 +99,105 @@ class BinaryTreeNode:
         """
         Найти преемника этого узла (узел, который идёт следующий по порядку).
 
-        :Сложность: O(h), где h -- высота дерева
+        :Сложность: O(log n), *(если дерево не сбалансировано - O(h))*
         :return: Преемник этого узла
         """
-        trav = self
-        if trav.right:
-            return trav.right.subtree_first()
+        if self.right:
+            return self.right.subtree_first()
 
-        while trav.parent and (trav is trav.parent.right):
-            trav = trav.parent
+        while self.parent and (self is self.parent.right):
+            self = self.parent
 
-        return trav
+        return self
 
     def predecessor(self):
         """
         Найти предшественника этого узла (узел, который идёт предыдущий по порядку).
 
-        :Сложность: O(h), где h -- высота дерева
+        :Сложность: O(log n), *(если дерево не сбалансировано - O(h))*
         :return: Предшественник этого узла
         """
-        trav = self
-        if trav.left:
-            return trav.left.subtree_last()
-        while trav.parent and (trav is trav.parent.left):
-            trav = trav.parent
+        if self.left:
+            return self.left.subtree_last()
+        while self.parent and (self is self.parent.left):
+            self = self.parent
 
-        return trav
+        return self
+
+    def skew(self):
+        return height(self.right) - height(self.left)
+
+    def subtree_rotate_left(self):
+        """
+        .. image:: images/left_rotation.gif
+        """
+        assert self.right
+        left, right = self.left, self.right
+        right_left, right_right = right.left, right.right
+        self, right = right, self
+        self.data, right.data = right.data, self.data
+        right.left, right.right = self, right_right
+        self.left, self.right = left, right_left
+        if left: left.parent = self
+        if right_right: right_right.parent = right
+        self.subtree_update()
+        right.subtree_update()
+
+    def subtree_rotate_right(self):
+        """
+        .. image:: images/right_rotation.gif
+        """
+        assert self.left
+        left, right = self.left, self.right
+        left_left, left_right = left.left, left.right
+        self, left = left, self
+        self.data, left.data = left.data, self.data
+        left.left, left.left = left_left, self
+        self.left, self.right = left_right, right
+        if left_left:
+            left_left.parent = left
+        if right:
+            right.parent = self
+
+        left.subtree_update()
+        self.subtree_rotate_left()
 
     def subtree_insert_before(self, node: "BinaryTreeNode"):
         """
         Вставить узел (node) перед текущим по порядку.
 
-        :Сложность: O(h), где h -- высота дерева
+        :Сложность: O(log n), *(если дерево не сбалансировано - O(h))*
         :param node: Узел, который мы хотим вставить перед текущим
         """
         if self.left:
-            trav = self.left.subtree_last()
-            trav.right = node
-            node.parent = trav
+            self = self.left.subtree_last()
+            self.right, node.parent = node, self
         else:
             self.left = node
             node.parent = self
+
+        self.maintain()
 
     def subtree_insert_after(self, node: "BinaryTreeNode"):
         """
         Вставить узел (node) после текущего по порядку.
 
-        :Сложность: O(h), где h -- высота дерева
+        :Сложность: O(log n), *(если дерево не сбалансировано - O(h))*
         :param node: Узел, который мы хотим вставить после текущего
         """
         if self.right:
-            trav = self.right.subtree_first()
-            trav.left = node
-            node.parent = trav
+            self = self.right.subtree_first()
+            self.left, node.parent = node, self
         else:
-            self.right = node
-            node.parent = self
+            self.right, node.parent = node, self
+
+        self.maintain()
 
     def subtree_delete(self):
         """
         Рекурсивная функция удаления узла дерева.
 
+        :Сложность: O(log n), *(если дерево не сбалансировано - O(h))*
         :return: Удаляемый узел
         """
         if self.right or self.left:
@@ -139,6 +212,7 @@ class BinaryTreeNode:
                 self.parent.left = None
             else:
                 self.parent.right = None
+            self.parent.maintain()
 
         return self
 
@@ -194,7 +268,7 @@ class BSTNode(BinaryTreeNode):
         """
         Найти узел.
 
-        :Сложность: O(h)
+        :Сложность: O(log n), *(если дерево не сбалансировано - O(h))*
         :param item: значение искомого узла
         :return: искомый узел
         """
@@ -215,7 +289,7 @@ class BSTNode(BinaryTreeNode):
         """
         Найти следующий узел.
 
-        :Сложность: O(h)
+        :Сложность: O(log n), *(если дерево не сбалансировано - O(h))*
         :param item: значение, после которого идет значение искомого узла
         :return: узел, значение которого идёт после входного значения
         """
@@ -241,7 +315,7 @@ class BSTNode(BinaryTreeNode):
         """
         Найти предыдущий узел.
 
-        :Сложность: O(h)
+        :Сложность: O(log n), *(если дерево не сбалансировано - O(h))*
         :param item: значение, перед которым идет значение искомого узла
         :return: узел, значение которого идёт перед входным значением
         """
@@ -263,7 +337,7 @@ class BSTNode(BinaryTreeNode):
 
         .. image:: images/bst_insert.gif
 
-        :Сложность: O(h)
+        :Сложность: O(log n), *(если дерево не сбалансировано - O(h))*
         :param new_node: новый узел, который мы добавляем
         """
         if new_node.data < self.data:
@@ -314,7 +388,7 @@ class SetBinaryTree(BinaryTree):
         """
         Минимальный элемент - первый, поэтому вызываем :class:`~datastructures.BinaryTrees.BSTNode.subtree_first`
 
-        :Сложность: O(h)
+        :Сложность: O(log n), *(если дерево не сбалансировано - O(h))*
         :return: значение минимального узла
         """
         if self.root:
@@ -324,7 +398,7 @@ class SetBinaryTree(BinaryTree):
         """
         Максимальный элемент - последний, поэтому вызываем :class:`~datastructures.BinaryTrees.BSTNode.subtree_last`
 
-        :Сложность: O(h)
+        :Сложность: O(log n), *(если дерево не сбалансировано - O(h))*
         :return: значение максимального узла
         """
         if self.root:
@@ -334,7 +408,7 @@ class SetBinaryTree(BinaryTree):
         """
         Найти элемент.
 
-        :Сложность: O(h)
+        :Сложность: O(log n), *(если дерево не сбалансировано - O(h))*
         :param item: искомое значение
         :return: значение искомого элемента, если элемент не найден возвращает None
         """
@@ -347,7 +421,7 @@ class SetBinaryTree(BinaryTree):
         """
         Найти элемент, идущий после данного.
 
-        :Сложность: O(h)
+        :Сложность: O(log n), *(если дерево не сбалансировано - O(h))*
         :param item: значение элемента, после которого идёт искомый
         :return: значение искомого элемента, если элемент не найден возвращает None
         """
@@ -360,7 +434,7 @@ class SetBinaryTree(BinaryTree):
         """
         Найти элемент, идущий перед данным.
 
-        :Сложность: O(h)
+        :Сложность: O(log n), *(если дерево не сбалансировано - O(h))*
         :param item: значение элемента, перед которым идёт искомый
         :return: значение искомого элемента, если элемент не найден возвращает None
         """
@@ -373,7 +447,7 @@ class SetBinaryTree(BinaryTree):
         """
         Вставить узел.
 
-        :Сложность: O(h)
+        :Сложность: O(log n), *(если дерево не сбалансировано - O(h))*
         :param item: значение нового узла
         :return: *True*, если узел был добавлен, иначе *False*
         """
@@ -393,7 +467,7 @@ class SetBinaryTree(BinaryTree):
         """
         Удалить узел.
 
-        :Сложность: O(h)
+        :Сложность: O(log n), *(если дерево не сбалансировано - O(h))*
         :param item: значение удаляемого узла
         :return: значение удаляемого узла
         """
