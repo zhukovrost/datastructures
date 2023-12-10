@@ -1,3 +1,2 @@
-from .LinkedLists import *
-from .Arrays import *
-from .BinaryTrees import *
+from .linearDataStructures import *
+from .binaryTrees import *

@@ -1,7 +1,7 @@
 class SinglyLinkedListNode:
     """
     Этот класс представляет собой узел связанного списка (
-    :class:`~datastructures.LinkedLists.SinglyLinkedList`
+    :class:`~SinglyLinkedList`
     ).
     """
 
@@ -31,11 +31,12 @@ class SinglyLinkedListNode:
 class SinglyLinkedList:
     """
     Список связан единичными узлами (
-    :class:`~datastructures.LinkedLists.SinglyLinkedListNode`
+    :class:`~SinglyLinkedListNode`
     ): они хранят указатели **только** на следующий узел.
 
     .. image:: images/singly-linked-list.png
     """
+
     def __init__(self):
         self.head = None
         self.size = 0
@@ -184,9 +185,8 @@ class SinglyLinkedList:
 
 class DoublyLinkedListNode(SinglyLinkedListNode):
     """
-    Этот класс представляет собой узел двойного связанного списка (
-    :class:`~datastructures.LinkedLists.DoublyLinkedList`
-    ). Он занимает в два раза больше памяти, потому что имеет указатель как и на следующий, так и на предыдущий узел.
+    Этот класс представляет собой узел двойного связанного списка (:class:`~DoublyLinkedList`).
+    Он занимает в два раза больше памяти, потому что имеет указатель как и на следующий, так и на предыдущий узел.
     """
 
     def __init__(self, data):
@@ -214,12 +214,12 @@ class DoublyLinkedListNode(SinglyLinkedListNode):
 
 class DoublyLinkedList(SinglyLinkedList):
     """
-    Список связан двойными узлами (
-    :class:`~datastructures.LinkedLists.DoublyLinkedListNode`
-    ): они хранят указатели как на предыдущий узел, так и на следующий.
+    Список связан двойными узлами (:class:`~DoublyLinkedListNode`):
+    они хранят указатели как на предыдущий узел, так и на следующий.
 
     .. image:: images/doubly-linked-list.png
     """
+
     def __init__(self):
         super().__init__()
         self.tail = None
@@ -378,3 +378,185 @@ class DoublyLinkedList(SinglyLinkedList):
         prev_node.next = prev_node.next.next
         self.size -= 1
         return data
+
+
+class StaticArray:
+    """
+    Обычный нерасширяемый список
+
+    .. image:: images/static-array.png
+        :width: 300px
+    """
+
+    def __init__(self, n: int):
+        """
+        Инициализация статичного списка.
+
+        :param n: Длина списка
+        """
+        self.data = [None] * n
+
+    def __iter__(self):
+        for item in self.data:
+            yield item
+
+    def get_at(self, i: int):
+        """
+        Получить элемент.
+
+        :Сложность: O(1)
+        :param i: Индекс элемента
+        :return: Данные под i-ым индексом
+        """
+        if not (0 <= i < len(self.data)):
+            raise IndexError
+        return self.data[i]
+
+    def set_at(self, i: int, item):
+        """
+        Установить значение элемента.
+
+        :Сложность: O(1)
+        :param i: Индекс элемента
+        :param item: Значение элемента
+        """
+        if not (0 <= i < len(self.data)):
+            raise IndexError
+        self.data[i] = item
+
+    def search(self, item):
+        """
+        Поиск данных.
+
+        :Сложность: O(n)
+        :param item: Искомые данные
+        :return: Индекс искомых данных
+        """
+        i = 0
+        for data in self.data:
+            if data == item:
+                return i
+            i += 1
+        return -1
+
+
+class Stack:
+    """
+    **Last in - First out** список (LIFO). Альтернативное название: стак/стэк. Работает так же, как и стопка тарелок.
+
+    .. image:: images/stack.png
+        :width: 400px
+    """
+
+    def __init__(self):
+        """
+        Инициализатор. Стак работает с помощью :class:`~SinglyLinkedList`,
+        чтобы всё работало со сложностью алгоритма **O(1)**, вместо O(n). Такое решение было принято в связи с тем,
+        что стаки работают на *сдвигах* и с *крайними элементами списка*. Если вы хотите работать со
+        стаком как просто со списком, обращайтесь к параметру `data`:
+        там находится :class:`~SinglyLinkedList`, на котором всё работает.
+        """
+        self.data = SinglyLinkedList()
+
+    def __len__(self):
+        return len(self.data)
+
+    def __iter__(self):
+        return self.data.__iter__()
+
+    def push(self, item):
+        """
+        Положить наверх стопки новый элемент.
+
+        :Сложность: O(1)
+        :param item: Значение элемента, которого мы хотим положить наверх стопки
+        """
+        self.data.insert_first(item)
+
+    def pop(self):
+        """
+        Удаляет верхний элемент.
+
+        :Сложность: O(1)
+        :return: Верхний элемент, который мы удаляем
+        """
+        return self.data.delete_first()
+
+    def peek(self):
+        """
+        Узнать верхний элемент.
+
+        :Сложность: O(1)
+        :return: Значение верхнего элемента
+        """
+        return self.data.get_at(0)
+
+    def peek_bottom(self):
+        """
+        Узнать нижний элемент.
+
+        :Сложность: O(n)
+        :return: Значение нижнего элемента
+        """
+        return self.data.get_at(len(self))
+
+
+class Queue:
+    """
+    **First in - First out** список (FIFO). Альтернативное название: очередь. Работает так же, как очередь в пивнушке.
+
+    .. image:: images/queue.png
+        :width: 400px
+    """
+
+    def __init__(self):
+        """
+        Инициализатор. Очередь работает с помощью :class:`~DoublyLinkedList`,
+        чтобы всё работало со сложностью алгоритма **O(1)**, вместо O(n). Такое решение было принято в связи с тем,
+        что очереди работают на *сдвигах* и с *крайними элементами списка*. Если вы хотите работать с очередью как
+        просто со списком, обращайтесь к параметру `data`: там находится
+        :class:`~DoublyLinkedList`, на котором всё работает.
+        """
+        self.data = DoublyLinkedList()
+
+    def __len__(self):
+        return len(self.data)
+
+    def __iter__(self):
+        return self.data.__iter__()
+
+    def enqueue(self, item):
+        """
+        Поставить в очередь предмет.
+
+        :Сложность: O(1)
+        :param item: Значение элемента очереди, который мы ставим
+        """
+        self.data.insert_last(item)
+
+    def dequeue(self):
+        """
+        Вынуть из очереди следующий (первый) элемент.
+
+        :Сложность: O(1)
+        :return: Значение элемента, которого мы вынимаем
+        """
+        return self.data.delete_first()
+
+    def peek_front(self):
+        """
+        Узнать первый элемент очереди. Он же голова, он же следующий элемент очереди.
+
+        :Сложность: O(1)
+        :return: Первый элемент очереди
+        """
+        return self.data.get_at(0)
+
+    def peek_back(self):
+        """
+        Узнать последний элемент очереди. Он же хвост, он же конечный элемент очереди.
+
+        :Сложность: O(1)
+        :return: Последний элемент очереди
+        """
+        return self.data.get_at(len(self) - 1)
