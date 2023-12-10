@@ -116,6 +116,18 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-datastructures.binaryTrees">datastructures.binaryTrees module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#datastructures.binaryTrees.BST"><code class="docutils literal notranslate"><span class="pre">BST</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.BST.__init__"><code class="docutils literal notranslate"><span class="pre">BST.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.BST.build"><code class="docutils literal notranslate"><span class="pre">BST.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.BST.delete"><code class="docutils literal notranslate"><span class="pre">BST.delete()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.BST.find"><code class="docutils literal notranslate"><span class="pre">BST.find()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.BST.find_max"><code class="docutils literal notranslate"><span class="pre">BST.find_max()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.BST.find_min"><code class="docutils literal notranslate"><span class="pre">BST.find_min()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.BST.find_next"><code class="docutils literal notranslate"><span class="pre">BST.find_next()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.BST.find_prev"><code class="docutils literal notranslate"><span class="pre">BST.find_prev()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.BST.insert"><code class="docutils literal notranslate"><span class="pre">BST.insert()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#datastructures.binaryTrees.BSTNode"><code class="docutils literal notranslate"><span class="pre">BSTNode</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.BSTNode.__init__"><code class="docutils literal notranslate"><span class="pre">BSTNode.__init__()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.BSTNode.maintain"><code class="docutils literal notranslate"><span class="pre">BSTNode.maintain()</span></code></a></li>
@@ -158,18 +170,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.subtree_rotate_right"><code class="docutils literal notranslate"><span class="pre">BinaryTreeNode.subtree_rotate_right()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.subtree_update"><code class="docutils literal notranslate"><span class="pre">BinaryTreeNode.subtree_update()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.successor"><code class="docutils literal notranslate"><span class="pre">BinaryTreeNode.successor()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#datastructures.binaryTrees.SetBinaryTree"><code class="docutils literal notranslate"><span class="pre">SetBinaryTree</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.SetBinaryTree.__init__"><code class="docutils literal notranslate"><span class="pre">SetBinaryTree.__init__()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.SetBinaryTree.build"><code class="docutils literal notranslate"><span class="pre">SetBinaryTree.build()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.SetBinaryTree.delete"><code class="docutils literal notranslate"><span class="pre">SetBinaryTree.delete()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.SetBinaryTree.find"><code class="docutils literal notranslate"><span class="pre">SetBinaryTree.find()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.SetBinaryTree.find_max"><code class="docutils literal notranslate"><span class="pre">SetBinaryTree.find_max()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.SetBinaryTree.find_min"><code class="docutils literal notranslate"><span class="pre">SetBinaryTree.find_min()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.SetBinaryTree.find_next"><code class="docutils literal notranslate"><span class="pre">SetBinaryTree.find_next()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.SetBinaryTree.find_prev"><code class="docutils literal notranslate"><span class="pre">SetBinaryTree.find_prev()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.SetBinaryTree.insert"><code class="docutils literal notranslate"><span class="pre">SetBinaryTree.insert()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#datastructures.binaryTrees.height"><code class="docutils literal notranslate"><span class="pre">height()</span></code></a></li>
@@ -526,9 +526,7 @@
 <dt class="sig sig-object py" id="datastructures.linearDataStructures.SinglyLinkedList">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.linearDataStructures.</span></span><span class="sig-name descname"><span class="pre">SinglyLinkedList</span></span><a class="headerlink" href="#datastructures.linearDataStructures.SinglyLinkedList" title="Ссылка на это определение"></a></dt>
 <dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Список связан единичными узлами (
-<a class="reference internal" href="#datastructures.linearDataStructures.SinglyLinkedListNode" title="datastructures.linearDataStructures.SinglyLinkedListNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">SinglyLinkedListNode</span></code></a>
-): они хранят указатели <strong>только</strong> на следующий узел.</p>
+<p>Список связан единичными узлами (<a class="reference internal" href="#datastructures.linearDataStructures.SinglyLinkedListNode" title="datastructures.linearDataStructures.SinglyLinkedListNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">SinglyLinkedListNode</span></code></a>): они хранят указатели <strong>только</strong> на следующий узел.</p>
 <img alt="_images/singly-linked-list.png" src="_images/singly-linked-list.png" />
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.linearDataStructures.SinglyLinkedList.__init__">
@@ -713,9 +711,7 @@
 <dt class="sig sig-object py" id="datastructures.linearDataStructures.SinglyLinkedListNode">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.linearDataStructures.</span></span><span class="sig-name descname"><span class="pre">SinglyLinkedListNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.linearDataStructures.SinglyLinkedListNode" title="Ссылка на это определение"></a></dt>
 <dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Этот класс представляет собой узел связанного списка (
-<a class="reference internal" href="#datastructures.linearDataStructures.SinglyLinkedList" title="datastructures.linearDataStructures.SinglyLinkedList"><code class="xref py py-class docutils literal notranslate"><span class="pre">SinglyLinkedList</span></code></a>
-).</p>
+<p>Этот класс представляет собой узел связанного списка (<a class="reference internal" href="#datastructures.linearDataStructures.SinglyLinkedList" title="datastructures.linearDataStructures.SinglyLinkedList"><code class="xref py py-class docutils literal notranslate"><span class="pre">SinglyLinkedList</span></code></a>).</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.linearDataStructures.SinglyLinkedListNode.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.linearDataStructures.SinglyLinkedListNode.__init__" title="Ссылка на это определение"></a></dt>
@@ -894,6 +890,152 @@
 <section id="module-datastructures.binaryTrees">
 <span id="datastructures-binarytrees-module"></span><h2>datastructures.binaryTrees module<a class="headerlink" href="#module-datastructures.binaryTrees" title="Permalink to this heading"></a></h2>
 <dl class="py class">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.BST">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.binaryTrees.</span></span><span class="sig-name descname"><span class="pre">BST</span></span><a class="headerlink" href="#datastructures.binaryTrees.BST" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#datastructures.binaryTrees.BinaryTree" title="datastructures.binaryTrees.BinaryTree"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinaryTree</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.BST.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BST.__init__" title="Ссылка на это определение"></a></dt>
+<dd><p>Инициализатор дерева с типом узлов <a class="reference internal" href="#datastructures.binaryTrees.BSTNode" title="datastructures.binaryTrees.BSTNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">BSTNode</span></code></a>.
+Это то же самое бинарное дерево, но значения узлов будут возрастать в порядке обхода.
+Повторяющиеся элементы пропадают. По другому это дерево можно назвать бинарное дерево-множество или
+дерево бинарного поиска.</p>
+<a class="reference internal image-reference" href="_images/bst.png"><img alt="_images/bst.png" src="_images/bst.png" style="width: 500px;" /></a>
+<p>Если обойти это дерево по порядку (<a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.subtree_iter" title="datastructures.binaryTrees.BinaryTreeNode.subtree_iter"><code class="xref py py-class docutils literal notranslate"><span class="pre">subtree_iter</span></code></a>),
+то на выходе мы получим узлы в порядке возрастания:
+<strong>2 4 6 8 9 10 11 12 14 16 18</strong></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.BST.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BST.build" title="Ссылка на это определение"></a></dt>
+<dd><p>Строит дерево бинарного поиска из входящего списка.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(n)</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>arr</strong> – входящий список значений узлов</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.BST.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BST.delete" title="Ссылка на это определение"></a></dt>
+<dd><p>Удалить узел.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n), <em>(если дерево не сбалансировано - O(h))</em></p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>item</strong> – значение удаляемого узла</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>значение удаляемого узла</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.BST.find">
+<span class="sig-name descname"><span class="pre">find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BST.find" title="Ссылка на это определение"></a></dt>
+<dd><p>Найти элемент.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n), <em>(если дерево не сбалансировано - O(h))</em></p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>item</strong> – искомое значение</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>значение искомого элемента, если элемент не найден возвращает None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.BST.find_max">
+<span class="sig-name descname"><span class="pre">find_max</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BST.find_max" title="Ссылка на это определение"></a></dt>
+<dd><p>Максимальный элемент - последний, поэтому вызываем <a class="reference internal" href="#datastructures.binaryTrees.BSTNode.subtree_last" title="datastructures.binaryTrees.BSTNode.subtree_last"><code class="xref py py-class docutils literal notranslate"><span class="pre">subtree_last</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n), <em>(если дерево не сбалансировано - O(h))</em></p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>значение максимального узла</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.BST.find_min">
+<span class="sig-name descname"><span class="pre">find_min</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BST.find_min" title="Ссылка на это определение"></a></dt>
+<dd><p>Минимальный элемент - первый, поэтому вызываем <a class="reference internal" href="#datastructures.binaryTrees.BSTNode.subtree_first" title="datastructures.binaryTrees.BSTNode.subtree_first"><code class="xref py py-class docutils literal notranslate"><span class="pre">subtree_first</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n), <em>(если дерево не сбалансировано - O(h))</em></p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>значение минимального узла</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.BST.find_next">
+<span class="sig-name descname"><span class="pre">find_next</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BST.find_next" title="Ссылка на это определение"></a></dt>
+<dd><p>Найти элемент, идущий после данного.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n), <em>(если дерево не сбалансировано - O(h))</em></p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>item</strong> – значение элемента, после которого идёт искомый</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>значение искомого элемента, если элемент не найден возвращает None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.BST.find_prev">
+<span class="sig-name descname"><span class="pre">find_prev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BST.find_prev" title="Ссылка на это определение"></a></dt>
+<dd><p>Найти элемент, идущий перед данным.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n), <em>(если дерево не сбалансировано - O(h))</em></p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>item</strong> – значение элемента, перед которым идёт искомый</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>значение искомого элемента, если элемент не найден возвращает None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.BST.insert">
+<span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#datastructures.binaryTrees.BST.insert" title="Ссылка на это определение"></a></dt>
+<dd><p>Вставить узел.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n), <em>(если дерево не сбалансировано - O(h))</em></p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>item</strong> – значение нового узла</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>True</em>, если узел был добавлен, иначе <em>False</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BSTNode">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.binaryTrees.</span></span><span class="sig-name descname"><span class="pre">BSTNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BSTNode" title="Ссылка на это определение"></a></dt>
 <dd><p>Базовые классы: <a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode" title="datastructures.binaryTrees.BinaryTreeNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinaryTreeNode</span></code></a></p>
@@ -911,7 +1053,16 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BSTNode.maintain">
 <span class="sig-name descname"><span class="pre">maintain</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BSTNode.maintain" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Функция вызывается после удаления или вставки узла (<em>уже прописано в коде</em>).
+Она поддерживает дерево сбалансированным за счёт <a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.rebalance" title="datastructures.binaryTrees.BinaryTreeNode.rebalance"><code class="xref py py-class docutils literal notranslate"><span class="pre">rebalance</span></code></a>
+и поддерживает корректность высот у узлов за счёт <a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.subtree_update" title="datastructures.binaryTrees.BinaryTreeNode.subtree_update"><code class="xref py py-class docutils literal notranslate"><span class="pre">subtree_update</span></code></a>.
+Также оно проходиться вверх по дереву с той же целью.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n)</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BSTNode.predecessor">
@@ -930,12 +1081,46 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BSTNode.rebalance">
 <span class="sig-name descname"><span class="pre">rebalance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BSTNode.rebalance" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Сбалансировать дерево, если оно слишком накренено:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Если накренено вправо, повернуть налево</dt><dd><ul>
+<li><p>Перед этим сбалансировать правое поддерево (<em>повернуть направо</em>) при необходимости</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Если накренено влево, повернуть направо</dt><dd><ul>
+<li><p>Перед этим сбалансировать левое поддерево (<em>повернуть налево</em>) при необходимости</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BSTNode.skew">
 <span class="sig-name descname"><span class="pre">skew</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BSTNode.skew" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Найти <em>скос</em> дерева. <em>Скос</em> - это разница между высотами поддеревьев
+(<em>в данном случае высота правого минус высота левого</em>). Если эта разница больше нуля, то дерево накренено
+<strong>вправо</strong>. Если эта разница меньше нуля, то дерево накренено <strong>влево</strong>. Если эта разница равна нулю,
+то дерево <strong>полное</strong> (не накренено).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>разница высот.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BSTNode.subtree_delete">
@@ -1100,19 +1285,39 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BSTNode.subtree_rotate_left">
 <span class="sig-name descname"><span class="pre">subtree_rotate_left</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BSTNode.subtree_rotate_left" title="Ссылка на это определение"></a></dt>
-<dd><img alt="_images/left_rotation.gif" src="_images/left_rotation.gif" />
+<dd><p>Функция поворота дерева налево нужна для поддержки баланса дерева. Она уменьшает скос дерева,
+не меняя при этом порядок узлов при обходе дерева по порядку. <strong>Алгоритм:</strong></p>
+<a class="reference internal image-reference" href="_images/left_rotation.gif"><img alt="_images/left_rotation.gif" src="_images/left_rotation.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BSTNode.subtree_rotate_right">
 <span class="sig-name descname"><span class="pre">subtree_rotate_right</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BSTNode.subtree_rotate_right" title="Ссылка на это определение"></a></dt>
-<dd><img alt="_images/right_rotation.gif" src="_images/right_rotation.gif" />
+<dd><p>Функция поворота дерева направо нужна для поддержки баланса дерева. Она уменьшает скос дерева,
+не меняя при этом порядок узлов при обходе дерева по порядку. <strong>Алгоритм:</strong></p>
+<a class="reference internal image-reference" href="_images/right_rotation.gif"><img alt="_images/right_rotation.gif" src="_images/right_rotation.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BSTNode.subtree_update">
 <span class="sig-name descname"><span class="pre">subtree_update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BSTNode.subtree_update" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Обновляет высоту узла. <em>Высота самого высокого ребёнка + 1</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BSTNode.successor">
@@ -1145,8 +1350,8 @@
 <li><p>Ребёнок - один из узлов, выходящих из определённого</p></li>
 <li><p>Родитель - узел, из которого выходит определённый</p></li>
 <li><p>Грань - связь между ребёнком и родителем</p></li>
-<li><p>Предшественник - тот, кто идёт раньше определённого узла по порядку обхода в глубину in order <code class="xref py py-class docutils literal notranslate"><span class="pre">subtree_iter</span></code></p></li>
-<li><p>Преемник - тот, кто идёт позже определённого узла по порядку обхода в глубину in order <code class="xref py py-class docutils literal notranslate"><span class="pre">subtree_iter</span></code></p></li>
+<li><p>Предшественник - тот, кто идёт раньше определённого узла по порядку обхода в глубину in order <a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.subtree_iter" title="datastructures.binaryTrees.BinaryTreeNode.subtree_iter"><code class="xref py py-class docutils literal notranslate"><span class="pre">subtree_iter</span></code></a></p></li>
+<li><p>Преемник - тот, кто идёт позже определённого узла по порядку обхода в глубину in order <a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.subtree_iter" title="datastructures.binaryTrees.BinaryTreeNode.subtree_iter"><code class="xref py py-class docutils literal notranslate"><span class="pre">subtree_iter</span></code></a></p></li>
 </ul>
 </dd>
 <dt>Типы деревьев:</dt><dd><ul class="simple">
@@ -1166,7 +1371,7 @@
 <dd><p>Инициализатор.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Параметры<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>TreeNodeType</strong> – Тип узлов дерева. По умолчанию <code class="xref py py-class docutils literal notranslate"><span class="pre">BinaryTreeNode</span></code></p>
+<dd class="field-odd"><p><strong>TreeNodeType</strong> – Тип узлов дерева. По умолчанию <a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode" title="datastructures.binaryTrees.BinaryTreeNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinaryTreeNode</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1191,7 +1396,16 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BinaryTreeNode.maintain">
 <span class="sig-name descname"><span class="pre">maintain</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BinaryTreeNode.maintain" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Функция вызывается после удаления или вставки узла (<em>уже прописано в коде</em>).
+Она поддерживает дерево сбалансированным за счёт <a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.rebalance" title="datastructures.binaryTrees.BinaryTreeNode.rebalance"><code class="xref py py-class docutils literal notranslate"><span class="pre">rebalance</span></code></a>
+и поддерживает корректность высот у узлов за счёт <a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.subtree_update" title="datastructures.binaryTrees.BinaryTreeNode.subtree_update"><code class="xref py py-class docutils literal notranslate"><span class="pre">subtree_update</span></code></a>.
+Также оно проходиться вверх по дереву с той же целью.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n)</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BinaryTreeNode.predecessor">
@@ -1210,12 +1424,46 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BinaryTreeNode.rebalance">
 <span class="sig-name descname"><span class="pre">rebalance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BinaryTreeNode.rebalance" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Сбалансировать дерево, если оно слишком накренено:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Если накренено вправо, повернуть налево</dt><dd><ul>
+<li><p>Перед этим сбалансировать правое поддерево (<em>повернуть направо</em>) при необходимости</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Если накренено влево, повернуть направо</dt><dd><ul>
+<li><p>Перед этим сбалансировать левое поддерево (<em>повернуть налево</em>) при необходимости</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BinaryTreeNode.skew">
 <span class="sig-name descname"><span class="pre">skew</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BinaryTreeNode.skew" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Найти <em>скос</em> дерева. <em>Скос</em> - это разница между высотами поддеревьев
+(<em>в данном случае высота правого минус высота левого</em>). Если эта разница больше нуля, то дерево накренено
+<strong>вправо</strong>. Если эта разница меньше нуля, то дерево накренено <strong>влево</strong>. Если эта разница равна нулю,
+то дерево <strong>полное</strong> (не накренено).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>разница высот.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BinaryTreeNode.subtree_delete">
@@ -1314,19 +1562,39 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BinaryTreeNode.subtree_rotate_left">
 <span class="sig-name descname"><span class="pre">subtree_rotate_left</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BinaryTreeNode.subtree_rotate_left" title="Ссылка на это определение"></a></dt>
-<dd><img alt="_images/left_rotation.gif" src="_images/left_rotation.gif" />
+<dd><p>Функция поворота дерева налево нужна для поддержки баланса дерева. Она уменьшает скос дерева,
+не меняя при этом порядок узлов при обходе дерева по порядку. <strong>Алгоритм:</strong></p>
+<a class="reference internal image-reference" href="_images/left_rotation.gif"><img alt="_images/left_rotation.gif" src="_images/left_rotation.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BinaryTreeNode.subtree_rotate_right">
 <span class="sig-name descname"><span class="pre">subtree_rotate_right</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BinaryTreeNode.subtree_rotate_right" title="Ссылка на это определение"></a></dt>
-<dd><img alt="_images/right_rotation.gif" src="_images/right_rotation.gif" />
+<dd><p>Функция поворота дерева направо нужна для поддержки баланса дерева. Она уменьшает скос дерева,
+не меняя при этом порядок узлов при обходе дерева по порядку. <strong>Алгоритм:</strong></p>
+<a class="reference internal image-reference" href="_images/right_rotation.gif"><img alt="_images/right_rotation.gif" src="_images/right_rotation.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BinaryTreeNode.subtree_update">
 <span class="sig-name descname"><span class="pre">subtree_update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BinaryTreeNode.subtree_update" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Обновляет высоту узла. <em>Высота самого высокого ребёнка + 1</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BinaryTreeNode.successor">
@@ -1338,152 +1606,6 @@
 </dd>
 <dt class="field-even">Результат<span class="colon">:</span></dt>
 <dd class="field-even"><p>Преемник этого узла</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="datastructures.binaryTrees.SetBinaryTree">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.binaryTrees.</span></span><span class="sig-name descname"><span class="pre">SetBinaryTree</span></span><a class="headerlink" href="#datastructures.binaryTrees.SetBinaryTree" title="Ссылка на это определение"></a></dt>
-<dd><p>Базовые классы: <a class="reference internal" href="#datastructures.binaryTrees.BinaryTree" title="datastructures.binaryTrees.BinaryTree"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinaryTree</span></code></a></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.binaryTrees.SetBinaryTree.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SetBinaryTree.__init__" title="Ссылка на это определение"></a></dt>
-<dd><p>Инициализатор дерева с типом узлов <code class="xref py py-class docutils literal notranslate"><span class="pre">BSTNode</span></code>.
-Это то же самое бинарное дерево, но значения узлов будут возрастать в порядке обхода.
-Повторяющиеся элементы пропадают. По другому это дерево можно назвать бинарное дерево-множество или
-дерево бинарного поиска.</p>
-<a class="reference internal image-reference" href="_images/bst.png"><img alt="_images/bst.png" src="_images/bst.png" style="width: 500px;" /></a>
-<p>Если обойти это дерево по порядку (<code class="xref py py-class docutils literal notranslate"><span class="pre">subtree_iter</span></code>),
-то на выходе мы получим узлы в порядке возрастания:
-<strong>2 4 6 8 9 10 11 12 14 16 18</strong></p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.binaryTrees.SetBinaryTree.build">
-<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SetBinaryTree.build" title="Ссылка на это определение"></a></dt>
-<dd><p>Строит дерево бинарного поиска из входящего списка.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(n)</p>
-</dd>
-<dt class="field-even">Параметры<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>arr</strong> – входящий список значений узлов</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.binaryTrees.SetBinaryTree.delete">
-<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SetBinaryTree.delete" title="Ссылка на это определение"></a></dt>
-<dd><p>Удалить узел.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(log n), <em>(если дерево не сбалансировано - O(h))</em></p>
-</dd>
-<dt class="field-even">Параметры<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>item</strong> – значение удаляемого узла</p>
-</dd>
-<dt class="field-odd">Результат<span class="colon">:</span></dt>
-<dd class="field-odd"><p>значение удаляемого узла</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.binaryTrees.SetBinaryTree.find">
-<span class="sig-name descname"><span class="pre">find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SetBinaryTree.find" title="Ссылка на это определение"></a></dt>
-<dd><p>Найти элемент.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(log n), <em>(если дерево не сбалансировано - O(h))</em></p>
-</dd>
-<dt class="field-even">Параметры<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>item</strong> – искомое значение</p>
-</dd>
-<dt class="field-odd">Результат<span class="colon">:</span></dt>
-<dd class="field-odd"><p>значение искомого элемента, если элемент не найден возвращает None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.binaryTrees.SetBinaryTree.find_max">
-<span class="sig-name descname"><span class="pre">find_max</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SetBinaryTree.find_max" title="Ссылка на это определение"></a></dt>
-<dd><p>Максимальный элемент - последний, поэтому вызываем <code class="xref py py-class docutils literal notranslate"><span class="pre">subtree_last</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(log n), <em>(если дерево не сбалансировано - O(h))</em></p>
-</dd>
-<dt class="field-even">Результат<span class="colon">:</span></dt>
-<dd class="field-even"><p>значение максимального узла</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.binaryTrees.SetBinaryTree.find_min">
-<span class="sig-name descname"><span class="pre">find_min</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SetBinaryTree.find_min" title="Ссылка на это определение"></a></dt>
-<dd><p>Минимальный элемент - первый, поэтому вызываем <code class="xref py py-class docutils literal notranslate"><span class="pre">subtree_first</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(log n), <em>(если дерево не сбалансировано - O(h))</em></p>
-</dd>
-<dt class="field-even">Результат<span class="colon">:</span></dt>
-<dd class="field-even"><p>значение минимального узла</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.binaryTrees.SetBinaryTree.find_next">
-<span class="sig-name descname"><span class="pre">find_next</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SetBinaryTree.find_next" title="Ссылка на это определение"></a></dt>
-<dd><p>Найти элемент, идущий после данного.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(log n), <em>(если дерево не сбалансировано - O(h))</em></p>
-</dd>
-<dt class="field-even">Параметры<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>item</strong> – значение элемента, после которого идёт искомый</p>
-</dd>
-<dt class="field-odd">Результат<span class="colon">:</span></dt>
-<dd class="field-odd"><p>значение искомого элемента, если элемент не найден возвращает None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.binaryTrees.SetBinaryTree.find_prev">
-<span class="sig-name descname"><span class="pre">find_prev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SetBinaryTree.find_prev" title="Ссылка на это определение"></a></dt>
-<dd><p>Найти элемент, идущий перед данным.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(log n), <em>(если дерево не сбалансировано - O(h))</em></p>
-</dd>
-<dt class="field-even">Параметры<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>item</strong> – значение элемента, перед которым идёт искомый</p>
-</dd>
-<dt class="field-odd">Результат<span class="colon">:</span></dt>
-<dd class="field-odd"><p>значение искомого элемента, если элемент не найден возвращает None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.binaryTrees.SetBinaryTree.insert">
-<span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#datastructures.binaryTrees.SetBinaryTree.insert" title="Ссылка на это определение"></a></dt>
-<dd><p>Вставить узел.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(log n), <em>(если дерево не сбалансировано - O(h))</em></p>
-</dd>
-<dt class="field-even">Параметры<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>item</strong> – значение нового узла</p>
-</dd>
-<dt class="field-odd">Результат<span class="colon">:</span></dt>
-<dd class="field-odd"><p><em>True</em>, если узел был добавлен, иначе <em>False</em></p>
 </dd>
 </dl>
 </dd></dl>
