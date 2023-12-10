@@ -30,9 +30,24 @@ class BinaryTreeNode:
         self.subtree_update()
 
     def subtree_update(self):
+        """
+        Обновляет высоту узла. *Высота самого высокого ребёнка + 1*.
+
+        :Сложность: O(1)
+        """
         self.height = 1 + max(height(self.left), height(self.right))
 
     def rebalance(self):
+        """
+        Сбалансировать дерево, если оно слишком накренено:
+
+        * Если накренено вправо, повернуть налево
+            * Перед этим сбалансировать правое поддерево (*повернуть направо*) при необходимости
+        * Если накренено влево, повернуть направо
+            * Перед этим сбалансировать левое поддерево (*повернуть налево*) при необходимости
+
+        :Сложность: O(1)
+        """
         if self.skew() == 2:
             if self.right.skew() < 0:
                 self.right.subtree_rotate_right()
@@ -44,6 +59,14 @@ class BinaryTreeNode:
             self.subtree_rotate_right()
 
     def maintain(self):
+        """
+        Функция вызывается после удаления или вставки узла (*уже прописано в коде*).
+        Она поддерживает дерево сбалансированным за счёт :class:`~BinaryTreeNode.rebalance`
+        и поддерживает корректность высот у узлов за счёт :class:`~BinaryTreeNode.subtree_update`.
+        Также оно проходиться вверх по дереву с той же целью.
+
+        :Сложность: O(log n)
+        """
         self.rebalance()
         self.subtree_update()
         if self.parent:
@@ -125,11 +148,26 @@ class BinaryTreeNode:
         return self
 
     def skew(self):
+        """
+        Найти *скос* дерева. *Скос* - это разница между высотами поддеревьев
+        (*в данном случае высота правого минус высота левого*). Если эта разница больше нуля, то дерево накренено
+        **вправо**. Если эта разница меньше нуля, то дерево накренено **влево**. Если эта разница равна нулю,
+        то дерево **полное** (не накренено).
+
+        :Сложность: O(1)
+        :return: разница высот.
+        """
         return height(self.right) - height(self.left)
 
     def subtree_rotate_left(self):
         """
+        Функция поворота дерева налево нужна для поддержки баланса дерева. Она уменьшает скос дерева,
+        не меняя при этом порядок узлов при обходе дерева по порядку. **Алгоритм:**
+
         .. image:: images/left_rotation.gif
+            :width: 400px
+
+        :Сложность: O(1)
         """
         assert self.right
         left, right = self.left, self.right
@@ -138,14 +176,22 @@ class BinaryTreeNode:
         self.data, right.data = right.data, self.data
         right.left, right.right = self, right_right
         self.left, self.right = left, right_left
-        if left: left.parent = self
-        if right_right: right_right.parent = right
+        if left:
+            left.parent = self
+        if right_right:
+            right_right.parent = right
         self.subtree_update()
         right.subtree_update()
 
     def subtree_rotate_right(self):
         """
+        Функция поворота дерева направо нужна для поддержки баланса дерева. Она уменьшает скос дерева,
+        не меняя при этом порядок узлов при обходе дерева по порядку. **Алгоритм:**
+
         .. image:: images/right_rotation.gif
+            :width: 400px
+
+        :Сложность: O(1)
         """
         assert self.left
         left, right = self.left, self.right
@@ -232,8 +278,8 @@ class BinaryTree:
         * Ребёнок - один из узлов, выходящих из определённого
         * Родитель - узел, из которого выходит определённый
         * Грань - связь между ребёнком и родителем
-        * Предшественник - тот, кто идёт раньше определённого узла по порядку обхода в глубину in order :class:`~datastructures.BinaryTrees.BinaryTreeNode.subtree_iter`
-        * Преемник - тот, кто идёт позже определённого узла по порядку обхода в глубину in order :class:`~datastructures.BinaryTrees.BinaryTreeNode.subtree_iter`
+        * Предшественник - тот, кто идёт раньше определённого узла по порядку обхода в глубину in order :class:`~BinaryTreeNode.subtree_iter`
+        * Преемник - тот, кто идёт позже определённого узла по порядку обхода в глубину in order :class:`~BinaryTreeNode.subtree_iter`
     Типы деревьев:
         * Полное: у каждого узла либо 0, либо 2 ребёнка.
         * Дегенеративное: у каждого узла либо 0, либо 1 ребёнок
@@ -248,7 +294,7 @@ class BinaryTree:
         """
         Инициализатор.
 
-        :param TreeNodeType: Тип узлов дерева. По умолчанию :class:`~datastructures.BinaryTrees.BinaryTreeNode`
+        :param TreeNodeType: Тип узлов дерева. По умолчанию :class:`~BinaryTreeNode`
         """
         self.root = None
         self.size = 0
@@ -357,10 +403,10 @@ class BSTNode(BinaryTreeNode):
             self.data = new_node.data
 
 
-class SetBinaryTree(BinaryTree):
+class BST(BinaryTree):
     def __init__(self):
         """
-        Инициализатор дерева с типом узлов :class:`~datastructures.BinaryTrees.BSTNode`.
+        Инициализатор дерева с типом узлов :class:`~BSTNode`.
         Это то же самое бинарное дерево, но значения узлов будут возрастать в порядке обхода.
         Повторяющиеся элементы пропадают. По другому это дерево можно назвать бинарное дерево-множество или
         дерево бинарного поиска.
@@ -368,7 +414,7 @@ class SetBinaryTree(BinaryTree):
         .. image:: /images/bst.png
             :width: 500px
 
-        Если обойти это дерево по порядку (:class:`~datastructures.BinaryTrees.BinaryTreeNode.subtree_iter`),
+        Если обойти это дерево по порядку (:class:`~BinaryTreeNode.subtree_iter`),
         то на выходе мы получим узлы в порядке возрастания:
         **2 4 6 8 9 10 11 12 14 16 18**
         """
@@ -386,7 +432,7 @@ class SetBinaryTree(BinaryTree):
 
     def find_min(self):
         """
-        Минимальный элемент - первый, поэтому вызываем :class:`~datastructures.BinaryTrees.BSTNode.subtree_first`
+        Минимальный элемент - первый, поэтому вызываем :class:`~BSTNode.subtree_first`
 
         :Сложность: O(log n), *(если дерево не сбалансировано - O(h))*
         :return: значение минимального узла
@@ -396,7 +442,7 @@ class SetBinaryTree(BinaryTree):
 
     def find_max(self):
         """
-        Максимальный элемент - последний, поэтому вызываем :class:`~datastructures.BinaryTrees.BSTNode.subtree_last`
+        Максимальный элемент - последний, поэтому вызываем :class:`~BSTNode.subtree_last`
 
         :Сложность: O(log n), *(если дерево не сбалансировано - O(h))*
         :return: значение максимального узла

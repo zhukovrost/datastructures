@@ -1,8 +1,6 @@
 class SinglyLinkedListNode:
     """
-    Этот класс представляет собой узел связанного списка (
-    :class:`~SinglyLinkedList`
-    ).
+    Этот класс представляет собой узел связанного списка (:class:`~SinglyLinkedList`).
     """
 
     def __init__(self, data):
@@ -30,9 +28,7 @@ class SinglyLinkedListNode:
 
 class SinglyLinkedList:
     """
-    Список связан единичными узлами (
-    :class:`~SinglyLinkedListNode`
-    ): они хранят указатели **только** на следующий узел.
+    Список связан единичными узлами (:class:`~SinglyLinkedListNode`): они хранят указатели **только** на следующий узел.
 
     .. image:: images/singly-linked-list.png
     """
