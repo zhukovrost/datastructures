@@ -226,9 +226,9 @@ class BinaryTreeNode:
             root_right_subtree.parent = root
 
         pivot.subtree_update()
-        root.subtree_rotate_left()
+        root.subtree_update()
 
-    def subtree_insert_before(self, node: "BinaryTreeNode"):
+    def subtree_insert_before(self, node: "TreeNodeType"):
         """
         Вставить узел (node) перед текущим по порядку.
 
@@ -244,7 +244,7 @@ class BinaryTreeNode:
 
         self.maintain()
 
-    def subtree_insert_after(self, node: "BinaryTreeNode"):
+    def subtree_insert_after(self, node: "TreeNodeType"):
         """
         Вставить узел (node) после текущего по порядку.
 
@@ -285,7 +285,9 @@ class BinaryTreeNode:
 
 class BinaryTree:
     """
-    Бинарное дерево. Дерево называется бинарным, потому что у каждого узла не может быть более чем 2 ребёнка.
+    Бинарное дерево AVL. Дерево называется бинарным, потому что у каждого узла не может быть более чем 2 ребёнка.
+    AVL значит, что дерево автоматически *балансируется* (читай далее), что позволяет сократить сложность выполнения
+    большинства алгоритмов с O(n) или O(h) до **O(log n)**!
 
     .. image:: images/binary-tree.png
         :width: 500px
@@ -308,7 +310,14 @@ class BinaryTree:
         * Идеальное: полное дерево, у которого все листья на одном уровне
         * Сбалансированное: дерево, у которого разница между высотой левого и правого поддерева меньше или равна 1
 
-    **Специальные типы деревьев я вынес в отдельные классы**
+    **В этих таблицах вы можете видеть преимущество AVL деревьев:**
+    ---------------------------------------------------------------
+
+    .. image:: images/BST_complexity.png
+
+    .. image:: images/SQT_complexity.png
+
+    **Эти типы деревьев я вынес в отдельные классы**
     """
     def __init__(self, TreeNodeType = BinaryTreeNode):
         """
@@ -330,7 +339,7 @@ class BinaryTree:
 
 
 class BSTNode(BinaryTreeNode):
-    def subtree_find(self, item: int) -> "BSTNode":
+    def subtree_find(self, item: int) -> "TreeNodeType":
         """
         Найти узел.
 
@@ -397,7 +406,7 @@ class BSTNode(BinaryTreeNode):
                     return node
         return self
 
-    def subtree_insert(self, new_node: "BSTNode"):
+    def subtree_insert(self, new_node: "TreeNodeType"):
         """
         Добавить новый узел и не нарушить порядок возрастания при обходе по порядку.
 
@@ -437,6 +446,8 @@ class BST(BinaryTree):
         Если обойти это дерево по порядку (:class:`~BinaryTreeNode.subtree_iter`),
         то на выходе мы получим узлы в порядке возрастания:
         **2 4 6 8 9 10 11 12 14 16 18**
+
+        .. image:: images/BST_complexity.png
         """
         super().__init__(BSTNode)
 
@@ -444,7 +455,7 @@ class BST(BinaryTree):
         """
         Строит дерево бинарного поиска из входящего списка.
 
-        :Сложность: O(n)
+        :Сложность: O(nlog n)
         :param arr: входящий список значений узлов
         """
         for item in arr:
@@ -545,3 +556,181 @@ class BST(BinaryTree):
             self.root = None
         self.size -= 1
         return temp.data
+
+
+class SQTNode(BinaryTreeNode):
+    """
+    Индексируемый узел имеет параметр размера. Размер -- это сумма размеров детей + 1.
+    Это нужно для индексации узлов.
+    """
+    def __init__(self, item):
+        super().__init__(item)
+        self.size = 0
+
+    def subtree_update(self):
+        """
+        Обновляет высоту узла (*высота самого высокого ребёнка + 1*)
+        и размер (*это сумма размеров детей + 1*).
+
+        :Сложность: O(1)
+        """
+        super().subtree_update()
+        self.size = 1
+        if self.left:
+            self.size += self.left.size
+
+        if self.right:
+            self.size += self.right.size
+
+    def subtree_at(self, i):
+        """
+        Найти i-ый узел. Поиск происходит через размеры узлов:
+        
+        * Если размер левого ребёнка больше индекса, найти i-ый узел в левом поддереве.
+        * Если размер левого ребёнка меньше индекса, найти узел в правом поддереве с индексом: *индекс - размер левого ребёнка - 1*.
+        * Если размер левого ребенка равен индексу, вернуть текущий узел.
+
+        :Сложность: O(log n)
+        :param i: индекс искомого узла
+        :return: искомый узел
+        """
+        assert i >= 0
+        if self.left:
+            left_size = self.left.size
+        else:
+            left_size = 0
+
+        if i < left_size:
+            return self.left.subtree_at(i)
+        elif i > left_size:
+            return self.right.subtree_at(i - left_size - 1)
+        else:
+            return self
+
+
+class SQT(BinaryTree):
+    """
+    Бинарное дерево, к элементам которого можно обращаться по индексу (*Sequence Binary Tree*).
+    **Индексация идет по порядку обхода дерева**.
+
+    .. image:: images/SQT_complexity.png
+    """
+    def __init__(self):
+        super().__init__(SQTNode)
+
+    def build(self, datalist: list):
+        """
+        Построить дерево из входящего списка. Но алгоритм не просто поочерёдно вставлять элементы,
+        а корнем каждого поддерева является центр среза входящего списка, что способствует балансу дерева.
+
+        :Сложность: O(n)
+        :param datalist: входящий список
+        """
+        def build_subtree(_datalist: list, _from: int, _to: int) -> "TreeNodeType":
+            center = (_from + _to) // 2
+            root = self.TreeNodeType(_datalist[center])
+            if _from < center:
+                root.left = build_subtree(_datalist, _from, center - 1)
+                root.left.parent = root
+            if _to > center:
+                root.right = build_subtree(_datalist, center + 1, _to)
+                root.right.parent = root
+            root.subtree_update()
+            return root
+
+        self.root = build_subtree(datalist, 0, len(datalist) - 1)
+        self.size = self.root.size
+
+    def get_at(self, i):
+        """
+        Получить i-ый узел.
+
+        :Сложность: O(log n)
+        :param i: индекс узла
+        :return: значение искомого узла
+        """
+        assert self.root
+        return self.root.subtree_at(i).data
+
+    def set_at(self, i, data):
+        """
+        Установить значение i-го узла.
+
+        :Сложность: O(log n)
+        :param i: индекс узла
+        :param data: новое значение узла
+        """
+        assert self.root
+        self.root.subtree_at(i).data = data
+
+    def insert_at(self, i, data):
+        """
+        Вставить новый узел на i-ую позицию.
+
+        :Сложность: O(log n)
+        :param i: индекс нового узла
+        :param data: значение нового узла
+        """
+        new_node = self.TreeNodeType(data)
+        if i == 0:
+            if self.root:
+                node = self.root.subtree_first()
+                node.subtree_insert_before(new_node)
+            else:
+                self.root = new_node
+        else:
+            node = self.root.subtree_at(i - 1)
+            node.subtree_insert_after(new_node)
+        self.size += 1
+
+    def delete_at(self, i):
+        """
+        Удаляет i-ый элемент.
+
+        :Сложность: O(log n)
+        :param i: индекс удаляемого узла
+        :return: значение удаляемого узла
+        """
+        assert self.root
+        node = self.root.subtree_at(i)
+        temp = node.subtree_delete()
+        if temp.parent is None:
+            self.root = None
+        self.size -= 1
+        return temp.data
+
+    def delete_first(self):
+        """
+        Удаляет первый узел.
+
+        :Сложность: O(log n)
+        :return: значение удаляемого узла
+        """
+        return self.delete_at(0)
+
+    def delete_last(self):
+        """
+        Удаляет последний узел.
+
+        :Сложность: O(log n)
+        :return: значение удаляемого узла
+        """
+        return self.delete_at(len(self) - 1)
+
+    def insert_first(self, data):
+        """
+        Вставляет новый узел в начало дерева (0 позиция).
+
+        :Сложность: O(log n)
+        :param data: значение нового узла
+        """
+        self.insert_at(0, data)
+
+    def insert_last(self, data):
+        """
+        Вставляет новый узел в конец дерева (len(self) позиция).
+
+        :Сложность: O(log n)
+        :param data: значение нового узла
+        """
+        self.insert_at(len(self), data)
