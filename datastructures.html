@@ -64,6 +64,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.BSTNode"><code class="docutils literal notranslate"><span class="pre">BSTNode</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.BinaryTree"><code class="docutils literal notranslate"><span class="pre">BinaryTree</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode"><code class="docutils literal notranslate"><span class="pre">BinaryTreeNode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.SQT"><code class="docutils literal notranslate"><span class="pre">SQT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.SQTNode"><code class="docutils literal notranslate"><span class="pre">SQTNode</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.height"><code class="docutils literal notranslate"><span class="pre">height()</span></code></a></li>
 </ul>
 </li>
@@ -800,6 +802,7 @@
 <p>Если обойти это дерево по порядку (<a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.subtree_iter" title="datastructures.binaryTrees.BinaryTreeNode.subtree_iter"><code class="xref py py-class docutils literal notranslate"><span class="pre">subtree_iter</span></code></a>),
 то на выходе мы получим узлы в порядке возрастания:
 <strong>2 4 6 8 9 10 11 12 14 16 18</strong></p>
+<img alt="_images/BST_complexity.png" src="_images/BST_complexity.png" />
 </dd></dl>
 
 <dl class="py method">
@@ -808,7 +811,7 @@
 <dd><p>Строит дерево бинарного поиска из входящего списка.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(n)</p>
+<dd class="field-odd"><p>O(nlog n)</p>
 </dd>
 <dt class="field-even">Параметры<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>arr</strong> – входящий список значений узлов</p>
@@ -1034,7 +1037,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BSTNode.subtree_find">
-<span class="sig-name descname"><span class="pre">subtree_find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#datastructures.binaryTrees.BSTNode" title="datastructures.binaryTrees.BSTNode"><span class="pre">BSTNode</span></a></span></span><a class="headerlink" href="#datastructures.binaryTrees.BSTNode.subtree_find" title="Ссылка на это определение"></a></dt>
+<span class="sig-name descname"><span class="pre">subtree_find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TreeNodeType</span></span></span><a class="headerlink" href="#datastructures.binaryTrees.BSTNode.subtree_find" title="Ссылка на это определение"></a></dt>
 <dd><p>Найти узел.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
@@ -1099,7 +1102,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BSTNode.subtree_insert">
-<span class="sig-name descname"><span class="pre">subtree_insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#datastructures.binaryTrees.BSTNode" title="datastructures.binaryTrees.BSTNode"><span class="pre">BSTNode</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BSTNode.subtree_insert" title="Ссылка на это определение"></a></dt>
+<span class="sig-name descname"><span class="pre">subtree_insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TreeNodeType</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BSTNode.subtree_insert" title="Ссылка на это определение"></a></dt>
 <dd><p>Добавить новый узел и не нарушить порядок возрастания при обходе по порядку.</p>
 <img alt="_images/bst_insert.gif" src="_images/bst_insert.gif" />
 <dl class="field-list simple">
@@ -1114,7 +1117,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BSTNode.subtree_insert_after">
-<span class="sig-name descname"><span class="pre">subtree_insert_after</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode" title="datastructures.binaryTrees.BinaryTreeNode"><span class="pre">BinaryTreeNode</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BSTNode.subtree_insert_after" title="Ссылка на это определение"></a></dt>
+<span class="sig-name descname"><span class="pre">subtree_insert_after</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TreeNodeType</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BSTNode.subtree_insert_after" title="Ссылка на это определение"></a></dt>
 <dd><p>Вставить узел (node) после текущего по порядку.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
@@ -1128,7 +1131,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BSTNode.subtree_insert_before">
-<span class="sig-name descname"><span class="pre">subtree_insert_before</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode" title="datastructures.binaryTrees.BinaryTreeNode"><span class="pre">BinaryTreeNode</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BSTNode.subtree_insert_before" title="Ссылка на это определение"></a></dt>
+<span class="sig-name descname"><span class="pre">subtree_insert_before</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TreeNodeType</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BSTNode.subtree_insert_before" title="Ссылка на это определение"></a></dt>
 <dd><p>Вставить узел (node) перед текущим по порядку.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
@@ -1255,7 +1258,9 @@
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BinaryTree">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.binaryTrees.</span></span><span class="sig-name descname"><span class="pre">BinaryTree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">TreeNodeType=&lt;class</span> <span class="pre">'datastructures.binaryTrees.BinaryTreeNode'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BinaryTree" title="Ссылка на это определение"></a></dt>
 <dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Бинарное дерево. Дерево называется бинарным, потому что у каждого узла не может быть более чем 2 ребёнка.</p>
+<p>Бинарное дерево AVL. Дерево называется бинарным, потому что у каждого узла не может быть более чем 2 ребёнка.
+AVL значит, что дерево автоматически <em>балансируется</em> (читай далее), что позволяет сократить сложность выполнения
+большинства алгоритмов с O(n) или O(h) до <strong>O(log n)</strong>!</p>
 <a class="reference internal image-reference" href="_images/binary-tree.png"><img alt="_images/binary-tree.png" src="_images/binary-tree.png" style="width: 500px;" /></a>
 <dl class="simple">
 <dt>Немного терминологии:</dt><dd><ul class="simple">
@@ -1280,7 +1285,11 @@
 </ul>
 </dd>
 </dl>
-<p><strong>Специальные типы деревьев я вынес в отдельные классы</strong></p>
+<section id="avl">
+<h3><strong>В этих таблицах вы можете видеть преимущество AVL деревьев:</strong><a class="headerlink" href="#avl" title="Permalink to this heading"></a></h3>
+<img alt="_images/BST_complexity.png" src="_images/BST_complexity.png" />
+<img alt="_images/SQT_complexity.png" src="_images/SQT_complexity.png" />
+<p><strong>Эти типы деревьев я вынес в отдельные классы</strong></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BinaryTree.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">TreeNodeType=&lt;class</span> <span class="pre">'datastructures.binaryTrees.BinaryTreeNode'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BinaryTree.__init__" title="Ссылка на это определение"></a></dt>
@@ -1292,6 +1301,7 @@
 </dl>
 </dd></dl>
 
+</section>
 </dd></dl>
 
 <dl class="py class">
@@ -1411,7 +1421,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BinaryTreeNode.subtree_insert_after">
-<span class="sig-name descname"><span class="pre">subtree_insert_after</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode" title="datastructures.binaryTrees.BinaryTreeNode"><span class="pre">BinaryTreeNode</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BinaryTreeNode.subtree_insert_after" title="Ссылка на это определение"></a></dt>
+<span class="sig-name descname"><span class="pre">subtree_insert_after</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TreeNodeType</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BinaryTreeNode.subtree_insert_after" title="Ссылка на это определение"></a></dt>
 <dd><p>Вставить узел (node) после текущего по порядку.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
@@ -1425,7 +1435,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BinaryTreeNode.subtree_insert_before">
-<span class="sig-name descname"><span class="pre">subtree_insert_before</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode" title="datastructures.binaryTrees.BinaryTreeNode"><span class="pre">BinaryTreeNode</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BinaryTreeNode.subtree_insert_before" title="Ссылка на это определение"></a></dt>
+<span class="sig-name descname"><span class="pre">subtree_insert_before</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TreeNodeType</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BinaryTreeNode.subtree_insert_before" title="Ссылка на это определение"></a></dt>
 <dd><p>Вставить узел (node) перед текущим по порядку.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
@@ -1535,6 +1545,444 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BinaryTreeNode.successor">
 <span class="sig-name descname"><span class="pre">successor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BinaryTreeNode.successor" title="Ссылка на это определение"></a></dt>
+<dd><p>Найти преемника этого узла (узел, который идёт следующий по порядку).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n), <em>(если дерево не сбалансировано - O(h))</em></p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Преемник этого узла</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQT">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.binaryTrees.</span></span><span class="sig-name descname"><span class="pre">SQT</span></span><a class="headerlink" href="#datastructures.binaryTrees.SQT" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#datastructures.binaryTrees.BinaryTree" title="datastructures.binaryTrees.BinaryTree"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinaryTree</span></code></a></p>
+<p>Бинарное дерево, к элементам которого можно обращаться по индексу (<em>Sequence Binary Tree</em>).
+<strong>Индексация идет по порядку обхода дерева</strong>.</p>
+<img alt="_images/SQT_complexity.png" src="_images/SQT_complexity.png" />
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQT.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQT.__init__" title="Ссылка на это определение"></a></dt>
+<dd><p>Инициализатор.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>TreeNodeType</strong> – Тип узлов дерева. По умолчанию <a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode" title="datastructures.binaryTrees.BinaryTreeNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinaryTreeNode</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQT.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datalist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQT.build" title="Ссылка на это определение"></a></dt>
+<dd><p>Построить дерево из входящего списка. Но алгоритм не просто поочерёдно вставлять элементы,
+а корнем каждого поддерева является центр среза входящего списка, что способствует балансу дерева.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(n)</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>datalist</strong> – входящий список</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQT.delete_at">
+<span class="sig-name descname"><span class="pre">delete_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQT.delete_at" title="Ссылка на это определение"></a></dt>
+<dd><p>Удаляет i-ый элемент.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n)</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>i</strong> – индекс удаляемого узла</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>значение удаляемого узла</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQT.delete_first">
+<span class="sig-name descname"><span class="pre">delete_first</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQT.delete_first" title="Ссылка на это определение"></a></dt>
+<dd><p>Удаляет первый узел.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>значение удаляемого узла</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQT.delete_last">
+<span class="sig-name descname"><span class="pre">delete_last</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQT.delete_last" title="Ссылка на это определение"></a></dt>
+<dd><p>Удаляет последний узел.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>значение удаляемого узла</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQT.get_at">
+<span class="sig-name descname"><span class="pre">get_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQT.get_at" title="Ссылка на это определение"></a></dt>
+<dd><p>Получить i-ый узел.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n)</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>i</strong> – индекс узла</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>значение искомого узла</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQT.insert_at">
+<span class="sig-name descname"><span class="pre">insert_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQT.insert_at" title="Ссылка на это определение"></a></dt>
+<dd><p>Вставить новый узел на i-ую позицию.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n)</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>i</strong> – индекс нового узла</p></li>
+<li><p><strong>data</strong> – значение нового узла</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQT.insert_first">
+<span class="sig-name descname"><span class="pre">insert_first</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQT.insert_first" title="Ссылка на это определение"></a></dt>
+<dd><p>Вставляет новый узел в начало дерева (0 позиция).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n)</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>data</strong> – значение нового узла</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQT.insert_last">
+<span class="sig-name descname"><span class="pre">insert_last</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQT.insert_last" title="Ссылка на это определение"></a></dt>
+<dd><p>Вставляет новый узел в конец дерева (len(self) позиция).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n)</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>data</strong> – значение нового узла</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQT.set_at">
+<span class="sig-name descname"><span class="pre">set_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQT.set_at" title="Ссылка на это определение"></a></dt>
+<dd><p>Установить значение i-го узла.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n)</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>i</strong> – индекс узла</p></li>
+<li><p><strong>data</strong> – новое значение узла</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQTNode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.binaryTrees.</span></span><span class="sig-name descname"><span class="pre">SQTNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQTNode" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode" title="datastructures.binaryTrees.BinaryTreeNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinaryTreeNode</span></code></a></p>
+<p>Индексируемый узел имеет параметр размера. Размер – это сумма размеров детей + 1.
+Это нужно для индексации узлов.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQTNode.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQTNode.__init__" title="Ссылка на это определение"></a></dt>
+<dd><p>Инициализатор.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>item</strong> – Значение узла</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQTNode.maintain">
+<span class="sig-name descname"><span class="pre">maintain</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQTNode.maintain" title="Ссылка на это определение"></a></dt>
+<dd><p>Функция вызывается после удаления или вставки узла (<em>уже прописано в коде</em>).
+Она поддерживает дерево сбалансированным за счёт <a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.rebalance" title="datastructures.binaryTrees.BinaryTreeNode.rebalance"><code class="xref py py-class docutils literal notranslate"><span class="pre">rebalance</span></code></a>
+и поддерживает корректность высот у узлов за счёт <a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.subtree_update" title="datastructures.binaryTrees.BinaryTreeNode.subtree_update"><code class="xref py py-class docutils literal notranslate"><span class="pre">subtree_update</span></code></a>.
+Также оно проходиться вверх по дереву с той же целью.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQTNode.predecessor">
+<span class="sig-name descname"><span class="pre">predecessor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQTNode.predecessor" title="Ссылка на это определение"></a></dt>
+<dd><p>Найти предшественника этого узла (узел, который идёт предыдущий по порядку).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n), <em>(если дерево не сбалансировано - O(h))</em></p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Предшественник этого узла</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQTNode.rebalance">
+<span class="sig-name descname"><span class="pre">rebalance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQTNode.rebalance" title="Ссылка на это определение"></a></dt>
+<dd><p>Сбалансировать дерево, если оно слишком накренено:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Если накренено вправо, повернуть налево</dt><dd><ul>
+<li><p>Перед этим сбалансировать правое поддерево (<em>повернуть направо</em>) при необходимости</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Если накренено влево, повернуть направо</dt><dd><ul>
+<li><p>Перед этим сбалансировать левое поддерево (<em>повернуть налево</em>) при необходимости</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQTNode.skew">
+<span class="sig-name descname"><span class="pre">skew</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQTNode.skew" title="Ссылка на это определение"></a></dt>
+<dd><p>Найти <em>скос</em> дерева. <em>Скос</em> - это разница между высотами поддеревьев
+(<em>в данном случае высота правого минус высота левого</em>). Если эта разница больше нуля, то дерево накренено
+<strong>вправо</strong>. Если эта разница меньше нуля, то дерево накренено <strong>влево</strong>. Если эта разница равна нулю,
+то дерево <strong>полное</strong> (не накренено).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>разница высот.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQTNode.subtree_at">
+<span class="sig-name descname"><span class="pre">subtree_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQTNode.subtree_at" title="Ссылка на это определение"></a></dt>
+<dd><p>Найти i-ый узел. Поиск происходит через размеры узлов:</p>
+<ul class="simple">
+<li><p>Если размер левого ребёнка больше индекса, найти i-ый узел в левом поддереве.</p></li>
+<li><p>Если размер левого ребёнка меньше индекса, найти узел в правом поддереве с индексом: <em>индекс - размер левого ребёнка - 1</em>.</p></li>
+<li><p>Если размер левого ребенка равен индексу, вернуть текущий узел.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n)</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>i</strong> – индекс искомого узла</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>искомый узел</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQTNode.subtree_delete">
+<span class="sig-name descname"><span class="pre">subtree_delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQTNode.subtree_delete" title="Ссылка на это определение"></a></dt>
+<dd><p>Рекурсивная функция удаления узла дерева.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n), <em>(если дерево не сбалансировано - O(h))</em></p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Удаляемый узел</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQTNode.subtree_first">
+<span class="sig-name descname"><span class="pre">subtree_first</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQTNode.subtree_first" title="Ссылка на это определение"></a></dt>
+<dd><p>Получить первый по порядку узел дерева (самый левый).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n), <em>(если дерево не сбалансировано - O(h))</em></p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Первый узел дерева</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQTNode.subtree_insert_after">
+<span class="sig-name descname"><span class="pre">subtree_insert_after</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TreeNodeType</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQTNode.subtree_insert_after" title="Ссылка на это определение"></a></dt>
+<dd><p>Вставить узел (node) после текущего по порядку.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n), <em>(если дерево не сбалансировано - O(h))</em></p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>node</strong> – Узел, который мы хотим вставить после текущего</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQTNode.subtree_insert_before">
+<span class="sig-name descname"><span class="pre">subtree_insert_before</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TreeNodeType</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQTNode.subtree_insert_before" title="Ссылка на это определение"></a></dt>
+<dd><p>Вставить узел (node) перед текущим по порядку.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n), <em>(если дерево не сбалансировано - O(h))</em></p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>node</strong> – Узел, который мы хотим вставить перед текущим</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQTNode.subtree_iter">
+<span class="sig-name descname"><span class="pre">subtree_iter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQTNode.subtree_iter" title="Ссылка на это определение"></a></dt>
+<dd><p>Рекурсивный обход дерева <cite>по порядку</cite> (in-order traversal).
+Является одним из трёх обходов в глубину (<strong>DFS</strong> - <cite>Depth First Search</cite>).</p>
+<dl class="simple">
+<dt>Алгоритм обхода по порядку:</dt><dd><ol class="arabic simple">
+<li><p>Обойти левое <em>поддерево</em> (рекурсивно).</p></li>
+<li><p><em>Выбросить</em> (оператор yield) <em>корень</em>.</p></li>
+<li><p>Обойти правое <em>поддерево</em> (рекурсивно).</p></li>
+</ol>
+</dd>
+</dl>
+<a class="reference internal image-reference" href="_images/inorder-traversal.gif"><img alt="_images/inorder-traversal.gif" src="_images/inorder-traversal.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(n)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Итерационный объект, состоящий из узлов бинарного дерева по порядку.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQTNode.subtree_last">
+<span class="sig-name descname"><span class="pre">subtree_last</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQTNode.subtree_last" title="Ссылка на это определение"></a></dt>
+<dd><p>Получить последний по порядку узел дерева (самый правый).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n), <em>(если дерево не сбалансировано - O(h))</em></p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Последний узел дерева</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQTNode.subtree_rotate_left">
+<span class="sig-name descname"><span class="pre">subtree_rotate_left</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQTNode.subtree_rotate_left" title="Ссылка на это определение"></a></dt>
+<dd><p>Функция поворота дерева налево нужна для поддержки баланса дерева. Она уменьшает скос дерева, не меняя при этом
+порядок узлов при обходе дерева по порядку. Функция вызывается относительно корня поддерева,
+которое надо повернуть. Функция вызывается при каждом обновлении дерева, см. <a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.maintain" title="datastructures.binaryTrees.BinaryTreeNode.maintain"><code class="xref py py-class docutils literal notranslate"><span class="pre">maintain</span></code></a>.</p>
+<p><strong>Алгоритм:</strong></p>
+<ol class="arabic simple">
+<li><p>Обозначить временные переменные для хранения узлов: <em>root_left_subtree</em>, <em>pivot_left_subtree</em>, <em>pivot_right_subtree</em></p></li>
+<li><p>Поменять местами корень (<em>root</em>) и опорную точку (<em>pivot</em>). Теперь <em>pivot</em> - корень</p></li>
+<li><p>Сделать левым ребенком <em>pivot</em>’a корень (<em>root</em>), а правым – <em>pivot_right_subtree</em></p></li>
+<li><p>Сделать левым ребёнком <em>root</em>’a <em>root_left_subtree</em>, а правым – <em>pivot_left_subtree</em></p></li>
+<li><p>Не забыть поставить указатели на своих родителей для <em>pivot_right_subtree</em> и <em>root_left_subtree</em></p></li>
+<li><p>Обновить дерево относительно <em>pivot</em>’a и <em>root</em>’a</p></li>
+</ol>
+<a class="reference internal image-reference" href="_images/left_rotation.gif"><img alt="_images/left_rotation.gif" src="_images/left_rotation.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQTNode.subtree_rotate_right">
+<span class="sig-name descname"><span class="pre">subtree_rotate_right</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQTNode.subtree_rotate_right" title="Ссылка на это определение"></a></dt>
+<dd><p>Функция поворота дерева направо нужна для поддержки баланса дерева. Она уменьшает скос дерева, не меняя при этом
+порядок узлов при обходе дерева по порядку. Функция вызывается относительно корня поддерева,
+которое надо повернуть. Функция вызывается при каждом обновлении дерева, см. <a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.maintain" title="datastructures.binaryTrees.BinaryTreeNode.maintain"><code class="xref py py-class docutils literal notranslate"><span class="pre">maintain</span></code></a>.</p>
+<p><strong>Алгоритм:</strong></p>
+<ol class="arabic simple">
+<li><p>Обозначить временные переменные для хранения узлов: <em>root_right_subtree</em>, <em>pivot_left_subtree</em>, <em>pivot_right_subtree</em></p></li>
+<li><p>Поменять местами корень (<em>root</em>) и опорную точку (<em>pivot</em>). Теперь <em>pivot</em> - корень</p></li>
+<li><p>Сделать правым ребенком <em>pivot</em>’a корень (<em>root</em>), а левым – <em>pivot_left_subtree</em></p></li>
+<li><p>Сделать правым ребёнком <em>root</em>’a <em>root_right_subtree</em>, а левым – <em>pivot_right_subtree</em></p></li>
+<li><p>Не забыть поставить указатели на своих родителей для <em>pivot_left_subtree</em> и <em>root_right_subtree</em></p></li>
+<li><p>Обновить дерево относительно <em>pivot</em>’a и <em>root</em>’a</p></li>
+</ol>
+<a class="reference internal image-reference" href="_images/right_rotation.gif"><img alt="_images/right_rotation.gif" src="_images/right_rotation.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQTNode.subtree_update">
+<span class="sig-name descname"><span class="pre">subtree_update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQTNode.subtree_update" title="Ссылка на это определение"></a></dt>
+<dd><p>Обновляет высоту узла (<em>высота самого высокого ребёнка + 1</em>)
+и размер (<em>это сумма размеров детей + 1</em>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQTNode.successor">
+<span class="sig-name descname"><span class="pre">successor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQTNode.successor" title="Ссылка на это определение"></a></dt>
 <dd><p>Найти преемника этого узла (узел, который идёт следующий по порядку).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
