@@ -34,6 +34,9 @@ class SinglyLinkedList:
     """
 
     def __init__(self):
+        """
+        Инициализатор.
+        """
         self.head = None
         self.size = 0
 
@@ -217,6 +220,9 @@ class DoublyLinkedList(SinglyLinkedList):
     """
 
     def __init__(self):
+        """
+        Инициализатор.
+        """
         super().__init__()
         self.tail = None
 

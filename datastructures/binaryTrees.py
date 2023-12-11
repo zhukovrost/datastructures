@@ -159,54 +159,74 @@ class BinaryTreeNode:
         """
         return height(self.right) - height(self.left)
 
-    def subtree_rotate_left(self):
+    def subtree_rotate_left(root):
         """
-        Функция поворота дерева налево нужна для поддержки баланса дерева. Она уменьшает скос дерева,
-        не меняя при этом порядок узлов при обходе дерева по порядку. **Алгоритм:**
+        Функция поворота дерева налево нужна для поддержки баланса дерева. Она уменьшает скос дерева, не меняя при этом
+        порядок узлов при обходе дерева по порядку. Функция вызывается относительно корня поддерева,
+        которое надо повернуть. Функция вызывается при каждом обновлении дерева, см. :class:`~BinaryTreeNode.maintain`.
+
+        **Алгоритм:**
+
+        1. Обозначить временные переменные для хранения узлов: *root_left_subtree*, *pivot_left_subtree*, *pivot_right_subtree*
+        2. Поменять местами корень (*root*) и опорную точку (*pivot*). Теперь *pivot* - корень
+        3. Сделать левым ребенком *pivot*'a корень (*root*), а правым -- *pivot_right_subtree*
+        4. Сделать левым ребёнком *root*'a *root_left_subtree*, а правым -- *pivot_left_subtree*
+        5. Не забыть поставить указатели на своих родителей для *pivot_right_subtree* и *root_left_subtree*
+        6. Обновить дерево относительно *pivot*'a и *root*'a
 
         .. image:: images/left_rotation.gif
             :width: 400px
 
         :Сложность: O(1)
         """
-        assert self.right
-        left, right = self.left, self.right
-        right_left, right_right = right.left, right.right
-        self, right = right, self
-        self.data, right.data = right.data, self.data
-        right.left, right.right = self, right_right
-        self.left, self.right = left, right_left
-        if left:
-            left.parent = self
-        if right_right:
-            right_right.parent = right
-        self.subtree_update()
-        right.subtree_update()
+        assert root.right
+        root_left_subtree, pivot = root.left, root.right
+        pivot_left_subtree, pivot_right_subtree = pivot.left, pivot.right
+        root, pivot = pivot, root
+        root.data, pivot.data = pivot.data, root.data
+        pivot.left, pivot.right = root, pivot_right_subtree
+        root.left, root.right = root_left_subtree, pivot_left_subtree
+        if root_left_subtree:
+            root_left_subtree.parent = root
+        if pivot_right_subtree:
+            pivot_right_subtree.parent = pivot
+        root.subtree_update()
+        pivot.subtree_update()
 
-    def subtree_rotate_right(self):
+    def subtree_rotate_right(root):
         """
-        Функция поворота дерева направо нужна для поддержки баланса дерева. Она уменьшает скос дерева,
-        не меняя при этом порядок узлов при обходе дерева по порядку. **Алгоритм:**
+        Функция поворота дерева направо нужна для поддержки баланса дерева. Она уменьшает скос дерева, не меняя при этом
+        порядок узлов при обходе дерева по порядку. Функция вызывается относительно корня поддерева,
+        которое надо повернуть. Функция вызывается при каждом обновлении дерева, см. :class:`~BinaryTreeNode.maintain`.
+
+        **Алгоритм:**
+
+        1. Обозначить временные переменные для хранения узлов: *root_right_subtree*, *pivot_left_subtree*, *pivot_right_subtree*
+        2. Поменять местами корень (*root*) и опорную точку (*pivot*). Теперь *pivot* - корень
+        3. Сделать правым ребенком *pivot*'a корень (*root*), а левым -- *pivot_left_subtree*
+        4. Сделать правым ребёнком *root*'a *root_right_subtree*, а левым -- *pivot_right_subtree*
+        5. Не забыть поставить указатели на своих родителей для *pivot_left_subtree* и *root_right_subtree*
+        6. Обновить дерево относительно *pivot*'a и *root*'a
 
         .. image:: images/right_rotation.gif
             :width: 400px
 
         :Сложность: O(1)
         """
-        assert self.left
-        left, right = self.left, self.right
-        left_left, left_right = left.left, left.right
-        self, left = left, self
-        self.data, left.data = left.data, self.data
-        left.left, left.left = left_left, self
-        self.left, self.right = left_right, right
-        if left_left:
-            left_left.parent = left
-        if right:
-            right.parent = self
+        assert root.left
+        pivot, root_right_subtree = root.left, root.right
+        pivot_left_subtree, pivot_right_subtree = pivot.left, pivot.right
+        root, pivot = pivot, root
+        root.data, pivot.data = pivot.data, root.data
+        pivot.left, pivot.right = pivot_left_subtree, root
+        root.left, root.right = pivot_right_subtree, root_right_subtree
+        if pivot_left_subtree:
+            pivot_left_subtree.parent = pivot
+        if root_right_subtree:
+            root_right_subtree.parent = root
 
-        left.subtree_update()
-        self.subtree_rotate_left()
+        pivot.subtree_update()
+        root.subtree_rotate_left()
 
     def subtree_insert_before(self, node: "BinaryTreeNode"):
         """
