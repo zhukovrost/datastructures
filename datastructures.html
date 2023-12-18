@@ -50,6 +50,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">Modules</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">datastructures package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#module-datastructures.linearDataStructures">datastructures.linearDataStructures module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.linearDataStructures.Deque"><code class="docutils literal notranslate"><span class="pre">Deque</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.linearDataStructures.DoublyLinkedList"><code class="docutils literal notranslate"><span class="pre">DoublyLinkedList</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.linearDataStructures.DoublyLinkedListNode"><code class="docutils literal notranslate"><span class="pre">DoublyLinkedListNode</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.linearDataStructures.Queue"><code class="docutils literal notranslate"><span class="pre">Queue</span></code></a></li>
@@ -105,6 +106,136 @@
 <h1>datastructures package<a class="headerlink" href="#datastructures-package" title="Permalink to this heading"></a></h1>
 <section id="module-datastructures.linearDataStructures">
 <span id="datastructures-lineardatastructures-module"></span><h2>datastructures.linearDataStructures module<a class="headerlink" href="#module-datastructures.linearDataStructures" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="datastructures.linearDataStructures.Deque">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.linearDataStructures.</span></span><span class="sig-name descname"><span class="pre">Deque</span></span><a class="headerlink" href="#datastructures.linearDataStructures.Deque" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#datastructures.linearDataStructures.Queue" title="datastructures.linearDataStructures.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a></p>
+<p>Двусторонняя очередь.</p>
+<img alt="_images/deque.jpg" src="_images/deque.jpg" />
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.linearDataStructures.Deque.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.linearDataStructures.Deque.__init__" title="Ссылка на это определение"></a></dt>
+<dd><p>Инициализатор. Очередь работает с помощью <a class="reference internal" href="#datastructures.linearDataStructures.DoublyLinkedList" title="datastructures.linearDataStructures.DoublyLinkedList"><code class="xref py py-class docutils literal notranslate"><span class="pre">DoublyLinkedList</span></code></a>,
+чтобы всё работало со сложностью алгоритма <strong>O(1)</strong>, вместо O(n). Такое решение было принято в связи с тем,
+что очереди работают на <em>сдвигах</em> и с <em>крайними элементами списка</em>. Если вы хотите работать с очередью как
+просто со списком, обращайтесь к параметру <cite>data</cite>: там находится
+<a class="reference internal" href="#datastructures.linearDataStructures.DoublyLinkedList" title="datastructures.linearDataStructures.DoublyLinkedList"><code class="xref py py-class docutils literal notranslate"><span class="pre">DoublyLinkedList</span></code></a>, на котором всё работает.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.linearDataStructures.Deque.dequeue">
+<span class="sig-name descname"><span class="pre">dequeue</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.linearDataStructures.Deque.dequeue" title="Ссылка на это определение"></a></dt>
+<dd><p><strong>Для работы как с обычной очередью:</strong> вынуть из очереди следующий (первый) элемент.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Значение элемента, которого мы вынимаем</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.linearDataStructures.Deque.enqueue">
+<span class="sig-name descname"><span class="pre">enqueue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.linearDataStructures.Deque.enqueue" title="Ссылка на это определение"></a></dt>
+<dd><p><strong>Для работы как с обычной очередью:</strong> поставить в очередь предмет. (Сделать последним элементом <em>item</em>)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>item</strong> – Значение элемента очереди, который мы ставим</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.linearDataStructures.Deque.peek_back">
+<span class="sig-name descname"><span class="pre">peek_back</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.linearDataStructures.Deque.peek_back" title="Ссылка на это определение"></a></dt>
+<dd><p>Узнать последний элемент очереди. Он же хвост, он же конечный элемент очереди.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Последний элемент очереди</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.linearDataStructures.Deque.peek_front">
+<span class="sig-name descname"><span class="pre">peek_front</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.linearDataStructures.Deque.peek_front" title="Ссылка на это определение"></a></dt>
+<dd><p>Узнать первый элемент очереди. Он же голова, он же следующий элемент очереди.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Первый элемент очереди</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.linearDataStructures.Deque.pop_back">
+<span class="sig-name descname"><span class="pre">pop_back</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.linearDataStructures.Deque.pop_back" title="Ссылка на это определение"></a></dt>
+<dd><p>Выбрасывает из очереди последний элемент по порядку.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>значение выбрасываемого элемента</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.linearDataStructures.Deque.pop_front">
+<span class="sig-name descname"><span class="pre">pop_front</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.linearDataStructures.Deque.pop_front" title="Ссылка на это определение"></a></dt>
+<dd><p>Выбрасывает из очереди первый элемент по порядку.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>значение выбрасываемого элемента</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.linearDataStructures.Deque.push_back">
+<span class="sig-name descname"><span class="pre">push_back</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.linearDataStructures.Deque.push_back" title="Ссылка на это определение"></a></dt>
+<dd><p>Поставить новый элемент в конец по порядку.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>item</strong> – значение нового элемента.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.linearDataStructures.Deque.push_front">
+<span class="sig-name descname"><span class="pre">push_front</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.linearDataStructures.Deque.push_front" title="Ссылка на это определение"></a></dt>
+<dd><p>Поставить новый элемент в начало по порядку.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1)</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>item</strong> – значение нового элемента.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="datastructures.linearDataStructures.DoublyLinkedList">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.linearDataStructures.</span></span><span class="sig-name descname"><span class="pre">DoublyLinkedList</span></span><a class="headerlink" href="#datastructures.linearDataStructures.DoublyLinkedList" title="Ссылка на это определение"></a></dt>
@@ -378,7 +509,7 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.linearDataStructures.Queue.enqueue">
 <span class="sig-name descname"><span class="pre">enqueue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.linearDataStructures.Queue.enqueue" title="Ссылка на это определение"></a></dt>
-<dd><p>Поставить в очередь предмет.</p>
+<dd><p>Поставить в очередь предмет. (Сделать последним элементом <em>item</em>)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
 <dd class="field-odd"><p>O(1)</p>
