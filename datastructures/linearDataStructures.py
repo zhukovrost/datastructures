@@ -522,14 +522,14 @@ class Queue:
         self.data = DoublyLinkedList()
 
     def __len__(self):
-        return len(self.data)
+        return self.data.__len__()
 
     def __iter__(self):
         return self.data.__iter__()
 
     def enqueue(self, item):
         """
-        Поставить в очередь предмет.
+        Поставить в очередь предмет. (Сделать последним элементом *item*)
 
         :Сложность: O(1)
         :param item: Значение элемента очереди, который мы ставим
@@ -562,3 +562,64 @@ class Queue:
         :return: Последний элемент очереди
         """
         return self.data.get_at(len(self) - 1)
+
+
+class Deque(Queue):
+    """
+    Двусторонняя очередь.
+
+    .. image:: images/deque.jpg
+    """
+    def push_front(self, item):
+        """
+        Поставить новый элемент в начало по порядку.
+
+        :Сложность: O(1)
+        :param item: значение нового элемента.
+        """
+        self.data.insert_first(item)
+
+    def push_back(self, item):
+        """
+        Поставить новый элемент в конец по порядку.
+
+        :Сложность: O(1)
+        :param item: значение нового элемента.
+        """
+        super().enqueue(item)
+
+    def pop_front(self):
+        """
+        Выбрасывает из очереди первый элемент по порядку.
+
+        :Сложность: O(1)
+        :return: значение выбрасываемого элемента
+        """
+        return super().dequeue()
+
+    def pop_back(self):
+        """
+        Выбрасывает из очереди последний элемент по порядку.
+
+        :Сложность: O(1)
+        :return: значение выбрасываемого элемента
+        """
+        return self.data.delete_last()
+
+    def enqueue(self, item):
+        """
+        **Для работы как с обычной очередью:** поставить в очередь предмет. (Сделать последним элементом *item*)
+
+        :Сложность: O(1)
+        :param item: Значение элемента очереди, который мы ставим
+        """
+        super().enqueue(item)
+
+    def dequeue(self):
+        """
+        **Для работы как с обычной очередью:** вынуть из очереди следующий (первый) элемент.
+
+        :Сложность: O(1)
+        :return: Значение элемента, которого мы вынимаем
+        """
+        return super().dequeue()
