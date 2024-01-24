@@ -18,3 +18,13 @@ datastructures.binaryTrees module
    :undoc-members:
    :show-inheritance:
    :inherited-members:
+
+
+datastructures.graphs module
+---------------------------------
+
+.. automodule:: datastructures.graphs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:
