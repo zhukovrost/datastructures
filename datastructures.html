@@ -2213,6 +2213,28 @@ AVL значит, что дерево автоматически <em>балан�
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.GraphList.shortest_path">
+<span class="sig-name descname"><span class="pre">shortest_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphList.shortest_path" title="Ссылка на это определение"></a></dt>
+<dd><p>Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(n<sup>2</sup>)</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>from_node</strong> – индекс первого узла (откуда проложить маршрут)</p></li>
+<li><p><strong>to_node</strong> – индекс второго узла (куда проложить маршрут)</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple (int, list)
+- Первый элемент – это минимальная длина маршрута
+- Второй элемент – это кратчайший маршрут: последовательность индексов, которые нужно посетить</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
