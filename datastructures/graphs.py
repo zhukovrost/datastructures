@@ -1,5 +1,23 @@
 # TODO: zero weight parameter
-# TODO: Dijkstra algorithm for matrix and optimize it for the list, using heap
+# TODO: Refactor, Graph interface maybe
+
+
+def get_path(prev_nodes: list, target: int) -> list:
+    """
+    Находит путь до цели, используя список из индексов предыдущих узлов.
+
+    :param prev_nodes: список из индексов предыдущих узлов
+    :param target: целевой узел, до которого мы вычисляем путь
+    :return: список -- последовательность индексов узлов
+    """
+    path = []
+    trav = target
+    while trav != -1:
+        path.append(trav)
+        trav = prev_nodes[trav]
+    path.reverse()
+    return path
+
 
 class GraphNode:
     """
@@ -93,7 +111,8 @@ class GraphList:
                 v1 = v1.next
             print()
 
-    def shortest_path(self, from_node: int, to_node: int):
+    def shortest_path(self, from_node: int, to_node: int) -> (int, list):
+        # TODO: Optimize, using heap / priority queue
         """
         Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.
 
@@ -135,14 +154,10 @@ class GraphList:
                 node = node.next
 
         # построение маршрута
-        path = []
-        current = to_node
-        while current != -1:
-            path.append(current)
-            current = parent[current]
-        path.reverse()
-
-        return distance[to_node], path
+        if distance[to_node] == float('inf'):
+            # нет маршрута
+            return -1, []
+        return distance[to_node], get_path(parent, to_node)
 
 
 class GraphMatrix:
@@ -201,3 +216,44 @@ class GraphMatrix:
             for column in row:
                 print(column, end=" ")
             print()
+
+    def shortest_path(self, from_node: int, to_node: int) -> (int, list):
+        # TODO: Optimize, using heap
+        """
+        Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.
+
+        :Сложность: O(n\ :sup:`2`)
+        :param from_node: индекс первого узла (откуда проложить маршрут)
+        :param to_node: индекс второго узла (куда проложить маршрут)
+        :returns: tuple (int, list)
+            - Первый элемент -- это минимальная длина маршрута
+            - Второй элемент -- это кратчайший маршрут: последовательность индексов, которые нужно посетить
+        """
+        visited = [False] * self.size
+        distance = [float('inf')] * self.size
+        parent = [-1] * self.size
+        distance[from_node] = 0
+
+        while True:
+            min_unvisited_node = -1
+            min_dist = float("inf")
+
+            for i in range(self.size):
+                if not visited[i] and distance[i] < min_dist:
+                    min_unvisited_node = i
+                    min_dist = distance[i]
+
+            if min_unvisited_node == -1:
+                break
+
+            visited[min_unvisited_node] = True
+
+            for target in range(self.size):
+                if self.matrix[min_unvisited_node][target] == 0:
+                    continue
+                new_distance = self.matrix[min_unvisited_node][target] + distance[min_unvisited_node]
+                if new_distance < distance[target]:
+                    distance[target] = new_distance
+                    parent[target] = min_unvisited_node
+
+        return distance[to_node], get_path(parent, to_node)
