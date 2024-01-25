@@ -1,3 +1,6 @@
+# TODO: zero weight parameter
+# TODO: Dijkstra algorithm for matrix and optimize it for the list, using heap
+
 class GraphNode:
     """
     Узел графа. Нужен для реализации графа через *связанный список*
@@ -89,6 +92,57 @@ class GraphList:
                 print(' -> ', v1, sep='', end='')
                 v1 = v1.next
             print()
+
+    def shortest_path(self, from_node: int, to_node: int):
+        """
+        Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.
+
+        :Сложность: O(n\ :sup:`2`)
+        :param from_node: индекс первого узла (откуда проложить маршрут)
+        :param to_node: индекс второго узла (куда проложить маршрут)
+        :returns: tuple (int, list)
+            - Первый элемент -- это минимальная длина маршрута
+            - Второй элемент -- это кратчайший маршрут: последовательность индексов, которые нужно посетить
+        """
+        visited = [False] * self.size
+        distance = [float('inf')] * self.size
+        parent = [-1] * self.size
+        distance[from_node] = 0
+
+        while True:
+            # пока есть непосещённые узлы
+            min_unvisited_node = -1
+            min_dist = float('inf')
+
+            for i in range(self.size):
+                # поиск непосещённого узла, с минимальной дистанцией
+                if not visited[i] and distance[i] < min_dist:
+                    min_unvisited_node = i
+                    min_dist = distance[i]
+
+            if min_unvisited_node == -1:
+                # выход из цикла
+                break
+
+            visited[min_unvisited_node] = True
+
+            node = self.list[min_unvisited_node]
+            while node:
+                # перебор соседей
+                if not visited[node.v2] and distance[min_unvisited_node] + node.weight < distance[node.v2]:
+                    distance[node.v2] = distance[min_unvisited_node] + node.weight
+                    parent[node.v2] = min_unvisited_node
+                node = node.next
+
+        # построение маршрута
+        path = []
+        current = to_node
+        while current != -1:
+            path.append(current)
+            current = parent[current]
+        path.reverse()
+
+        return distance[to_node], path
 
 
 class GraphMatrix:
