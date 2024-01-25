@@ -74,6 +74,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.GraphList"><code class="docutils literal notranslate"><span class="pre">GraphList</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.GraphMatrix"><code class="docutils literal notranslate"><span class="pre">GraphMatrix</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.GraphNode"><code class="docutils literal notranslate"><span class="pre">GraphNode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.get_path"><code class="docutils literal notranslate"><span class="pre">get_path()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -2215,7 +2216,7 @@ AVL значит, что дерево автоматически <em>балан�
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.graphs.GraphList.shortest_path">
-<span class="sig-name descname"><span class="pre">shortest_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphList.shortest_path" title="Ссылка на это определение"></a></dt>
+<span class="sig-name descname"><span class="pre">shortest_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node:</span> <span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_node:</span> <span class="pre">int)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'list'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphList.shortest_path" title="Ссылка на это определение"></a></dt>
 <dd><p>Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
@@ -2294,6 +2295,28 @@ AVL значит, что дерево автоматически <em>балан�
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.GraphMatrix.shortest_path">
+<span class="sig-name descname"><span class="pre">shortest_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node:</span> <span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_node:</span> <span class="pre">int)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'list'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphMatrix.shortest_path" title="Ссылка на это определение"></a></dt>
+<dd><p>Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(n<sup>2</sup>)</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>from_node</strong> – индекс первого узла (откуда проложить маршрут)</p></li>
+<li><p><strong>to_node</strong> – индекс второго узла (куда проложить маршрут)</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple (int, list)
+- Первый элемент – это минимальная длина маршрута
+- Второй элемент – это кратчайший маршрут: последовательность индексов, которые нужно посетить</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -2315,6 +2338,23 @@ AVL значит, что дерево автоматически <em>балан�
 </dl>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datastructures.graphs.get_path">
+<span class="sig-prename descclassname"><span class="pre">datastructures.graphs.</span></span><span class="sig-name descname"><span class="pre">get_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prev_nodes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#datastructures.graphs.get_path" title="Ссылка на это определение"></a></dt>
+<dd><p>Находит путь до цели, используя список из индексов предыдущих узлов.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prev_nodes</strong> – список из индексов предыдущих узлов</p></li>
+<li><p><strong>target</strong> – целевой узел, до которого мы вычисляем путь</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>список – последовательность индексов узлов</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
