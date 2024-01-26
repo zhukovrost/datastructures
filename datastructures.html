@@ -1088,6 +1088,58 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.BSTNode.inorder_traversal">
+<span class="sig-name descname"><span class="pre">inorder_traversal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BSTNode.inorder_traversal" title="Ссылка на это определение"></a></dt>
+<dd><p>Рекурсивный обход дерева <cite>по порядку</cite> (in-order traversal), также <cite>центрированный</cite>.
+Является одним из трёх обходов в глубину (<strong>DFS</strong> - <cite>Depth First Search</cite>).</p>
+<p>Смотри также:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.preorder_traversal" title="datastructures.binaryTrees.BinaryTreeNode.preorder_traversal"><code class="xref py py-class docutils literal notranslate"><span class="pre">preorder_traversal</span></code></a></p></li>
+<li><p><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.postorder_traversal" title="datastructures.binaryTrees.BinaryTreeNode.postorder_traversal"><code class="xref py py-class docutils literal notranslate"><span class="pre">postorder_traversal</span></code></a></p></li>
+</ul>
+<p>Обход дерева по умолчанию (<a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.subtree_iter" title="datastructures.binaryTrees.BinaryTreeNode.subtree_iter"><code class="xref py py-class docutils literal notranslate"><span class="pre">subtree_iter</span></code></a>.).</p>
+<dl class="simple">
+<dt>Алгоритм обхода по порядку:</dt><dd><ol class="arabic simple">
+<li><p>Обойти левое <em>поддерево</em> (рекурсивно).</p></li>
+<li><p><em>Выбросить</em> (оператор yield) <em>корень</em>.</p></li>
+<li><p>Обойти правое <em>поддерево</em> (рекурсивно).</p></li>
+</ol>
+</dd>
+</dl>
+<a class="reference internal image-reference" href="_images/inorder-traversal.gif"><img alt="_images/inorder-traversal.gif" src="_images/inorder-traversal.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(n)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Итерационный объект, состоящий из узлов бинарного дерева по порядку.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.BSTNode.level_order_traversal">
+<span class="sig-name descname"><span class="pre">level_order_traversal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BSTNode.level_order_traversal" title="Ссылка на это определение"></a></dt>
+<dd><p>Обход в ширину (<strong>BFS</strong> - <cite>Breadth First Search</cite>).</p>
+<dl class="simple">
+<dt>Алгоритм обхода в ширину:</dt><dd><ol class="arabic simple">
+<li><p><em>Выбросить</em> (оператор yield) <em>корень</em>.</p></li>
+<li><p>Обойти следующий слой</p></li>
+</ol>
+</dd>
+</dl>
+<a class="reference internal image-reference" href="_images/levelorder-traversal.gif"><img alt="_images/levelorder-traversal.gif" src="_images/levelorder-traversal.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(n)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Итерационный объект, состоящий из узлов бинарного дерева.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BSTNode.maintain">
 <span class="sig-name descname"><span class="pre">maintain</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BSTNode.maintain" title="Ссылка на это определение"></a></dt>
 <dd><p>Функция вызывается после удаления или вставки узла (<em>уже прописано в коде</em>).
@@ -1102,6 +1154,35 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.BSTNode.postorder_traversal">
+<span class="sig-name descname"><span class="pre">postorder_traversal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BSTNode.postorder_traversal" title="Ссылка на это определение"></a></dt>
+<dd><p>Рекурсивный обход дерева <cite>по порядку</cite> (postorder traversal), также <cite>обратный</cite>.
+Является одним из трёх обходов в глубину (<strong>DFS</strong> - <cite>Depth First Search</cite>).</p>
+<p>Смотри также:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.preorder_traversal" title="datastructures.binaryTrees.BinaryTreeNode.preorder_traversal"><code class="xref py py-class docutils literal notranslate"><span class="pre">preorder_traversal</span></code></a></p></li>
+<li><p><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.inorder_traversal" title="datastructures.binaryTrees.BinaryTreeNode.inorder_traversal"><code class="xref py py-class docutils literal notranslate"><span class="pre">inorder_traversal</span></code></a></p></li>
+</ul>
+<dl class="simple">
+<dt>Алгоритм обратного обхода:</dt><dd><ol class="arabic simple">
+<li><p>Обойти левое <em>поддерево</em> (рекурсивно).</p></li>
+<li><p>Обойти правое <em>поддерево</em> (рекурсивно).</p></li>
+<li><p><em>Выбросить</em> (оператор yield) <em>корень</em>.</p></li>
+</ol>
+</dd>
+</dl>
+<a class="reference internal image-reference" href="_images/postorder-traversal.gif"><img alt="_images/postorder-traversal.gif" src="_images/postorder-traversal.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(n)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Итерационный объект, состоящий из узлов бинарного дерева.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BSTNode.predecessor">
 <span class="sig-name descname"><span class="pre">predecessor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BSTNode.predecessor" title="Ссылка на это определение"></a></dt>
 <dd><p>Найти предшественника этого узла (узел, который идёт предыдущий по порядку).</p>
@@ -1111,6 +1192,35 @@
 </dd>
 <dt class="field-even">Результат<span class="colon">:</span></dt>
 <dd class="field-even"><p>Предшественник этого узла</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.BSTNode.preorder_traversal">
+<span class="sig-name descname"><span class="pre">preorder_traversal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BSTNode.preorder_traversal" title="Ссылка на это определение"></a></dt>
+<dd><p>Рекурсивный обход дерева <cite>по порядку</cite> (preorder traversal), также <cite>прямой</cite>.
+Является одним из трёх обходов в глубину (<strong>DFS</strong> - <cite>Depth First Search</cite>).</p>
+<p>Смотри также:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.inorder_traversal" title="datastructures.binaryTrees.BinaryTreeNode.inorder_traversal"><code class="xref py py-class docutils literal notranslate"><span class="pre">inorder_traversal</span></code></a></p></li>
+<li><p><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.postorder_traversal" title="datastructures.binaryTrees.BinaryTreeNode.postorder_traversal"><code class="xref py py-class docutils literal notranslate"><span class="pre">postorder_traversal</span></code></a></p></li>
+</ul>
+<dl class="simple">
+<dt>Алгоритм прямого обхода:</dt><dd><ol class="arabic simple">
+<li><p><em>Выбросить</em> (оператор yield) <em>корень</em>.</p></li>
+<li><p>Обойти левое <em>поддерево</em> (рекурсивно).</p></li>
+<li><p>Обойти правое <em>поддерево</em> (рекурсивно).</p></li>
+</ol>
+</dd>
+</dl>
+<a class="reference internal image-reference" href="_images/preorder-traversal.gif"><img alt="_images/preorder-traversal.gif" src="_images/preorder-traversal.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(n)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Итерационный объект, состоящий из узлов бинарного дерева.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1284,7 +1394,7 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BSTNode.subtree_iter">
 <span class="sig-name descname"><span class="pre">subtree_iter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BSTNode.subtree_iter" title="Ссылка на это определение"></a></dt>
-<dd><p>Рекурсивный обход дерева <cite>по порядку</cite> (in-order traversal).
+<dd><p>Рекурсивный обход дерева <cite>по порядку</cite> (in-order traversal), также <cite>центрированный</cite>.
 Является одним из трёх обходов в глубину (<strong>DFS</strong> - <cite>Depth First Search</cite>).</p>
 <dl class="simple">
 <dt>Алгоритм обхода по порядку:</dt><dd><ol class="arabic simple">
@@ -1458,6 +1568,58 @@ AVL значит, что дерево автоматически <em>балан�
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.BinaryTreeNode.inorder_traversal">
+<span class="sig-name descname"><span class="pre">inorder_traversal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BinaryTreeNode.inorder_traversal" title="Ссылка на это определение"></a></dt>
+<dd><p>Рекурсивный обход дерева <cite>по порядку</cite> (in-order traversal), также <cite>центрированный</cite>.
+Является одним из трёх обходов в глубину (<strong>DFS</strong> - <cite>Depth First Search</cite>).</p>
+<p>Смотри также:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.preorder_traversal" title="datastructures.binaryTrees.BinaryTreeNode.preorder_traversal"><code class="xref py py-class docutils literal notranslate"><span class="pre">preorder_traversal</span></code></a></p></li>
+<li><p><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.postorder_traversal" title="datastructures.binaryTrees.BinaryTreeNode.postorder_traversal"><code class="xref py py-class docutils literal notranslate"><span class="pre">postorder_traversal</span></code></a></p></li>
+</ul>
+<p>Обход дерева по умолчанию (<a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.subtree_iter" title="datastructures.binaryTrees.BinaryTreeNode.subtree_iter"><code class="xref py py-class docutils literal notranslate"><span class="pre">subtree_iter</span></code></a>.).</p>
+<dl class="simple">
+<dt>Алгоритм обхода по порядку:</dt><dd><ol class="arabic simple">
+<li><p>Обойти левое <em>поддерево</em> (рекурсивно).</p></li>
+<li><p><em>Выбросить</em> (оператор yield) <em>корень</em>.</p></li>
+<li><p>Обойти правое <em>поддерево</em> (рекурсивно).</p></li>
+</ol>
+</dd>
+</dl>
+<a class="reference internal image-reference" href="_images/inorder-traversal.gif"><img alt="_images/inorder-traversal.gif" src="_images/inorder-traversal.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(n)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Итерационный объект, состоящий из узлов бинарного дерева по порядку.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.BinaryTreeNode.level_order_traversal">
+<span class="sig-name descname"><span class="pre">level_order_traversal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BinaryTreeNode.level_order_traversal" title="Ссылка на это определение"></a></dt>
+<dd><p>Обход в ширину (<strong>BFS</strong> - <cite>Breadth First Search</cite>).</p>
+<dl class="simple">
+<dt>Алгоритм обхода в ширину:</dt><dd><ol class="arabic simple">
+<li><p><em>Выбросить</em> (оператор yield) <em>корень</em>.</p></li>
+<li><p>Обойти следующий слой</p></li>
+</ol>
+</dd>
+</dl>
+<a class="reference internal image-reference" href="_images/levelorder-traversal.gif"><img alt="_images/levelorder-traversal.gif" src="_images/levelorder-traversal.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(n)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Итерационный объект, состоящий из узлов бинарного дерева.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BinaryTreeNode.maintain">
 <span class="sig-name descname"><span class="pre">maintain</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BinaryTreeNode.maintain" title="Ссылка на это определение"></a></dt>
 <dd><p>Функция вызывается после удаления или вставки узла (<em>уже прописано в коде</em>).
@@ -1472,6 +1634,35 @@ AVL значит, что дерево автоматически <em>балан�
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.BinaryTreeNode.postorder_traversal">
+<span class="sig-name descname"><span class="pre">postorder_traversal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BinaryTreeNode.postorder_traversal" title="Ссылка на это определение"></a></dt>
+<dd><p>Рекурсивный обход дерева <cite>по порядку</cite> (postorder traversal), также <cite>обратный</cite>.
+Является одним из трёх обходов в глубину (<strong>DFS</strong> - <cite>Depth First Search</cite>).</p>
+<p>Смотри также:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.preorder_traversal" title="datastructures.binaryTrees.BinaryTreeNode.preorder_traversal"><code class="xref py py-class docutils literal notranslate"><span class="pre">preorder_traversal</span></code></a></p></li>
+<li><p><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.inorder_traversal" title="datastructures.binaryTrees.BinaryTreeNode.inorder_traversal"><code class="xref py py-class docutils literal notranslate"><span class="pre">inorder_traversal</span></code></a></p></li>
+</ul>
+<dl class="simple">
+<dt>Алгоритм обратного обхода:</dt><dd><ol class="arabic simple">
+<li><p>Обойти левое <em>поддерево</em> (рекурсивно).</p></li>
+<li><p>Обойти правое <em>поддерево</em> (рекурсивно).</p></li>
+<li><p><em>Выбросить</em> (оператор yield) <em>корень</em>.</p></li>
+</ol>
+</dd>
+</dl>
+<a class="reference internal image-reference" href="_images/postorder-traversal.gif"><img alt="_images/postorder-traversal.gif" src="_images/postorder-traversal.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(n)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Итерационный объект, состоящий из узлов бинарного дерева.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BinaryTreeNode.predecessor">
 <span class="sig-name descname"><span class="pre">predecessor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BinaryTreeNode.predecessor" title="Ссылка на это определение"></a></dt>
 <dd><p>Найти предшественника этого узла (узел, который идёт предыдущий по порядку).</p>
@@ -1481,6 +1672,35 @@ AVL значит, что дерево автоматически <em>балан�
 </dd>
 <dt class="field-even">Результат<span class="colon">:</span></dt>
 <dd class="field-even"><p>Предшественник этого узла</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.BinaryTreeNode.preorder_traversal">
+<span class="sig-name descname"><span class="pre">preorder_traversal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BinaryTreeNode.preorder_traversal" title="Ссылка на это определение"></a></dt>
+<dd><p>Рекурсивный обход дерева <cite>по порядку</cite> (preorder traversal), также <cite>прямой</cite>.
+Является одним из трёх обходов в глубину (<strong>DFS</strong> - <cite>Depth First Search</cite>).</p>
+<p>Смотри также:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.inorder_traversal" title="datastructures.binaryTrees.BinaryTreeNode.inorder_traversal"><code class="xref py py-class docutils literal notranslate"><span class="pre">inorder_traversal</span></code></a></p></li>
+<li><p><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.postorder_traversal" title="datastructures.binaryTrees.BinaryTreeNode.postorder_traversal"><code class="xref py py-class docutils literal notranslate"><span class="pre">postorder_traversal</span></code></a></p></li>
+</ul>
+<dl class="simple">
+<dt>Алгоритм прямого обхода:</dt><dd><ol class="arabic simple">
+<li><p><em>Выбросить</em> (оператор yield) <em>корень</em>.</p></li>
+<li><p>Обойти левое <em>поддерево</em> (рекурсивно).</p></li>
+<li><p>Обойти правое <em>поддерево</em> (рекурсивно).</p></li>
+</ol>
+</dd>
+</dl>
+<a class="reference internal image-reference" href="_images/preorder-traversal.gif"><img alt="_images/preorder-traversal.gif" src="_images/preorder-traversal.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(n)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Итерационный объект, состоящий из узлов бинарного дерева.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1588,7 +1808,7 @@ AVL значит, что дерево автоматически <em>балан�
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BinaryTreeNode.subtree_iter">
 <span class="sig-name descname"><span class="pre">subtree_iter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BinaryTreeNode.subtree_iter" title="Ссылка на это определение"></a></dt>
-<dd><p>Рекурсивный обход дерева <cite>по порядку</cite> (in-order traversal).
+<dd><p>Рекурсивный обход дерева <cite>по порядку</cite> (in-order traversal), также <cite>центрированный</cite>.
 Является одним из трёх обходов в глубину (<strong>DFS</strong> - <cite>Depth First Search</cite>).</p>
 <dl class="simple">
 <dt>Алгоритм обхода по порядку:</dt><dd><ol class="arabic simple">
@@ -1873,6 +2093,58 @@ AVL значит, что дерево автоматически <em>балан�
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQTNode.inorder_traversal">
+<span class="sig-name descname"><span class="pre">inorder_traversal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQTNode.inorder_traversal" title="Ссылка на это определение"></a></dt>
+<dd><p>Рекурсивный обход дерева <cite>по порядку</cite> (in-order traversal), также <cite>центрированный</cite>.
+Является одним из трёх обходов в глубину (<strong>DFS</strong> - <cite>Depth First Search</cite>).</p>
+<p>Смотри также:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.preorder_traversal" title="datastructures.binaryTrees.BinaryTreeNode.preorder_traversal"><code class="xref py py-class docutils literal notranslate"><span class="pre">preorder_traversal</span></code></a></p></li>
+<li><p><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.postorder_traversal" title="datastructures.binaryTrees.BinaryTreeNode.postorder_traversal"><code class="xref py py-class docutils literal notranslate"><span class="pre">postorder_traversal</span></code></a></p></li>
+</ul>
+<p>Обход дерева по умолчанию (<a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.subtree_iter" title="datastructures.binaryTrees.BinaryTreeNode.subtree_iter"><code class="xref py py-class docutils literal notranslate"><span class="pre">subtree_iter</span></code></a>.).</p>
+<dl class="simple">
+<dt>Алгоритм обхода по порядку:</dt><dd><ol class="arabic simple">
+<li><p>Обойти левое <em>поддерево</em> (рекурсивно).</p></li>
+<li><p><em>Выбросить</em> (оператор yield) <em>корень</em>.</p></li>
+<li><p>Обойти правое <em>поддерево</em> (рекурсивно).</p></li>
+</ol>
+</dd>
+</dl>
+<a class="reference internal image-reference" href="_images/inorder-traversal.gif"><img alt="_images/inorder-traversal.gif" src="_images/inorder-traversal.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(n)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Итерационный объект, состоящий из узлов бинарного дерева по порядку.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQTNode.level_order_traversal">
+<span class="sig-name descname"><span class="pre">level_order_traversal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQTNode.level_order_traversal" title="Ссылка на это определение"></a></dt>
+<dd><p>Обход в ширину (<strong>BFS</strong> - <cite>Breadth First Search</cite>).</p>
+<dl class="simple">
+<dt>Алгоритм обхода в ширину:</dt><dd><ol class="arabic simple">
+<li><p><em>Выбросить</em> (оператор yield) <em>корень</em>.</p></li>
+<li><p>Обойти следующий слой</p></li>
+</ol>
+</dd>
+</dl>
+<a class="reference internal image-reference" href="_images/levelorder-traversal.gif"><img alt="_images/levelorder-traversal.gif" src="_images/levelorder-traversal.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(n)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Итерационный объект, состоящий из узлов бинарного дерева.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.SQTNode.maintain">
 <span class="sig-name descname"><span class="pre">maintain</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQTNode.maintain" title="Ссылка на это определение"></a></dt>
 <dd><p>Функция вызывается после удаления или вставки узла (<em>уже прописано в коде</em>).
@@ -1887,6 +2159,35 @@ AVL значит, что дерево автоматически <em>балан�
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQTNode.postorder_traversal">
+<span class="sig-name descname"><span class="pre">postorder_traversal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQTNode.postorder_traversal" title="Ссылка на это определение"></a></dt>
+<dd><p>Рекурсивный обход дерева <cite>по порядку</cite> (postorder traversal), также <cite>обратный</cite>.
+Является одним из трёх обходов в глубину (<strong>DFS</strong> - <cite>Depth First Search</cite>).</p>
+<p>Смотри также:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.preorder_traversal" title="datastructures.binaryTrees.BinaryTreeNode.preorder_traversal"><code class="xref py py-class docutils literal notranslate"><span class="pre">preorder_traversal</span></code></a></p></li>
+<li><p><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.inorder_traversal" title="datastructures.binaryTrees.BinaryTreeNode.inorder_traversal"><code class="xref py py-class docutils literal notranslate"><span class="pre">inorder_traversal</span></code></a></p></li>
+</ul>
+<dl class="simple">
+<dt>Алгоритм обратного обхода:</dt><dd><ol class="arabic simple">
+<li><p>Обойти левое <em>поддерево</em> (рекурсивно).</p></li>
+<li><p>Обойти правое <em>поддерево</em> (рекурсивно).</p></li>
+<li><p><em>Выбросить</em> (оператор yield) <em>корень</em>.</p></li>
+</ol>
+</dd>
+</dl>
+<a class="reference internal image-reference" href="_images/postorder-traversal.gif"><img alt="_images/postorder-traversal.gif" src="_images/postorder-traversal.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(n)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Итерационный объект, состоящий из узлов бинарного дерева.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.SQTNode.predecessor">
 <span class="sig-name descname"><span class="pre">predecessor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQTNode.predecessor" title="Ссылка на это определение"></a></dt>
 <dd><p>Найти предшественника этого узла (узел, который идёт предыдущий по порядку).</p>
@@ -1896,6 +2197,35 @@ AVL значит, что дерево автоматически <em>балан�
 </dd>
 <dt class="field-even">Результат<span class="colon">:</span></dt>
 <dd class="field-even"><p>Предшественник этого узла</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.SQTNode.preorder_traversal">
+<span class="sig-name descname"><span class="pre">preorder_traversal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQTNode.preorder_traversal" title="Ссылка на это определение"></a></dt>
+<dd><p>Рекурсивный обход дерева <cite>по порядку</cite> (preorder traversal), также <cite>прямой</cite>.
+Является одним из трёх обходов в глубину (<strong>DFS</strong> - <cite>Depth First Search</cite>).</p>
+<p>Смотри также:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.inorder_traversal" title="datastructures.binaryTrees.BinaryTreeNode.inorder_traversal"><code class="xref py py-class docutils literal notranslate"><span class="pre">inorder_traversal</span></code></a></p></li>
+<li><p><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.postorder_traversal" title="datastructures.binaryTrees.BinaryTreeNode.postorder_traversal"><code class="xref py py-class docutils literal notranslate"><span class="pre">postorder_traversal</span></code></a></p></li>
+</ul>
+<dl class="simple">
+<dt>Алгоритм прямого обхода:</dt><dd><ol class="arabic simple">
+<li><p><em>Выбросить</em> (оператор yield) <em>корень</em>.</p></li>
+<li><p>Обойти левое <em>поддерево</em> (рекурсивно).</p></li>
+<li><p>Обойти правое <em>поддерево</em> (рекурсивно).</p></li>
+</ol>
+</dd>
+</dl>
+<a class="reference internal image-reference" href="_images/preorder-traversal.gif"><img alt="_images/preorder-traversal.gif" src="_images/preorder-traversal.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(n)</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Итерационный объект, состоящий из узлов бинарного дерева.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2025,7 +2355,7 @@ AVL значит, что дерево автоматически <em>балан�
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.SQTNode.subtree_iter">
 <span class="sig-name descname"><span class="pre">subtree_iter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQTNode.subtree_iter" title="Ссылка на это определение"></a></dt>
-<dd><p>Рекурсивный обход дерева <cite>по порядку</cite> (in-order traversal).
+<dd><p>Рекурсивный обход дерева <cite>по порядку</cite> (in-order traversal), также <cite>центрированный</cite>.
 Является одним из трёх обходов в глубину (<strong>DFS</strong> - <cite>Depth First Search</cite>).</p>
 <dl class="simple">
 <dt>Алгоритм обхода по порядку:</dt><dd><ol class="arabic simple">
