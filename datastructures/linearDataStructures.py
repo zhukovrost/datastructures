@@ -311,7 +311,8 @@ class DoublyLinkedList(SinglyLinkedList):
         """
         data = self.head.data
         self.head = self.head.next
-        self.head.previous = None
+        if self.head:
+            self.head.previous = None
         self.size -= 1
         return data
 
@@ -325,7 +326,8 @@ class DoublyLinkedList(SinglyLinkedList):
 
         data = self.tail.data
         self.tail = self.tail.previous
-        self.tail.next = None
+        if self.tail:
+            self.tail.next = None
         self.size -= 1
         return data
 
@@ -526,6 +528,9 @@ class Queue:
 
     def __iter__(self):
         return self.data.__iter__()
+
+    def __bool__(self):
+        return len(self.data) > 0
 
     def enqueue(self, item):
         """
