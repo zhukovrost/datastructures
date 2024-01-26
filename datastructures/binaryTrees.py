@@ -1,3 +1,6 @@
+from datastructures.linearDataStructures import Queue
+
+
 def height(node) -> int:
     """
     Возвращает высоту входящего узла. Сложность алгоритма является **O(1)**
@@ -74,7 +77,7 @@ class BinaryTreeNode:
 
     def subtree_iter(self):
         """
-        Рекурсивный обход дерева `по порядку` (in-order traversal).
+        Рекурсивный обход дерева `по порядку` (in-order traversal), также `центрированный`.
         Является одним из трёх обходов в глубину (**DFS** - `Depth First Search`).
 
         Алгоритм обхода по порядку:
@@ -93,6 +96,115 @@ class BinaryTreeNode:
         yield self
         if self.right:
             yield from self.right.subtree_iter()
+
+    def inorder_traversal(self):
+        """
+        Рекурсивный обход дерева `по порядку` (in-order traversal), также `центрированный`.
+        Является одним из трёх обходов в глубину (**DFS** - `Depth First Search`).
+
+        Смотри также:
+
+        * :class:`~BinaryTreeNode.preorder_traversal`
+        * :class:`~BinaryTreeNode.postorder_traversal`
+
+        Обход дерева по умолчанию (:class:`~BinaryTreeNode.subtree_iter`.).
+
+        Алгоритм обхода по порядку:
+            #. Обойти левое *поддерево* (рекурсивно).
+            #. *Выбросить* (оператор yield) *корень*.
+            #. Обойти правое *поддерево* (рекурсивно).
+
+        .. image:: images/inorder-traversal.gif
+            :width: 400px
+
+        :Сложность: O(n)
+        :return: Итерационный объект, состоящий из узлов бинарного дерева по порядку.
+        """
+        return self.subtree_iter()
+
+    def preorder_traversal(self):
+        """
+        Рекурсивный обход дерева `по порядку` (preorder traversal), также `прямой`.
+        Является одним из трёх обходов в глубину (**DFS** - `Depth First Search`).
+
+        Смотри также:
+
+        * :class:`~BinaryTreeNode.inorder_traversal`
+        * :class:`~BinaryTreeNode.postorder_traversal`
+
+        Алгоритм прямого обхода:
+            #. *Выбросить* (оператор yield) *корень*.
+            #. Обойти левое *поддерево* (рекурсивно).
+            #. Обойти правое *поддерево* (рекурсивно).
+
+        .. image:: images/preorder-traversal.gif
+            :width: 400px
+
+        :Сложность: O(n)
+        :return: Итерационный объект, состоящий из узлов бинарного дерева.
+        """
+        yield self
+        if self.left:
+            yield from self.left.preorder_traversal()
+        if self.right:
+            yield from self.right.preorder_traversal()
+
+    def postorder_traversal(self):
+        """
+        Рекурсивный обход дерева `по порядку` (postorder traversal), также `обратный`.
+        Является одним из трёх обходов в глубину (**DFS** - `Depth First Search`).
+
+        Смотри также:
+
+        * :class:`~BinaryTreeNode.preorder_traversal`
+        * :class:`~BinaryTreeNode.inorder_traversal`
+
+        Алгоритм обратного обхода:
+            #. Обойти левое *поддерево* (рекурсивно).
+            #. Обойти правое *поддерево* (рекурсивно).
+            #. *Выбросить* (оператор yield) *корень*.
+
+        .. image:: images/postorder-traversal.gif
+            :width: 400px
+
+        :Сложность: O(n)
+        :return: Итерационный объект, состоящий из узлов бинарного дерева.
+        """
+        if self.left:
+            yield from self.left.preorder_traversal()
+        if self.right:
+            yield from self.right.preorder_traversal()
+        yield self
+
+    def level_order_traversal(self):
+        """
+        Обход в ширину (**BFS** - `Breadth First Search`).
+
+        Алгоритм обхода в ширину:
+            #. *Выбросить* (оператор yield) *корень*.
+            #. Обойти следующий слой
+
+        .. image:: images/levelorder-traversal.gif
+            :width: 400px
+
+        :Сложность: O(n)
+        :return: Итерационный объект, состоящий из узлов бинарного дерева.
+        """
+
+        queue = Queue()
+        queue.enqueue(self)
+        visited = set()
+
+        while queue:
+            node = queue.dequeue()
+            visited.add(node)
+
+            yield node
+
+            if node.left and node.left not in visited:
+                queue.enqueue(node.left)
+            if node.right and node.right not in visited:
+                queue.enqueue(node.right)
 
     def subtree_first(self):
         """
