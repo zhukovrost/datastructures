@@ -1,5 +1,9 @@
+from datastructures.linearDataStructures import Queue
+
+
 # TODO: zero weight parameter
-# TODO: Refactor, Graph interface maybe
+# TODO: Refactor, Graph Parent Class
+# TODO: DFS
 
 
 def get_path(prev_nodes: list, target: int) -> list:
@@ -23,6 +27,7 @@ class GraphNode:
     """
     Узел графа. Нужен для реализации графа через *связанный список*
     """
+
     def __init__(self, v2: int, weight: int = 1):
         """
         Инициализатор.
@@ -116,7 +121,7 @@ class GraphList:
         """
         Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.
 
-        :Сложность: O(n\ :sup:`2`)
+        :Сложность: O(V\ :sup:`2`), где V - количество вершин
         :param from_node: индекс первого узла (откуда проложить маршрут)
         :param to_node: индекс второго узла (куда проложить маршрут)
         :returns: tuple (int, list)
@@ -159,11 +164,39 @@ class GraphList:
             return -1, []
         return distance[to_node], get_path(parent, to_node)
 
+    def breadth_first_traversal(self, from_node):
+        """
+        Обход графа в ширину. (*BFT -- Breadth First Traversal*).
+
+        .. image:: images/graph-bfs.gif
+            :width: 400px
+
+        :Сложность: O(V + E), где V -- количество вершин и E -- количество рёбер
+        :param from_node: номер узла, от которого идёт проходка
+        :return: итерационный объект с номерами узлов
+        """
+        queue = Queue()
+        queue.enqueue(from_node)
+        visited = set()
+        visited.add(from_node)
+        while queue:
+            node_num = queue.dequeue()
+
+            yield node_num
+
+            trav = self.list[node_num]
+            while trav:
+                if trav.v2 not in visited:
+                    queue.enqueue(trav.v2)
+                    visited.add(trav.v2)
+                trav = trav.next
+
 
 class GraphMatrix:
     """
     Реализация графа через матрицу смежности.
     """
+
     def __init__(self, size: int, directed: bool = True):
         """
         Инициализатор. Создает пустую матрицу смежности размером *size x size*.
@@ -218,11 +251,11 @@ class GraphMatrix:
             print()
 
     def shortest_path(self, from_node: int, to_node: int) -> (int, list):
-        # TODO: Optimize, using heap
+        # TODO: Optimize, using heap / priority queue
         """
         Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.
 
-        :Сложность: O(n\ :sup:`2`)
+        :Сложность: O(V\ :sup:`2`), где V - количество вершин
         :param from_node: индекс первого узла (откуда проложить маршрут)
         :param to_node: индекс второго узла (куда проложить маршрут)
         :returns: tuple (int, list)
@@ -257,3 +290,29 @@ class GraphMatrix:
                     parent[target] = min_unvisited_node
 
         return distance[to_node], get_path(parent, to_node)
+
+    def breadth_first_traversal(self, from_node):
+        """
+        Обход графа в ширину. (*BFT -- Breadth First Traversal*).
+
+        .. image:: images/graph-bfs.gif
+            :width: 400px
+
+        :Сложность: O(V + E), где V -- количество вершин и E -- количество рёбер
+        :param from_node: номер узла, от которого идёт проходка
+        :return: итерационный объект с номерами узлов
+        """
+        queue = Queue()
+        queue.enqueue(from_node)
+        visited = set()
+        visited.add(from_node)
+        while queue:
+            node_num = queue.dequeue()
+
+            yield node_num
+
+            for i in range(self.size):
+                trav = self.matrix[node_num][i]
+                if trav > 0 and trav not in visited:
+                    queue.enqueue(trav)
+                    visited.add(trav)
