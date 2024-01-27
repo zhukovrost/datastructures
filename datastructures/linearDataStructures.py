@@ -410,6 +410,9 @@ class StaticArray:
         for item in self.data:
             yield item
 
+    def __bool__(self):
+        return len(self.data) > 0
+
     def get_at(self, i: int):
         """
         Получить элемент.
