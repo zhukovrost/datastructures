@@ -25,6 +25,9 @@ class SinglyLinkedListNode:
         assert self.next
         return self.next.later_node(i - 1)
 
+    def __str__(self):
+        return str(self.data)
+
 
 class SinglyLinkedList:
     """
@@ -48,6 +51,9 @@ class SinglyLinkedList:
         while trav:
             yield trav.data
             trav = trav.next
+
+    def __str__(self):
+        return " -> ".join(map(str, self.__iter__()))
 
     def build(self, datalist: list):
         """
@@ -504,6 +510,9 @@ class Stack:
         """
         return self.data.get_at(len(self))
 
+    def __str__(self):
+        return self.data.__str__()
+
 
 class Queue:
     """
@@ -531,6 +540,9 @@ class Queue:
 
     def __bool__(self):
         return len(self.data) > 0
+
+    def __str__(self):
+        return self.data.__str__()
 
     def enqueue(self, item):
         """
