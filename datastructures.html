@@ -2521,6 +2521,24 @@ AVL значит, что дерево автоматически <em>балан�
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.GraphList.breadth_first_traversal">
+<span class="sig-name descname"><span class="pre">breadth_first_traversal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphList.breadth_first_traversal" title="Ссылка на это определение"></a></dt>
+<dd><p>Обход графа в ширину. (<em>BFT – Breadth First Traversal</em>).</p>
+<a class="reference internal image-reference" href="_images/graph-bfs.gif"><img alt="_images/graph-bfs.gif" src="_images/graph-bfs.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(V + E), где V – количество вершин и E – количество рёбер</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>from_node</strong> – номер узла, от которого идёт проходка</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>итерационный объект с номерами узлов</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="datastructures.graphs.GraphList.print_list">
 <span class="sig-name descname"><span class="pre">print_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphList.print_list" title="Ссылка на это определение"></a></dt>
 <dd><p>Вывести в консоль список смежности.</p>
@@ -2550,7 +2568,7 @@ AVL значит, что дерево автоматически <em>балан�
 <dd><p>Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(n<sup>2</sup>)</p>
+<dd class="field-odd"><p>O(V<sup>2</sup>), где V - количество вершин</p>
 </dd>
 <dt class="field-even">Параметры<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
@@ -2603,6 +2621,24 @@ AVL значит, что дерево автоматически <em>балан�
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.GraphMatrix.breadth_first_traversal">
+<span class="sig-name descname"><span class="pre">breadth_first_traversal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphMatrix.breadth_first_traversal" title="Ссылка на это определение"></a></dt>
+<dd><p>Обход графа в ширину. (<em>BFT – Breadth First Traversal</em>).</p>
+<a class="reference internal image-reference" href="_images/graph-bfs.gif"><img alt="_images/graph-bfs.gif" src="_images/graph-bfs.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(V + E), где V – количество вершин и E – количество рёбер</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>from_node</strong> – номер узла, от которого идёт проходка</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>итерационный объект с номерами узлов</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="datastructures.graphs.GraphMatrix.print_matrix">
 <span class="sig-name descname"><span class="pre">print_matrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphMatrix.print_matrix" title="Ссылка на это определение"></a></dt>
 <dd><p>Вывести матрицу в консоль.</p>
@@ -2631,7 +2667,7 @@ AVL значит, что дерево автоматически <em>балан�
 <dd><p>Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(n<sup>2</sup>)</p>
+<dd class="field-odd"><p>O(V<sup>2</sup>), где V - количество вершин</p>
 </dd>
 <dt class="field-even">Параметры<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
