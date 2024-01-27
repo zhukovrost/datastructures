@@ -1,4 +1,4 @@
-from datastructures.linearDataStructures import Queue
+from datastructures.linearDataStructures import Queue, Stack
 
 
 # TODO: zero weight parameter
@@ -191,6 +191,33 @@ class GraphList:
                     visited.add(trav.v2)
                 trav = trav.next
 
+    def depth_first_traversal(self, from_node):
+        """
+        Обход графа в глубину. (*DFT -- Depth First Traversal*).
+
+        .. image:: images/graph-dfs.gif
+            :width: 400px
+
+        :Сложность: O(V + E), где V -- количество вершин и E -- количество рёбер
+        :param from_node: номер узла, от которого идёт проходка
+        :return: итерационный объект с номерами узлов
+        """
+        stack = Stack()
+        stack.push(from_node)
+        visited = set()
+        visited.add(from_node)
+        while stack:
+            node_num = stack.pop()
+
+            yield node_num
+
+            trav = self.list[node_num]
+            while trav:
+                if trav.v2 not in visited:
+                    stack.push(trav.v2)
+                    visited.add(trav.v2)
+                trav = trav.next
+
 
 class GraphMatrix:
     """
@@ -315,4 +342,30 @@ class GraphMatrix:
                 trav = self.matrix[node_num][i]
                 if trav > 0 and trav not in visited:
                     queue.enqueue(trav)
+                    visited.add(trav)
+
+    def depth_first_traversal(self, from_node):
+        """
+        Обход графа в глубину. (*DFT -- Depth First Traversal*).
+
+        .. image:: images/graph-dfs.gif
+            :width: 400px
+
+        :Сложность: O(V + E), где V -- количество вершин и E -- количество рёбер
+        :param from_node: номер узла, от которого идёт проходка
+        :return: итерационный объект с номерами узлов
+        """
+        stack = Stack()
+        stack.push(from_node)
+        visited = set()
+        visited.add(from_node)
+        while stack:
+            node_num = stack.pop()
+
+            yield node_num
+
+            for i in range(self.size):
+                trav = self.matrix[node_num][i]
+                if trav > 0 and trav not in visited:
+                    stack.push(trav)
                     visited.add(trav)
