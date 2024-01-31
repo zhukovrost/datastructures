@@ -1,9 +1,4 @@
-from datastructures.linearDataStructures import Queue, Stack
-
-
-# TODO: zero weight parameter
-# TODO: Refactor, Graph Parent Class
-# TODO: DFS
+from . import Queue, Stack
 
 
 def get_path(prev_nodes: list, target: int) -> list:
@@ -43,17 +38,17 @@ class GraphNode:
         return f"(To: {self.v2}, Weight: {self.weight})"
 
 
-class GraphList:
+class GraphParent(object):
+
     def __init__(self, size: int, directed: bool = True):
         """
-        Инициализатор. Создает пустой список, в котором будут узлы графа.
+        Инициализатор. Создает пустой граф.
 
-        :param size: размер матрицы
-        :param directed: направленный/ненаправленный граф
+        :param size: количество узлов / размер графа
+        :param directed: направленный / ненаправленный граф
         """
         self.size = size
         self.directed = directed
-        self.list = [None] * size
 
     def __len__(self):
         return self.size
@@ -68,11 +63,8 @@ class GraphList:
         :param weight: вес грани (его значение)
         """
         assert 0 <= v1 < self.size and 0 <= v2 < self.size
-        node = GraphNode(v2, weight)
-        node.next = self.list[v1]
-        self.list[v1] = node
         if not self.directed and repeat:
-            self.add_edge(v2, v2, False)
+            self.add_edge(v2, v2, weight, False)
 
     def remove_edge(self, v1: int, v2: int, repeat: bool = True) -> int:
         """
@@ -84,6 +76,83 @@ class GraphList:
         :return: вес удалённой грани
         """
         assert 0 <= v1 < self.size and 0 <= v2 < self.size
+        if not self.directed and repeat:
+            self.remove_edge(v2, v1, False)
+
+    def print_adjacency(self):
+        """
+        Вывести в консоль список / матрицу смежности.
+        """
+        raise NotImplementedError
+
+    def traversal(self, from_node: int, storage_type: object = Queue):
+        """
+        Проходка по графу.
+
+        :Сложность: O(V + E), где V -- количество вершин и E -- количество рёбер
+        :param from_node: номер узла, от которого идёт проходка
+        :param storage_type: структура, для управления узлами: очередь -- если в ширину, стэк -- если в глубину
+        :return: итерационный объект с номерами узлов
+        """
+        raise NotImplementedError
+
+    def breadth_first_traversal(self, from_node: int):
+        """
+        Обход графа в ширину. (*BFT -- Breadth First Traversal*).
+
+        .. image:: images/graph-bfs.gif
+            :width: 400px
+
+        :Сложность: O(V + E), где V -- количество вершин и E -- количество рёбер
+        :param from_node: номер узла, от которого идёт проходка
+        :return: итерационный объект с номерами узлов
+        """
+        return self.traversal(from_node, Queue)
+
+    def depth_first_traversal(self, from_node: int):
+        """
+        Обход графа в глубину. (*DFT -- Depth First Traversal*).
+
+        .. image:: images/graph-dfs.gif
+            :width: 400px
+
+        :Сложность: O(V + E), где V -- количество вершин и E -- количество рёбер
+        :param from_node: номер узла, от которого идёт проходка
+        :return: итерационный объект с номерами узлов
+        """
+        return self.traversal(from_node, Stack)
+
+    def shortest_path(self, from_node: int, to_node: int) -> (int, list):
+        # TODO: Optimize, using heap / priority queue
+        """
+        Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.
+
+        :Сложность: O(V\ :sup:`2`), где V - количество вершин
+        :param from_node: индекс первого узла (откуда проложить маршрут)
+        :param to_node: индекс второго узла (куда проложить маршрут)
+        :returns: tuple (int, list)
+            - Первый элемент -- это минимальная длина маршрута
+            - Второй элемент -- это кратчайший маршрут: последовательность индексов, которые нужно посетить
+        """
+        raise NotImplementedError
+
+
+class ListAdjacency(GraphParent):
+    """
+    Реализация графа через список смежности.
+    """
+    def __init__(self, size: int, directed: bool = True):
+        super().__init__(size, directed)
+        self.list = [None] * size
+
+    def add_edge(self, v1: int, v2: int, weight: int = 1, repeat: bool = True):
+        super().add_edge(v1, v2, weight, repeat)
+        node = GraphNode(v2, weight)
+        node.next = self.list[v1]
+        self.list[v1] = node
+
+    def remove_edge(self, v1: int, v2: int, repeat: bool = True) -> int:
+        super().remove_edge(v1, v2, repeat)
         head = self.list[v1]
         prev = None
         while head and head.v2 != v2:
@@ -99,12 +168,10 @@ class GraphList:
         else:
             self.list[v1] = head.next
 
-        if not self.directed and repeat:
-            self.remove_edge(v2, v1, False)
+        if repeat:
+            return tmp
 
-        return tmp
-
-    def print_list(self):
+    def print_adjacency(self):
         """
         Вывести в консоль список смежности.
         """
@@ -117,17 +184,6 @@ class GraphList:
             print()
 
     def shortest_path(self, from_node: int, to_node: int) -> (int, list):
-        # TODO: Optimize, using heap / priority queue
-        """
-        Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.
-
-        :Сложность: O(V\ :sup:`2`), где V - количество вершин
-        :param from_node: индекс первого узла (откуда проложить маршрут)
-        :param to_node: индекс второго узла (куда проложить маршрут)
-        :returns: tuple (int, list)
-            - Первый элемент -- это минимальная длина маршрута
-            - Второй элемент -- это кратчайший маршрут: последовательность индексов, которые нужно посетить
-        """
         visited = [False] * self.size
         distance = [float('inf')] * self.size
         parent = [-1] * self.size
@@ -164,111 +220,46 @@ class GraphList:
             return -1, []
         return distance[to_node], get_path(parent, to_node)
 
-    def breadth_first_traversal(self, from_node):
-        """
-        Обход графа в ширину. (*BFT -- Breadth First Traversal*).
-
-        .. image:: images/graph-bfs.gif
-            :width: 400px
-
-        :Сложность: O(V + E), где V -- количество вершин и E -- количество рёбер
-        :param from_node: номер узла, от которого идёт проходка
-        :return: итерационный объект с номерами узлов
-        """
-        queue = Queue()
-        queue.enqueue(from_node)
+    def traversal(self, from_node: int, storage_type: object):
+        storage = storage_type()
+        storage.push(from_node)
         visited = set()
         visited.add(from_node)
-        while queue:
-            node_num = queue.dequeue()
+        while storage:
+            node_num = storage.pop()
 
             yield node_num
 
             trav = self.list[node_num]
             while trav:
                 if trav.v2 not in visited:
-                    queue.enqueue(trav.v2)
-                    visited.add(trav.v2)
-                trav = trav.next
-
-    def depth_first_traversal(self, from_node):
-        """
-        Обход графа в глубину. (*DFT -- Depth First Traversal*).
-
-        .. image:: images/graph-dfs.gif
-            :width: 400px
-
-        :Сложность: O(V + E), где V -- количество вершин и E -- количество рёбер
-        :param from_node: номер узла, от которого идёт проходка
-        :return: итерационный объект с номерами узлов
-        """
-        stack = Stack()
-        stack.push(from_node)
-        visited = set()
-        visited.add(from_node)
-        while stack:
-            node_num = stack.pop()
-
-            yield node_num
-
-            trav = self.list[node_num]
-            while trav:
-                if trav.v2 not in visited:
-                    stack.push(trav.v2)
+                    storage.push(trav.v2)
                     visited.add(trav.v2)
                 trav = trav.next
 
 
-class GraphMatrix:
+class MatrixAdjacency(GraphParent):
     """
     Реализация графа через матрицу смежности.
     """
-
     def __init__(self, size: int, directed: bool = True):
-        """
-        Инициализатор. Создает пустую матрицу смежности размером *size x size*.
-
-        :param size: размер матрицы
-        :param directed: направленный/ненаправленный граф
-        """
-        self.size = size
-        self.directed = directed
+        super().__init__(size, directed)
         self.matrix = []
-        for i in range(size):
+        for _ in range(size):
             self.matrix.append([0 for _ in range(size)])
 
-    def __len__(self):
-        return self.size
-
-    def add_edge(self, v1: int, v2: int, weight: int = 1) -> None:
-        """
-        Добавить грань.
-
-        :param v1: номер 1го узла
-        :param v2: номер 2го узла
-        :param weight: вес грани (его значение)
-        """
-        assert 0 <= v1 < self.size and 0 <= v2 < self.size
+    def add_edge(self, v1: int, v2: int, weight: int = 1, repeat: bool = True) -> None:
+        super().add_edge(v1, v2, weight, repeat)
         self.matrix[v1][v2] = weight
-        if not self.directed:
-            self.matrix[v2][v1] = weight
 
-    def remove_edge(self, v1: int, v2: int) -> int:
-        """
-        Убрать грань.
-
-        :param v1: номер 1го узла
-        :param v2: номер 2го узла
-        :return: вес удалённой грани
-        """
-        assert 0 <= v1 < self.size and 0 <= v2 < self.size
+    def remove_edge(self, v1: int, v2: int, repeat: bool = True) -> int:
+        super().remove_edge(v1, v2, repeat)
         tmp = self.matrix[v1][v2]
         self.matrix[v1][v2] = 0
-        if not self.directed:
-            self.matrix[v2][v1] = 0
-        return tmp
+        if repeat:
+            return tmp
 
-    def print_matrix(self):
+    def print_adjacency(self):
         """
         Вывести матрицу в консоль.
         """
@@ -278,17 +269,6 @@ class GraphMatrix:
             print()
 
     def shortest_path(self, from_node: int, to_node: int) -> (int, list):
-        # TODO: Optimize, using heap / priority queue
-        """
-        Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.
-
-        :Сложность: O(V\ :sup:`2`), где V - количество вершин
-        :param from_node: индекс первого узла (откуда проложить маршрут)
-        :param to_node: индекс второго узла (куда проложить маршрут)
-        :returns: tuple (int, list)
-            - Первый элемент -- это минимальная длина маршрута
-            - Второй элемент -- это кратчайший маршрут: последовательность индексов, которые нужно посетить
-        """
         visited = [False] * self.size
         distance = [float('inf')] * self.size
         parent = [-1] * self.size
@@ -318,54 +298,19 @@ class GraphMatrix:
 
         return distance[to_node], get_path(parent, to_node)
 
-    def breadth_first_traversal(self, from_node):
-        """
-        Обход графа в ширину. (*BFT -- Breadth First Traversal*).
-
-        .. image:: images/graph-bfs.gif
-            :width: 400px
-
-        :Сложность: O(V + E), где V -- количество вершин и E -- количество рёбер
-        :param from_node: номер узла, от которого идёт проходка
-        :return: итерационный объект с номерами узлов
-        """
-        queue = Queue()
-        queue.enqueue(from_node)
+    def traversal(self, from_node: int, storage_type: object):
+        storage = storage_type()
+        storage.push(from_node)
         visited = set()
         visited.add(from_node)
-        while queue:
-            node_num = queue.dequeue()
+        while storage:
+            node_num = storage.pop()
 
             yield node_num
 
             for i in range(self.size):
                 trav = self.matrix[node_num][i]
                 if trav > 0 and trav not in visited:
-                    queue.enqueue(trav)
+                    storage.push(trav)
                     visited.add(trav)
-
-    def depth_first_traversal(self, from_node):
-        """
-        Обход графа в глубину. (*DFT -- Depth First Traversal*).
-
-        .. image:: images/graph-dfs.gif
-            :width: 400px
-
-        :Сложность: O(V + E), где V -- количество вершин и E -- количество рёбер
-        :param from_node: номер узла, от которого идёт проходка
-        :return: итерационный объект с номерами узлов
-        """
-        stack = Stack()
-        stack.push(from_node)
-        visited = set()
-        visited.add(from_node)
-        while stack:
-            node_num = stack.pop()
-
-            yield node_num
-
-            for i in range(self.size):
-                trav = self.matrix[node_num][i]
-                if trav > 0 and trav not in visited:
-                    stack.push(trav)
-                    visited.add(trav)
+    

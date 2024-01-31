@@ -1,4 +1,4 @@
-from datastructures.linearDataStructures import Queue
+from . import Queue
 
 
 def height(node) -> int:
