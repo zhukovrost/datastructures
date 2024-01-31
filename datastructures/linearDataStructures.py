@@ -556,6 +556,9 @@ class Queue:
         """
         self.data.insert_last(item)
 
+    def push(self, item):
+        self.enqueue(item)
+
     def dequeue(self):
         """
         Вынуть из очереди следующий (первый) элемент.
@@ -564,6 +567,9 @@ class Queue:
         :return: Значение элемента, которого мы вынимаем
         """
         return self.data.delete_first()
+
+    def pop(self):
+        return self.dequeue()
 
     def peek_front(self):
         """
