@@ -5,3 +5,5 @@ __pycache__/
 docs/_build/
 docs/_static/
 docs/_templates
+build/
+slav_EEik_datastructures.egg-info/
