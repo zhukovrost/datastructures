@@ -71,9 +71,10 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-datastructures.graphs">datastructures.graphs module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.GraphList"><code class="docutils literal notranslate"><span class="pre">GraphList</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.GraphMatrix"><code class="docutils literal notranslate"><span class="pre">GraphMatrix</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.GraphNode"><code class="docutils literal notranslate"><span class="pre">GraphNode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.GraphParent"><code class="docutils literal notranslate"><span class="pre">GraphParent</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.ListAdjacency"><code class="docutils literal notranslate"><span class="pre">ListAdjacency</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.MatrixAdjacency"><code class="docutils literal notranslate"><span class="pre">MatrixAdjacency</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.get_path"><code class="docutils literal notranslate"><span class="pre">get_path()</span></code></a></li>
 </ul>
 </li>
@@ -186,6 +187,11 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="datastructures.linearDataStructures.Deque.pop">
+<span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.linearDataStructures.Deque.pop" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="datastructures.linearDataStructures.Deque.pop_back">
 <span class="sig-name descname"><span class="pre">pop_back</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.linearDataStructures.Deque.pop_back" title="Ссылка на это определение"></a></dt>
 <dd><p>Выбрасывает из очереди последний элемент по порядку.</p>
@@ -212,6 +218,11 @@
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.linearDataStructures.Deque.push">
+<span class="sig-name descname"><span class="pre">push</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.linearDataStructures.Deque.push" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.linearDataStructures.Deque.push_back">
@@ -554,6 +565,16 @@
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.linearDataStructures.Queue.pop">
+<span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.linearDataStructures.Queue.pop" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.linearDataStructures.Queue.push">
+<span class="sig-name descname"><span class="pre">push</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.linearDataStructures.Queue.push" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -2487,241 +2508,6 @@ AVL значит, что дерево автоматически <em>балан�
 <section id="module-datastructures.graphs">
 <span id="datastructures-graphs-module"></span><h2>datastructures.graphs module<a class="headerlink" href="#module-datastructures.graphs" title="Permalink to this heading"></a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphList">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.graphs.</span></span><span class="sig-name descname"><span class="pre">GraphList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphList" title="Ссылка на это определение"></a></dt>
-<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphList.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphList.__init__" title="Ссылка на это определение"></a></dt>
-<dd><p>Инициализатор. Создает пустой список, в котором будут узлы графа.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Параметры<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>size</strong> – размер матрицы</p></li>
-<li><p><strong>directed</strong> – направленный/ненаправленный граф</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphList.add_edge">
-<span class="sig-name descname"><span class="pre">add_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphList.add_edge" title="Ссылка на это определение"></a></dt>
-<dd><p>Добавить грань.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Параметры<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>v1</strong> – номер 1го узла</p></li>
-<li><p><strong>v2</strong> – номер 2го узла</p></li>
-<li><p><strong>repeat</strong> – служебная переменная для избегания бесконечной рекурсии, используется для ненаправленных графов</p></li>
-<li><p><strong>weight</strong> – вес грани (его значение)</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphList.breadth_first_traversal">
-<span class="sig-name descname"><span class="pre">breadth_first_traversal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphList.breadth_first_traversal" title="Ссылка на это определение"></a></dt>
-<dd><p>Обход графа в ширину. (<em>BFT – Breadth First Traversal</em>).</p>
-<a class="reference internal image-reference" href="_images/graph-bfs.gif"><img alt="_images/graph-bfs.gif" src="_images/graph-bfs.gif" style="width: 400px;" /></a>
-<dl class="field-list simple">
-<dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(V + E), где V – количество вершин и E – количество рёбер</p>
-</dd>
-<dt class="field-even">Параметры<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>from_node</strong> – номер узла, от которого идёт проходка</p>
-</dd>
-<dt class="field-odd">Результат<span class="colon">:</span></dt>
-<dd class="field-odd"><p>итерационный объект с номерами узлов</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphList.depth_first_traversal">
-<span class="sig-name descname"><span class="pre">depth_first_traversal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphList.depth_first_traversal" title="Ссылка на это определение"></a></dt>
-<dd><p>Обход графа в глубину. (<em>DFT – Depth First Traversal</em>).</p>
-<a class="reference internal image-reference" href="_images/graph-dfs.gif"><img alt="_images/graph-dfs.gif" src="_images/graph-dfs.gif" style="width: 400px;" /></a>
-<dl class="field-list simple">
-<dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(V + E), где V – количество вершин и E – количество рёбер</p>
-</dd>
-<dt class="field-even">Параметры<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>from_node</strong> – номер узла, от которого идёт проходка</p>
-</dd>
-<dt class="field-odd">Результат<span class="colon">:</span></dt>
-<dd class="field-odd"><p>итерационный объект с номерами узлов</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphList.print_list">
-<span class="sig-name descname"><span class="pre">print_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphList.print_list" title="Ссылка на это определение"></a></dt>
-<dd><p>Вывести в консоль список смежности.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphList.remove_edge">
-<span class="sig-name descname"><span class="pre">remove_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#datastructures.graphs.GraphList.remove_edge" title="Ссылка на это определение"></a></dt>
-<dd><p>Убрать грань.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Параметры<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>v1</strong> – номер 1го узла</p></li>
-<li><p><strong>v2</strong> – номер 2го узла</p></li>
-<li><p><strong>repeat</strong> – служебная переменная для избегания бесконечной рекурсии, используется для ненаправленных графов</p></li>
-</ul>
-</dd>
-<dt class="field-even">Результат<span class="colon">:</span></dt>
-<dd class="field-even"><p>вес удалённой грани</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphList.shortest_path">
-<span class="sig-name descname"><span class="pre">shortest_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node:</span> <span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_node:</span> <span class="pre">int)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'list'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphList.shortest_path" title="Ссылка на это определение"></a></dt>
-<dd><p>Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(V<sup>2</sup>), где V - количество вершин</p>
-</dd>
-<dt class="field-even">Параметры<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>from_node</strong> – индекс первого узла (откуда проложить маршрут)</p></li>
-<li><p><strong>to_node</strong> – индекс второго узла (куда проложить маршрут)</p></li>
-</ul>
-</dd>
-<dt class="field-odd">Результат<span class="colon">:</span></dt>
-<dd class="field-odd"><p>tuple (int, list)
-- Первый элемент – это минимальная длина маршрута
-- Второй элемент – это кратчайший маршрут: последовательность индексов, которые нужно посетить</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphMatrix">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.graphs.</span></span><span class="sig-name descname"><span class="pre">GraphMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphMatrix" title="Ссылка на это определение"></a></dt>
-<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Реализация графа через матрицу смежности.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphMatrix.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphMatrix.__init__" title="Ссылка на это определение"></a></dt>
-<dd><p>Инициализатор. Создает пустую матрицу смежности размером <em>size x size</em>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Параметры<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>size</strong> – размер матрицы</p></li>
-<li><p><strong>directed</strong> – направленный/ненаправленный граф</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphMatrix.add_edge">
-<span class="sig-name descname"><span class="pre">add_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#datastructures.graphs.GraphMatrix.add_edge" title="Ссылка на это определение"></a></dt>
-<dd><p>Добавить грань.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Параметры<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>v1</strong> – номер 1го узла</p></li>
-<li><p><strong>v2</strong> – номер 2го узла</p></li>
-<li><p><strong>weight</strong> – вес грани (его значение)</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphMatrix.breadth_first_traversal">
-<span class="sig-name descname"><span class="pre">breadth_first_traversal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphMatrix.breadth_first_traversal" title="Ссылка на это определение"></a></dt>
-<dd><p>Обход графа в ширину. (<em>BFT – Breadth First Traversal</em>).</p>
-<a class="reference internal image-reference" href="_images/graph-bfs.gif"><img alt="_images/graph-bfs.gif" src="_images/graph-bfs.gif" style="width: 400px;" /></a>
-<dl class="field-list simple">
-<dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(V + E), где V – количество вершин и E – количество рёбер</p>
-</dd>
-<dt class="field-even">Параметры<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>from_node</strong> – номер узла, от которого идёт проходка</p>
-</dd>
-<dt class="field-odd">Результат<span class="colon">:</span></dt>
-<dd class="field-odd"><p>итерационный объект с номерами узлов</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphMatrix.depth_first_traversal">
-<span class="sig-name descname"><span class="pre">depth_first_traversal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphMatrix.depth_first_traversal" title="Ссылка на это определение"></a></dt>
-<dd><p>Обход графа в глубину. (<em>DFT – Depth First Traversal</em>).</p>
-<a class="reference internal image-reference" href="_images/graph-dfs.gif"><img alt="_images/graph-dfs.gif" src="_images/graph-dfs.gif" style="width: 400px;" /></a>
-<dl class="field-list simple">
-<dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(V + E), где V – количество вершин и E – количество рёбер</p>
-</dd>
-<dt class="field-even">Параметры<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>from_node</strong> – номер узла, от которого идёт проходка</p>
-</dd>
-<dt class="field-odd">Результат<span class="colon">:</span></dt>
-<dd class="field-odd"><p>итерационный объект с номерами узлов</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphMatrix.print_matrix">
-<span class="sig-name descname"><span class="pre">print_matrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphMatrix.print_matrix" title="Ссылка на это определение"></a></dt>
-<dd><p>Вывести матрицу в консоль.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphMatrix.remove_edge">
-<span class="sig-name descname"><span class="pre">remove_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#datastructures.graphs.GraphMatrix.remove_edge" title="Ссылка на это определение"></a></dt>
-<dd><p>Убрать грань.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Параметры<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>v1</strong> – номер 1го узла</p></li>
-<li><p><strong>v2</strong> – номер 2го узла</p></li>
-</ul>
-</dd>
-<dt class="field-even">Результат<span class="colon">:</span></dt>
-<dd class="field-even"><p>вес удалённой грани</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphMatrix.shortest_path">
-<span class="sig-name descname"><span class="pre">shortest_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node:</span> <span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_node:</span> <span class="pre">int)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'list'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphMatrix.shortest_path" title="Ссылка на это определение"></a></dt>
-<dd><p>Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(V<sup>2</sup>), где V - количество вершин</p>
-</dd>
-<dt class="field-even">Параметры<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>from_node</strong> – индекс первого узла (откуда проложить маршрут)</p></li>
-<li><p><strong>to_node</strong> – индекс второго узла (куда проложить маршрут)</p></li>
-</ul>
-</dd>
-<dt class="field-odd">Результат<span class="colon">:</span></dt>
-<dd class="field-odd"><p>tuple (int, list)
-- Первый элемент – это минимальная длина маршрута
-- Второй элемент – это кратчайший маршрут: последовательность индексов, которые нужно посетить</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
 <dt class="sig sig-object py" id="datastructures.graphs.GraphNode">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.graphs.</span></span><span class="sig-name descname"><span class="pre">GraphNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphNode" title="Ссылка на это определение"></a></dt>
 <dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -2736,6 +2522,422 @@ AVL значит, что дерево автоматически <em>балан�
 <li><p><strong>v2</strong> – куда</p></li>
 <li><p><strong>weight</strong> – вес</p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datastructures.graphs.GraphParent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.graphs.</span></span><span class="sig-name descname"><span class="pre">GraphParent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphParent" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.GraphParent.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphParent.__init__" title="Ссылка на это определение"></a></dt>
+<dd><p>Инициализатор. Создает пустой граф.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> – количество узлов / размер графа</p></li>
+<li><p><strong>directed</strong> – направленный / ненаправленный граф</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.GraphParent.add_edge">
+<span class="sig-name descname"><span class="pre">add_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphParent.add_edge" title="Ссылка на это определение"></a></dt>
+<dd><p>Добавить грань.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>v1</strong> – номер 1го узла</p></li>
+<li><p><strong>v2</strong> – номер 2го узла</p></li>
+<li><p><strong>repeat</strong> – служебная переменная для избегания бесконечной рекурсии, используется для ненаправленных графов</p></li>
+<li><p><strong>weight</strong> – вес грани (его значение)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.GraphParent.breadth_first_traversal">
+<span class="sig-name descname"><span class="pre">breadth_first_traversal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphParent.breadth_first_traversal" title="Ссылка на это определение"></a></dt>
+<dd><p>Обход графа в ширину. (<em>BFT – Breadth First Traversal</em>).</p>
+<a class="reference internal image-reference" href="_images/graph-bfs.gif"><img alt="_images/graph-bfs.gif" src="_images/graph-bfs.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(V + E), где V – количество вершин и E – количество рёбер</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>from_node</strong> – номер узла, от которого идёт проходка</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>итерационный объект с номерами узлов</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.GraphParent.depth_first_traversal">
+<span class="sig-name descname"><span class="pre">depth_first_traversal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphParent.depth_first_traversal" title="Ссылка на это определение"></a></dt>
+<dd><p>Обход графа в глубину. (<em>DFT – Depth First Traversal</em>).</p>
+<a class="reference internal image-reference" href="_images/graph-dfs.gif"><img alt="_images/graph-dfs.gif" src="_images/graph-dfs.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(V + E), где V – количество вершин и E – количество рёбер</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>from_node</strong> – номер узла, от которого идёт проходка</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>итерационный объект с номерами узлов</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.GraphParent.print_adjacency">
+<span class="sig-name descname"><span class="pre">print_adjacency</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphParent.print_adjacency" title="Ссылка на это определение"></a></dt>
+<dd><p>Вывести в консоль список / матрицу смежности.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.GraphParent.remove_edge">
+<span class="sig-name descname"><span class="pre">remove_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#datastructures.graphs.GraphParent.remove_edge" title="Ссылка на это определение"></a></dt>
+<dd><p>Убрать грань.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>v1</strong> – номер 1го узла</p></li>
+<li><p><strong>v2</strong> – номер 2го узла</p></li>
+<li><p><strong>repeat</strong> – служебная переменная для избегания бесконечной рекурсии, используется для ненаправленных графов</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>вес удалённой грани</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.GraphParent.shortest_path">
+<span class="sig-name descname"><span class="pre">shortest_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node:</span> <span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_node:</span> <span class="pre">int)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'list'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphParent.shortest_path" title="Ссылка на это определение"></a></dt>
+<dd><p>Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(V<sup>2</sup>), где V - количество вершин</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>from_node</strong> – индекс первого узла (откуда проложить маршрут)</p></li>
+<li><p><strong>to_node</strong> – индекс второго узла (куда проложить маршрут)</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple (int, list)
+- Первый элемент – это минимальная длина маршрута
+- Второй элемент – это кратчайший маршрут: последовательность индексов, которые нужно посетить</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.GraphParent.traversal">
+<span class="sig-name descname"><span class="pre">traversal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node:</span> <span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_type:</span> <span class="pre">object</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'datastructures.linearDataStructures.Queue'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphParent.traversal" title="Ссылка на это определение"></a></dt>
+<dd><p>Проходка по графу.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(V + E), где V – количество вершин и E – количество рёбер</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>from_node</strong> – номер узла, от которого идёт проходка</p></li>
+<li><p><strong>storage_type</strong> – структура, для управления узлами: очередь – если в ширину, стэк – если в глубину</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>итерационный объект с номерами узлов</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datastructures.graphs.ListAdjacency">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.graphs.</span></span><span class="sig-name descname"><span class="pre">ListAdjacency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.ListAdjacency" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#datastructures.graphs.GraphParent" title="datastructures.graphs.GraphParent"><code class="xref py py-class docutils literal notranslate"><span class="pre">GraphParent</span></code></a></p>
+<p>Реализация графа через список смежности.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.ListAdjacency.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.ListAdjacency.__init__" title="Ссылка на это определение"></a></dt>
+<dd><p>Инициализатор. Создает пустой граф.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> – количество узлов / размер графа</p></li>
+<li><p><strong>directed</strong> – направленный / ненаправленный граф</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.ListAdjacency.add_edge">
+<span class="sig-name descname"><span class="pre">add_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.ListAdjacency.add_edge" title="Ссылка на это определение"></a></dt>
+<dd><p>Добавить грань.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>v1</strong> – номер 1го узла</p></li>
+<li><p><strong>v2</strong> – номер 2го узла</p></li>
+<li><p><strong>repeat</strong> – служебная переменная для избегания бесконечной рекурсии, используется для ненаправленных графов</p></li>
+<li><p><strong>weight</strong> – вес грани (его значение)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.ListAdjacency.breadth_first_traversal">
+<span class="sig-name descname"><span class="pre">breadth_first_traversal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.ListAdjacency.breadth_first_traversal" title="Ссылка на это определение"></a></dt>
+<dd><p>Обход графа в ширину. (<em>BFT – Breadth First Traversal</em>).</p>
+<a class="reference internal image-reference" href="_images/graph-bfs.gif"><img alt="_images/graph-bfs.gif" src="_images/graph-bfs.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(V + E), где V – количество вершин и E – количество рёбер</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>from_node</strong> – номер узла, от которого идёт проходка</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>итерационный объект с номерами узлов</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.ListAdjacency.depth_first_traversal">
+<span class="sig-name descname"><span class="pre">depth_first_traversal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.ListAdjacency.depth_first_traversal" title="Ссылка на это определение"></a></dt>
+<dd><p>Обход графа в глубину. (<em>DFT – Depth First Traversal</em>).</p>
+<a class="reference internal image-reference" href="_images/graph-dfs.gif"><img alt="_images/graph-dfs.gif" src="_images/graph-dfs.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(V + E), где V – количество вершин и E – количество рёбер</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>from_node</strong> – номер узла, от которого идёт проходка</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>итерационный объект с номерами узлов</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.ListAdjacency.print_adjacency">
+<span class="sig-name descname"><span class="pre">print_adjacency</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.ListAdjacency.print_adjacency" title="Ссылка на это определение"></a></dt>
+<dd><p>Вывести в консоль список смежности.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.ListAdjacency.remove_edge">
+<span class="sig-name descname"><span class="pre">remove_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#datastructures.graphs.ListAdjacency.remove_edge" title="Ссылка на это определение"></a></dt>
+<dd><p>Убрать грань.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>v1</strong> – номер 1го узла</p></li>
+<li><p><strong>v2</strong> – номер 2го узла</p></li>
+<li><p><strong>repeat</strong> – служебная переменная для избегания бесконечной рекурсии, используется для ненаправленных графов</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>вес удалённой грани</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.ListAdjacency.shortest_path">
+<span class="sig-name descname"><span class="pre">shortest_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node:</span> <span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_node:</span> <span class="pre">int)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'list'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.ListAdjacency.shortest_path" title="Ссылка на это определение"></a></dt>
+<dd><p>Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(V<sup>2</sup>), где V - количество вершин</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>from_node</strong> – индекс первого узла (откуда проложить маршрут)</p></li>
+<li><p><strong>to_node</strong> – индекс второго узла (куда проложить маршрут)</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple (int, list)
+- Первый элемент – это минимальная длина маршрута
+- Второй элемент – это кратчайший маршрут: последовательность индексов, которые нужно посетить</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.ListAdjacency.traversal">
+<span class="sig-name descname"><span class="pre">traversal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.ListAdjacency.traversal" title="Ссылка на это определение"></a></dt>
+<dd><p>Проходка по графу.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(V + E), где V – количество вершин и E – количество рёбер</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>from_node</strong> – номер узла, от которого идёт проходка</p></li>
+<li><p><strong>storage_type</strong> – структура, для управления узлами: очередь – если в ширину, стэк – если в глубину</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>итерационный объект с номерами узлов</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="datastructures.graphs.MatrixAdjacency">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.graphs.</span></span><span class="sig-name descname"><span class="pre">MatrixAdjacency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.MatrixAdjacency" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#datastructures.graphs.GraphParent" title="datastructures.graphs.GraphParent"><code class="xref py py-class docutils literal notranslate"><span class="pre">GraphParent</span></code></a></p>
+<p>Реализация графа через матрицу смежности.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.MatrixAdjacency.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.MatrixAdjacency.__init__" title="Ссылка на это определение"></a></dt>
+<dd><p>Инициализатор. Создает пустой граф.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> – количество узлов / размер графа</p></li>
+<li><p><strong>directed</strong> – направленный / ненаправленный граф</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.MatrixAdjacency.add_edge">
+<span class="sig-name descname"><span class="pre">add_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#datastructures.graphs.MatrixAdjacency.add_edge" title="Ссылка на это определение"></a></dt>
+<dd><p>Добавить грань.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>v1</strong> – номер 1го узла</p></li>
+<li><p><strong>v2</strong> – номер 2го узла</p></li>
+<li><p><strong>repeat</strong> – служебная переменная для избегания бесконечной рекурсии, используется для ненаправленных графов</p></li>
+<li><p><strong>weight</strong> – вес грани (его значение)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.MatrixAdjacency.breadth_first_traversal">
+<span class="sig-name descname"><span class="pre">breadth_first_traversal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.MatrixAdjacency.breadth_first_traversal" title="Ссылка на это определение"></a></dt>
+<dd><p>Обход графа в ширину. (<em>BFT – Breadth First Traversal</em>).</p>
+<a class="reference internal image-reference" href="_images/graph-bfs.gif"><img alt="_images/graph-bfs.gif" src="_images/graph-bfs.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(V + E), где V – количество вершин и E – количество рёбер</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>from_node</strong> – номер узла, от которого идёт проходка</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>итерационный объект с номерами узлов</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.MatrixAdjacency.depth_first_traversal">
+<span class="sig-name descname"><span class="pre">depth_first_traversal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.MatrixAdjacency.depth_first_traversal" title="Ссылка на это определение"></a></dt>
+<dd><p>Обход графа в глубину. (<em>DFT – Depth First Traversal</em>).</p>
+<a class="reference internal image-reference" href="_images/graph-dfs.gif"><img alt="_images/graph-dfs.gif" src="_images/graph-dfs.gif" style="width: 400px;" /></a>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(V + E), где V – количество вершин и E – количество рёбер</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>from_node</strong> – номер узла, от которого идёт проходка</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>итерационный объект с номерами узлов</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.MatrixAdjacency.print_adjacency">
+<span class="sig-name descname"><span class="pre">print_adjacency</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.MatrixAdjacency.print_adjacency" title="Ссылка на это определение"></a></dt>
+<dd><p>Вывести матрицу в консоль.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.MatrixAdjacency.remove_edge">
+<span class="sig-name descname"><span class="pre">remove_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#datastructures.graphs.MatrixAdjacency.remove_edge" title="Ссылка на это определение"></a></dt>
+<dd><p>Убрать грань.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>v1</strong> – номер 1го узла</p></li>
+<li><p><strong>v2</strong> – номер 2го узла</p></li>
+<li><p><strong>repeat</strong> – служебная переменная для избегания бесконечной рекурсии, используется для ненаправленных графов</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>вес удалённой грани</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.MatrixAdjacency.shortest_path">
+<span class="sig-name descname"><span class="pre">shortest_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node:</span> <span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_node:</span> <span class="pre">int)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'list'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.MatrixAdjacency.shortest_path" title="Ссылка на это определение"></a></dt>
+<dd><p>Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(V<sup>2</sup>), где V - количество вершин</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>from_node</strong> – индекс первого узла (откуда проложить маршрут)</p></li>
+<li><p><strong>to_node</strong> – индекс второго узла (куда проложить маршрут)</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple (int, list)
+- Первый элемент – это минимальная длина маршрута
+- Второй элемент – это кратчайший маршрут: последовательность индексов, которые нужно посетить</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.MatrixAdjacency.traversal">
+<span class="sig-name descname"><span class="pre">traversal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.MatrixAdjacency.traversal" title="Ссылка на это определение"></a></dt>
+<dd><p>Проходка по графу.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(V + E), где V – количество вершин и E – количество рёбер</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>from_node</strong> – номер узла, от которого идёт проходка</p></li>
+<li><p><strong>storage_type</strong> – структура, для управления узлами: очередь – если в ширину, стэк – если в глубину</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>итерационный объект с номерами узлов</p>
 </dd>
 </dl>
 </dd></dl>
