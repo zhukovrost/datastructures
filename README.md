@@ -1,4 +1,4 @@
 Python Data Structures by slav_EEik
 ===================================
 
-![Image](https://github.com/zhukovrost/algorithms/blob/master/algorithms.svg)
+![Image](https://github.com/zhukovrost/algorithms/blob/master/datastructures.svg)
