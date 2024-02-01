@@ -1,6 +1,9 @@
 Tests
 =====
 
+.. toctree::
+   :maxdepth: 4
+
 linearDataStructures_test
 -------------------------
 
