@@ -62,9 +62,10 @@ class GraphParent(object):
         :param repeat: служебная переменная для избегания бесконечной рекурсии, используется для ненаправленных графов
         :param weight: вес грани (его значение)
         """
-        assert 0 <= v1 < self.size and 0 <= v2 < self.size
+        if not (0 <= v1 < self.size and 0 <= v2 < self.size):
+            raise IndexError
         if not self.directed and repeat:
-            self.add_edge(v2, v2, weight, False)
+            self.add_edge(v2, v1, weight, False)
 
     def remove_edge(self, v1: int, v2: int, repeat: bool = True) -> int:
         """
@@ -75,7 +76,8 @@ class GraphParent(object):
         :param repeat: служебная переменная для избегания бесконечной рекурсии, используется для ненаправленных графов
         :return: вес удалённой грани
         """
-        assert 0 <= v1 < self.size and 0 <= v2 < self.size
+        if not (0 <= v1 < self.size and 0 <= v2 < self.size):
+            raise IndexError
         if not self.directed and repeat:
             self.remove_edge(v2, v1, False)
 
@@ -309,8 +311,7 @@ class MatrixAdjacency(GraphParent):
             yield node_num
 
             for i in range(self.size):
-                trav = self.matrix[node_num][i]
-                if trav > 0 and trav not in visited:
-                    storage.push(trav)
-                    visited.add(trav)
+                if self.matrix[node_num][i] > 0 and i not in visited:
+                    storage.push(i)
+                    visited.add(i)
     
