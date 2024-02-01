@@ -22,7 +22,8 @@ class SinglyLinkedListNode:
         """
         if i == 0:
             return self
-        assert self.next
+        if not self.next:
+            raise IndexError
         return self.next.later_node(i - 1)
 
     def __str__(self):
@@ -213,7 +214,8 @@ class DoublyLinkedListNode(SinglyLinkedListNode):
         """
         if i == 0:
             return self
-        assert self.previous
+        if not self.previous:
+            raise IndexError
         return self.previous.earlier_node(i - 1)
 
 
