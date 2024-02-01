@@ -4,7 +4,7 @@ Tests
 linearDataStructures_test
 -------------------------
 
-.. automodule:: linearDataStructures_test
+.. automodule:: tests.linearDataStructures_test
    :members:
    :undoc-members:
    :show-inheritance:
@@ -13,7 +13,7 @@ linearDataStructures_test
 graphs_test
 -----------
 
-.. automodule:: graphs_test
+.. automodule:: tests.graphs_test
    :members:
    :undoc-members:
    :show-inheritance:
