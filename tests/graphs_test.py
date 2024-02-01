@@ -6,13 +6,11 @@ class TestMatrixAdjacency:
 
     @fixture
     def directed_graph(self):
-        g = MatrixAdjacency(6, True)
-        return g
+        return MatrixAdjacency(6, True)
 
     @fixture
     def undirected_graph(self):
-        g = MatrixAdjacency(6, False)
-        return g
+        return MatrixAdjacency(6, False)
 
     @mark.parametrize('from_node,to_node,weight', [
         (0, 1, 1),
@@ -84,13 +82,11 @@ class TestListAdjacency(TestMatrixAdjacency):
 
     @fixture
     def directed_graph(self):
-        g = ListAdjacency(6, True)
-        return g
+        return ListAdjacency(6, True)
 
     @fixture
     def undirected_graph(self):
-        g = ListAdjacency(6, False)
-        return g
+        return ListAdjacency(6, False)
 
     @mark.parametrize('from_node,to_node,weight', [
         (0, 1, 1),
