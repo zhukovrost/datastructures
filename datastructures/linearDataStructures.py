@@ -29,6 +29,27 @@ class SinglyLinkedListNode:
     def __str__(self):
         return str(self.data)
 
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            return self.data == other.data
+        return self.data == other
+
+    def __lt__(self, other):
+        if hasattr(other, '__lt__'):
+            return self.data < other
+        return False
+
+    def __le__(self, other):
+        return self.__eq__(other) or self.__lt__(other)
+
+    def __gt__(self, other):
+        if hasattr(other, '__gt__'):
+            return self.data > other
+        return False
+
+    def __ge__(self, other):
+        return self.__eq__(other) or self.__gt__(other)
+
 
 class SinglyLinkedList:
     """
@@ -56,6 +77,25 @@ class SinglyLinkedList:
     def __str__(self):
         return " -> ".join(map(str, self.__iter__()))
 
+    def __bool__(self):
+        return len(self) > 0
+
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            if len(self) != len(other):
+                return False
+
+            for node_self, node_other in zip(self, other):
+                if node_self != node_other:
+                    return False
+
+            return True
+
+        elif hasattr(other, '__iter__'):
+            return list(self) == list(other)
+
+        return False
+
     def build(self, datalist: list):
         """
         Преобразует входящий список в LinkedList.
@@ -77,6 +117,9 @@ class SinglyLinkedList:
         node = self.head.later_node(i)
         return node.data
 
+    def __getitem__(self, i):
+        return self.get_at(i)
+
     def set_at(self, i: int, data):
         """
         Меняет данные на data в i-ом узле.
@@ -87,6 +130,9 @@ class SinglyLinkedList:
         """
         node = self.head.later_node(i)
         node.data = data
+
+    def __setitem__(self, key, value):
+        self.set_at(key, value)
 
     def insert_first(self, data):
         """
@@ -415,6 +461,15 @@ class StaticArray:
     def __bool__(self):
         return len(self.data) > 0
 
+    def __str__(self):
+        return self.data.__str__()
+
+    def __eq__(self, other):
+        if hasattr(other, '__iter__'):
+            return list(self) == list(other)
+
+        return False
+
     def get_at(self, i: int):
         """
         Получить элемент.
@@ -427,6 +482,9 @@ class StaticArray:
             raise IndexError
         return self.data[i]
 
+    def __getitem__(self, i):
+        return self.get_at(i)
+
     def set_at(self, i: int, item):
         """
         Установить значение элемента.
@@ -438,6 +496,9 @@ class StaticArray:
         if not (0 <= i < len(self.data)):
             raise IndexError
         self.data[i] = item
+
+    def __setitem__(self, key, value):
+        self.set_at(key, value)
 
     def search(self, item):
         """
@@ -479,6 +540,25 @@ class Stack:
     def __iter__(self):
         return self.data.__iter__()
 
+    def __bool__(self):
+        return len(self.data) > 0
+
+    def __str__(self):
+        return self.data.__str__()
+
+    def __getitem__(self, i):
+        return self.data.__getitem__(i)
+
+    def __setitem__(self, key, value):
+        self.data.__setitem__(key, value)
+
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            return self.data == other.data
+        elif hasattr(other, '__iter__'):
+            return list(self) == list(other)
+        return False
+
     def push(self, item):
         """
         Положить наверх стопки новый элемент.
@@ -515,9 +595,6 @@ class Stack:
         """
         return self.data.get_at(len(self))
 
-    def __str__(self):
-        return self.data.__str__()
-
 
 class Queue:
     """
@@ -548,6 +625,19 @@ class Queue:
 
     def __str__(self):
         return self.data.__str__()
+
+    def __getitem__(self, i):
+        return self.data.__getitem__(i)
+
+    def __setitem__(self, key, value):
+        self.data.__setitem__(key, value)
+
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            return self.data == other.data
+        elif hasattr(other, '__iter__'):
+            return list(self) == list(other)
+        return False
 
     def enqueue(self, item):
         """

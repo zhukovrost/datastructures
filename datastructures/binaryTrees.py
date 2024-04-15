@@ -764,6 +764,9 @@ class SQT(BinaryTree):
         assert self.root
         return self.root.subtree_at(i).data
 
+    def __getitem__(self, i):
+        return self.get_at(i)
+
     def set_at(self, i, data):
         """
         Установить значение i-го узла.
@@ -774,6 +777,9 @@ class SQT(BinaryTree):
         """
         assert self.root
         self.root.subtree_at(i).data = data
+
+    def __setitem__(self, key, value):
+        self.set_at(key, value)
 
     def insert_at(self, i, data):
         """
