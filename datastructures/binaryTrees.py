@@ -1,4 +1,5 @@
 from . import Queue
+from math import floor
 
 
 def height(node) -> int:
@@ -852,3 +853,112 @@ class SQT(BinaryTree):
         :param data: значение нового узла
         """
         self.insert_at(len(self), data)
+
+
+# ==================== HEAP ====================
+
+def get_left_child_index(index):
+    return 2 * index + 1
+
+
+def get_right_child_index(index):
+    return 2 * index + 2
+
+
+def get_parent_index(index):
+    return floor((index - 1) / 2)
+
+
+# TODO: build function
+# TODO: more heap methods
+# TODO: tests for all trees and rest linear data structures
+# TODO: comments
+'''
+if arr is None:
+    arr = []
+elif not isinstance(arr, list) and hasattr(arr, '__iter__'):
+    arr = list(arr)
+'''
+
+
+class MinHeap:
+    def __init__(self):
+        self.heap = []
+
+    def __len__(self):
+        return len(self.heap)
+
+    def get_item(self, index):
+        return self.heap[index]
+
+    def __getitem__(self, item):
+        return self.get_item(item)
+
+    def has_left_child(self, index) -> bool:
+        return get_left_child_index(index) < len(self)
+
+    def has_right_child(self, index) -> bool:
+        return get_right_child_index(index) < len(self)
+
+    def has_parent(self, index) -> bool:
+        return get_parent_index(index) >= 0
+
+    def left_child(self, index):
+        return self.heap[get_left_child_index(index)]
+
+    def right_child(self, index):
+        return self.heap[get_right_child_index(index)]
+
+    def parent(self, index):
+        return self.heap[get_parent_index(index)]
+
+    def swap(self, i1, i2):
+        self.heap[i1], self.heap[i2] = self.heap[i2], self.heap[i1]
+
+    def peek(self):
+        if len(self) == 0:
+            raise IndexError
+        return self.heap[0]
+
+    def poll(self):
+        if len(self) == 0:
+            raise IndexError
+
+        item = self.heap[0]
+        self.heap[0] = self.heap[len(self) - 1]
+        self.heap.pop()
+        self.heapify_down()
+        return item
+
+    def add(self, item):
+        self.heap.append(item)
+        self.heapify_up()
+
+    def heapify_down(self, index=None):
+        if len(self) <= 1:
+            return
+
+        if index is None:
+            index = 0
+
+        while self.has_left_child(index):
+            min_child_index = get_left_child_index(index)
+            if self.has_right_child(index) and self.right_child(index) < self.left_child(index):
+                min_child_index = get_right_child_index(index)
+            if self[min_child_index] > self[index]:
+                break
+            else:
+                self.swap(index, min_child_index)
+            index = min_child_index
+
+    def heapify_up(self, index=None):
+        if len(self) <= 1:
+            return
+
+        if index is None:
+            index = len(self) - 1
+
+        while self.has_parent(index) and self.parent > self.heap[index]:
+            p_i = get_parent_index(index)
+            self.swap(index, p_i)
+            index = p_i
