@@ -196,6 +196,23 @@
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.BinaryTreeNode.successor"><code class="docutils literal notranslate"><span class="pre">BinaryTreeNode.successor()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap"><code class="docutils literal notranslate"><span class="pre">MinHeap</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap.__init__"><code class="docutils literal notranslate"><span class="pre">MinHeap.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap.add"><code class="docutils literal notranslate"><span class="pre">MinHeap.add()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap.get_item"><code class="docutils literal notranslate"><span class="pre">MinHeap.get_item()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap.has_left_child"><code class="docutils literal notranslate"><span class="pre">MinHeap.has_left_child()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap.has_parent"><code class="docutils literal notranslate"><span class="pre">MinHeap.has_parent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap.has_right_child"><code class="docutils literal notranslate"><span class="pre">MinHeap.has_right_child()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap.heapify_down"><code class="docutils literal notranslate"><span class="pre">MinHeap.heapify_down()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap.heapify_up"><code class="docutils literal notranslate"><span class="pre">MinHeap.heapify_up()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap.left_child"><code class="docutils literal notranslate"><span class="pre">MinHeap.left_child()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap.parent"><code class="docutils literal notranslate"><span class="pre">MinHeap.parent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap.peek"><code class="docutils literal notranslate"><span class="pre">MinHeap.peek()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap.poll"><code class="docutils literal notranslate"><span class="pre">MinHeap.poll()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap.right_child"><code class="docutils literal notranslate"><span class="pre">MinHeap.right_child()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap.swap"><code class="docutils literal notranslate"><span class="pre">MinHeap.swap()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#datastructures.binaryTrees.SQT"><code class="docutils literal notranslate"><span class="pre">SQT</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.SQT.__init__"><code class="docutils literal notranslate"><span class="pre">SQT.__init__()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.SQT.build"><code class="docutils literal notranslate"><span class="pre">SQT.build()</span></code></a></li>
@@ -232,6 +249,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.SQTNode.successor"><code class="docutils literal notranslate"><span class="pre">SQTNode.successor()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#datastructures.binaryTrees.get_left_child_index"><code class="docutils literal notranslate"><span class="pre">get_left_child_index()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#datastructures.binaryTrees.get_parent_index"><code class="docutils literal notranslate"><span class="pre">get_parent_index()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#datastructures.binaryTrees.get_right_child_index"><code class="docutils literal notranslate"><span class="pre">get_right_child_index()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#datastructures.binaryTrees.height"><code class="docutils literal notranslate"><span class="pre">height()</span></code></a></li>
 </ul>
 </li>
@@ -2135,6 +2155,82 @@ AVL значит, что дерево автоматически <em>балан�
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.binaryTrees.</span></span><span class="sig-name descname"><span class="pre">MinHeap</span></span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.__init__" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.add" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.get_item">
+<span class="sig-name descname"><span class="pre">get_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.get_item" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.has_left_child">
+<span class="sig-name descname"><span class="pre">has_left_child</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.has_left_child" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.has_parent">
+<span class="sig-name descname"><span class="pre">has_parent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.has_parent" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.has_right_child">
+<span class="sig-name descname"><span class="pre">has_right_child</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.has_right_child" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.heapify_down">
+<span class="sig-name descname"><span class="pre">heapify_down</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.heapify_down" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.heapify_up">
+<span class="sig-name descname"><span class="pre">heapify_up</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.heapify_up" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.left_child">
+<span class="sig-name descname"><span class="pre">left_child</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.left_child" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.parent">
+<span class="sig-name descname"><span class="pre">parent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.parent" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.peek">
+<span class="sig-name descname"><span class="pre">peek</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.peek" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.poll">
+<span class="sig-name descname"><span class="pre">poll</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.poll" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.right_child">
+<span class="sig-name descname"><span class="pre">right_child</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.right_child" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.swap">
+<span class="sig-name descname"><span class="pre">swap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.swap" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.SQT">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.binaryTrees.</span></span><span class="sig-name descname"><span class="pre">SQT</span></span><a class="headerlink" href="#datastructures.binaryTrees.SQT" title="Ссылка на это определение"></a></dt>
 <dd><p>Базовые классы: <a class="reference internal" href="#datastructures.binaryTrees.BinaryTree" title="datastructures.binaryTrees.BinaryTree"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinaryTree</span></code></a></p>
@@ -2681,6 +2777,21 @@ AVL значит, что дерево автоматически <em>балан�
 </dd></dl>
 
 </dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.get_left_child_index">
+<span class="sig-prename descclassname"><span class="pre">datastructures.binaryTrees.</span></span><span class="sig-name descname"><span class="pre">get_left_child_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.get_left_child_index" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.get_parent_index">
+<span class="sig-prename descclassname"><span class="pre">datastructures.binaryTrees.</span></span><span class="sig-name descname"><span class="pre">get_parent_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.get_parent_index" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.get_right_child_index">
+<span class="sig-prename descclassname"><span class="pre">datastructures.binaryTrees.</span></span><span class="sig-name descname"><span class="pre">get_right_child_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.get_right_child_index" title="Ссылка на это определение"></a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.height">
