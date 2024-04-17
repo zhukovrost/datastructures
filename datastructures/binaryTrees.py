@@ -1,5 +1,5 @@
-from . import Queue
 from math import floor
+from . import Queue
 
 
 def height(node) -> int:
@@ -432,7 +432,7 @@ class BinaryTree:
 
     **Эти типы деревьев я вынес в отдельные классы**
     """
-    def __init__(self, TreeNodeType = BinaryTreeNode):
+    def __init__(self, TreeNodeType=BinaryTreeNode):
         """
         Инициализатор.
 
@@ -452,7 +452,7 @@ class BinaryTree:
 
 
 class BSTNode(BinaryTreeNode):
-    def subtree_find(self, item: int) -> "TreeNodeType":
+    def subtree_find(self, item: int):
         """
         Найти узел.
 
@@ -731,27 +731,27 @@ class SQT(BinaryTree):
     def __init__(self):
         super().__init__(SQTNode)
 
-    def build(self, datalist: list):
+    def build(self, iterable: list):
         """
         Построить дерево из входящего списка. Но алгоритм не просто поочерёдно вставлять элементы,
         а корнем каждого поддерева является центр среза входящего списка, что способствует балансу дерева.
 
         :Сложность: O(n)
-        :param datalist: входящий список
+        :param iterable: входящий список
         """
-        def build_subtree(_datalist: list, _from: int, _to: int) -> "TreeNodeType":
+        def build_subtree(_iterable: list, _from: int, _to: int):
             center = (_from + _to) // 2
-            root = self.TreeNodeType(_datalist[center])
+            root = self.TreeNodeType(_iterable[center])
             if _from < center:
-                root.left = build_subtree(_datalist, _from, center - 1)
+                root.left = build_subtree(_iterable, _from, center - 1)
                 root.left.parent = root
             if _to > center:
-                root.right = build_subtree(_datalist, center + 1, _to)
+                root.right = build_subtree(_iterable, center + 1, _to)
                 root.right.parent = root
             root.subtree_update()
             return root
 
-        self.root = build_subtree(datalist, 0, len(datalist) - 1)
+        self.root = build_subtree(iterable, 0, len(iterable) - 1)
         self.size = self.root.size
 
     def get_at(self, i):
@@ -857,84 +857,223 @@ class SQT(BinaryTree):
 
 # ==================== HEAP ====================
 
-def get_left_child_index(index):
-    return 2 * index + 1
-
-
-def get_right_child_index(index):
-    return 2 * index + 2
-
-
-def get_parent_index(index):
-    return floor((index - 1) / 2)
-
-
-# TODO: build function
-# TODO: more heap methods
-# TODO: tests for all trees and rest linear data structures
-# TODO: comments
-'''
-if arr is None:
-    arr = []
-elif not isinstance(arr, list) and hasattr(arr, '__iter__'):
-    arr = list(arr)
-'''
-
-
 class MinHeap:
-    def __init__(self):
-        self.heap = []
+    """
+    Куча минимума - это бинарное дерево, где ключ каждого узла всегда меньше или равен ключам его детей.
+    Эта структура данных позволяет эффективно вставлять, удалять и находить минимальный элемент в куче.
+
+    .. image:: images/heap.png
+    """
+
+    def __init__(self, arr=None):
+        """
+        Инициализировать новую кучу минимума.
+
+        :Сложность: O(n log n), где n - количество элементов в arr.
+        :param arr: Необязательный итерируемый объект, содержащий начальные элементы кучи.
+        """
+        if arr is None:
+            arr = []
+        elif not isinstance(arr, list) and hasattr(arr, '__iter__'):
+            arr = list(arr)
+
+        self.heap = arr
+
+        for i in range(len(self) // 2, -1, -1):
+            self.heapify_down(i)
 
     def __len__(self):
+        """
+        Возвращает количество элементов в куче.
+
+        :Сложность: O(1).
+        :return: Количество элементов в куче.
+        """
         return len(self.heap)
 
+    def __iter__(self):
+        """
+        Перебирает элементы кучи в порядке их приоритета.
+
+        :Сложность: O(1).
+        :return: Итератор по элементам кучи.
+        """
+        return self.heap.__iter__()
+
     def get_item(self, index):
+        """
+        Возвращает элемент по указанному индексу.
+
+        :Сложность: O(1).
+        :param index: Индекс элемента для возврата.
+        :return: Элемент по указанному индексу.
+        """
         return self.heap[index]
 
     def __getitem__(self, item):
         return self.get_item(item)
 
+    @staticmethod
+    def get_left_child_index(index):
+        """
+        Возвращает индекс левого потомка указанного узла.
+
+        :Сложность: O(1).
+        :param index: Индекс узла.
+        :return: Индекс левого потомка узла.
+        """
+        return 2 * index + 1
+
+    @staticmethod
+    def get_right_child_index(index):
+        """
+        Возвращает индекс правого потомка указанного узла.
+
+        :Сложность: O(1).
+        :param index: Индекс узла.
+        :return: Индекс правого потомка узла.
+        """
+        return 2 * index + 2
+
+    @staticmethod
+    def get_parent_index(index):
+        """
+        Возвращает индекс родителя указанного узла.
+
+        :Сложность: O(1).
+        :param index: Индекс узла.
+        :return: Индекс родителя узла.
+        """
+        return floor((index - 1) / 2)
+
+    def count(self, item):
+        """
+        Возвращает количество вхождений указанного элемента в кучу.
+
+        :Сложность: O(n), где n - количество элементов в куче.
+        :param item: Элемент для подсчета.
+        :return: Количество вхождений элемента в кучу.
+        """
+        return self.heap.count(item)
+
     def has_left_child(self, index) -> bool:
-        return get_left_child_index(index) < len(self)
+        """
+        Проверяет, есть ли у указанного узла левый потомок.
+
+        :Сложность: O(1).
+        :param index: Индекс узла.
+        :return: True, если узел имеет левого потомка, иначе False.
+        """
+        return self.get_left_child_index(index) < len(self)
 
     def has_right_child(self, index) -> bool:
-        return get_right_child_index(index) < len(self)
+        """
+        Проверяет, есть ли у указанного узла правый потомок.
+
+        :Сложность: O(1).
+        :param index: Индекс узла.
+        :return: True, если узел имеет правого потомка, иначе False.
+        """
+        return self.get_right_child_index(index) < len(self)
 
     def has_parent(self, index) -> bool:
-        return get_parent_index(index) >= 0
+        """
+        Проверяет, есть ли у указанного узла родитель.
+
+        :Сложность: O(1).
+        :param index: Индекс узла.
+        :return: True, если узел имеет родителя, иначе False.
+        """
+        return self.get_parent_index(index) >= 0
 
     def left_child(self, index):
-        return self.heap[get_left_child_index(index)]
+        """
+        Возвращает левого потомка указанного узла.
+
+        :Сложность: O(1).
+        :param index: Индекс узла.
+        :return: Левый потомок узла.
+        """
+        return self.heap[self.get_left_child_index(index)]
 
     def right_child(self, index):
-        return self.heap[get_right_child_index(index)]
+        """
+        Возвращает правого потомка указанного узла.
+
+        :Сложность: O(1).
+        :param index: Индекс узла.
+        :return: Правый потомок узла.
+        """
+        return self.heap[self.get_right_child_index(index)]
 
     def parent(self, index):
-        return self.heap[get_parent_index(index)]
+        """
+        Возвращает родителя указанного узла.
+
+        :Сложность: O(1).
+        :param index: Индекс узла.
+        :return: Родитель узла.
+        """
+        return self.heap[self.get_parent_index(index)]
 
     def swap(self, i1, i2):
+        """
+        Обменивает элементы с указанными индексами.
+
+        :Сложность: O(1).
+        :param i1: Индекс первого элемента.
+        :param i2: Индекс второго элемента.
+        """
         self.heap[i1], self.heap[i2] = self.heap[i2], self.heap[i1]
 
     def peek(self):
+        """
+        Возвращает минимальный элемент в куче без его удаления.
+
+        :Сложность: O(1).
+        :return: Минимальный элемент в куче.
+        """
         if len(self) == 0:
             raise IndexError
         return self.heap[0]
 
-    def poll(self):
+    def poll(self, index=None):
+        """
+        Удаляет и возвращает минимальный элемент из кучи.
+
+        :Сложность: O(log n), где n - количество элементов в куче.
+        :param index: Индекс элемента для удаления. Если не указан, удаляется минимальный элемент.
+        :return: Минимальный элемент в куче.
+        """
         if len(self) == 0:
             raise IndexError
 
-        item = self.heap[0]
-        self.heap[0] = self.heap[len(self) - 1]
+        if index is None:
+            index = 0
+
+        item = self.heap[index]
+        self.heap[index] = self.heap[len(self) - 1]
         self.heap.pop()
-        self.heapify_down()
+        self.heapify_down(index)
         return item
 
     def add(self, item):
+        """
+        Добавляет элемент в кучу.
+
+        :Сложность: O(log n), где n - количество элементов в куче.
+        :param item: Элемент для добавления.
+        """
         self.heap.append(item)
         self.heapify_up()
 
     def heapify_down(self, index=None):
+        """
+        Перестраивает элементы в куче вниз от указанного узла.
+
+        :Сложность: O(log n), где n - количество элементов в куче.
+        :param index: Индекс узла для начала. Если не указан, используется корень кучи.
+        """
         if len(self) <= 1:
             return
 
@@ -942,23 +1081,31 @@ class MinHeap:
             index = 0
 
         while self.has_left_child(index):
-            min_child_index = get_left_child_index(index)
+            min_child_index = self.get_left_child_index(index)
+
             if self.has_right_child(index) and self.right_child(index) < self.left_child(index):
-                min_child_index = get_right_child_index(index)
+                min_child_index = self.get_right_child_index(index)
+
             if self[min_child_index] > self[index]:
                 break
-            else:
-                self.swap(index, min_child_index)
+
+            self.swap(index, min_child_index)
             index = min_child_index
 
     def heapify_up(self, index=None):
+        """
+        Перестраивает элементы в куче вверх от указанного узла.
+
+        :Сложность: O(log n), где n - количество элементов в куче.
+        :param index: Индекс узла для начала. Если не указан, используется последний элемент кучи.
+        """
         if len(self) <= 1:
             return
 
         if index is None:
             index = len(self) - 1
 
-        while self.has_parent(index) and self.parent > self.heap[index]:
-            p_i = get_parent_index(index)
+        while self.has_parent(index) and self.parent(index) > self.heap[index]:
+            p_i = self.get_parent_index(index)
             self.swap(index, p_i)
             index = p_i
