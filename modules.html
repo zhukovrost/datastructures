@@ -199,7 +199,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap"><code class="docutils literal notranslate"><span class="pre">MinHeap</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap.__init__"><code class="docutils literal notranslate"><span class="pre">MinHeap.__init__()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap.add"><code class="docutils literal notranslate"><span class="pre">MinHeap.add()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap.count"><code class="docutils literal notranslate"><span class="pre">MinHeap.count()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap.get_item"><code class="docutils literal notranslate"><span class="pre">MinHeap.get_item()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap.get_left_child_index"><code class="docutils literal notranslate"><span class="pre">MinHeap.get_left_child_index()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap.get_parent_index"><code class="docutils literal notranslate"><span class="pre">MinHeap.get_parent_index()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap.get_right_child_index"><code class="docutils literal notranslate"><span class="pre">MinHeap.get_right_child_index()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap.has_left_child"><code class="docutils literal notranslate"><span class="pre">MinHeap.has_left_child()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap.has_parent"><code class="docutils literal notranslate"><span class="pre">MinHeap.has_parent()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.MinHeap.has_right_child"><code class="docutils literal notranslate"><span class="pre">MinHeap.has_right_child()</span></code></a></li>
@@ -249,9 +253,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.SQTNode.successor"><code class="docutils literal notranslate"><span class="pre">SQTNode.successor()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#datastructures.binaryTrees.get_left_child_index"><code class="docutils literal notranslate"><span class="pre">get_left_child_index()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#datastructures.binaryTrees.get_parent_index"><code class="docutils literal notranslate"><span class="pre">get_parent_index()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#datastructures.binaryTrees.get_right_child_index"><code class="docutils literal notranslate"><span class="pre">get_right_child_index()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#datastructures.binaryTrees.height"><code class="docutils literal notranslate"><span class="pre">height()</span></code></a></li>
 </ul>
 </li>
@@ -1523,7 +1524,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.BSTNode.subtree_find">
-<span class="sig-name descname"><span class="pre">subtree_find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TreeNodeType</span></span></span><a class="headerlink" href="#datastructures.binaryTrees.BSTNode.subtree_find" title="Ссылка на это определение"></a></dt>
+<span class="sig-name descname"><span class="pre">subtree_find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.BSTNode.subtree_find" title="Ссылка на это определение"></a></dt>
 <dd><p>Найти узел.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
@@ -2156,77 +2157,301 @@ AVL значит, что дерево автоматически <em>балан�
 
 <dl class="py class">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.binaryTrees.</span></span><span class="sig-name descname"><span class="pre">MinHeap</span></span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap" title="Ссылка на это определение"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.binaryTrees.</span></span><span class="sig-name descname"><span class="pre">MinHeap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap" title="Ссылка на это определение"></a></dt>
 <dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Куча минимума - это бинарное дерево, где ключ каждого узла всегда меньше или равен ключам его детей.
+Эта структура данных позволяет эффективно вставлять, удалять и находить минимальный элемент в куче.</p>
+<img alt="_images/heap.png" src="_images/heap.png" />
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.__init__" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.__init__" title="Ссылка на это определение"></a></dt>
+<dd><p>Инициализировать новую кучу минимума.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(n log n), где n - количество элементов в arr.</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>arr</strong> – Необязательный итерируемый объект, содержащий начальные элементы кучи.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.add">
 <span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.add" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Добавляет элемент в кучу.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n), где n - количество элементов в куче.</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>item</strong> – Элемент для добавления.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.count">
+<span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.count" title="Ссылка на это определение"></a></dt>
+<dd><p>Возвращает количество вхождений указанного элемента в кучу.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(n), где n - количество элементов в куче.</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>item</strong> – Элемент для подсчета.</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Количество вхождений элемента в кучу.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.get_item">
 <span class="sig-name descname"><span class="pre">get_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.get_item" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Возвращает элемент по указанному индексу.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1).</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>index</strong> – Индекс элемента для возврата.</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Элемент по указанному индексу.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.get_left_child_index">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_left_child_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.get_left_child_index" title="Ссылка на это определение"></a></dt>
+<dd><p>Возвращает индекс левого потомка указанного узла.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1).</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>index</strong> – Индекс узла.</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Индекс левого потомка узла.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.get_parent_index">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_parent_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.get_parent_index" title="Ссылка на это определение"></a></dt>
+<dd><p>Возвращает индекс родителя указанного узла.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1).</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>index</strong> – Индекс узла.</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Индекс родителя узла.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.get_right_child_index">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_right_child_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.get_right_child_index" title="Ссылка на это определение"></a></dt>
+<dd><p>Возвращает индекс правого потомка указанного узла.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1).</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>index</strong> – Индекс узла.</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Индекс правого потомка узла.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.has_left_child">
 <span class="sig-name descname"><span class="pre">has_left_child</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.has_left_child" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Проверяет, есть ли у указанного узла левый потомок.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1).</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>index</strong> – Индекс узла.</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True, если узел имеет левого потомка, иначе False.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.has_parent">
 <span class="sig-name descname"><span class="pre">has_parent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.has_parent" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Проверяет, есть ли у указанного узла родитель.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1).</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>index</strong> – Индекс узла.</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True, если узел имеет родителя, иначе False.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.has_right_child">
 <span class="sig-name descname"><span class="pre">has_right_child</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.has_right_child" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Проверяет, есть ли у указанного узла правый потомок.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1).</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>index</strong> – Индекс узла.</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True, если узел имеет правого потомка, иначе False.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.heapify_down">
 <span class="sig-name descname"><span class="pre">heapify_down</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.heapify_down" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Перестраивает элементы в куче вниз от указанного узла.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n), где n - количество элементов в куче.</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>index</strong> – Индекс узла для начала. Если не указан, используется корень кучи.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.heapify_up">
 <span class="sig-name descname"><span class="pre">heapify_up</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.heapify_up" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Перестраивает элементы в куче вверх от указанного узла.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n), где n - количество элементов в куче.</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>index</strong> – Индекс узла для начала. Если не указан, используется последний элемент кучи.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.left_child">
 <span class="sig-name descname"><span class="pre">left_child</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.left_child" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Возвращает левого потомка указанного узла.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1).</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>index</strong> – Индекс узла.</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Левый потомок узла.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.parent">
 <span class="sig-name descname"><span class="pre">parent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.parent" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Возвращает родителя указанного узла.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1).</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>index</strong> – Индекс узла.</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Родитель узла.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.peek">
 <span class="sig-name descname"><span class="pre">peek</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.peek" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Возвращает минимальный элемент в куче без его удаления.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1).</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Минимальный элемент в куче.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.poll">
-<span class="sig-name descname"><span class="pre">poll</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.poll" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">poll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.poll" title="Ссылка на это определение"></a></dt>
+<dd><p>Удаляет и возвращает минимальный элемент из кучи.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(log n), где n - количество элементов в куче.</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>index</strong> – Индекс элемента для удаления. Если не указан, удаляется минимальный элемент.</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Минимальный элемент в куче.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.right_child">
 <span class="sig-name descname"><span class="pre">right_child</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.right_child" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Возвращает правого потомка указанного узла.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1).</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>index</strong> – Индекс узла.</p>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Правый потомок узла.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.MinHeap.swap">
 <span class="sig-name descname"><span class="pre">swap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.MinHeap.swap" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Обменивает элементы с указанными индексами.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(1).</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>i1</strong> – Индекс первого элемента.</p></li>
+<li><p><strong>i2</strong> – Индекс второго элемента.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -2250,7 +2475,7 @@ AVL значит, что дерево автоматически <em>балан�
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.SQT.build">
-<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datalist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQT.build" title="Ссылка на это определение"></a></dt>
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.SQT.build" title="Ссылка на это определение"></a></dt>
 <dd><p>Построить дерево из входящего списка. Но алгоритм не просто поочерёдно вставлять элементы,
 а корнем каждого поддерева является центр среза входящего списка, что способствует балансу дерева.</p>
 <dl class="field-list simple">
@@ -2258,7 +2483,7 @@ AVL значит, что дерево автоматически <em>балан�
 <dd class="field-odd"><p>O(n)</p>
 </dd>
 <dt class="field-even">Параметры<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>datalist</strong> – входящий список</p>
+<dd class="field-even"><p><strong>iterable</strong> – входящий список</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2777,21 +3002,6 @@ AVL значит, что дерево автоматически <em>балан�
 </dd></dl>
 
 </dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datastructures.binaryTrees.get_left_child_index">
-<span class="sig-prename descclassname"><span class="pre">datastructures.binaryTrees.</span></span><span class="sig-name descname"><span class="pre">get_left_child_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.get_left_child_index" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datastructures.binaryTrees.get_parent_index">
-<span class="sig-prename descclassname"><span class="pre">datastructures.binaryTrees.</span></span><span class="sig-name descname"><span class="pre">get_parent_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.get_parent_index" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="datastructures.binaryTrees.get_right_child_index">
-<span class="sig-prename descclassname"><span class="pre">datastructures.binaryTrees.</span></span><span class="sig-name descname"><span class="pre">get_right_child_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.get_right_child_index" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.height">
