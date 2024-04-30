@@ -11,7 +11,6 @@ Welcome to Python DataStructures by slav_EEik documentation!
    :caption: Contents:
 
    modules.rst
-   tests.rst
 
 Indices and tables
 ==================

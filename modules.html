@@ -22,7 +22,6 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Алфавитный указатель" href="genindex.html" />
     <link rel="search" title="Поиск" href="search.html" />
-    <link rel="next" title="Tests" href="tests.html" />
     <link rel="prev" title="Welcome to Python DataStructures by slav_EEik documentation!" href="index.html" /> 
 </head>
 
@@ -253,6 +252,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.binaryTrees.SQTNode.successor"><code class="docutils literal notranslate"><span class="pre">SQTNode.successor()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#datastructures.binaryTrees.heap_sort"><code class="docutils literal notranslate"><span class="pre">heap_sort()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#datastructures.binaryTrees.height"><code class="docutils literal notranslate"><span class="pre">height()</span></code></a></li>
 </ul>
 </li>
@@ -299,7 +299,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="tests.html">Tests</a></li>
 </ul>
 
         </div>
@@ -2168,7 +2167,7 @@ AVL значит, что дерево автоматически <em>балан�
 <dd><p>Инициализировать новую кучу минимума.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(n log n), где n - количество элементов в arr.</p>
+<dd class="field-odd"><p>O(N log N), где n - количество элементов в arr.</p>
 </dd>
 <dt class="field-even">Параметры<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>arr</strong> – Необязательный итерируемый объект, содержащий начальные элементы кучи.</p>
@@ -3004,6 +3003,31 @@ AVL значит, что дерево автоматически <em>балан�
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="datastructures.binaryTrees.heap_sort">
+<span class="sig-prename descclassname"><span class="pre">datastructures.binaryTrees.</span></span><span class="sig-name descname"><span class="pre">heap_sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.binaryTrees.heap_sort" title="Ссылка на это определение"></a></dt>
+<dd><p>Сортирует входной список с использованием алгоритма сортировки кучей (heap sort).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(N log N)</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>arr</strong> – Список, который требуется отсортировать.</p></li>
+<li><p><strong>kwargs</strong> – <p>Дополнительные параметры для настройки поведения сортировки.
+Возможные параметры:</p>
+<ul>
+<li><p>reverse (bool): Если установлено в True, возвращает список в обратном порядке.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Отсортированный список.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="datastructures.binaryTrees.height">
 <span class="sig-prename descclassname"><span class="pre">datastructures.binaryTrees.</span></span><span class="sig-name descname"><span class="pre">height</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#datastructures.binaryTrees.height" title="Ссылка на это определение"></a></dt>
 <dd><p>Возвращает высоту входящего узла. Сложность алгоритма является <strong>O(1)</strong>
@@ -3487,7 +3511,6 @@ AVL значит, что дерево автоматически <em>балан�
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
         <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Python DataStructures by slav_EEik documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
-        <a href="tests.html" class="btn btn-neutral float-right" title="Tests" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
