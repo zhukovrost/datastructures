@@ -20,6 +20,18 @@ def is_heap(arr: MinHeap):
     return flag
 
 
+def is_sorted(arr):
+    if len(arr) <= 1:
+        return True
+
+    # Проверяем список на возрастание
+    for i in range(1, len(arr)):
+        if arr[i] < arr[i - 1]:
+            return False
+
+    return True
+
+
 class TestHeap:
     @fixture
     def empty_heap(self):
@@ -75,3 +87,13 @@ class TestHeap:
         assert val_count + 1 == filled_heap.count(val)
         assert is_heap(filled_heap)
 
+    @mark.parametrize('arr', [
+        [3, 5, 8, 9, 1],
+        [1, 1, 1, 1, 1],
+        [],
+        [1],
+        [9, 8, 7, 6, 5, 4, 3, 2, 1]
+    ])
+    def test_heap_sort(self, arr):
+        assert is_sorted(heap_sort(arr))
+        assert is_sorted(heap_sort(arr, reverse=True)[::-1])
