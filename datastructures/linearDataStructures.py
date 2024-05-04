@@ -1,3 +1,6 @@
+from . import MinHeap
+
+
 class SinglyLinkedListNode:
     """
     Этот класс представляет собой узел связанного списка (:class:`~SinglyLinkedList`).
@@ -741,3 +744,62 @@ class Deque(Queue):
         :return: Значение элемента, которого мы вынимаем
         """
         return super().dequeue()
+
+
+class PriorityQueueNode:
+    """
+    Узел приоритетной очереди.
+    """
+    def __init__(self, val, priority):
+        self.val = val
+        self.priority = priority
+
+    def __lt__(self, other):
+        if isinstance(other, PriorityQueueNode):
+            return self.priority < other.priority
+        elif isinstance(other, tuple):
+            if len(other) == 2:
+                return self.priority < other[1]
+        else:
+            raise TypeError
+
+    def __eq__(self, other):
+        if isinstance(other, PriorityQueueNode):
+            return self.priority == other.priority
+        elif isinstance(other, tuple):
+            if len(other) == 2:
+                return self.priority == other[1]
+        else:
+            raise TypeError
+
+    def __le__(self, other):
+        return self < other or self == other
+
+    def __repr__(self):
+        return f"({self.val}, {self.priority})"
+
+
+class PriorityQueue(MinHeap):
+    """
+    Приоритетная очередь, реализованная на основе мин-кучи.
+    """
+
+    def enqueue(self, item, priority=0):
+        """
+        Добавляет элемент в приоритетную очередь с указанным приоритетом.
+
+        :Сложность: O(log n)
+        :param item: Элемент для добавления.
+        :param priority: Приоритет элемента. (По умолчанию 0 -- самый высокий приоритет)
+        """
+        self.heap.add(PriorityQueueNode(item, priority))
+
+    def dequeue(self):
+        """
+        Извлекает и возвращает элемент с наивысшим приоритетом из приоритетной очереди.
+
+        :Сложность: O(log n)
+        :return: Самый приоритетный узел.
+        """
+        return self.heap.poll()
+
