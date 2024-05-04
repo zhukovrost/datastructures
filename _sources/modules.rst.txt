@@ -4,6 +4,15 @@ Modules
 .. toctree::
    :maxdepth: 4
 
+datastructures.sorts module
+---------------------------------
+
+.. automodule:: datastructures.sorts
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:
+
 datastructures.linearDataStructures module
 ------------------------------------------
 
@@ -17,6 +26,15 @@ datastructures.binaryTrees module
 ---------------------------------
 
 .. automodule:: datastructures.binaryTrees
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:
+
+datastructures.heap module
+---------------------------------
+
+.. automodule:: datastructures.heap
    :members:
    :undoc-members:
    :show-inheritance:
