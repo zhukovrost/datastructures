@@ -1,5 +1,6 @@
-from datastructures.binaryTrees import *
 from pytest import mark, fixture
+from datastructures import MinHeap
+from datastructures.my_functions import is_sorted
 
 
 def is_heap(arr: MinHeap):
@@ -18,18 +19,6 @@ def is_heap(arr: MinHeap):
                 break
 
     return flag
-
-
-def is_sorted(arr):
-    if len(arr) <= 1:
-        return True
-
-    # Проверяем список на возрастание
-    for i in range(1, len(arr)):
-        if arr[i] < arr[i - 1]:
-            return False
-
-    return True
 
 
 class TestHeap:
@@ -86,14 +75,3 @@ class TestHeap:
         filled_heap.add(val)
         assert val_count + 1 == filled_heap.count(val)
         assert is_heap(filled_heap)
-
-    @mark.parametrize('arr', [
-        [3, 5, 8, 9, 1],
-        [1, 1, 1, 1, 1],
-        [],
-        [1],
-        [9, 8, 7, 6, 5, 4, 3, 2, 1]
-    ])
-    def test_heap_sort(self, arr):
-        assert is_sorted(heap_sort(arr))
-        assert is_sorted(heap_sort(arr, reverse=True)[::-1])
