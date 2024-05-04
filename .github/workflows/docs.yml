@@ -22,6 +22,10 @@ jobs:
         pip3 install sphinx-rtd-theme
         pip3 install sphinx
         pip3 install pydeps
+
+    - name: Create deps image
+      run: |
+        pydeps datastructures
     
     - name: Build docs
       run: |
@@ -35,8 +39,3 @@ jobs:
         publish_branch: gh-pages
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: docs/_build/html/
-
-    - name: Create deps image
-      run: |
-        cd ..
-        pydeps datastructures
