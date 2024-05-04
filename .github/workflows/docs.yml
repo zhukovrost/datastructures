@@ -38,5 +38,3 @@ jobs:
 
     - name: Create deps image
       run: pydeps datastructures --output-format svg --outfile ../datastructures.svg
-      with:
-        publish_branch: master
