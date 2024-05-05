@@ -1,6 +1,5 @@
 from pytest import mark, fixture
 from datastructures import MinHeap
-from datastructures.my_functions import is_sorted
 
 
 def is_heap(arr: MinHeap):

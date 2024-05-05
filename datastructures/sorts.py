@@ -19,6 +19,9 @@ def heap_sort(arr: list, **kwargs):
     inplace = kwargs.get("inplace", False)
     reverse = kwargs.get("reverse", False)
 
+    if len(arr) <= 1:
+        return arr
+
     if not inplace:
         arr = arr.copy()
 
@@ -61,6 +64,6 @@ def bubble_sort(arr: list, **kwargs):
                 swap(arr, i, j)
 
     if reverse:
-        return arr[::-1]
+        arr.reverse()
 
     return arr

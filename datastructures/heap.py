@@ -295,7 +295,7 @@ class PriorityQueue(MinHeap):
         :param item: Элемент для добавления.
         :param priority: Приоритет элемента. (По умолчанию 0 -- самый высокий приоритет)
         """
-        self.heap.add(PriorityQueueNode(item, priority))
+        self.add(PriorityQueueNode(item, priority))
 
     def dequeue(self):
         """
@@ -304,5 +304,5 @@ class PriorityQueue(MinHeap):
         :Сложность: O(log n)
         :return: Самый приоритетный узел.
         """
-        return self.heap.poll()
+        return self.poll()
 
