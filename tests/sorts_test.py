@@ -14,21 +14,24 @@ def lists():
     ]
 
 
-def test_heap_sort(lists):
+def canvas(func, lists):
     for arr in lists:
         arr = arr.copy()
         default = is_sorted(arr)
-        assert is_sorted(heap_sort(arr))
+        assert is_sorted(func(arr))
         assert default == is_sorted(arr)
-        heap_sort(arr, inplace=True)
+        assert is_sorted(func(arr, reverse=True)[::-1])
+        func(arr, inplace=True)
         assert is_sorted(arr)
+
+
+def test_heap_sort(lists):
+    canvas(heap_sort, lists)
 
 
 def test_bubble_sort(lists):
-    for arr in lists:
-        arr = arr.copy()
-        default = is_sorted(arr)
-        assert is_sorted(bubble_sort(arr))
-        assert default == is_sorted(arr)
-        bubble_sort(arr, inplace=True)
-        assert is_sorted(arr)
+    canvas(bubble_sort, lists)
+
+
+def test_quicksort(lists):
+    canvas(quicksort, lists)
