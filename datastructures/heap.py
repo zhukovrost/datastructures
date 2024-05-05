@@ -22,7 +22,10 @@ class MinHeap:
         elif not isinstance(arr, list) and hasattr(arr, '__iter__'):
             arr = list(arr)
 
-        self.heap = arr
+        self.heap = arr.copy()
+
+        if len(arr) <= 1:
+            return
 
         for i in range(len(self) // 2, -1, -1):
             self.heapify_down(i)
