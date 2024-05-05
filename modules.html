@@ -50,6 +50,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#module-datastructures.sorts">datastructures.sorts module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#datastructures.sorts.bubble_sort"><code class="docutils literal notranslate"><span class="pre">bubble_sort()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#datastructures.sorts.heap_sort"><code class="docutils literal notranslate"><span class="pre">heap_sort()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#datastructures.sorts.partition"><code class="docutils literal notranslate"><span class="pre">partition()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#datastructures.sorts.quicksort"><code class="docutils literal notranslate"><span class="pre">quicksort()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-datastructures.linearDataStructures">datastructures.linearDataStructures module</a><ul>
@@ -411,6 +413,49 @@
 </dd>
 <dt class="field-odd">Результат<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Отсортированный список.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datastructures.sorts.partition">
+<span class="sig-prename descclassname"><span class="pre">datastructures.sorts.</span></span><span class="sig-name descname"><span class="pre">partition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">left</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.sorts.partition" title="Ссылка на это определение"></a></dt>
+<dd><p>Эта функция реализует логику разделения для алгоритма быстрой сортировки.
+Она выбирает последний элемент в качестве опорного и переставляет массив так,
+чтобы все элементы меньше опорного были слева, а все элементы больше опорного - справа,
+либо наоборот, если reverse == True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arr</strong> – Список для сортировки.</p></li>
+<li><p><strong>left</strong> – Начальный индекс подсписка для сортировки.</p></li>
+<li><p><strong>right</strong> – Конечный индекс подсписка для сортировки.</p></li>
+<li><p><strong>reverse</strong> – Если True, сортирует список в обратном порядке. Если False, сортирует в прямом порядке.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Индекс опорного элемента после разделения.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datastructures.sorts.quicksort">
+<span class="sig-prename descclassname"><span class="pre">datastructures.sorts.</span></span><span class="sig-name descname"><span class="pre">quicksort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">left</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.sorts.quicksort" title="Ссылка на это определение"></a></dt>
+<dd><p>Выполняет алгоритм быстрой сортировки на входном списке.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arr</strong> – Список для сортировки.</p></li>
+<li><p><strong>left</strong> – Начальный индекс подсписка для сортировки. По умолчанию 0.</p></li>
+<li><p><strong>right</strong> – Конечный индекс подсписка для сортировки. По умолчанию len(arr) - 1.</p></li>
+<li><p><strong>kwargs</strong> – Дополнительные параметры для поведения сортировки.
+- „inplace“ (bool): Если True, сортирует список на месте. По умолчанию False.
+- „reverse“ (bool): Если True, сортирует список в обратном порядке. По умолчанию False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Отсортированный список.</p>
 </dd>
 </dl>
 </dd></dl>
