@@ -852,3 +852,143 @@ class SQT(BinaryTree):
         :param data: значение нового узла
         """
         self.insert_at(len(self), data)
+
+
+# =============== Trie ===============
+
+class TrieNode:
+    """
+    Узел в структуре данных Trie.
+    """
+
+    def __init__(self):
+        """
+        Инициализирует узел TrieNode пустым словарём дочерних узлов и флагом is_word, установленным в False.
+        """
+        self.children = {}
+        self.is_word = False
+
+    def __repr__(self):
+        return str(self.children)
+
+    def __contains__(self, char):
+        """
+        Проверяет, есть ли у узла TrieNode дочерний узел с указанным символом.
+
+        :param char: Символ для проверки.
+        :return: True, если у узла TrieNode есть дочерний узел с указанным символом, иначе False.
+        """
+        return char in self.children
+
+    def __setitem__(self, key, value):
+        """
+        Устанавливает дочерний узел для узла TrieNode с указанным символом и значением.
+
+        :param key: Символ для установки в качестве дочернего узла.
+        :param value: Узел TrieNode для установки в качестве дочернего узла.
+        """
+        self.children[key] = value
+
+    def __getitem__(self, key):
+        """
+        Получает дочерний узел узла TrieNode с указанным символом.
+
+        :param key: Символ для получения дочернего узла.
+        :return: Узел TrieNode-дочерний с указанным символом.
+        """
+        return self.children[key]
+
+    def get_words(self, prefix=""):
+        """
+        Генерирует все слова в поддереве, корнем которого является этот узел TrieNode с указанным префиксом.
+
+        :param prefix: Префикс для добавления к словам.
+        :return: Генератор, выдающий слова с указанным префиксом.
+        """
+        if self.is_word:
+            yield prefix
+        for char, node in self.children.items():
+            yield from node.get_words(prefix + char)
+
+
+class Trie:
+    """
+    Trie (также известно как префиксное дерево) - это древовидная структура данных,
+    которая хранит динамический набор или ассоциативный массив.
+    Ключ обычно является строкой, а связанное значение часто является None.
+    """
+
+    def __init__(self):
+        """
+        Инициализирует пустое дерево Trie.
+        """
+        self.root = TrieNode()
+
+    def insert(self, *words):
+        """
+        Вставляет слова (строки) в дерево Trie.
+
+        :param words: Переменная длина аргумента списка слов для вставки.
+        :raises TypeError: Если слово не является строкой.
+        """
+        for word in words:
+            if not isinstance(word, str):
+                raise TypeError("Метод Trie.insert() принимает только строки")
+            node = self.root
+            for char in word.lower():
+                if char not in node:
+                    node[char] = TrieNode()
+                node = node[char]
+            node.is_word = True
+
+    def search(self, word):
+        """
+        Ищет слово в дереве Trie.
+
+        :param word: Слово для поиска.
+        :return: True, если слово найдено, иначе False.
+        :raises TypeError: Если слово не является строкой.
+        """
+        if not isinstance(word, str):
+            raise TypeError("Метод Trie.search() принимает только строки")
+        node = self.root
+        for char in word:
+            if char not in node:
+                return False
+            node = node[char]
+        return node.is_word
+
+    def __contains__(self, word):
+        """
+        Проверяет, содержится ли слово в дереве Trie.
+
+        :param word: Слово для проверки.
+        :return: True, если слово есть в дереве Trie, иначе False.
+        """
+        return self.search(word)
+
+    def __iter__(self):
+        """
+        Перебирает все слова в дереве Trie.
+
+        :return: Итератор по всем словам в дереве Trie.
+        """
+        return self.root.get_words()
+
+    def get_words_with_prefix(self, prefix=""):
+        """
+        Получает все слова в дереве Trie с указанным префиксом.
+
+        :param prefix: Префикс для проверки.
+        :return: Список слов с указанным префиксом.
+        :raises TypeError: Если префикс не является строкой.
+        """
+        if not isinstance(prefix, str):
+            raise TypeError("Метод Trie.get_words() принимает только строки")
+        node = self.root
+        for char in prefix:
+            if char not in node:
+                return []
+            node = node[char]
+        return list(node.get_words(prefix))
+
