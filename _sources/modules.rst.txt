@@ -25,7 +25,7 @@ datastructures.linearDataStructures module
 datastructures.binaryTrees module
 ---------------------------------
 
-.. automodule:: datastructures.binaryTrees
+.. automodule:: datastructures.trees
    :members:
    :undoc-members:
    :show-inheritance:
