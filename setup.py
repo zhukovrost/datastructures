@@ -1,6 +1,6 @@
 import setuptools
 
-VERSION = "0.1"
+VERSION = "0.1.1"
 
 NAME = "slav-eeik-datastructures"
 
@@ -21,6 +21,7 @@ setuptools.setup(
     url="https://github.com/zhukovrost/datastructures",
     project_urls={
         "Source Code": "https://github.com/zhukovrost/datastructures",
+        "Documentation": "https://zhukovrost.github.io/datastructures/",
     },
     author="Zhukov Rostislav",
     author_email="2rosf.zhukov@gmail.com",
