@@ -22,7 +22,7 @@ datastructures.linearDataStructures module
    :show-inheritance:
    :inherited-members:
 
-datastructures.binaryTrees module
+datastructures.trees module
 ---------------------------------
 
 .. automodule:: datastructures.trees
