@@ -307,17 +307,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.GraphNode.__init__"><code class="docutils literal notranslate"><span class="pre">GraphNode.__init__()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#datastructures.graphs.GraphParent"><code class="docutils literal notranslate"><span class="pre">GraphParent</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.GraphParent.__init__"><code class="docutils literal notranslate"><span class="pre">GraphParent.__init__()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.GraphParent.add_edge"><code class="docutils literal notranslate"><span class="pre">GraphParent.add_edge()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.GraphParent.breadth_first_traversal"><code class="docutils literal notranslate"><span class="pre">GraphParent.breadth_first_traversal()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.GraphParent.depth_first_traversal"><code class="docutils literal notranslate"><span class="pre">GraphParent.depth_first_traversal()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.GraphParent.print_adjacency"><code class="docutils literal notranslate"><span class="pre">GraphParent.print_adjacency()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.GraphParent.remove_edge"><code class="docutils literal notranslate"><span class="pre">GraphParent.remove_edge()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.GraphParent.shortest_path"><code class="docutils literal notranslate"><span class="pre">GraphParent.shortest_path()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.GraphParent.traversal"><code class="docutils literal notranslate"><span class="pre">GraphParent.traversal()</span></code></a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="#datastructures.graphs.ListAdjacency"><code class="docutils literal notranslate"><span class="pre">ListAdjacency</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.ListAdjacency.__init__"><code class="docutils literal notranslate"><span class="pre">ListAdjacency.__init__()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.ListAdjacency.add_edge"><code class="docutils literal notranslate"><span class="pre">ListAdjacency.add_edge()</span></code></a></li>
@@ -384,7 +373,7 @@
 <img alt="_images/bubble-sort.gif" src="_images/bubble-sort.gif" />
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(N^2)</p>
+<dd class="field-odd"><p>O(N²)</p>
 </dd>
 <dt class="field-even">Параметры<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
@@ -1518,7 +1507,7 @@
 </ol>
 </dd>
 </dl>
-<a class="reference internal image-reference" href="_images/levelorder-traversal.gif"><img alt="_images/levelorder-traversal.gif" src="_images/levelorder-traversal.gif" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="_images/level-order-traversal.gif"><img alt="_images/level-order-traversal.gif" src="_images/level-order-traversal.gif" style="width: 400px;" /></a>
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
 <dd class="field-odd"><p>O(n)</p>
@@ -1646,9 +1635,10 @@
 <dt class="sig sig-object py" id="datastructures.trees.BSTNode.skew">
 <span class="sig-name descname"><span class="pre">skew</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.trees.BSTNode.skew" title="Ссылка на это определение"></a></dt>
 <dd><p>Найти <em>скос</em> дерева. <em>Скос</em> - это разница между высотами поддеревьев
-(<em>в данном случае высота правого минус высота левого</em>). Если эта разница больше нуля, то дерево накренено
-<strong>вправо</strong>. Если эта разница меньше нуля, то дерево накренено <strong>влево</strong>. Если эта разница равна нулю,
-то дерево <strong>полное</strong> (не накренено).</p>
+(<em>в данном случае высота правого минус высота левого</em>).
+Если эта разница больше нуля, то дерево накренено <strong>вправо</strong>.
+Если эта разница меньше нуля, то дерево накренено <strong>влево</strong>.
+Если эта разница равна нулю, то дерево <strong>полное</strong> (не накренено).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
 <dd class="field-odd"><p>O(1)</p>
@@ -1827,7 +1817,7 @@
 которое надо повернуть. Функция вызывается при каждом обновлении дерева, см. <a class="reference internal" href="#datastructures.trees.BinaryTreeNode.maintain" title="datastructures.trees.BinaryTreeNode.maintain"><code class="xref py py-class docutils literal notranslate"><span class="pre">maintain</span></code></a>.</p>
 <p><strong>Алгоритм:</strong></p>
 <ol class="arabic simple">
-<li><p>Обозначить временные переменные для хранения узлов: <em>root_left_subtree</em>, <em>pivot_left_subtree</em>, <em>pivot_right_subtree</em></p></li>
+<li><p>Обозначить временные переменные для хранения узлов:         <em>root_left_subtree</em>, <em>pivot_left_subtree</em>, <em>pivot_right_subtree</em></p></li>
 <li><p>Поменять местами корень (<em>root</em>) и опорную точку (<em>pivot</em>). Теперь <em>pivot</em> - корень</p></li>
 <li><p>Сделать левым ребенком <em>pivot</em>’a корень (<em>root</em>), а правым – <em>pivot_right_subtree</em></p></li>
 <li><p>Сделать левым ребёнком <em>root</em>’a <em>root_left_subtree</em>, а правым – <em>pivot_left_subtree</em></p></li>
@@ -1850,7 +1840,7 @@
 которое надо повернуть. Функция вызывается при каждом обновлении дерева, см. <a class="reference internal" href="#datastructures.trees.BinaryTreeNode.maintain" title="datastructures.trees.BinaryTreeNode.maintain"><code class="xref py py-class docutils literal notranslate"><span class="pre">maintain</span></code></a>.</p>
 <p><strong>Алгоритм:</strong></p>
 <ol class="arabic simple">
-<li><p>Обозначить временные переменные для хранения узлов: <em>root_right_subtree</em>, <em>pivot_left_subtree</em>, <em>pivot_right_subtree</em></p></li>
+<li><p>Обозначить временные переменные для хранения узлов:         <em>root_right_subtree</em>, <em>pivot_left_subtree</em>, <em>pivot_right_subtree</em></p></li>
 <li><p>Поменять местами корень (<em>root</em>) и опорную точку (<em>pivot</em>). Теперь <em>pivot</em> - корень</p></li>
 <li><p>Сделать правым ребенком <em>pivot</em>’a корень (<em>root</em>), а левым – <em>pivot_left_subtree</em></p></li>
 <li><p>Сделать правым ребёнком <em>root</em>’a <em>root_right_subtree</em>, а левым – <em>pivot_right_subtree</em></p></li>
@@ -1909,17 +1899,17 @@ AVL значит, что дерево автоматически <em>балан�
 <li><p>Ребёнок - один из узлов, выходящих из определённого</p></li>
 <li><p>Родитель - узел, из которого выходит определённый</p></li>
 <li><p>Грань - связь между ребёнком и родителем</p></li>
-<li><p>Предшественник - тот, кто идёт раньше определённого узла по порядку обхода в глубину in order <a class="reference internal" href="#datastructures.trees.BinaryTreeNode.subtree_iter" title="datastructures.trees.BinaryTreeNode.subtree_iter"><code class="xref py py-class docutils literal notranslate"><span class="pre">subtree_iter</span></code></a></p></li>
-<li><p>Преемник - тот, кто идёт позже определённого узла по порядку обхода в глубину in order <a class="reference internal" href="#datastructures.trees.BinaryTreeNode.subtree_iter" title="datastructures.trees.BinaryTreeNode.subtree_iter"><code class="xref py py-class docutils literal notranslate"><span class="pre">subtree_iter</span></code></a></p></li>
+<li><p>Предшественник - тот, кто идёт раньше определённого узла по порядку обхода в глубину in order         <a class="reference internal" href="#datastructures.trees.BinaryTreeNode.subtree_iter" title="datastructures.trees.BinaryTreeNode.subtree_iter"><code class="xref py py-class docutils literal notranslate"><span class="pre">subtree_iter</span></code></a></p></li>
+<li><p>Преемник - тот, кто идёт позже определённого узла по порядку обхода в глубину in order         <a class="reference internal" href="#datastructures.trees.BinaryTreeNode.subtree_iter" title="datastructures.trees.BinaryTreeNode.subtree_iter"><code class="xref py py-class docutils literal notranslate"><span class="pre">subtree_iter</span></code></a></p></li>
 </ul>
 </dd>
 <dt>Типы деревьев:</dt><dd><ul class="simple">
 <li><p>Полное: у каждого узла либо 0, либо 2 ребёнка.</p></li>
-<li><p>Дегенеративное: у каждого узла либо 0, либо 1 ребёнок</p></li>
-<li><p>Перекошенное: дегенеративное дерево, у узлов которого есть либо <strong>только</strong> правый ребёнок или нет ребёнка, либо <strong>только</strong> левый ребёнок или нет ребёнка</p></li>
-<li><p>Полное: все слои дереве, кроме, возможно, последнего, полностью заполнены</p></li>
-<li><p>Идеальное: полное дерево, у которого все листья на одном уровне</p></li>
-<li><p>Сбалансированное: дерево, у которого разница между высотой левого и правого поддерева меньше или равна 1</p></li>
+<li><p>Дегенеративное: у каждого узла либо 0, либо 1 ребёнок.</p></li>
+<li><p>Перекошенное: дегенеративное дерево, у узлов которого есть либо <strong>только</strong> правый ребёнок или нет ребёнка,         либо <strong>только</strong> левый ребёнок или нет ребёнка.</p></li>
+<li><p>Полное: все слои дерева, кроме, возможно, последнего, полностью заполнены.</p></li>
+<li><p>Идеальное: полное дерево, у которого все листья на одном уровне.</p></li>
+<li><p>Сбалансированное: дерево, у которого разница между высотой левого и правого поддерева меньше или равна 1.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1998,7 +1988,7 @@ AVL значит, что дерево автоматически <em>балан�
 </ol>
 </dd>
 </dl>
-<a class="reference internal image-reference" href="_images/levelorder-traversal.gif"><img alt="_images/levelorder-traversal.gif" src="_images/levelorder-traversal.gif" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="_images/level-order-traversal.gif"><img alt="_images/level-order-traversal.gif" src="_images/level-order-traversal.gif" style="width: 400px;" /></a>
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
 <dd class="field-odd"><p>O(n)</p>
@@ -2126,9 +2116,10 @@ AVL значит, что дерево автоматически <em>балан�
 <dt class="sig sig-object py" id="datastructures.trees.BinaryTreeNode.skew">
 <span class="sig-name descname"><span class="pre">skew</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.trees.BinaryTreeNode.skew" title="Ссылка на это определение"></a></dt>
 <dd><p>Найти <em>скос</em> дерева. <em>Скос</em> - это разница между высотами поддеревьев
-(<em>в данном случае высота правого минус высота левого</em>). Если эта разница больше нуля, то дерево накренено
-<strong>вправо</strong>. Если эта разница меньше нуля, то дерево накренено <strong>влево</strong>. Если эта разница равна нулю,
-то дерево <strong>полное</strong> (не накренено).</p>
+(<em>в данном случае высота правого минус высота левого</em>).
+Если эта разница больше нуля, то дерево накренено <strong>вправо</strong>.
+Если эта разница меньше нуля, то дерево накренено <strong>влево</strong>.
+Если эта разница равна нулю, то дерево <strong>полное</strong> (не накренено).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
 <dd class="field-odd"><p>O(1)</p>
@@ -2241,7 +2232,7 @@ AVL значит, что дерево автоматически <em>балан�
 которое надо повернуть. Функция вызывается при каждом обновлении дерева, см. <a class="reference internal" href="#datastructures.trees.BinaryTreeNode.maintain" title="datastructures.trees.BinaryTreeNode.maintain"><code class="xref py py-class docutils literal notranslate"><span class="pre">maintain</span></code></a>.</p>
 <p><strong>Алгоритм:</strong></p>
 <ol class="arabic simple">
-<li><p>Обозначить временные переменные для хранения узлов: <em>root_left_subtree</em>, <em>pivot_left_subtree</em>, <em>pivot_right_subtree</em></p></li>
+<li><p>Обозначить временные переменные для хранения узлов:         <em>root_left_subtree</em>, <em>pivot_left_subtree</em>, <em>pivot_right_subtree</em></p></li>
 <li><p>Поменять местами корень (<em>root</em>) и опорную точку (<em>pivot</em>). Теперь <em>pivot</em> - корень</p></li>
 <li><p>Сделать левым ребенком <em>pivot</em>’a корень (<em>root</em>), а правым – <em>pivot_right_subtree</em></p></li>
 <li><p>Сделать левым ребёнком <em>root</em>’a <em>root_left_subtree</em>, а правым – <em>pivot_left_subtree</em></p></li>
@@ -2264,7 +2255,7 @@ AVL значит, что дерево автоматически <em>балан�
 которое надо повернуть. Функция вызывается при каждом обновлении дерева, см. <a class="reference internal" href="#datastructures.trees.BinaryTreeNode.maintain" title="datastructures.trees.BinaryTreeNode.maintain"><code class="xref py py-class docutils literal notranslate"><span class="pre">maintain</span></code></a>.</p>
 <p><strong>Алгоритм:</strong></p>
 <ol class="arabic simple">
-<li><p>Обозначить временные переменные для хранения узлов: <em>root_right_subtree</em>, <em>pivot_left_subtree</em>, <em>pivot_right_subtree</em></p></li>
+<li><p>Обозначить временные переменные для хранения узлов:         <em>root_right_subtree</em>, <em>pivot_left_subtree</em>, <em>pivot_right_subtree</em></p></li>
 <li><p>Поменять местами корень (<em>root</em>) и опорную точку (<em>pivot</em>). Теперь <em>pivot</em> - корень</p></li>
 <li><p>Сделать правым ребенком <em>pivot</em>’a корень (<em>root</em>), а левым – <em>pivot_left_subtree</em></p></li>
 <li><p>Сделать правым ребёнком <em>root</em>’a <em>root_right_subtree</em>, а левым – <em>pivot_right_subtree</em></p></li>
@@ -2523,7 +2514,7 @@ AVL значит, что дерево автоматически <em>балан�
 </ol>
 </dd>
 </dl>
-<a class="reference internal image-reference" href="_images/levelorder-traversal.gif"><img alt="_images/levelorder-traversal.gif" src="_images/levelorder-traversal.gif" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="_images/level-order-traversal.gif"><img alt="_images/level-order-traversal.gif" src="_images/level-order-traversal.gif" style="width: 400px;" /></a>
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
 <dd class="field-odd"><p>O(n)</p>
@@ -2651,9 +2642,10 @@ AVL значит, что дерево автоматически <em>балан�
 <dt class="sig sig-object py" id="datastructures.trees.SQTNode.skew">
 <span class="sig-name descname"><span class="pre">skew</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.trees.SQTNode.skew" title="Ссылка на это определение"></a></dt>
 <dd><p>Найти <em>скос</em> дерева. <em>Скос</em> - это разница между высотами поддеревьев
-(<em>в данном случае высота правого минус высота левого</em>). Если эта разница больше нуля, то дерево накренено
-<strong>вправо</strong>. Если эта разница меньше нуля, то дерево накренено <strong>влево</strong>. Если эта разница равна нулю,
-то дерево <strong>полное</strong> (не накренено).</p>
+(<em>в данном случае высота правого минус высота левого</em>).
+Если эта разница больше нуля, то дерево накренено <strong>вправо</strong>.
+Если эта разница меньше нуля, то дерево накренено <strong>влево</strong>.
+Если эта разница равна нулю, то дерево <strong>полное</strong> (не накренено).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
 <dd class="field-odd"><p>O(1)</p>
@@ -2670,7 +2662,7 @@ AVL значит, что дерево автоматически <em>балан�
 <dd><p>Найти i-ый узел. Поиск происходит через размеры узлов:</p>
 <ul class="simple">
 <li><p>Если размер левого ребёнка больше индекса, найти i-ый узел в левом поддереве.</p></li>
-<li><p>Если размер левого ребёнка меньше индекса, найти узел в правом поддереве с индексом: <em>индекс - размер левого ребёнка - 1</em>.</p></li>
+<li><p>Если размер левого ребёнка меньше индекса, найти узел в правом поддереве с индексом:         <em>индекс - размер левого ребёнка - 1</em>.</p></li>
 <li><p>Если размер левого ребенка равен индексу, вернуть текущий узел.</p></li>
 </ul>
 <dl class="field-list simple">
@@ -2788,7 +2780,7 @@ AVL значит, что дерево автоматически <em>балан�
 которое надо повернуть. Функция вызывается при каждом обновлении дерева, см. <a class="reference internal" href="#datastructures.trees.BinaryTreeNode.maintain" title="datastructures.trees.BinaryTreeNode.maintain"><code class="xref py py-class docutils literal notranslate"><span class="pre">maintain</span></code></a>.</p>
 <p><strong>Алгоритм:</strong></p>
 <ol class="arabic simple">
-<li><p>Обозначить временные переменные для хранения узлов: <em>root_left_subtree</em>, <em>pivot_left_subtree</em>, <em>pivot_right_subtree</em></p></li>
+<li><p>Обозначить временные переменные для хранения узлов:         <em>root_left_subtree</em>, <em>pivot_left_subtree</em>, <em>pivot_right_subtree</em></p></li>
 <li><p>Поменять местами корень (<em>root</em>) и опорную точку (<em>pivot</em>). Теперь <em>pivot</em> - корень</p></li>
 <li><p>Сделать левым ребенком <em>pivot</em>’a корень (<em>root</em>), а правым – <em>pivot_right_subtree</em></p></li>
 <li><p>Сделать левым ребёнком <em>root</em>’a <em>root_left_subtree</em>, а правым – <em>pivot_left_subtree</em></p></li>
@@ -2811,7 +2803,7 @@ AVL значит, что дерево автоматически <em>балан�
 которое надо повернуть. Функция вызывается при каждом обновлении дерева, см. <a class="reference internal" href="#datastructures.trees.BinaryTreeNode.maintain" title="datastructures.trees.BinaryTreeNode.maintain"><code class="xref py py-class docutils literal notranslate"><span class="pre">maintain</span></code></a>.</p>
 <p><strong>Алгоритм:</strong></p>
 <ol class="arabic simple">
-<li><p>Обозначить временные переменные для хранения узлов: <em>root_right_subtree</em>, <em>pivot_left_subtree</em>, <em>pivot_right_subtree</em></p></li>
+<li><p>Обозначить временные переменные для хранения узлов:         <em>root_right_subtree</em>, <em>pivot_left_subtree</em>, <em>pivot_right_subtree</em></p></li>
 <li><p>Поменять местами корень (<em>root</em>) и опорную точку (<em>pivot</em>). Теперь <em>pivot</em> - корень</p></li>
 <li><p>Сделать правым ребенком <em>pivot</em>’a корень (<em>root</em>), а левым – <em>pivot_left_subtree</em></p></li>
 <li><p>Сделать правым ребёнком <em>root</em>’a <em>root_right_subtree</em>, а левым – <em>pivot_right_subtree</em></p></li>
@@ -3598,147 +3590,9 @@ AVL значит, что дерево автоматически <em>балан�
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphParent">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.graphs.</span></span><span class="sig-name descname"><span class="pre">GraphParent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphParent" title="Ссылка на это определение"></a></dt>
-<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphParent.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphParent.__init__" title="Ссылка на это определение"></a></dt>
-<dd><p>Инициализатор. Создает пустой граф.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Параметры<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>size</strong> – количество узлов / размер графа</p></li>
-<li><p><strong>directed</strong> – направленный / ненаправленный граф</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphParent.add_edge">
-<span class="sig-name descname"><span class="pre">add_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphParent.add_edge" title="Ссылка на это определение"></a></dt>
-<dd><p>Добавить грань.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Параметры<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>v1</strong> – номер 1го узла</p></li>
-<li><p><strong>v2</strong> – номер 2го узла</p></li>
-<li><p><strong>repeat</strong> – служебная переменная для избегания бесконечной рекурсии, используется для ненаправленных графов</p></li>
-<li><p><strong>weight</strong> – вес грани (его значение)</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphParent.breadth_first_traversal">
-<span class="sig-name descname"><span class="pre">breadth_first_traversal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphParent.breadth_first_traversal" title="Ссылка на это определение"></a></dt>
-<dd><p>Обход графа в ширину. (<em>BFT – Breadth First Traversal</em>).</p>
-<a class="reference internal image-reference" href="_images/graph-bfs.gif"><img alt="_images/graph-bfs.gif" src="_images/graph-bfs.gif" style="width: 400px;" /></a>
-<dl class="field-list simple">
-<dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(V + E), где V – количество вершин и E – количество рёбер</p>
-</dd>
-<dt class="field-even">Параметры<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>from_node</strong> – номер узла, от которого идёт проходка</p>
-</dd>
-<dt class="field-odd">Результат<span class="colon">:</span></dt>
-<dd class="field-odd"><p>итерационный объект с номерами узлов</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphParent.depth_first_traversal">
-<span class="sig-name descname"><span class="pre">depth_first_traversal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphParent.depth_first_traversal" title="Ссылка на это определение"></a></dt>
-<dd><p>Обход графа в глубину. (<em>DFT – Depth First Traversal</em>).</p>
-<a class="reference internal image-reference" href="_images/graph-dfs.gif"><img alt="_images/graph-dfs.gif" src="_images/graph-dfs.gif" style="width: 400px;" /></a>
-<dl class="field-list simple">
-<dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(V + E), где V – количество вершин и E – количество рёбер</p>
-</dd>
-<dt class="field-even">Параметры<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>from_node</strong> – номер узла, от которого идёт проходка</p>
-</dd>
-<dt class="field-odd">Результат<span class="colon">:</span></dt>
-<dd class="field-odd"><p>итерационный объект с номерами узлов</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphParent.print_adjacency">
-<span class="sig-name descname"><span class="pre">print_adjacency</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphParent.print_adjacency" title="Ссылка на это определение"></a></dt>
-<dd><p>Вывести в консоль список / матрицу смежности.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphParent.remove_edge">
-<span class="sig-name descname"><span class="pre">remove_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#datastructures.graphs.GraphParent.remove_edge" title="Ссылка на это определение"></a></dt>
-<dd><p>Убрать грань.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Параметры<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>v1</strong> – номер 1го узла</p></li>
-<li><p><strong>v2</strong> – номер 2го узла</p></li>
-<li><p><strong>repeat</strong> – служебная переменная для избегания бесконечной рекурсии, используется для ненаправленных графов</p></li>
-</ul>
-</dd>
-<dt class="field-even">Результат<span class="colon">:</span></dt>
-<dd class="field-even"><p>вес удалённой грани</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphParent.shortest_path">
-<span class="sig-name descname"><span class="pre">shortest_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node:</span> <span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_node:</span> <span class="pre">int)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'list'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphParent.shortest_path" title="Ссылка на это определение"></a></dt>
-<dd><p>Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(V<sup>2</sup>), где V - количество вершин</p>
-</dd>
-<dt class="field-even">Параметры<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>from_node</strong> – индекс первого узла (откуда проложить маршрут)</p></li>
-<li><p><strong>to_node</strong> – индекс второго узла (куда проложить маршрут)</p></li>
-</ul>
-</dd>
-<dt class="field-odd">Результат<span class="colon">:</span></dt>
-<dd class="field-odd"><p>tuple (int, list)
-- Первый элемент – это минимальная длина маршрута
-- Второй элемент – это кратчайший маршрут: последовательность индексов, которые нужно посетить</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphParent.traversal">
-<span class="sig-name descname"><span class="pre">traversal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node:</span> <span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_type:</span> <span class="pre">object</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'datastructures.linearDataStructures.Queue'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphParent.traversal" title="Ссылка на это определение"></a></dt>
-<dd><p>Проходка по графу.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(V + E), где V – количество вершин и E – количество рёбер</p>
-</dd>
-<dt class="field-even">Параметры<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>from_node</strong> – номер узла, от которого идёт проходка</p></li>
-<li><p><strong>storage_type</strong> – структура, для управления узлами: очередь – если в ширину, стэк – если в глубину</p></li>
-</ul>
-</dd>
-<dt class="field-odd">Результат<span class="colon">:</span></dt>
-<dd class="field-odd"><p>итерационный объект с номерами узлов</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
 <dt class="sig sig-object py" id="datastructures.graphs.ListAdjacency">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.graphs.</span></span><span class="sig-name descname"><span class="pre">ListAdjacency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.ListAdjacency" title="Ссылка на это определение"></a></dt>
-<dd><p>Базовые классы: <a class="reference internal" href="#datastructures.graphs.GraphParent" title="datastructures.graphs.GraphParent"><code class="xref py py-class docutils literal notranslate"><span class="pre">GraphParent</span></code></a></p>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">__GraphParent</span></code></p>
 <p>Реализация графа через список смежности.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.graphs.ListAdjacency.__init__">
@@ -3836,7 +3690,7 @@ AVL значит, что дерево автоматически <em>балан�
 <dd><p>Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(V<sup>2</sup>), где V - количество вершин</p>
+<dd class="field-odd"><p>O(V²), где V - количество вершин</p>
 </dd>
 <dt class="field-even">Параметры<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
@@ -3854,7 +3708,7 @@ AVL значит, что дерево автоматически <em>балан�
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.graphs.ListAdjacency.traversal">
-<span class="sig-name descname"><span class="pre">traversal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.ListAdjacency.traversal" title="Ссылка на это определение"></a></dt>
+<span class="sig-name descname"><span class="pre">traversal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.ListAdjacency.traversal" title="Ссылка на это определение"></a></dt>
 <dd><p>Проходка по графу.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
@@ -3877,7 +3731,7 @@ AVL значит, что дерево автоматически <em>балан�
 <dl class="py class">
 <dt class="sig sig-object py" id="datastructures.graphs.MatrixAdjacency">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.graphs.</span></span><span class="sig-name descname"><span class="pre">MatrixAdjacency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.MatrixAdjacency" title="Ссылка на это определение"></a></dt>
-<dd><p>Базовые классы: <a class="reference internal" href="#datastructures.graphs.GraphParent" title="datastructures.graphs.GraphParent"><code class="xref py py-class docutils literal notranslate"><span class="pre">GraphParent</span></code></a></p>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">__GraphParent</span></code></p>
 <p>Реализация графа через матрицу смежности.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.graphs.MatrixAdjacency.__init__">
@@ -3975,7 +3829,7 @@ AVL значит, что дерево автоматически <em>балан�
 <dd><p>Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(V<sup>2</sup>), где V - количество вершин</p>
+<dd class="field-odd"><p>O(V²), где V - количество вершин</p>
 </dd>
 <dt class="field-even">Параметры<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
@@ -3993,7 +3847,7 @@ AVL значит, что дерево автоматически <em>балан�
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.graphs.MatrixAdjacency.traversal">
-<span class="sig-name descname"><span class="pre">traversal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.MatrixAdjacency.traversal" title="Ссылка на это определение"></a></dt>
+<span class="sig-name descname"><span class="pre">traversal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.MatrixAdjacency.traversal" title="Ссылка на это определение"></a></dt>
 <dd><p>Проходка по графу.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
