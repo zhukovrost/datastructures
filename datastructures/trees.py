@@ -184,7 +184,7 @@ class BinaryTreeNode:
             #. *Выбросить* (оператор yield) *корень*.
             #. Обойти следующий слой
 
-        .. image:: images/levelorder-traversal.gif
+        .. image:: images/level-order-traversal.gif
             :width: 400px
 
         :Сложность: O(n)
@@ -262,16 +262,17 @@ class BinaryTreeNode:
     def skew(self):
         """
         Найти *скос* дерева. *Скос* - это разница между высотами поддеревьев
-        (*в данном случае высота правого минус высота левого*). Если эта разница больше нуля, то дерево накренено
-        **вправо**. Если эта разница меньше нуля, то дерево накренено **влево**. Если эта разница равна нулю,
-        то дерево **полное** (не накренено).
+        (*в данном случае высота правого минус высота левого*).
+        Если эта разница больше нуля, то дерево накренено **вправо**.
+        Если эта разница меньше нуля, то дерево накренено **влево**.
+        Если эта разница равна нулю, то дерево **полное** (не накренено).
 
         :Сложность: O(1)
         :return: разница высот.
         """
         return height(self.right) - height(self.left)
 
-    def subtree_rotate_left(root):
+    def subtree_rotate_left(self):
         """
         Функция поворота дерева налево нужна для поддержки баланса дерева. Она уменьшает скос дерева, не меняя при этом
         порядок узлов при обходе дерева по порядку. Функция вызывается относительно корня поддерева,
@@ -279,7 +280,8 @@ class BinaryTreeNode:
 
         **Алгоритм:**
 
-        1. Обозначить временные переменные для хранения узлов: *root_left_subtree*, *pivot_left_subtree*, *pivot_right_subtree*
+        1. Обозначить временные переменные для хранения узлов: \
+        *root_left_subtree*, *pivot_left_subtree*, *pivot_right_subtree*
         2. Поменять местами корень (*root*) и опорную точку (*pivot*). Теперь *pivot* - корень
         3. Сделать левым ребенком *pivot*'a корень (*root*), а правым -- *pivot_right_subtree*
         4. Сделать левым ребёнком *root*'a *root_left_subtree*, а правым -- *pivot_left_subtree*
@@ -291,21 +293,21 @@ class BinaryTreeNode:
 
         :Сложность: O(1)
         """
-        assert root.right
-        root_left_subtree, pivot = root.left, root.right
+        assert self.right
+        root_left_subtree, pivot = self.left, self.right
         pivot_left_subtree, pivot_right_subtree = pivot.left, pivot.right
-        root, pivot = pivot, root
-        root.data, pivot.data = pivot.data, root.data
-        pivot.left, pivot.right = root, pivot_right_subtree
-        root.left, root.right = root_left_subtree, pivot_left_subtree
+        self, pivot = pivot, self
+        self.data, pivot.data = pivot.data, self.data
+        pivot.left, pivot.right = self, pivot_right_subtree
+        self.left, self.right = root_left_subtree, pivot_left_subtree
         if root_left_subtree:
-            root_left_subtree.parent = root
+            root_left_subtree.parent = self
         if pivot_right_subtree:
             pivot_right_subtree.parent = pivot
-        root.subtree_update()
+        self.subtree_update()
         pivot.subtree_update()
 
-    def subtree_rotate_right(root):
+    def subtree_rotate_right(self):
         """
         Функция поворота дерева направо нужна для поддержки баланса дерева. Она уменьшает скос дерева, не меняя при этом
         порядок узлов при обходе дерева по порядку. Функция вызывается относительно корня поддерева,
@@ -313,7 +315,8 @@ class BinaryTreeNode:
 
         **Алгоритм:**
 
-        1. Обозначить временные переменные для хранения узлов: *root_right_subtree*, *pivot_left_subtree*, *pivot_right_subtree*
+        1. Обозначить временные переменные для хранения узлов: \
+        *root_right_subtree*, *pivot_left_subtree*, *pivot_right_subtree*
         2. Поменять местами корень (*root*) и опорную точку (*pivot*). Теперь *pivot* - корень
         3. Сделать правым ребенком *pivot*'a корень (*root*), а левым -- *pivot_left_subtree*
         4. Сделать правым ребёнком *root*'a *root_right_subtree*, а левым -- *pivot_right_subtree*
@@ -325,20 +328,20 @@ class BinaryTreeNode:
 
         :Сложность: O(1)
         """
-        assert root.left
-        pivot, root_right_subtree = root.left, root.right
+        assert self.left
+        pivot, root_right_subtree = self.left, self.right
         pivot_left_subtree, pivot_right_subtree = pivot.left, pivot.right
-        root, pivot = pivot, root
-        root.data, pivot.data = pivot.data, root.data
-        pivot.left, pivot.right = pivot_left_subtree, root
-        root.left, root.right = pivot_right_subtree, root_right_subtree
+        self, pivot = pivot, self
+        self.data, pivot.data = pivot.data, self.data
+        pivot.left, pivot.right = pivot_left_subtree, self
+        self.left, self.right = pivot_right_subtree, root_right_subtree
         if pivot_left_subtree:
             pivot_left_subtree.parent = pivot
         if root_right_subtree:
-            root_right_subtree.parent = root
+            root_right_subtree.parent = self
 
         pivot.subtree_update()
-        root.subtree_update()
+        self.subtree_update()
 
     def subtree_insert_before(self, node: "TreeNodeType"):
         """
@@ -412,15 +415,18 @@ class BinaryTree:
         * Ребёнок - один из узлов, выходящих из определённого
         * Родитель - узел, из которого выходит определённый
         * Грань - связь между ребёнком и родителем
-        * Предшественник - тот, кто идёт раньше определённого узла по порядку обхода в глубину in order :class:`~BinaryTreeNode.subtree_iter`
-        * Преемник - тот, кто идёт позже определённого узла по порядку обхода в глубину in order :class:`~BinaryTreeNode.subtree_iter`
+        * Предшественник - тот, кто идёт раньше определённого узла по порядку обхода в глубину in order \
+        :class:`~BinaryTreeNode.subtree_iter`
+        * Преемник - тот, кто идёт позже определённого узла по порядку обхода в глубину in order \
+        :class:`~BinaryTreeNode.subtree_iter`
     Типы деревьев:
         * Полное: у каждого узла либо 0, либо 2 ребёнка.
-        * Дегенеративное: у каждого узла либо 0, либо 1 ребёнок
-        * Перекошенное: дегенеративное дерево, у узлов которого есть либо **только** правый ребёнок или нет ребёнка, либо **только** левый ребёнок или нет ребёнка
-        * Полное: все слои дереве, кроме, возможно, последнего, полностью заполнены
-        * Идеальное: полное дерево, у которого все листья на одном уровне
-        * Сбалансированное: дерево, у которого разница между высотой левого и правого поддерева меньше или равна 1
+        * Дегенеративное: у каждого узла либо 0, либо 1 ребёнок.
+        * Перекошенное: дегенеративное дерево, у узлов которого есть либо **только** правый ребёнок или нет ребёнка, \
+        либо **только** левый ребёнок или нет ребёнка.
+        * Полное: все слои дерева, кроме, возможно, последнего, полностью заполнены.
+        * Идеальное: полное дерево, у которого все листья на одном уровне.
+        * Сбалансированное: дерево, у которого разница между высотой левого и правого поддерева меньше или равна 1.
 
     **В этих таблицах вы можете видеть преимущество AVL деревьев:**
     ---------------------------------------------------------------
@@ -699,7 +705,8 @@ class SQTNode(BinaryTreeNode):
         Найти i-ый узел. Поиск происходит через размеры узлов:
         
         * Если размер левого ребёнка больше индекса, найти i-ый узел в левом поддереве.
-        * Если размер левого ребёнка меньше индекса, найти узел в правом поддереве с индексом: *индекс - размер левого ребёнка - 1*.
+        * Если размер левого ребёнка меньше индекса, найти узел в правом поддереве с индексом: \
+        *индекс - размер левого ребёнка - 1*.
         * Если размер левого ребенка равен индексу, вернуть текущий узел.
 
         :Сложность: O(log n)
@@ -991,4 +998,3 @@ class Trie:
                 return []
             node = node[char]
         return list(node.get_words(prefix))
-

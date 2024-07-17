@@ -305,4 +305,3 @@ class PriorityQueue(MinHeap):
         :return: Самый приоритетный узел.
         """
         return self.poll()
-

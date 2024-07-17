@@ -1,3 +1,4 @@
+from abc import ABC, abstractmethod
 from . import Queue, Stack
 
 
@@ -38,7 +39,7 @@ class GraphNode:
         return f"(To: {self.v2}, Weight: {self.weight})"
 
 
-class GraphParent(object):
+class __GraphParent(ABC):
 
     def __init__(self, size: int, directed: bool = True):
         """
@@ -81,13 +82,15 @@ class GraphParent(object):
         if not self.directed and repeat:
             self.remove_edge(v2, v1, False)
 
+    @abstractmethod
     def print_adjacency(self):
         """
         Вывести в консоль список / матрицу смежности.
         """
         raise NotImplementedError
 
-    def traversal(self, from_node: int, storage_type: object = Queue):
+    @abstractmethod
+    def traversal(self, from_node: int, storage_type: object):
         """
         Проходка по графу.
 
@@ -124,12 +127,13 @@ class GraphParent(object):
         """
         return self.traversal(from_node, Stack)
 
+    @abstractmethod
     def shortest_path(self, from_node: int, to_node: int) -> (int, list):
         # TODO: Optimize, using heap / priority queue
         """
         Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.
 
-        :Сложность: O(V\ :sup:`2`), где V - количество вершин
+        :Сложность: O(V²), где V - количество вершин
         :param from_node: индекс первого узла (откуда проложить маршрут)
         :param to_node: индекс второго узла (куда проложить маршрут)
         :returns: tuple (int, list)
@@ -139,7 +143,7 @@ class GraphParent(object):
         raise NotImplementedError
 
 
-class ListAdjacency(GraphParent):
+class ListAdjacency(__GraphParent):
     """
     Реализация графа через список смежности.
     """
@@ -222,7 +226,7 @@ class ListAdjacency(GraphParent):
             return -1, []
         return distance[to_node], get_path(parent, to_node)
 
-    def traversal(self, from_node: int, storage_type: object):
+    def traversal(self, from_node: int, storage_type: type):
         storage = storage_type()
         storage.push(from_node)
         visited = set()
@@ -240,7 +244,7 @@ class ListAdjacency(GraphParent):
                 trav = trav.next
 
 
-class MatrixAdjacency(GraphParent):
+class MatrixAdjacency(__GraphParent):
     """
     Реализация графа через матрицу смежности.
     """
@@ -300,7 +304,7 @@ class MatrixAdjacency(GraphParent):
 
         return distance[to_node], get_path(parent, to_node)
 
-    def traversal(self, from_node: int, storage_type: object):
+    def traversal(self, from_node: int, storage_type: type):
         storage = storage_type()
         storage.push(from_node)
         visited = set()
