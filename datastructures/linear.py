@@ -1,3 +1,8 @@
+"""
+Этот модуль содержит линейные структуры данных.
+"""
+
+
 class SinglyLinkedListNode:
     """
     Этот класс представляет собой узел связанного списка (:class:`~SinglyLinkedList`).
@@ -53,7 +58,8 @@ class SinglyLinkedListNode:
 
 class SinglyLinkedList:
     """
-    Список связан единичными узлами (:class:`~SinglyLinkedListNode`): они хранят указатели **только** на следующий узел.
+    Список связан единичными узлами (:class:`~SinglyLinkedListNode`):
+    они хранят указатели **только** на следующий узел.
 
     .. image:: images/singly-linked-list.png
     """
@@ -91,7 +97,7 @@ class SinglyLinkedList:
 
             return True
 
-        elif hasattr(other, '__iter__'):
+        if hasattr(other, '__iter__'):
             return list(self) == list(other)
 
         return False
@@ -237,8 +243,10 @@ class SinglyLinkedList:
 
 class DoublyLinkedListNode(SinglyLinkedListNode):
     """
-    Этот класс представляет собой узел двойного связанного списка (:class:`~DoublyLinkedList`).
-    Он занимает в два раза больше памяти, потому что имеет указатель как и на следующий, так и на предыдущий узел.
+    Этот класс представляет собой узел двойного связанного списка
+    (:class:`~DoublyLinkedList`).
+    Он занимает в два раза больше памяти, потому что имеет указатель как и на следующий,
+    так и на предыдущий узел.
     """
 
     def __init__(self, data):
@@ -421,8 +429,7 @@ class DoublyLinkedList(SinglyLinkedList):
         :return: данные удаляемого узла
         """
         if i == 0:
-            self.delete_first()
-            return
+            return self.delete_first()
         if i == len(self) - 1:
             self.delete_last()
 
@@ -478,7 +485,7 @@ class StaticArray:
         :param i: Индекс элемента
         :return: Данные под i-ым индексом
         """
-        if not (0 <= i < len(self.data)):
+        if not 0 <= i < len(self.data):
             raise IndexError
         return self.data[i]
 
@@ -493,7 +500,7 @@ class StaticArray:
         :param i: Индекс элемента
         :param item: Значение элемента
         """
-        if not (0 <= i < len(self.data)):
+        if not 0 <= i < len(self.data):
             raise IndexError
         self.data[i] = item
 
@@ -518,7 +525,8 @@ class StaticArray:
 
 class Stack:
     """
-    **Last in - First out** список (LIFO). Альтернативное название: стак/стэк. Работает так же, как и стопка тарелок.
+    **Last in - First out** список (LIFO). Альтернативное название: стак/стэк.
+    Работает так же, как и стопка тарелок.
 
     .. image:: images/stack.png
         :width: 400px
@@ -527,8 +535,10 @@ class Stack:
     def __init__(self):
         """
         Инициализатор. Стак работает с помощью :class:`~SinglyLinkedList`,
-        чтобы всё работало со сложностью алгоритма **O(1)**, вместо O(n). Такое решение было принято в связи с тем,
-        что стаки работают на *сдвигах* и с *крайними элементами списка*. Если вы хотите работать со
+        чтобы всё работало со сложностью алгоритма **O(1)**, вместо O(n).
+        Такое решение было принято в связи с тем,
+        что стаки работают на *сдвигах* и с *крайними элементами списка*.
+        Если вы хотите работать со
         стаком как просто со списком, обращайтесь к параметру `data`:
         там находится :class:`~SinglyLinkedList`, на котором всё работает.
         """
@@ -555,7 +565,7 @@ class Stack:
     def __eq__(self, other):
         if isinstance(other, self.__class__):
             return self.data == other.data
-        elif hasattr(other, '__iter__'):
+        if hasattr(other, '__iter__'):
             return list(self) == list(other)
         return False
 
@@ -598,7 +608,8 @@ class Stack:
 
 class Queue:
     """
-    **First in - First out** список (FIFO). Альтернативное название: очередь. Работает так же, как очередь в пивнушке.
+    **First in - First out** список (FIFO). Альтернативное название: очередь.
+    Работает так же, как очередь в пивнушке.
 
     .. image:: images/queue.png
         :width: 400px
@@ -607,8 +618,9 @@ class Queue:
     def __init__(self):
         """
         Инициализатор. Очередь работает с помощью :class:`~DoublyLinkedList`,
-        чтобы всё работало со сложностью алгоритма **O(1)**, вместо O(n). Такое решение было принято в связи с тем,
-        что очереди работают на *сдвигах* и с *крайними элементами списка*. Если вы хотите работать с очередью как
+        чтобы всё работало со сложностью алгоритма **O(1)**, вместо O(n).
+        Такое решение было принято в связи с тем, что очереди работают на *сдвигах*
+        и с *крайними элементами списка*. Если вы хотите работать с очередью как
         просто со списком, обращайтесь к параметру `data`: там находится
         :class:`~DoublyLinkedList`, на котором всё работает.
         """
@@ -635,7 +647,7 @@ class Queue:
     def __eq__(self, other):
         if isinstance(other, self.__class__):
             return self.data == other.data
-        elif hasattr(other, '__iter__'):
+        if hasattr(other, '__iter__'):
             return list(self) == list(other)
         return False
 
@@ -649,6 +661,12 @@ class Queue:
         self.data.insert_last(item)
 
     def push(self, item):
+        """
+        Поставить в очередь предмет. (Сделать последним элементом *item*)
+
+        :Сложность: O(1)
+        :param item: Значение элемента очереди, который мы ставим
+        """
         self.enqueue(item)
 
     def dequeue(self):
@@ -661,6 +679,12 @@ class Queue:
         return self.data.delete_first()
 
     def pop(self):
+        """
+        Вынуть из очереди следующий (первый) элемент.
+
+        :Сложность: O(1)
+        :return: Значение элемента, которого мы вынимаем
+        """
         return self.dequeue()
 
     def peek_front(self):
@@ -726,7 +750,8 @@ class Deque(Queue):
 
     def enqueue(self, item):
         """
-        **Для работы как с обычной очередью:** поставить в очередь предмет. (Сделать последним элементом *item*)
+        **Для работы как с обычной очередью:** поставить в очередь предмет.
+        (Сделать последним элементом *item*)
 
         :Сложность: O(1)
         :param item: Значение элемента очереди, который мы ставим

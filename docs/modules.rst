@@ -13,10 +13,10 @@ datastructures.sorts module
    :show-inheritance:
    :inherited-members:
 
-datastructures.linearDataStructures module
+datastructures.linear module
 ------------------------------------------
 
-.. automodule:: datastructures.linearDataStructures
+.. automodule:: datastructures.linear
    :members:
    :undoc-members:
    :show-inheritance:

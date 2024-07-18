@@ -1,4 +1,9 @@
-from . import Queue
+"""
+Этот модуль содержит различные деревья.
+"""
+
+
+from .linear import Queue
 
 
 def height(node) -> int:
@@ -13,11 +18,13 @@ def height(node) -> int:
     """
     if node:
         return node.height
-    else:
-        return -1
+    return -1
 
 
 class BinaryTreeNode:
+    """
+    Узел бинарного дерева.
+    """
 
     def __init__(self, item):
         """
@@ -31,6 +38,9 @@ class BinaryTreeNode:
         self.left = None
         self.height = None
         self.subtree_update()
+
+    def __repr__(self):
+        return f"Node({self.data})"
 
     def subtree_update(self):
         """
@@ -215,8 +225,7 @@ class BinaryTreeNode:
         """
         if self.left:
             return self.left.subtree_first()
-        else:
-            return self
+        return self
 
     def subtree_last(self):
         """
@@ -227,8 +236,7 @@ class BinaryTreeNode:
         """
         if self.right:
             return self.right.subtree_last()
-        else:
-            return self
+        return self
 
     def successor(self):
         """
@@ -274,9 +282,11 @@ class BinaryTreeNode:
 
     def subtree_rotate_left(self):
         """
-        Функция поворота дерева налево нужна для поддержки баланса дерева. Она уменьшает скос дерева, не меняя при этом
-        порядок узлов при обходе дерева по порядку. Функция вызывается относительно корня поддерева,
-        которое надо повернуть. Функция вызывается при каждом обновлении дерева, см. :class:`~BinaryTreeNode.maintain`.
+        Функция поворота дерева налево нужна для поддержки баланса дерева.
+        Она уменьшает скос дерева, не меняя при этом порядок узлов при обходе дерева по порядку.
+        Функция вызывается относительно корня поддерева, которое надо повернуть.
+        Функция вызывается при каждом обновлении дерева,
+        см. :class:`~BinaryTreeNode.maintain`.
 
         **Алгоритм:**
 
@@ -285,7 +295,8 @@ class BinaryTreeNode:
         2. Поменять местами корень (*root*) и опорную точку (*pivot*). Теперь *pivot* - корень
         3. Сделать левым ребенком *pivot*'a корень (*root*), а правым -- *pivot_right_subtree*
         4. Сделать левым ребёнком *root*'a *root_left_subtree*, а правым -- *pivot_left_subtree*
-        5. Не забыть поставить указатели на своих родителей для *pivot_right_subtree* и *root_left_subtree*
+        5. Не забыть поставить указатели на своих родителей для \
+        *pivot_right_subtree* и *root_left_subtree*
         6. Обновить дерево относительно *pivot*'a и *root*'a
 
         .. image:: images/left_rotation.gif
@@ -309,9 +320,11 @@ class BinaryTreeNode:
 
     def subtree_rotate_right(self):
         """
-        Функция поворота дерева направо нужна для поддержки баланса дерева. Она уменьшает скос дерева, не меняя при этом
-        порядок узлов при обходе дерева по порядку. Функция вызывается относительно корня поддерева,
-        которое надо повернуть. Функция вызывается при каждом обновлении дерева, см. :class:`~BinaryTreeNode.maintain`.
+        Функция поворота дерева направо нужна для поддержки баланса дерева.
+        Она уменьшает скос дерева, не меняя при этом порядок узлов при
+        обходе дерева по порядку. Функция вызывается относительно корня поддерева,
+        которое надо повернуть. Функция вызывается при каждом обновлении дерева,
+        см. :class:`~BinaryTreeNode.maintain`.
 
         **Алгоритм:**
 
@@ -320,7 +333,8 @@ class BinaryTreeNode:
         2. Поменять местами корень (*root*) и опорную точку (*pivot*). Теперь *pivot* - корень
         3. Сделать правым ребенком *pivot*'a корень (*root*), а левым -- *pivot_left_subtree*
         4. Сделать правым ребёнком *root*'a *root_right_subtree*, а левым -- *pivot_right_subtree*
-        5. Не забыть поставить указатели на своих родителей для *pivot_left_subtree* и *root_right_subtree*
+        5. Не забыть поставить указатели на своих родителей для \
+        *pivot_left_subtree* и *root_right_subtree*
         6. Обновить дерево относительно *pivot*'a и *root*'a
 
         .. image:: images/right_rotation.gif
@@ -388,21 +402,23 @@ class BinaryTreeNode:
                 node = self.successor()
             node.data, self.data = self.data, node.data
             return node.subtree_delete()
-        else:
+        if self.parent:
             if self.parent.left is self:
                 self.parent.left = None
             else:
                 self.parent.right = None
             self.parent.maintain()
+            self.parent = None
 
         return self
 
 
 class BinaryTree:
     """
-    Бинарное дерево AVL. Дерево называется бинарным, потому что у каждого узла не может быть более чем 2 ребёнка.
-    AVL значит, что дерево автоматически *балансируется* (читай далее), что позволяет сократить сложность выполнения
-    большинства алгоритмов с O(n) или O(h) до **O(log n)**!
+    Бинарное дерево AVL. Дерево называется бинарным, потому что у каждого узла не может быть более
+    чем 2 ребёнка. AVL значит, что дерево автоматически *балансируется* (читай далее),
+    что позволяет сократить сложность выполнения большинства алгоритмов
+    с O(n) или O(h) до **O(log n)**!
 
     .. image:: images/binary-tree.png
         :width: 500px
@@ -415,18 +431,19 @@ class BinaryTree:
         * Ребёнок - один из узлов, выходящих из определённого
         * Родитель - узел, из которого выходит определённый
         * Грань - связь между ребёнком и родителем
-        * Предшественник - тот, кто идёт раньше определённого узла по порядку обхода в глубину in order \
-        :class:`~BinaryTreeNode.subtree_iter`
+        * Предшественник - тот, кто идёт раньше определённого узла по порядку обхода в глубину \
+        in order :class:`~BinaryTreeNode.subtree_iter`
         * Преемник - тот, кто идёт позже определённого узла по порядку обхода в глубину in order \
         :class:`~BinaryTreeNode.subtree_iter`
     Типы деревьев:
         * Полное: у каждого узла либо 0, либо 2 ребёнка.
         * Дегенеративное: у каждого узла либо 0, либо 1 ребёнок.
-        * Перекошенное: дегенеративное дерево, у узлов которого есть либо **только** правый ребёнок или нет ребёнка, \
-        либо **только** левый ребёнок или нет ребёнка.
+        * Перекошенное: дегенеративное дерево, у узлов которого есть либо **только** \
+        правый ребёнок или нет ребёнка, либо **только** левый ребёнок или нет ребёнка.
         * Полное: все слои дерева, кроме, возможно, последнего, полностью заполнены.
         * Идеальное: полное дерево, у которого все листья на одном уровне.
-        * Сбалансированное: дерево, у которого разница между высотой левого и правого поддерева меньше или равна 1.
+        * Сбалансированное: дерево, у которого разница между высотой левого и \
+        правого поддерева меньше или равна 1.
 
     **В этих таблицах вы можете видеть преимущество AVL деревьев:**
     ---------------------------------------------------------------
@@ -437,15 +454,15 @@ class BinaryTree:
 
     **Эти типы деревьев я вынес в отдельные классы**
     """
-    def __init__(self, TreeNodeType=BinaryTreeNode):
+    def __init__(self, tree_node_type=BinaryTreeNode):
         """
         Инициализатор.
 
-        :param TreeNodeType: Тип узлов дерева. По умолчанию :class:`~BinaryTreeNode`
+        :param tree_node_type: Тип узлов дерева. По умолчанию :class:`~BinaryTreeNode`
         """
         self.root = None
         self.size = 0
-        self.TreeNodeType = TreeNodeType
+        self.tree_node_type = tree_node_type
 
     def __len__(self):
         return self.size
@@ -455,8 +472,16 @@ class BinaryTree:
             for node in self.root.subtree_iter():
                 yield node
 
+    def __repr__(self):
+        if self.root:
+            return f"BinaryTree({[node.__repr__() for node in self.root.subtree_iter()]})"
+        return "BinaryTree([])"
+
 
 class BSTNode(BinaryTreeNode):
+    """
+    Узел бинарного дерева поиска.
+    """
     def subtree_find(self, item: int):
         """
         Найти узел.
@@ -490,16 +515,15 @@ class BSTNode(BinaryTreeNode):
             # идти вправо, чтобы увеличить значение узла
             if self.right:
                 return self.right.subtree_find_next(item)
-            else:
-                return None
-        else:
-            # когда значение узла больше:
-            # самый левый элемент поддерева (если он есть),
-            # чтобы максимально приблизиться к искомому значению (убывание)
-            if self.left:
-                node = self.left.subtree_find_next(item)
-                if node:
-                    return node
+            return None
+
+        # когда значение узла больше:
+        # самый левый элемент поддерева (если он есть),
+        # чтобы максимально приблизиться к искомому значению (убывание)
+        if self.left:
+            node = self.left.subtree_find_next(item)
+            if node:
+                return node
 
         # если нет узлов в левом поддереве, вернуть текущий узел
         return self
@@ -515,13 +539,13 @@ class BSTNode(BinaryTreeNode):
         if self.data >= item:
             if self.left:
                 return self.left.subtree_find_prev(item)
-            else:
-                return None
-        else:
-            if self.right:
-                node = self.right.subtree_find_prev(item)
-                if node:
-                    return node
+            return None
+
+        if self.right:
+            node = self.right.subtree_find_prev(item)
+            if node:
+                return node
+
         return self
 
     def subtree_insert(self, new_node: "TreeNodeType"):
@@ -551,21 +575,24 @@ class BSTNode(BinaryTreeNode):
 
 
 class BST(BinaryTree):
+    """
+    Это то же самое бинарное дерево, но значения узлов будут возрастать в порядке обхода.
+    Повторяющиеся элементы пропадают. По другому это дерево можно назвать бинарное
+    дерево-множество или дерево бинарного поиска.
+
+    .. image:: /images/bst.png
+        :width: 500px
+
+    Если обойти это дерево по порядку (:class:`~BinaryTreeNode.subtree_iter`),
+    то на выходе мы получим узлы в порядке возрастания:
+    **2 4 6 8 9 10 11 12 14 16 18**
+
+    .. image:: images/BST_complexity.png
+    """
+
     def __init__(self):
         """
         Инициализатор дерева с типом узлов :class:`~BSTNode`.
-        Это то же самое бинарное дерево, но значения узлов будут возрастать в порядке обхода.
-        Повторяющиеся элементы пропадают. По другому это дерево можно назвать бинарное дерево-множество или
-        дерево бинарного поиска.
-
-        .. image:: /images/bst.png
-            :width: 500px
-
-        Если обойти это дерево по порядку (:class:`~BinaryTreeNode.subtree_iter`),
-        то на выходе мы получим узлы в порядке возрастания:
-        **2 4 6 8 9 10 11 12 14 16 18**
-
-        .. image:: images/BST_complexity.png
         """
         super().__init__(BSTNode)
 
@@ -588,6 +615,7 @@ class BST(BinaryTree):
         """
         if self.root:
             return self.root.subtree_first().data
+        return None
 
     def find_max(self):
         """
@@ -598,6 +626,7 @@ class BST(BinaryTree):
         """
         if self.root:
             return self.root.subtree_last().data
+        return None
 
     def find(self, item: int):
         """
@@ -611,6 +640,7 @@ class BST(BinaryTree):
             node = self.root.subtree_find(item)
             if node is not None:
                 return node.data
+        return None
 
     def find_next(self, item: int):
         """
@@ -624,6 +654,7 @@ class BST(BinaryTree):
             node = self.root.subtree_find_next(item)
             if node is not None:
                 return node.data
+        return None
 
     def find_prev(self, item: int):
         """
@@ -637,6 +668,7 @@ class BST(BinaryTree):
             node = self.root.subtree_find_prev(item)
             if node is not None:
                 return node.data
+        return None
 
     def insert(self, item: int) -> bool:
         """
@@ -670,9 +702,9 @@ class BST(BinaryTree):
         node = self.root.subtree_find(item)
         assert node
         temp = node.subtree_delete()
-        if temp.parent is None:
-            self.root = None
         self.size -= 1
+        if self.size == 0:
+            self.root = None
         return temp.data
 
 
@@ -721,10 +753,10 @@ class SQTNode(BinaryTreeNode):
 
         if i < left_size:
             return self.left.subtree_at(i)
-        elif i > left_size:
+        if i > left_size:
             return self.right.subtree_at(i - left_size - 1)
-        else:
-            return self
+
+        return self
 
 
 class SQT(BinaryTree):
@@ -740,14 +772,15 @@ class SQT(BinaryTree):
     def build(self, iterable: list):
         """
         Построить дерево из входящего списка. Но алгоритм не просто поочерёдно вставлять элементы,
-        а корнем каждого поддерева является центр среза входящего списка, что способствует балансу дерева.
+        а корнем каждого поддерева является центр среза входящего списка, что способствует балансу
+        дерева.
 
         :Сложность: O(n)
         :param iterable: входящий список
         """
         def build_subtree(_iterable: list, _from: int, _to: int):
             center = (_from + _to) // 2
-            root = self.TreeNodeType(_iterable[center])
+            root = self.tree_node_type(_iterable[center])
             if _from < center:
                 root.left = build_subtree(_iterable, _from, center - 1)
                 root.left.parent = root
@@ -796,7 +829,7 @@ class SQT(BinaryTree):
         :param i: индекс нового узла
         :param data: значение нового узла
         """
-        new_node = self.TreeNodeType(data)
+        new_node = self.tree_node_type(data)
         if i == 0:
             if self.root:
                 node = self.root.subtree_first()
@@ -870,7 +903,8 @@ class TrieNode:
 
     def __init__(self):
         """
-        Инициализирует узел TrieNode пустым словарём дочерних узлов и флагом is_word, установленным в False.
+        Инициализирует узел TrieNode пустым словарём дочерних узлов и флагом is_word,
+        установленным в False.
         """
         self.children = {}
         self.is_word = False
@@ -907,7 +941,8 @@ class TrieNode:
 
     def get_words(self, prefix=""):
         """
-        Генерирует все слова в поддереве, корнем которого является этот узел TrieNode с указанным префиксом.
+        Генерирует все слова в поддереве, корнем которого является этот узел TrieNode
+        с указанным префиксом.
 
         :param prefix: Префикс для добавления к словам.
         :return: Генератор, выдающий слова с указанным префиксом.

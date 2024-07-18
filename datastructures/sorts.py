@@ -1,4 +1,8 @@
-from . import MinHeap
+"""
+Этот модуль содержит сортировки.
+"""
+
+from .heap import MinHeap
 from .my_functions import swap
 
 
@@ -11,22 +15,23 @@ def heap_sort(arr: list, **kwargs):
     :param kwargs: Дополнительные параметры для настройки поведения сортировки.
                    Возможные параметры:
 
-                   - reverse (bool): Если установлено в True, возвращает список в обратном порядке.
-                   - inplace (bool): Если установлено в True, сортирует список на месте (in-place).
+       - reverse (bool): Если установлено в True, возвращает список в обратном порядке.
+       - inplace (bool): Если установлено в True, сортирует список на месте (in-place).
 
     :return: Отсортированный список.
     """
     inplace = kwargs.get("inplace", False)
     reverse = kwargs.get("reverse", False)
 
-    if len(arr) <= 1:
+    length = len(arr)
+    if length <= 1:
         return arr
 
     if not inplace:
         arr = arr.copy()
 
     heap = MinHeap(arr)
-    for i in range(len(arr)):
+    for i in range(length):
         arr[i] = heap.poll()
 
     if reverse:
@@ -84,8 +89,8 @@ def quicksort(arr, left=None, right=None, **kwargs):
 
     :param kwargs: Дополнительные параметры для поведения сортировки.
 
-                   - inplace (bool): Если True, сортирует список на месте. По умолчанию False.
-                   - reverse (bool): Если True, сортирует список в обратном порядке. По умолчанию False.
+       - inplace (bool): Если True, сортирует список на месте. По умолчанию False.
+       - reverse (bool): Если True, сортирует список в обратном порядке. По умолчанию False.
 
     :return: Отсортированный список.
     """
@@ -121,7 +126,8 @@ def partition(arr, left, right, reverse):
     :param arr: Список для сортировки.
     :param left: Начальный индекс подсписка для сортировки.
     :param right: Конечный индекс подсписка для сортировки.
-    :param reverse: Если True, сортирует список в обратном порядке. Если False, сортирует в прямом порядке.
+    :param reverse: Если True, сортирует список в обратном порядке. \
+    Если False, сортирует в прямом порядке.
 
     :return: Индекс опорного элемента после разделения.
     """

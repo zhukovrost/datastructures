@@ -1,11 +1,18 @@
+"""
+Этот модуль содержит кучу и приоритетную очередь,
+которая, в свою очередь, работает на куче.
+"""
+
+
 from math import floor
 from .my_functions import swap
 
 
 class MinHeap:
     """
-    Куча минимума - это бинарное дерево, где ключ каждого узла всегда меньше или равен ключам его детей.
-    Эта структура данных позволяет эффективно вставлять, удалять и находить минимальный элемент в куче.
+    Куча минимума - это бинарное дерево, где ключ каждого узла всегда меньше
+    или равен ключам его детей. Эта структура данных позволяет эффективно
+    вставлять, удалять и находить минимальный элемент в куче.
 
     .. image:: images/heap.png
     """
@@ -260,20 +267,18 @@ class PriorityQueueNode:
     def __lt__(self, other):
         if isinstance(other, PriorityQueueNode):
             return self.priority < other.priority
-        elif isinstance(other, tuple):
-            if len(other) == 2:
-                return self.priority < other[1]
-        else:
-            raise TypeError
+        if isinstance(other, tuple) and len(other) == 2:
+            return self.priority < other[1]
+
+        raise TypeError
 
     def __eq__(self, other):
         if isinstance(other, PriorityQueueNode):
             return self.priority == other.priority
-        elif isinstance(other, tuple):
-            if len(other) == 2:
-                return self.priority == other[1]
-        else:
-            raise TypeError
+        if isinstance(other, tuple) and len(other) == 2:
+            return self.priority == other[1]
+
+        raise TypeError
 
     def __le__(self, other):
         return self < other or self == other

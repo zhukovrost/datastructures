@@ -1,5 +1,10 @@
+"""
+Этот модуль содержит графы.
+"""
+
+
 from abc import ABC, abstractmethod
-from . import Queue, Stack
+from .linear import Queue, Stack
 
 
 def get_path(prev_nodes: list, target: int) -> list:
@@ -38,8 +43,11 @@ class GraphNode:
     def __str__(self):
         return f"(To: {self.v2}, Weight: {self.weight})"
 
+    def __repr__(self):
+        return self.__str__()
 
-class __GraphParent(ABC):
+
+class _GraphParent(ABC):
 
     def __init__(self, size: int, directed: bool = True):
         """
@@ -60,7 +68,8 @@ class __GraphParent(ABC):
 
         :param v1: номер 1го узла
         :param v2: номер 2го узла
-        :param repeat: служебная переменная для избегания бесконечной рекурсии, используется для ненаправленных графов
+        :param repeat: служебная переменная для избегания бесконечной рекурсии, \
+        используется для ненаправленных графов
         :param weight: вес грани (его значение)
         """
         if not (0 <= v1 < self.size and 0 <= v2 < self.size):
@@ -74,7 +83,8 @@ class __GraphParent(ABC):
 
         :param v1: номер 1го узла
         :param v2: номер 2го узла
-        :param repeat: служебная переменная для избегания бесконечной рекурсии, используется для ненаправленных графов
+        :param repeat: служебная переменная для избегания бесконечной рекурсии, \
+        используется для ненаправленных графов
         :return: вес удалённой грани
         """
         if not (0 <= v1 < self.size and 0 <= v2 < self.size):
@@ -96,7 +106,8 @@ class __GraphParent(ABC):
 
         :Сложность: O(V + E), где V -- количество вершин и E -- количество рёбер
         :param from_node: номер узла, от которого идёт проходка
-        :param storage_type: структура, для управления узлами: очередь -- если в ширину, стэк -- если в глубину
+        :param storage_type: структура, для управления узлами: \
+        очередь -- если в ширину, стэк -- если в глубину
         :return: итерационный объект с номерами узлов
         """
         raise NotImplementedError
@@ -129,7 +140,6 @@ class __GraphParent(ABC):
 
     @abstractmethod
     def shortest_path(self, from_node: int, to_node: int) -> (int, list):
-        # TODO: Optimize, using heap / priority queue
         """
         Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.
 
@@ -138,12 +148,13 @@ class __GraphParent(ABC):
         :param to_node: индекс второго узла (куда проложить маршрут)
         :returns: tuple (int, list)
             - Первый элемент -- это минимальная длина маршрута
-            - Второй элемент -- это кратчайший маршрут: последовательность индексов, которые нужно посетить
+            - Второй элемент -- это кратчайший маршрут: последовательность индексов, \
+            которые нужно посетить
         """
         raise NotImplementedError
 
 
-class ListAdjacency(__GraphParent):
+class ListAdjacency(_GraphParent):
     """
     Реализация графа через список смежности.
     """
@@ -166,7 +177,6 @@ class ListAdjacency(__GraphParent):
             head = head.next
 
         if not head:
-            assert "No such edge"
             return -1
         tmp = head.weight
         if prev:
@@ -176,6 +186,8 @@ class ListAdjacency(__GraphParent):
 
         if repeat:
             return tmp
+
+        return 0
 
     def print_adjacency(self):
         """
@@ -215,7 +227,8 @@ class ListAdjacency(__GraphParent):
             node = self.list[min_unvisited_node]
             while node:
                 # перебор соседей
-                if not visited[node.v2] and distance[min_unvisited_node] + node.weight < distance[node.v2]:
+                if not visited[node.v2] and distance[min_unvisited_node] + node.weight \
+                        < distance[node.v2]:
                     distance[node.v2] = distance[min_unvisited_node] + node.weight
                     parent[node.v2] = min_unvisited_node
                 node = node.next
@@ -244,7 +257,7 @@ class ListAdjacency(__GraphParent):
                 trav = trav.next
 
 
-class MatrixAdjacency(__GraphParent):
+class MatrixAdjacency(_GraphParent):
     """
     Реализация графа через матрицу смежности.
     """
@@ -264,6 +277,7 @@ class MatrixAdjacency(__GraphParent):
         self.matrix[v1][v2] = 0
         if repeat:
             return tmp
+        return 0
 
     def print_adjacency(self):
         """
@@ -297,7 +311,8 @@ class MatrixAdjacency(__GraphParent):
             for target in range(self.size):
                 if self.matrix[min_unvisited_node][target] == 0:
                     continue
-                new_distance = self.matrix[min_unvisited_node][target] + distance[min_unvisited_node]
+                new_distance = \
+                    self.matrix[min_unvisited_node][target] + distance[min_unvisited_node]
                 if new_distance < distance[target]:
                     distance[target] = new_distance
                     parent[target] = min_unvisited_node
