@@ -852,7 +852,7 @@ class SQT(BinaryTree):
         assert self.root
         node = self.root.subtree_at(i)
         temp = node.subtree_delete()
-        if temp.parent is None:
+        if temp is self.root and temp.left is None and temp.right is None:
             self.root = None
         self.size -= 1
         return temp.data

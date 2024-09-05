@@ -1,6 +1,5 @@
 from pytest import fixture
-from datastructures import \
-    Trie, BinaryTree, BinaryTreeNode, BSTNode, BST
+from datastructures import *
 
 
 class TestTrie:
@@ -312,3 +311,61 @@ class TestBST:
         empty_tree.size -= 1
 
         assert empty_tree.root.skew() == 0
+
+class TestSQT:
+
+    @fixture
+    def sqt(self):
+        return SQT()
+
+    def test_build_tree(self, sqt):
+        sqt.build([1, 2, 3, 4, 5, 6, 7])
+        inorder = list(sqt.root.inorder_traversal())
+        assert [node.data for node in inorder] == [1, 2, 3, 4, 5, 6, 7]
+
+    def test_get_at(self, sqt):
+        sqt.build([1, 2, 3, 4, 5])
+        assert sqt.get_at(0) == 1
+        assert sqt.get_at(2) == 3
+        assert sqt.get_at(4) == 5
+
+    def test_set_at(self, sqt):
+        sqt.build([1, 2, 3, 4, 5])
+        sqt.set_at(2, 10)
+        assert sqt.get_at(2) == 10
+
+    def test_insert_at(self, sqt):
+        sqt.build([1, 2, 4, 5])
+        sqt.insert_at(2, 3)
+        inorder = list(sqt.root.inorder_traversal())
+        assert [node.data for node in inorder] == [1, 2, 3, 4, 5]
+
+    def test_delete_at(self, sqt):
+        sqt.build([1, 2, 3, 4, 5])
+        sqt.delete_at(2)
+        inorder = list(sqt.root.inorder_traversal())
+        assert [node.data for node in inorder] == [1, 2, 4, 5]
+
+    def test_delete_first(self, sqt):
+        sqt.build([1, 2, 3, 4, 5])
+        sqt.delete_first()
+        inorder = list(sqt.root.inorder_traversal())
+        assert [node.data for node in inorder] == [2, 3, 4, 5]
+
+    def test_delete_last(self, sqt):
+        sqt.build([1, 2, 3, 4, 5])
+        sqt.delete_last()
+        inorder = list(sqt.root.inorder_traversal())
+        assert [node.data for node in inorder] == [1, 2, 3, 4]
+
+    def test_insert_first(self, sqt):
+        sqt.build([2, 3, 4, 5])
+        sqt.insert_first(1)
+        inorder = list(sqt.root.inorder_traversal())
+        assert [node.data for node in inorder] == [1, 2, 3, 4, 5]
+
+    def test_insert_last(self, sqt):
+        sqt.build([1, 2, 3, 4])
+        sqt.insert_last(5)
+        inorder = list(sqt.root.inorder_traversal())
+        assert [node.data for node in inorder] == [1, 2, 3, 4, 5]
