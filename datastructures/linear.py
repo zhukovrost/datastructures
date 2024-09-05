@@ -102,14 +102,14 @@ class SinglyLinkedList:
 
         return False
 
-    def build(self, datalist: list):
+    def build(self, data_list: list):
         """
         Преобразует входящий список в LinkedList.
 
         :Сложность: O(n)
-        :param datalist: обычный список
+        :param data_list: обычный список
         """
-        for data in reversed(datalist):
+        for data in reversed(data_list):
             self.insert_first(data)
 
     def get_at(self, i: int):
@@ -290,14 +290,14 @@ class DoublyLinkedList(SinglyLinkedList):
 
     # __len__ и __iter__ из наследуемого класса
 
-    def build(self, datalist: list):
+    def build(self, data_list: list):
         """
         Преобразует входящий список в LinkedList.
 
         :Сложность: O(n)
-        :param datalist: обычный список
+        :param data_list: обычный список
         """
-        for data in datalist:
+        for data in data_list:
             self.insert_last(data)
 
     def get_at(self, i: int):

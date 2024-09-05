@@ -1,6 +1,5 @@
 from pytest import mark, fixture
-from datastructures import \
-    Stack, Queue, SinglyLinkedList, DoublyLinkedList, StaticArray, Deque
+from datastructures import *
 
 
 class TestSinglyLinkedList:
@@ -108,3 +107,134 @@ class TestStaticArray:
     @mark.parametrize('index,value', [(0, 1), (5, 6), (3, 4)])
     def test_search(self, filled_array, index, value):
         assert filled_array.search(value) == index
+
+class TestStack:
+    @fixture
+    def empty_stack(self):
+        return Stack()
+
+    @fixture
+    def filled_stack(self):
+        stack = Stack()
+        stack.push(1)
+        stack.push(2)
+        stack.push(3)
+        return stack
+
+    def test_push(self, empty_stack):
+        empty_stack.push(10)
+        assert len(empty_stack) == 1
+        assert empty_stack.peek() == 10
+
+    def test_pop(self, filled_stack):
+        assert filled_stack.pop() == 3
+        assert len(filled_stack) == 2
+        assert filled_stack.pop() == 2
+        assert len(filled_stack) == 1
+
+    def test_peek(self, filled_stack):
+        assert filled_stack.peek() == 3
+        filled_stack.pop()
+        assert filled_stack.peek() == 2
+
+    def test_len(self, filled_stack):
+        assert len(filled_stack) == 3
+        filled_stack.pop()
+        assert len(filled_stack) == 2
+
+    def test_is_empty(self, empty_stack):
+        assert bool(empty_stack) is False
+        empty_stack.push(5)
+        assert bool(empty_stack) is True
+
+class TestQueue:
+    @fixture
+    def empty_queue(self):
+        return Queue()
+
+    @fixture
+    def filled_queue(self):
+        queue = Queue()
+        queue.enqueue(1)
+        queue.enqueue(2)
+        queue.enqueue(3)
+        return queue
+
+    def test_enqueue(self, empty_queue):
+        empty_queue.enqueue(10)
+        assert len(empty_queue) == 1
+        assert empty_queue.peek_front() == 10
+
+    def test_dequeue(self, filled_queue):
+        assert filled_queue.dequeue() == 1
+        assert len(filled_queue) == 2
+        assert filled_queue.dequeue() == 2
+
+    def test_peek_front(self, filled_queue):
+        assert filled_queue.peek_front() == 1
+        filled_queue.dequeue()
+        assert filled_queue.peek_front() == 2
+
+    def test_peek_back(self, filled_queue):
+        assert filled_queue.peek_back() == 3
+
+    def test_len(self, filled_queue):
+        assert len(filled_queue) == 3
+        filled_queue.dequeue()
+        assert len(filled_queue) == 2
+
+    def test_is_empty(self, empty_queue):
+        assert bool(empty_queue) is False
+        empty_queue.enqueue(5)
+        assert bool(empty_queue) is True
+
+class TestDeque:
+    @fixture
+    def empty_deque(self):
+        return Deque()
+
+    @fixture
+    def filled_deque(self):
+        deque = Deque()
+        deque.push_back(1)
+        deque.push_back(2)
+        deque.push_back(3)
+        return deque
+
+    def test_push_front(self, empty_deque):
+        empty_deque.push_front(10)
+        assert len(empty_deque) == 1
+        assert empty_deque.peek_front() == 10
+
+    def test_push_back(self, empty_deque):
+        empty_deque.push_back(20)
+        assert len(empty_deque) == 1
+        assert empty_deque.peek_back() == 20
+
+    def test_pop_front(self, filled_deque):
+        assert filled_deque.pop_front() == 1
+        assert len(filled_deque) == 2
+        assert filled_deque.pop_front() == 2
+
+    def test_pop_back(self, filled_deque):
+        assert filled_deque.pop_back() == 3
+        assert len(filled_deque) == 2
+        assert filled_deque.pop_back() == 2
+
+    def test_peek_front(self, filled_deque):
+        assert filled_deque.peek_front() == 1
+        filled_deque.pop_front()
+        assert filled_deque.peek_front() == 2
+
+    def test_peek_back(self, filled_deque):
+        assert filled_deque.peek_back() == 3
+
+    def test_len(self, filled_deque):
+        assert len(filled_deque) == 3
+        filled_deque.pop_front()
+        assert len(filled_deque) == 2
+
+    def test_is_empty(self, empty_deque):
+        assert bool(empty_deque) is False
+        empty_deque.push_front(5)
+        assert bool(empty_deque) is True
