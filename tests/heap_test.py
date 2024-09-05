@@ -1,5 +1,5 @@
 from pytest import mark, fixture
-from datastructures import MinHeap
+from datastructures import *
 
 
 def is_heap(arr: MinHeap):
@@ -74,3 +74,37 @@ class TestHeap:
         filled_heap.add(val)
         assert val_count + 1 == filled_heap.count(val)
         assert is_heap(filled_heap)
+
+
+class TestPriorityQueue:
+    @fixture
+    def empty_queue(self):
+        return PriorityQueue()
+
+    @fixture
+    def filled_queue(self):
+        q = PriorityQueue()
+        q.enqueue('a', 1)
+        q.enqueue('b', 2)
+        q.enqueue('c', 3)
+        return q
+
+    @mark.parametrize('item,priority', [('task1', 5), ('task2', 0), ('task3', -1)])
+    def test_enqueue(self, item, priority, filled_queue):
+        start_len = len(filled_queue)
+        filled_queue.enqueue(item, priority)
+        assert len(filled_queue) == start_len + 1
+        assert is_heap(filled_queue)
+
+    def test_dequeue(self, filled_queue):
+        assert filled_queue.dequeue() == 'a'
+        assert filled_queue.dequeue() == 'b'
+        assert len(filled_queue) == 1
+
+    def test_empty_dequeue(self, empty_queue):
+        try:
+            empty_queue.dequeue()
+        except IndexError:
+            assert True
+        else:
+            assert False

@@ -309,4 +309,4 @@ class PriorityQueue(MinHeap):
         :Сложность: O(log n)
         :return: Самый приоритетный узел.
         """
-        return self.poll()
+        return self.poll().val
