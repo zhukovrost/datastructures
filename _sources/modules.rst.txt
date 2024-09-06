@@ -13,6 +13,15 @@ datastructures.sorts module
    :show-inheritance:
    :inherited-members:
 
+datastructures.strings module
+------------------------------
+
+.. automodule:: datastructures.strings
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:
+
 datastructures.linear module
 ------------------------------------------
 
