@@ -39,6 +39,10 @@ Here are all implemented algorithms:
     - Heap Sort
     - Bubble Sort
     - Quick Sort
+ 
+- String search algorithms:
+  - Brute Force Search
+  - Rabin-Karp Algorithm
   
 - Tree Algorithms:
   - Tree balancing
