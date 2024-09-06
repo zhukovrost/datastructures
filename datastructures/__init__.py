@@ -6,3 +6,4 @@ from .trees import *
 from .graphs import *
 from .heap import *
 from .sorts import *
+from .strings import *
