@@ -10,6 +10,7 @@ Welcome to Python DataStructures by slav_EEik documentation!
    :maxdepth: 3
    :caption: Contents:
 
+   complexity.rst
    modules.rst
 
 Indices and tables
