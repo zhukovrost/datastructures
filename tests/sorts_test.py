@@ -44,3 +44,7 @@ def test_merge_sort(lists):
 
 def test_insertion_sort(lists):
     canvas(insertion_sort, lists)
+
+
+def test_selection_sort(lists):
+    canvas(selection_sort, lists)

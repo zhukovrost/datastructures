@@ -211,3 +211,41 @@ def insertion_sort(arr: list, **kwargs) -> list:
             j -= 1
 
     return arr
+
+
+def selection_sort(arr: list, **kwargs) -> list:
+    """
+    Сортировка выборкой.
+
+    .. image:: images/selection.gif
+
+    :Сложность: O(N²)
+    :param arr: Список, который требуется отсортировать.
+    :param kwargs: Дополнительные параметры для настройки поведения сортировки.
+                   Возможные параметры:
+
+                   - reverse (bool): Если установлено в True, возвращает список в обратном порядке.
+                   - inplace (bool): Если установлено в True, сортирует список на месте (in-place).
+
+    :return: Отсортированный список.
+    """
+    if len(arr) <= 1:
+        return arr
+
+    inplace = kwargs.get("inplace", False)
+    reverse = kwargs.get("reverse", False)
+
+    if not inplace:
+        arr = arr.copy()
+
+    for i in range(len(arr)):
+        mini = i
+        for j in range(i+1, len(arr)):
+            if arr[j] < arr[mini]:
+                mini = j
+        swap(arr, i, mini)
+
+    if reverse:
+        arr.reverse()
+
+    return arr
