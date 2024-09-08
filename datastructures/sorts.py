@@ -177,3 +177,37 @@ def merge_sort(arr: list, **kwargs) -> list:
         return arr
 
     return sorted_arr
+
+
+def insertion_sort(arr: list, **kwargs) -> list:
+    """
+    Сортировка вставкой.
+
+    .. image:: images/insertion.gif
+
+    :Сложность: O(N²)
+    :param arr: Список, который требуется отсортировать.
+    :param kwargs: Дополнительные параметры для настройки поведения сортировки.
+                   Возможные параметры:
+
+                   - reverse (bool): Если установлено в True, возвращает список в обратном порядке.
+                   - inplace (bool): Если установлено в True, сортирует список на месте (in-place).
+
+    :return: Отсортированный список.
+    """
+    if len(arr) <= 1:
+        return arr
+
+    inplace = kwargs.get("inplace", False)
+    reverse = kwargs.get("reverse", False)
+
+    if not inplace:
+        arr = arr.copy()
+
+    for i in range(1, len(arr)):
+        j = i - 1
+        while j >= 0 and (arr[j] > arr[j + 1] if not reverse else arr[j] < arr[j + 1]):
+            swap(arr, j, j + 1)
+            j -= 1
+
+    return arr

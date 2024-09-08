@@ -25,6 +25,7 @@ def canvas(func, lists):
         func(arr, inplace=True)
         assert is_sorted(arr)
 
+
 def test_heap_sort(lists):
     canvas(heap_sort, lists)
 
@@ -36,5 +37,10 @@ def test_bubble_sort(lists):
 def test_quicksort(lists):
     canvas(quicksort, lists)
 
+
 def test_merge_sort(lists):
     canvas(merge_sort, lists)
+
+
+def test_insertion_sort(lists):
+    canvas(insertion_sort, lists)
