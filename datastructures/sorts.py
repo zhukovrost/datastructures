@@ -3,7 +3,7 @@
 """
 
 from .heap import MinHeap
-from .my_functions import swap
+from .my_functions import swap, merge
 
 
 def heap_sort(arr: list, **kwargs):
@@ -109,14 +109,14 @@ def quicksort(arr, left=None, right=None, **kwargs):
         arr = arr.copy()
 
     if left < right:
-        sep_index = partition(arr, left, right, reverse)
+        sep_index = _partition(arr, left, right, reverse)
         quicksort(arr, left, sep_index - 1, reverse=reverse, inplace=True)
         quicksort(arr, sep_index + 1, right, reverse=reverse, inplace=True)
 
     return arr
 
 
-def partition(arr, left, right, reverse):
+def _partition(arr, left, right, reverse):
     """
     Эта функция реализует логику разделения для алгоритма быстрой сортировки.
     Она выбирает последний элемент в качестве опорного и переставляет массив так,
@@ -141,3 +141,39 @@ def partition(arr, left, right, reverse):
 
     swap(arr, i + 1, right)
     return i + 1
+
+def merge_sort(arr: list, **kwargs) -> list:
+    """
+    Сортировка слиянием.
+
+    .. image:: images/merge.gif
+
+    :Сложность: O(N log N)
+    :param arr: Список, который требуется отсортировать.
+    :param kwargs: Дополнительные параметры для настройки поведения сортировки.
+                   Возможные параметры:
+
+                   - reverse (bool): Если установлено в True, возвращает список в обратном порядке.
+                   - inplace (bool): Если установлено в True, сортирует список на месте (in-place).
+
+    :return: Отсортированный список.
+    """
+    if len(arr) <= 1:
+        return arr
+
+    inplace = kwargs.get("inplace", False)
+    reverse = kwargs.get("reverse", False)
+
+    mid = len(arr) // 2
+    left_half = merge_sort(arr[:mid])
+    right_half = merge_sort(arr[mid:])
+    sorted_arr = merge(left_half, right_half)
+
+    if reverse:
+        sorted_arr.reverse()
+
+    if inplace:
+        arr[:] = sorted_arr
+        return arr
+
+    return sorted_arr
