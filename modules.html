@@ -51,8 +51,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#module-datastructures.sorts">datastructures.sorts module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#datastructures.sorts.bubble_sort"><code class="docutils literal notranslate"><span class="pre">bubble_sort()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#datastructures.sorts.heap_sort"><code class="docutils literal notranslate"><span class="pre">heap_sort()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#datastructures.sorts.partition"><code class="docutils literal notranslate"><span class="pre">partition()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#datastructures.sorts.insertion_sort"><code class="docutils literal notranslate"><span class="pre">insertion_sort()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#datastructures.sorts.merge_sort"><code class="docutils literal notranslate"><span class="pre">merge_sort()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#datastructures.sorts.quicksort"><code class="docutils literal notranslate"><span class="pre">quicksort()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#datastructures.sorts.selection_sort"><code class="docutils literal notranslate"><span class="pre">selection_sort()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-datastructures.strings">datastructures.strings module</a><ul>
@@ -429,23 +431,55 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="datastructures.sorts.partition">
-<span class="sig-prename descclassname"><span class="pre">datastructures.sorts.</span></span><span class="sig-name descname"><span class="pre">partition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">left</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.sorts.partition" title="Ссылка на это определение"></a></dt>
-<dd><p>Эта функция реализует логику разделения для алгоритма быстрой сортировки.
-Она выбирает последний элемент в качестве опорного и переставляет массив так,
-чтобы все элементы меньше опорного были слева, а все элементы больше опорного - справа,
-либо наоборот, если reverse == True.</p>
+<dt class="sig sig-object py" id="datastructures.sorts.insertion_sort">
+<span class="sig-prename descclassname"><span class="pre">datastructures.sorts.</span></span><span class="sig-name descname"><span class="pre">insertion_sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#datastructures.sorts.insertion_sort" title="Ссылка на это определение"></a></dt>
+<dd><p>Сортировка вставкой.</p>
+<img alt="_images/insertion.gif" src="_images/insertion.gif" />
 <dl class="field-list simple">
-<dt class="field-odd">Параметры<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>arr</strong> – Список для сортировки.</p></li>
-<li><p><strong>left</strong> – Начальный индекс подсписка для сортировки.</p></li>
-<li><p><strong>right</strong> – Конечный индекс подсписка для сортировки.</p></li>
-<li><p><strong>reverse</strong> – Если True, сортирует список в обратном порядке.     Если False, сортирует в прямом порядке.</p></li>
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(N²)</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>arr</strong> – Список, который требуется отсортировать.</p></li>
+<li><p><strong>kwargs</strong> – <p>Дополнительные параметры для настройки поведения сортировки.
+Возможные параметры:</p>
+<ul>
+<li><p>reverse (bool): Если установлено в True, возвращает список в обратном порядке.</p></li>
+<li><p>inplace (bool): Если установлено в True, сортирует список на месте (in-place).</p></li>
+</ul>
+</p></li>
 </ul>
 </dd>
-<dt class="field-even">Результат<span class="colon">:</span></dt>
-<dd class="field-even"><p>Индекс опорного элемента после разделения.</p>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Отсортированный список.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datastructures.sorts.merge_sort">
+<span class="sig-prename descclassname"><span class="pre">datastructures.sorts.</span></span><span class="sig-name descname"><span class="pre">merge_sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#datastructures.sorts.merge_sort" title="Ссылка на это определение"></a></dt>
+<dd><p>Сортировка слиянием.</p>
+<img alt="_images/merge.gif" src="_images/merge.gif" />
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(N log N)</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>arr</strong> – Список, который требуется отсортировать.</p></li>
+<li><p><strong>kwargs</strong> – <p>Дополнительные параметры для настройки поведения сортировки.
+Возможные параметры:</p>
+<ul>
+<li><p>reverse (bool): Если установлено в True, возвращает список в обратном порядке.</p></li>
+<li><p>inplace (bool): Если установлено в True, сортирует список на месте (in-place).</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Отсортированный список.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -468,6 +502,33 @@
 <ul>
 <li><p>inplace (bool): Если True, сортирует список на месте. По умолчанию False.</p></li>
 <li><p>reverse (bool): Если True, сортирует список в обратном порядке. По умолчанию False.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Отсортированный список.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="datastructures.sorts.selection_sort">
+<span class="sig-prename descclassname"><span class="pre">datastructures.sorts.</span></span><span class="sig-name descname"><span class="pre">selection_sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#datastructures.sorts.selection_sort" title="Ссылка на это определение"></a></dt>
+<dd><p>Сортировка выборкой.</p>
+<img alt="_images/selection.gif" src="_images/selection.gif" />
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(N²)</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>arr</strong> – Список, который требуется отсортировать.</p></li>
+<li><p><strong>kwargs</strong> – <p>Дополнительные параметры для настройки поведения сортировки.
+Возможные параметры:</p>
+<ul>
+<li><p>reverse (bool): Если установлено в True, возвращает список в обратном порядке.</p></li>
+<li><p>inplace (bool): Если установлено в True, сортирует список на месте (in-place).</p></li>
 </ul>
 </p></li>
 </ul>
