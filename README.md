@@ -35,10 +35,14 @@ Here are all implemented datastructures:
 You can also utilize **nodes** of these structures in your projects.
 
 Here are all implemented algorithms:
+
 - Sorting Algorithms:
     - Heap Sort
     - Bubble Sort
     - Quick Sort
+    - Merge Sort
+    - Insertion Sort
+    - Selection sort
  
 - String search algorithms:
   - Brute Force Search
@@ -46,6 +50,7 @@ Here are all implemented algorithms:
   
 - Tree Algorithms:
   - Tree balancing
+
 - Graphs Algorithms:
   - Dijkstra algorithm
   - Breadth First Search
