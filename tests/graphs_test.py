@@ -45,13 +45,23 @@ class TestMatrixAdjacency:
         assert undirected_graph.remove_edge(0, 1) == 0 or \
             undirected_graph.remove_edge(0, 1) == -1  # Edge doesn't exist
 
-    def test_shortest_path(self, directed_graph):
+    def test_dijkstra(self, directed_graph):
         directed_graph.add_edge(0, 1, 1)
         directed_graph.add_edge(0, 2, 5)
         directed_graph.add_edge(1, 3, 2)
         directed_graph.add_edge(2, 3, 3)
 
-        distance, path = directed_graph.shortest_path(0, 3)
+        distance, path = directed_graph.dijkstra(0, 3)
+        assert distance == 3
+        assert path == [0, 1, 3]
+
+    def test_bellman_ford(self, directed_graph):
+        directed_graph.add_edge(0, 1, 1)
+        directed_graph.add_edge(0, 2, 5)
+        directed_graph.add_edge(1, 3, 2)
+        directed_graph.add_edge(2, 3, 3)
+
+        distance, path = directed_graph.bellman_ford(0, 3)
         assert distance == 3
         assert path == [0, 1, 3]
 

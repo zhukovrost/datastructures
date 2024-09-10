@@ -53,6 +53,7 @@ Here are all implemented algorithms:
 
 - Graphs Algorithms:
   - Dijkstra algorithm
+  - Bellman-Ford's algorithm
   - Breadth First Search
   - Depth First Search
 

@@ -1,6 +1,6 @@
 import setuptools
 
-VERSION = "0.3"
+VERSION = "0.4"
 
 NAME = "slav-eeik-datastructures"
 

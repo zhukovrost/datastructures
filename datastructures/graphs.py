@@ -24,7 +24,7 @@ def get_path(prev_nodes: list, target: int) -> list:
     return path
 
 
-class GraphNode:
+class _GraphNode:
     """
     Узел графа. Нужен для реализации графа через *связанный список*
     """
@@ -139,11 +139,30 @@ class _GraphParent(ABC):
         return self.traversal(from_node, Stack)
 
     @abstractmethod
-    def shortest_path(self, from_node: int, to_node: int) -> (int, list):
+    def dijkstra(self, from_node: int, to_node: int) -> (int, list):
         """
         Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.
 
+        **Не поддерживает отрицательные веса.**
+
         :Сложность: O(V²), где V - количество вершин
+        :param from_node: индекс первого узла (откуда проложить маршрут)
+        :param to_node: индекс второго узла (куда проложить маршрут)
+        :returns: tuple (int, list)
+            - Первый элемент -- это минимальная длина маршрута
+            - Второй элемент -- это кратчайший маршрут: последовательность индексов, \
+            которые нужно посетить
+        """
+        raise NotImplementedError
+
+
+    def bellman_ford(self, from_node: int, to_node: int) -> (int, list):
+        """
+        Алгоритм Беллмана-Форда. Находит самый короткий путь между двумя узлами.
+
+        **Не поддерживает убывающие циклы. Поддерживает отрицательные веса.**
+
+        :Сложность: O(V * E), где V - количество вершин, а E - количество рёбер
         :param from_node: индекс первого узла (откуда проложить маршрут)
         :param to_node: индекс второго узла (куда проложить маршрут)
         :returns: tuple (int, list)
@@ -164,7 +183,7 @@ class ListAdjacency(_GraphParent):
 
     def add_edge(self, v1: int, v2: int, weight: int = 1, repeat: bool = True):
         super().add_edge(v1, v2, weight, repeat)
-        node = GraphNode(v2, weight)
+        node = _GraphNode(v2, weight)
         node.next = self.list[v1]
         self.list[v1] = node
 
@@ -201,7 +220,7 @@ class ListAdjacency(_GraphParent):
                 v1 = v1.next
             print()
 
-    def shortest_path(self, from_node: int, to_node: int) -> (int, list):
+    def dijkstra(self, from_node: int, to_node: int) -> (int, list):
         visited = [False] * self.size
         distance = [float('inf')] * self.size
         parent = [-1] * self.size
@@ -226,6 +245,9 @@ class ListAdjacency(_GraphParent):
 
             node = self.list[min_unvisited_node]
             while node:
+                if node.weight < 0:
+                    raise ValueError(f"Алгоритм Дейкстры не поддерживает отрицательные рёбра.")
+
                 # перебор соседей
                 if not visited[node.v2] and distance[min_unvisited_node] + node.weight \
                         < distance[node.v2]:
@@ -237,6 +259,33 @@ class ListAdjacency(_GraphParent):
         if distance[to_node] == float('inf'):
             # нет маршрута
             return -1, []
+        return distance[to_node], get_path(parent, to_node)
+
+    def bellman_ford(self, from_node: int, to_node: int) -> (int, list):
+        distance = [float('inf')] * self.size
+        parent = [-1] * self.size
+        distance[from_node] = 0
+
+        for _ in range(self.size - 1):
+            for i in range(self.size):
+                node = self.list[i]
+                while node:
+                    if distance[i] != float('inf') and distance[i] + node.weight < distance[node.v2]:
+                        distance[node.v2] = distance[i] + node.weight
+                        parent[node.v2] = i
+                    node = node.next
+
+        # Проверяем наличие отрицательных циклов
+        for i in range(self.size):
+            node = self.list[i]
+            while node:
+                if distance[i] != float('inf') and distance[i] + node.weight < distance[node.v2]:
+                    raise ValueError("Граф содержит отрицательный цикл")
+                node = node.next
+
+        if distance[to_node] == float('inf'):
+            return -1, []
+
         return distance[to_node], get_path(parent, to_node)
 
     def traversal(self, from_node: int, storage_type: type):
@@ -288,7 +337,7 @@ class MatrixAdjacency(_GraphParent):
                 print(column, end=" ")
             print()
 
-    def shortest_path(self, from_node: int, to_node: int) -> (int, list):
+    def dijkstra(self, from_node: int, to_node: int) -> (int, list):
         visited = [False] * self.size
         distance = [float('inf')] * self.size
         parent = [-1] * self.size
@@ -316,6 +365,31 @@ class MatrixAdjacency(_GraphParent):
                 if new_distance < distance[target]:
                     distance[target] = new_distance
                     parent[target] = min_unvisited_node
+
+        return distance[to_node], get_path(parent, to_node)
+
+    def bellman_ford(self, from_node: int, to_node: int) -> (int, list):
+        distance = [float('inf')] * self.size
+        parent = [-1] * self.size
+        distance[from_node] = 0
+
+        for _ in range(self.size - 1):
+            for v1 in range(self.size):
+                for v2 in range(self.size):
+                    weight = self.matrix[v1][v2]
+                    if weight != 0 and distance[v1] != float('inf') and distance[v1] + weight < distance[v2]:
+                        distance[v2] = distance[v1] + weight
+                        parent[v2] = v1
+
+        # Проверяем наличие отрицательных циклов
+        for v1 in range(self.size):
+            for v2 in range(self.size):
+                weight = self.matrix[v1][v2]
+                if weight != 0 and distance[v1] != float('inf') and distance[v1] + weight < distance[v2]:
+                    raise ValueError("Граф содержит отрицательный цикл")
+
+        if distance[to_node] == float('inf'):
+            return -1, []
 
         return distance[to_node], get_path(parent, to_node)
 
