@@ -311,29 +311,27 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-datastructures.graphs">datastructures.graphs module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#datastructures.graphs.GraphNode"><code class="docutils literal notranslate"><span class="pre">GraphNode</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.GraphNode.__init__"><code class="docutils literal notranslate"><span class="pre">GraphNode.__init__()</span></code></a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="#datastructures.graphs.ListAdjacency"><code class="docutils literal notranslate"><span class="pre">ListAdjacency</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.ListAdjacency.__init__"><code class="docutils literal notranslate"><span class="pre">ListAdjacency.__init__()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.ListAdjacency.add_edge"><code class="docutils literal notranslate"><span class="pre">ListAdjacency.add_edge()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.ListAdjacency.bellman_ford"><code class="docutils literal notranslate"><span class="pre">ListAdjacency.bellman_ford()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.ListAdjacency.breadth_first_traversal"><code class="docutils literal notranslate"><span class="pre">ListAdjacency.breadth_first_traversal()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.ListAdjacency.depth_first_traversal"><code class="docutils literal notranslate"><span class="pre">ListAdjacency.depth_first_traversal()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.ListAdjacency.dijkstra"><code class="docutils literal notranslate"><span class="pre">ListAdjacency.dijkstra()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.ListAdjacency.print_adjacency"><code class="docutils literal notranslate"><span class="pre">ListAdjacency.print_adjacency()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.ListAdjacency.remove_edge"><code class="docutils literal notranslate"><span class="pre">ListAdjacency.remove_edge()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.ListAdjacency.shortest_path"><code class="docutils literal notranslate"><span class="pre">ListAdjacency.shortest_path()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.ListAdjacency.traversal"><code class="docutils literal notranslate"><span class="pre">ListAdjacency.traversal()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#datastructures.graphs.MatrixAdjacency"><code class="docutils literal notranslate"><span class="pre">MatrixAdjacency</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.MatrixAdjacency.__init__"><code class="docutils literal notranslate"><span class="pre">MatrixAdjacency.__init__()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.MatrixAdjacency.add_edge"><code class="docutils literal notranslate"><span class="pre">MatrixAdjacency.add_edge()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.MatrixAdjacency.bellman_ford"><code class="docutils literal notranslate"><span class="pre">MatrixAdjacency.bellman_ford()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.MatrixAdjacency.breadth_first_traversal"><code class="docutils literal notranslate"><span class="pre">MatrixAdjacency.breadth_first_traversal()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.MatrixAdjacency.depth_first_traversal"><code class="docutils literal notranslate"><span class="pre">MatrixAdjacency.depth_first_traversal()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.MatrixAdjacency.dijkstra"><code class="docutils literal notranslate"><span class="pre">MatrixAdjacency.dijkstra()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.MatrixAdjacency.print_adjacency"><code class="docutils literal notranslate"><span class="pre">MatrixAdjacency.print_adjacency()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.MatrixAdjacency.remove_edge"><code class="docutils literal notranslate"><span class="pre">MatrixAdjacency.remove_edge()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.MatrixAdjacency.shortest_path"><code class="docutils literal notranslate"><span class="pre">MatrixAdjacency.shortest_path()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.graphs.MatrixAdjacency.traversal"><code class="docutils literal notranslate"><span class="pre">MatrixAdjacency.traversal()</span></code></a></li>
 </ul>
 </li>
@@ -3759,27 +3757,6 @@
 <span id="datastructures-graphs-module"></span><h2>datastructures.graphs module<a class="headerlink" href="#module-datastructures.graphs" title="Permalink to this heading"></a></h2>
 <p>Этот модуль содержит графы.</p>
 <dl class="py class">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphNode">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.graphs.</span></span><span class="sig-name descname"><span class="pre">GraphNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphNode" title="Ссылка на это определение"></a></dt>
-<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Узел графа. Нужен для реализации графа через <em>связанный список</em></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.graphs.GraphNode.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.GraphNode.__init__" title="Ссылка на это определение"></a></dt>
-<dd><p>Инициализатор.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Параметры<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>v2</strong> – куда</p></li>
-<li><p><strong>weight</strong> – вес</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
 <dt class="sig sig-object py" id="datastructures.graphs.ListAdjacency">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.graphs.</span></span><span class="sig-name descname"><span class="pre">ListAdjacency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.ListAdjacency" title="Ссылка на это определение"></a></dt>
 <dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">_GraphParent</span></code></p>
@@ -3810,6 +3787,29 @@
 <li><p><strong>repeat</strong> – служебная переменная для избегания бесконечной рекурсии,         используется для ненаправленных графов</p></li>
 <li><p><strong>weight</strong> – вес грани (его значение)</p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.ListAdjacency.bellman_ford">
+<span class="sig-name descname"><span class="pre">bellman_ford</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node:</span> <span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_node:</span> <span class="pre">int)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'list'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.ListAdjacency.bellman_ford" title="Ссылка на это определение"></a></dt>
+<dd><p>Алгоритм Беллмана-Форда. Находит самый короткий путь между двумя узлами.</p>
+<p><strong>Не поддерживает убывающие циклы. Поддерживает отрицательные веса.</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(V * E), где V - количество вершин, а E - количество рёбер</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>from_node</strong> – индекс первого узла (откуда проложить маршрут)</p></li>
+<li><p><strong>to_node</strong> – индекс второго узла (куда проложить маршрут)</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple (int, list)
+- Первый элемент – это минимальная длина маршрута
+- Второй элемент – это кратчайший маршрут: последовательность индексов,             которые нужно посетить</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3851,6 +3851,29 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.ListAdjacency.dijkstra">
+<span class="sig-name descname"><span class="pre">dijkstra</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node:</span> <span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_node:</span> <span class="pre">int)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'list'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.ListAdjacency.dijkstra" title="Ссылка на это определение"></a></dt>
+<dd><p>Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.</p>
+<p><strong>Не поддерживает отрицательные веса.</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(V²), где V - количество вершин</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>from_node</strong> – индекс первого узла (откуда проложить маршрут)</p></li>
+<li><p><strong>to_node</strong> – индекс второго узла (куда проложить маршрут)</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple (int, list)
+- Первый элемент – это минимальная длина маршрута
+- Второй элемент – это кратчайший маршрут: последовательность индексов,             которые нужно посетить</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="datastructures.graphs.ListAdjacency.print_adjacency">
 <span class="sig-name descname"><span class="pre">print_adjacency</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.ListAdjacency.print_adjacency" title="Ссылка на это определение"></a></dt>
 <dd><p>Вывести в консоль список смежности.</p>
@@ -3870,28 +3893,6 @@
 </dd>
 <dt class="field-even">Результат<span class="colon">:</span></dt>
 <dd class="field-even"><p>вес удалённой грани</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.graphs.ListAdjacency.shortest_path">
-<span class="sig-name descname"><span class="pre">shortest_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node:</span> <span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_node:</span> <span class="pre">int)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'list'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.ListAdjacency.shortest_path" title="Ссылка на это определение"></a></dt>
-<dd><p>Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(V²), где V - количество вершин</p>
-</dd>
-<dt class="field-even">Параметры<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>from_node</strong> – индекс первого узла (откуда проложить маршрут)</p></li>
-<li><p><strong>to_node</strong> – индекс второго узла (куда проложить маршрут)</p></li>
-</ul>
-</dd>
-<dt class="field-odd">Результат<span class="colon">:</span></dt>
-<dd class="field-odd"><p>tuple (int, list)
-- Первый элемент – это минимальная длина маршрута
-- Второй элемент – это кратчайший маршрут: последовательность индексов,             которые нужно посетить</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3954,6 +3955,29 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.MatrixAdjacency.bellman_ford">
+<span class="sig-name descname"><span class="pre">bellman_ford</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node:</span> <span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_node:</span> <span class="pre">int)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'list'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.MatrixAdjacency.bellman_ford" title="Ссылка на это определение"></a></dt>
+<dd><p>Алгоритм Беллмана-Форда. Находит самый короткий путь между двумя узлами.</p>
+<p><strong>Не поддерживает убывающие циклы. Поддерживает отрицательные веса.</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(V * E), где V - количество вершин, а E - количество рёбер</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>from_node</strong> – индекс первого узла (откуда проложить маршрут)</p></li>
+<li><p><strong>to_node</strong> – индекс второго узла (куда проложить маршрут)</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple (int, list)
+- Первый элемент – это минимальная длина маршрута
+- Второй элемент – это кратчайший маршрут: последовательность индексов,             которые нужно посетить</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="datastructures.graphs.MatrixAdjacency.breadth_first_traversal">
 <span class="sig-name descname"><span class="pre">breadth_first_traversal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.MatrixAdjacency.breadth_first_traversal" title="Ссылка на это определение"></a></dt>
 <dd><p>Обход графа в ширину. (<em>BFT – Breadth First Traversal</em>).</p>
@@ -3990,6 +4014,29 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="datastructures.graphs.MatrixAdjacency.dijkstra">
+<span class="sig-name descname"><span class="pre">dijkstra</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node:</span> <span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_node:</span> <span class="pre">int)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'list'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.MatrixAdjacency.dijkstra" title="Ссылка на это определение"></a></dt>
+<dd><p>Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.</p>
+<p><strong>Не поддерживает отрицательные веса.</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(V²), где V - количество вершин</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>from_node</strong> – индекс первого узла (откуда проложить маршрут)</p></li>
+<li><p><strong>to_node</strong> – индекс второго узла (куда проложить маршрут)</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple (int, list)
+- Первый элемент – это минимальная длина маршрута
+- Второй элемент – это кратчайший маршрут: последовательность индексов,             которые нужно посетить</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="datastructures.graphs.MatrixAdjacency.print_adjacency">
 <span class="sig-name descname"><span class="pre">print_adjacency</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.MatrixAdjacency.print_adjacency" title="Ссылка на это определение"></a></dt>
 <dd><p>Вывести матрицу в консоль.</p>
@@ -4009,28 +4056,6 @@
 </dd>
 <dt class="field-even">Результат<span class="colon">:</span></dt>
 <dd class="field-even"><p>вес удалённой грани</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="datastructures.graphs.MatrixAdjacency.shortest_path">
-<span class="sig-name descname"><span class="pre">shortest_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node:</span> <span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_node:</span> <span class="pre">int)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'int'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'list'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.graphs.MatrixAdjacency.shortest_path" title="Ссылка на это определение"></a></dt>
-<dd><p>Алгоритм Дейкстры. Находит самый короткий путь между двумя узлами.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O(V²), где V - количество вершин</p>
-</dd>
-<dt class="field-even">Параметры<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>from_node</strong> – индекс первого узла (откуда проложить маршрут)</p></li>
-<li><p><strong>to_node</strong> – индекс второго узла (куда проложить маршрут)</p></li>
-</ul>
-</dd>
-<dt class="field-odd">Результат<span class="colon">:</span></dt>
-<dd class="field-odd"><p>tuple (int, list)
-- Первый элемент – это минимальная длина маршрута
-- Второй элемент – это кратчайший маршрут: последовательность индексов,             которые нужно посетить</p>
 </dd>
 </dl>
 </dd></dl>
