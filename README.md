@@ -54,6 +54,7 @@ Here are all implemented algorithms:
 - Graphs Algorithms:
   - Dijkstra algorithm
   - Bellman-Ford's algorithm
+  - A* Algorithm
   - Breadth First Search
   - Depth First Search
 

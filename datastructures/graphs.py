@@ -5,6 +5,7 @@
 
 from abc import ABC, abstractmethod
 from .linear import Queue, Stack
+from .heap import PriorityQueue
 
 
 def get_path(prev_nodes: list, target: int) -> list:
@@ -145,7 +146,7 @@ class _GraphParent(ABC):
 
         **Не поддерживает отрицательные веса.**
 
-        :Сложность: O(V²), где V - количество вершин
+        :Сложность: O(V log V), где V - количество вершин
         :param from_node: индекс первого узла (откуда проложить маршрут)
         :param to_node: индекс второго узла (куда проложить маршрут)
         :returns: tuple (int, list)
@@ -226,33 +227,26 @@ class ListAdjacency(_GraphParent):
         parent = [-1] * self.size
         distance[from_node] = 0
 
-        while True:
-            # пока есть непосещённые узлы
-            min_unvisited_node = -1
-            min_dist = float('inf')
+        h = PriorityQueue()
+        h.enqueue(from_node, 0)
 
-            for i in range(self.size):
-                # поиск непосещённого узла, с минимальной дистанцией
-                if not visited[i] and distance[i] < min_dist:
-                    min_unvisited_node = i
-                    min_dist = distance[i]
+        while len(h) > 0:
+            current_node = h.dequeue()
+            if visited[current_node]:
+                continue
 
-            if min_unvisited_node == -1:
-                # выход из цикла
-                break
-
-            visited[min_unvisited_node] = True
-
-            node = self.list[min_unvisited_node]
+            visited[current_node] = True
+            node = self.list[current_node]
             while node:
                 if node.weight < 0:
-                    raise ValueError(f"Алгоритм Дейкстры не поддерживает отрицательные рёбра.")
+                    raise ValueError("Алгоритм Дейкстры не поддерживает отрицательные рёбра.")
 
                 # перебор соседей
-                if not visited[node.v2] and distance[min_unvisited_node] + node.weight \
+                if not visited[node.v2] and distance[current_node] + node.weight \
                         < distance[node.v2]:
-                    distance[node.v2] = distance[min_unvisited_node] + node.weight
-                    parent[node.v2] = min_unvisited_node
+                    distance[node.v2] = distance[current_node] + node.weight
+                    parent[node.v2] = current_node
+                    h.enqueue(node.v2, node.weight)
                 node = node.next
 
         # построение маршрута
@@ -270,7 +264,8 @@ class ListAdjacency(_GraphParent):
             for i in range(self.size):
                 node = self.list[i]
                 while node:
-                    if distance[i] != float('inf') and distance[i] + node.weight < distance[node.v2]:
+                    if distance[i] != float('inf') and \
+                            distance[i] + node.weight < distance[node.v2]:
                         distance[node.v2] = distance[i] + node.weight
                         parent[node.v2] = i
                     node = node.next
@@ -343,28 +338,23 @@ class MatrixAdjacency(_GraphParent):
         parent = [-1] * self.size
         distance[from_node] = 0
 
-        while True:
-            min_unvisited_node = -1
-            min_dist = float("inf")
+        h = PriorityQueue()
+        h.enqueue(from_node, 0)
 
-            for i in range(self.size):
-                if not visited[i] and distance[i] < min_dist:
-                    min_unvisited_node = i
-                    min_dist = distance[i]
+        while len(h) > 0:
+            current_node = h.dequeue()
+            if visited[current_node]:
+                continue
 
-            if min_unvisited_node == -1:
-                break
-
-            visited[min_unvisited_node] = True
-
-            for target in range(self.size):
-                if self.matrix[min_unvisited_node][target] == 0:
+            visited[current_node] = True
+            for neighbour in range(self.size):
+                if self.matrix[current_node][neighbour] == 0:
                     continue
-                new_distance = \
-                    self.matrix[min_unvisited_node][target] + distance[min_unvisited_node]
-                if new_distance < distance[target]:
-                    distance[target] = new_distance
-                    parent[target] = min_unvisited_node
+                new_distance = self.matrix[current_node][neighbour] + distance[current_node]
+                if new_distance < distance[neighbour]:
+                    distance[neighbour] = new_distance
+                    parent[neighbour] = current_node
+                    h.enqueue(neighbour, new_distance)
 
         return distance[to_node], get_path(parent, to_node)
 
@@ -377,7 +367,8 @@ class MatrixAdjacency(_GraphParent):
             for v1 in range(self.size):
                 for v2 in range(self.size):
                     weight = self.matrix[v1][v2]
-                    if weight != 0 and distance[v1] != float('inf') and distance[v1] + weight < distance[v2]:
+                    if weight != 0 and distance[v1] != float('inf') \
+                            and distance[v1] + weight < distance[v2]:
                         distance[v2] = distance[v1] + weight
                         parent[v2] = v1
 
@@ -385,7 +376,8 @@ class MatrixAdjacency(_GraphParent):
         for v1 in range(self.size):
             for v2 in range(self.size):
                 weight = self.matrix[v1][v2]
-                if weight != 0 and distance[v1] != float('inf') and distance[v1] + weight < distance[v2]:
+                if weight != 0 and distance[v1] != float('inf') \
+                        and distance[v1] + weight < distance[v2]:
                     raise ValueError("Граф содержит отрицательный цикл")
 
         if distance[to_node] == float('inf'):
