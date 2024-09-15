@@ -1,5 +1,5 @@
 """
-Этот модуль содержит графы.
+Этот модуль содержит графы и алгоритмы, связанные с ними.
 """
 
 
@@ -8,7 +8,7 @@ from .linear import Queue, Stack
 from .heap import PriorityQueue
 
 
-def get_path(prev_nodes: list, target: int) -> list:
+def _get_path(prev_nodes: list, target: int) -> list:
     """
     Находит путь до цели, используя список из индексов предыдущих узлов.
 
@@ -23,6 +23,10 @@ def get_path(prev_nodes: list, target: int) -> list:
         trav = prev_nodes[trav]
     path.reverse()
     return path
+
+
+def _default_heuristic(from_node: int, to_node: int) -> int:
+    return abs(from_node - to_node)
 
 
 class _GraphNode:
@@ -146,7 +150,7 @@ class _GraphParent(ABC):
 
         **Не поддерживает отрицательные веса.**
 
-        :Сложность: O(V log V), где V - количество вершин
+        :Сложность: O((V + E) log V), где V - количество вершин
         :param from_node: индекс первого узла (откуда проложить маршрут)
         :param to_node: индекс второго узла (куда проложить маршрут)
         :returns: tuple (int, list)
@@ -157,6 +161,7 @@ class _GraphParent(ABC):
         raise NotImplementedError
 
 
+    @abstractmethod
     def bellman_ford(self, from_node: int, to_node: int) -> (int, list):
         """
         Алгоритм Беллмана-Форда. Находит самый короткий путь между двумя узлами.
@@ -170,6 +175,26 @@ class _GraphParent(ABC):
             - Первый элемент -- это минимальная длина маршрута
             - Второй элемент -- это кратчайший маршрут: последовательность индексов, \
             которые нужно посетить
+        """
+        raise NotImplementedError
+
+
+    @abstractmethod
+    def a_star(self, from_node: int, to_node: int, heuristic: callable) -> (int, list):
+        """
+        Алгоритм A*. Находит самый короткий путь между двумя узлами.
+        Этот алгоритм является усовершенствованным алгоритмом Дейкстры.
+        Он не рассматривает все возможные пути.
+
+        .. image :: images/a_star.gif
+
+        :Сложность: O((V + E) log V), где V - количество вершин, а E - количество рёбер в худшем случае
+        :param from_node: индекс первого узла (откуда проложить маршрут)
+        :param to_node: индекс второго узла (куда проложить маршрут)
+        :param heuristic: функция эвристики для оценки стоимости пути (h(n))
+        :returns: tuple (int, list)
+            - Первый элемент -- это минимальная длина маршрута
+            - Второй элемент -- это кратчайший маршрут: последовательность индексов, которые нужно посетить
         """
         raise NotImplementedError
 
@@ -253,7 +278,48 @@ class ListAdjacency(_GraphParent):
         if distance[to_node] == float('inf'):
             # нет маршрута
             return -1, []
-        return distance[to_node], get_path(parent, to_node)
+        return distance[to_node], _get_path(parent, to_node)
+
+    def a_star(self, from_node: int, to_node: int, heuristic: callable = None) -> (int, list):
+        if heuristic is None:
+            heuristic = _default_heuristic
+
+        visited = [False] * self.size
+        distance = [float('inf')] * self.size
+        parent = [-1] * self.size
+        distance[from_node] = 0
+
+        h = PriorityQueue()
+        h.enqueue(from_node, 0)
+
+        while len(h) > 0:
+            current_node = h.dequeue()
+            if visited[current_node]:
+                continue
+
+            # Если мы достигли целевого узла, выходим из цикла
+            if current_node == to_node:
+                break
+
+            visited[current_node] = True
+            node = self.list[current_node]
+            while node:
+                # перебор соседей
+                if not visited[node.v2]:
+                    g = distance[current_node] + node.weight
+                    if g < distance[node.v2]:
+                        distance[node.v2] = g
+                        parent[node.v2] = current_node
+                        f_score = g + heuristic()
+                        h.enqueue(node.v2, f_score)
+                node = node.next
+
+        # Построение маршрута
+        if distance[to_node] == float('inf'):
+            # Нет маршрута
+            return -1, []
+
+        return distance[to_node], _get_path(parent, to_node)
 
     def bellman_ford(self, from_node: int, to_node: int) -> (int, list):
         distance = [float('inf')] * self.size
@@ -281,7 +347,7 @@ class ListAdjacency(_GraphParent):
         if distance[to_node] == float('inf'):
             return -1, []
 
-        return distance[to_node], get_path(parent, to_node)
+        return distance[to_node], _get_path(parent, to_node)
 
     def traversal(self, from_node: int, storage_type: type):
         storage = storage_type()
@@ -356,7 +422,7 @@ class MatrixAdjacency(_GraphParent):
                     parent[neighbour] = current_node
                     h.enqueue(neighbour, new_distance)
 
-        return distance[to_node], get_path(parent, to_node)
+        return distance[to_node], _get_path(parent, to_node)
 
     def bellman_ford(self, from_node: int, to_node: int) -> (int, list):
         distance = [float('inf')] * self.size
@@ -383,7 +449,43 @@ class MatrixAdjacency(_GraphParent):
         if distance[to_node] == float('inf'):
             return -1, []
 
-        return distance[to_node], get_path(parent, to_node)
+        return distance[to_node], _get_path(parent, to_node)
+
+    def a_star(self, from_node: int, to_node: int, heuristic: callable = None) -> (int, list):
+        if heuristic is None:
+            heuristic = _default_heuristic
+
+        visited = [False] * self.size
+        distance = [float('inf')] * self.size
+        parent = [-1] * self.size
+        distance[from_node] = 0
+
+        h = PriorityQueue()
+        h.enqueue(from_node, heuristic(from_node, to_node))
+
+        while len(h) > 0:
+            current_node = h.dequeue()
+            if current_node == to_node:
+                break
+            if visited[current_node]:
+                continue
+
+            visited[current_node] = True
+
+            for neighbour in range(self.size):
+                if self.matrix[current_node][neighbour] == 0:
+                    continue
+                g = self.matrix[current_node][neighbour] + distance[current_node]
+                if g < distance[neighbour]:
+                    distance[neighbour] = g
+                    parent[neighbour] = current_node
+                    f_score = g + heuristic(neighbour, to_node)
+                    h.enqueue(neighbour, f_score)
+
+        if distance[to_node] == float('inf'):
+            return -1, []
+
+        return distance[to_node], _get_path(parent, to_node)
 
     def traversal(self, from_node: int, storage_type: type):
         storage = storage_type()
