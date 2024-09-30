@@ -22,10 +22,12 @@ Here are all implemented datastructures:
   - Min Heap
   - Priority Queue
 
-- Trees
+- Trees and Tree Nodes
   - Binary Tree
+  - Balancing Tree
   - Binary Search Tree
-  - Sequence Binary Tree 
+  - Segment Tree 
+  - AVL Tree
   - Trie
 
 - Graphs
