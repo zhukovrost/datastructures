@@ -31,19 +31,30 @@ datastructures.linear module
    :show-inheritance:
    :inherited-members:
 
-datastructures.trees module
----------------------------------
-
-.. automodule:: datastructures.trees
-   :members:
-   :undoc-members:
-   :show-inheritance:
-   :inherited-members:
 
 datastructures.heap module
 ---------------------------------
 
 .. automodule:: datastructures.heap
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:
+
+
+datastructures.trees.nodes module
+---------------------------------
+
+.. automodule:: datastructures.trees.nodes
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :inherited-members:
+
+datastructures.trees.trees module
+---------------------------------
+
+.. automodule:: datastructures.trees.trees
    :members:
    :undoc-members:
    :show-inheritance:
