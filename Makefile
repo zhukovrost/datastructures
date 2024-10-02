@@ -5,3 +5,7 @@ build/docs:
 .PHONY: build/diagram
 build/diagram:
 	pydeps datastructures --noshow
+
+.PHONY: test
+test:
+	pytest

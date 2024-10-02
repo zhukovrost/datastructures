@@ -7,6 +7,9 @@
 
 
 from abc import ABC, abstractmethod
+
+from aptdaemon.logger import BLACK
+
 from ..linear import Queue
 
 
@@ -379,62 +382,6 @@ class BalancingNode(BinaryNode):
         self.height = None
         self.subtree_update()
 
-    def subtree_update(self):
-        """
-        Обновляет высоту узла. *Высота самого высокого ребёнка + 1*.
-
-        :Сложность: O(1)
-        """
-        self.height = 1 + max(height(self.left), height(self.right))
-
-    def skew(self):
-        """
-        Найти *скос* дерева. *Скос* - это разница между высотами поддеревьев
-        (*в данном случае высота правого минус высота левого*).
-        Если эта разница больше нуля, то дерево накренено **вправо**.
-        Если эта разница меньше нуля, то дерево накренено **влево**.
-        Если эта разница равна нулю, то дерево **полное** (не накренено).
-
-        :Сложность: O(1)
-        :return: разница высот.
-        """
-        return height(self.right) - height(self.left)
-
-    def maintain(self):
-        """
-        Функция вызывается после удаления или вставки узла (*уже прописано в коде*).
-        Она поддерживает дерево сбалансированным за счёт :class:`~BalancingNode.rebalance`
-        Также оно проходиться вверх по дереву с той же целью.
-
-        :Сложность: O(log n)
-        """
-        self.rebalance()
-        self.subtree_update()
-        if self.parent:
-            self.parent.maintain()
-
-    def rebalance(self):
-        """
-        Сбалансировать дерево, если оно слишком накренено:
-
-        * Если накренено вправо, повернуть налево
-            * Перед этим сбалансировать правое поддерево (*повернуть направо*) при необходимости
-        * Если накренено влево, повернуть направо
-            * Перед этим сбалансировать левое поддерево (*повернуть налево*) при необходимости
-
-        :Сложность: O(1)
-        """
-        if self.skew() == 2:
-            if self.right.skew() < 0:
-                self.right.subtree_rotate_right()
-            self.subtree_rotate_left()
-
-        elif self.skew() == -2:
-            if self.left.skew() > 0:
-                self.left.subtree_rotate_left()
-            self.subtree_rotate_right()
-
-
     def subtree_rotate_left(self):
         """
         Функция поворота дерева налево нужна для поддержки баланса дерева.
@@ -511,6 +458,62 @@ class BalancingNode(BinaryNode):
 
         pivot.subtree_update()
         self.subtree_update()
+
+    def subtree_update(self):
+        """
+        Обновляет высоту узла. *Высота самого высокого ребёнка + 1*.
+
+        :Сложность: O(1)
+        """
+        self.height = 1 + max(height(self.left), height(self.right))
+
+    def skew(self):
+        """
+        Найти *скос* дерева. *Скос* - это разница между высотами поддеревьев
+        (*в данном случае высота правого минус высота левого*).
+        Если эта разница больше нуля, то дерево накренено **вправо**.
+        Если эта разница меньше нуля, то дерево накренено **влево**.
+        Если эта разница равна нулю, то дерево **полное** (не накренено).
+
+        :Сложность: O(1)
+        :return: разница высот.
+        """
+        return height(self.right) - height(self.left)
+
+
+    def maintain(self):
+        """
+        Функция вызывается после удаления или вставки узла (*уже прописано в коде*).
+        Она поддерживает дерево сбалансированным за счёт :class:`~BalancingNode.rebalance`
+        Также оно проходиться вверх по дереву с той же целью.
+
+        :Сложность: O(log n)
+        """
+        self.rebalance()
+        self.subtree_update()
+        if self.parent:
+            self.parent.maintain()
+
+    def rebalance(self):
+        """
+        Сбалансировать дерево, если оно слишком накренено:
+
+        * Если накренено вправо, повернуть налево
+            * Перед этим сбалансировать правое поддерево (*повернуть направо*) при необходимости
+        * Если накренено влево, повернуть направо
+            * Перед этим сбалансировать левое поддерево (*повернуть налево*) при необходимости
+
+        :Сложность: O(1)
+        """
+        if self.skew() == 2:
+            if self.right.skew() < 0:
+                self.right.subtree_rotate_right()
+            self.subtree_rotate_left()
+
+        elif self.skew() == -2:
+            if self.left.skew() > 0:
+                self.left.subtree_rotate_left()
+            self.subtree_rotate_right()
 
 
 class SearchNode(BinaryNode):
@@ -607,6 +610,41 @@ class SearchNode(BinaryNode):
         else:
             # if new_node.data == self.data:
             self.data = new_node.data
+            return
+
+        new_node.maintain()
+
+
+class RedBlackNode(SearchNode):
+    """
+    Узел красно-чёрного дерева.
+    """
+    RED = True
+    BLACK = False
+
+    def __init__(self, item: int, color=RED):
+        super().__init__(item)
+        self.color = color
+
+    @property
+    def grandparent(self):
+        if self.parent is None:
+            return None
+        return self.parent.parent
+
+    @property
+    def sibling(self):
+        if self.parent is None:
+            return None
+        if self == self.parent.left:
+            return self.parent.right
+        return self.parent.left
+
+    @property
+    def uncle(self):
+        if self.parent is None:
+            return None
+        return self.parent.sibling
 
 
 class SegmentNode(BalancingNode):

@@ -26,6 +26,7 @@ Here are all implemented datastructures:
   - Binary Tree
   - Balancing Tree
   - Binary Search Tree
+  - Red Black Tree
   - Segment Tree 
   - AVL Tree
   - Trie

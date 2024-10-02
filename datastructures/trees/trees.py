@@ -4,7 +4,7 @@
 
 
 from abc import ABC
-from .nodes import BinaryNode, SearchNode, SegmentNode, AVLNode, TrieNode
+from .nodes import BinaryNode, SearchNode, SegmentNode, AVLNode, TrieNode, RedBlackNode
 
 
 class _BinaryTree(ABC):
@@ -128,6 +128,9 @@ class SearchTree(_BinaryTree):
                 return node.data
         return None
 
+    def _insert_fix(self, n):
+        pass
+
     def insert(self, item: int) -> bool:
         """
         Вставить узел.
@@ -136,7 +139,7 @@ class SearchTree(_BinaryTree):
         :param item: значение нового узла
         :return: *True*, если узел был добавлен, иначе *False*
         """
-        new_node = SearchNode(item)
+        new_node = self.tree_node_type(item)
         if self.root:
             self.root.subtree_insert(new_node)
             if new_node.parent is None:
@@ -146,7 +149,11 @@ class SearchTree(_BinaryTree):
             self.root = new_node
 
         self.size += 1
+        self._insert_fix(new_node)
         return True
+
+    def _delete_fix(self, x):
+        pass
 
     def delete(self, item: int):
         """
@@ -161,10 +168,147 @@ class SearchTree(_BinaryTree):
         assert node
         temp = node.subtree_delete()
         self.size -= 1
+
         if self.size == 0:
             self.root = None
+
+        self._delete_fix(node)
+
         return temp.data
 
+
+class RedBlackTree(SearchTree):
+    """
+    Красно-черное дерево - это самобалансирующееся дерево бинарного поиска.
+    Оно поддерживает балансировку за счет следующих правил:
+
+    1. Каждый узел либо красный, либо черный.
+    2. Корень всегда черный.
+    3. Все листья (NULL узлы) черные.
+    4. Оба ребенка каждого красного узла черные.
+    5. Любой путь от узла до листьев имеет одинаковое количество черных узлов.
+    """
+
+    def __init__(self):
+        super().__init__(tree_node_type=RedBlackNode)
+
+    def _insert_fix(self, node):
+        while node.parent and node.parent.color == True:
+            if node.parent == node.grandparent.left:
+                uncle = node.uncle
+                if uncle and uncle.color == True:
+                    node.parent.color = False
+                    uncle.color = False
+                    node.grandparent.color = True
+                    node = node.grandparent
+                else:
+                    if node == node.parent.right:
+                        node = node.parent
+                        self._rotate_left(node)
+                    node.parent.color = False
+                    node.grandparent.color = True
+                    self._rotate_right(node.grandparent)
+            else:
+                uncle = node.uncle
+                if uncle and uncle.color == True:
+                    node.parent.color = False
+                    uncle.color = False
+                    node.grandparent.color = True
+                    node = node.grandparent
+                else:
+                    if node == node.parent.left:
+                        node = node.parent
+                        self._rotate_right(node)
+                    node.parent.color = False
+                    node.grandparent.color = True
+                    self._rotate_left(node.grandparent)
+        self.root.color = False
+
+    def _delete_fix(self, node):
+        while node != self.root and node.color == False:
+            if node == node.parent.left:
+                sibling = node.sibling
+                if sibling.color is True:
+                    sibling.color = False
+                    node.parent.color = True
+                    self._rotate_left(node.parent)
+                    sibling = node.sibling
+                if (sibling.left is None or sibling.left.color == False) and (sibling.right is None or sibling.right.color == False):
+                    sibling.color = True
+                    node = node.parent
+                else:
+                    if sibling.right is None or sibling.right.color == False:
+                        sibling.left.color = False
+                        sibling.color = True
+                        self._rotate_right(sibling)
+                        sibling = node.sibling
+                    sibling.color = node.parent.color
+                    node.parent.color = False
+                    if sibling.right:
+                        sibling.right.color = False
+                    self._rotate_left(node.parent)
+                    node = self.root
+            else:
+                sibling = node.sibling
+                if sibling.color is True:
+                    sibling.color = False
+                    node.parent.color = True
+                    self._rotate_right(node.parent)
+                    sibling = node.sibling
+                if (sibling.left is None or sibling.left.color == False) and (sibling.right is None or sibling.right.color == False):
+                    sibling.color = True
+                    node = node.parent
+                else:
+                    if sibling.left is None or sibling.left.color == False:
+                        sibling.right.color = False
+                        sibling.color = True
+                        self._rotate_left(sibling)
+                        sibling = node.sibling
+                    sibling.color = node.parent.color
+                    node.parent.color = False
+                    if sibling.left:
+                        sibling.left.color = False
+                    self._rotate_right(node.parent)
+                    node = self.root
+        node.color = False
+
+    def _rotate_left(self, node):
+        right_child = node.right
+        node.right = right_child.left
+
+        if right_child.left is not None:
+            right_child.left.parent = node
+
+        right_child.parent = node.parent
+
+        if node.parent is None:
+            self.root = right_child
+        elif node == node.parent.left:
+            node.parent.left = right_child
+        else:
+            node.parent.right = right_child
+
+        right_child.left = node
+        node.parent = right_child
+
+    def _rotate_right(self, node):
+        left_child = node.left
+        node.left = left_child.right
+
+        if left_child.right is not None:
+            left_child.right.parent = node
+
+        left_child.parent = node.parent
+
+        if node.parent is None:
+            self.root = left_child
+        elif node == node.parent.right:
+            node.parent.right = left_child
+        else:
+            node.parent.left = left_child
+
+        left_child.right = node
+        node.parent = left_child
 
 class SegmentTree(_BinaryTree):
     """

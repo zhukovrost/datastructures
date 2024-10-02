@@ -1,4 +1,4 @@
-from pytest import fixture
+from pytest import fixture, raises
 from datastructures.trees.trees import *
 
 
@@ -61,6 +61,46 @@ class TestSegmentTree:
         assert len(segment_tree) == 6
         assert segment_tree.get_at(3) == 5
 
+
+class TestRedBlackTree:
+    @fixture
+    def red_black_tree(self):
+        tree = RedBlackTree()
+        values = [10, 20, 30, 15, 25]
+        for value in values:
+            tree.insert(value)
+        return tree
+
+    def test_insert(self, red_black_tree):
+        # Insert new element and check
+        assert red_black_tree.insert(5) == True
+        assert red_black_tree.find(5) == 5
+        assert red_black_tree.size == 6
+
+    def test_find(self, red_black_tree):
+        # Test finding existing elements
+        assert red_black_tree.find(10) == 10
+        assert red_black_tree.find(25) == 25
+
+        # Test finding non-existing element
+        assert red_black_tree.find(40) is None
+
+    def test_delete(self, red_black_tree):
+        # Test deletion of a node
+        assert red_black_tree.delete(15) == 15
+        assert red_black_tree.find(15) is None
+        assert red_black_tree.size == 4
+
+    def test_delete_root(self, red_black_tree):
+        # Test deletion of the root node
+        assert red_black_tree.delete(20) == 20
+        assert red_black_tree.find(20) is None
+        assert red_black_tree.size == 4
+
+    def test_delete_nonexistent(self, red_black_tree):
+        # Test deletion of a non-existing node
+        with raises(AssertionError):
+            red_black_tree.delete(40)
 
 # Тесты для AVLTree
 class TestAVLTree:
