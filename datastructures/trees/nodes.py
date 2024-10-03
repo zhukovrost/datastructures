@@ -765,3 +765,21 @@ class TrieNode:
             yield prefix
         for char, node in self.children.items():
             yield from node.get_words(prefix + char)
+
+
+class TwoThreeTreeNode:
+    """
+    Узел 2-3 дерева.
+    """
+    def __init__(self, keys=None, children=None):
+        self.keys = keys if keys else []
+        self.children = children if children else []
+
+    def __repr__(self):
+        return f"Node({self.keys}})"
+
+    def is_leaf(self):
+        return len(self.children) == 0
+
+    def is_full(self):
+        return len(self.keys) == 3

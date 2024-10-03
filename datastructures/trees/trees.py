@@ -4,7 +4,7 @@
 
 
 from abc import ABC
-from .nodes import BinaryNode, SearchNode, SegmentNode, AVLNode, TrieNode, RedBlackNode
+from .nodes import BinaryNode, SearchNode, SegmentNode, AVLNode, TrieNode, RedBlackNode, TwoThreeTreeNode
 
 
 class _BinaryTree(ABC):
@@ -531,3 +531,93 @@ class Trie:
                 return []
             node = node[char]
         return list(node.get_words(prefix))
+
+
+class TwoThreeTree:
+    """
+    Дерево 2-3 - это B-дерево порядка 3.
+
+    Свойства дерева 2-3:
+
+     - Узлы с двумя дочерними элементами называются 2-узлами. 2-узлы имеют одно значение данных и два дочерних узла.
+     - Узлы с тремя детьми называются 3-узлами. 3-узлы имеют два значения данных и три дочерних узла.
+     - Данные хранятся в отсортированном порядке.
+     - Это сбалансированное дерево.
+     - Все листовые узлы находятся на одном уровне.
+     - Каждый узел может быть либо листом, либо 2-узловым, либо 3-узловым.
+     - Вставка всегда выполняется в лист.
+    """
+    def __init__(self):
+        self.root = None
+
+    def search(self, key, node=None) -> bool:
+        """
+        Поиск по дереву.
+        """
+        if node is None:
+            node = self.root
+
+        if node is None:
+            return False
+
+        i = 0
+        while i < len(node.keys) and key > node.keys[i]:
+            i += 1
+        if i < len(node.keys) and key == node.keys[i]:
+            return True
+        if node.is_leaf():
+            return False
+        return self.search(key, node.children[i])
+
+    def insert(self, key):
+        """
+        Вставить узел.
+
+        :Сложность: O(log n)
+        :param key: значение нового ключа
+        """
+        if self.root is None:
+            self.root = TwoThreeTreeNode([key])
+        else:
+            new_node, new_key = self._insert(self.root, key)
+            if new_node:
+                self.root = TwoThreeTreeNode([new_key], [self.root, new_node])
+
+    def _insert(self, node, key):
+        if node.is_leaf():
+            return self._insert_into_leaf(node, key)
+        else:
+            i = 0
+            while i < len(node.keys) and key > node.keys[i]:
+                i += 1
+            new_node, new_key = self._insert(node.children[i], key)
+            if new_node:
+                return self._insert_into_internal(node, new_key, new_node)
+        return None, None
+
+    def _insert_into_leaf(self, node, key):
+        node.keys.append(key)
+        node.keys.sort()
+        if node.is_full():
+            return self._split(node)
+        return None, None
+
+    def _insert_into_internal(self, node, key, child):
+        node.keys.append(key)
+        node.keys.sort()
+        i = node.keys.index(key)
+        node.children.insert(i + 1, child)
+        if node.is_full():
+            return self._split(node)
+        return None, None
+
+    def _split(self, node):
+        mid_key = node.keys[1]
+        if node.is_leaf():
+            new_node = TwoThreeTreeNode([node.keys[2]])
+        else:
+            new_node = TwoThreeTreeNode([node.keys[2]], node.children[2:])
+        node.keys = [node.keys[0]]
+        node.children = node.children[:2] if node.children else []
+        return new_node, mid_key
+

@@ -170,3 +170,61 @@ class TestTrie:
             assert word in self.words
         assert "pineapple" not in filled_trie
         assert "disappears" not in filled_trie
+
+
+class TestTwoThreeTree:
+    @fixture
+    def two_three_tree(self):
+        tree = TwoThreeTree()
+        return tree
+
+    def test_insert_and_search(self, two_three_tree):
+        tree = two_three_tree
+
+        # Insert elements and test search
+        tree.insert(10)
+        tree.insert(20)
+        tree.insert(30)
+        tree.insert(40)
+        tree.insert(50)
+
+        assert tree.search(10) is True
+        assert tree.search(20) is True
+        assert tree.search(30) is True
+        assert tree.search(40) is True
+        assert tree.search(50) is True
+
+        # Test for non-existent elements
+        assert tree.search(5) is False
+        assert tree.search(60) is False
+
+    def test_split_and_structure(self, two_three_tree):
+        tree = two_three_tree
+
+        # Insert more than 3 elements to trigger a split
+        tree.insert(10)
+        tree.insert(20)
+        tree.insert(30)
+
+        assert tree.root.keys == [20]  # Root should split with middle key promoted
+        assert tree.root.children[0].keys == [10]  # Left child
+        assert tree.root.children[1].keys == [30]  # Right child
+
+        tree.insert(40)
+        tree.insert(50)
+
+        # Test new structure after more insertions
+        assert tree.root.keys == [20, 40]
+        assert tree.root.children[0].keys == [10]
+        assert tree.root.children[1].keys == [30]
+        assert tree.root.children[2].keys == [50]
+
+    def test_complex_insertions(self, two_three_tree):
+        tree = two_three_tree
+
+        # Insert many elements to test deeper structure
+        for i in range(10, 100, 10):
+            tree.insert(i)
+
+        assert tree.search(70) is True
+        assert tree.search(35) is False  # 35 is not in the tree
