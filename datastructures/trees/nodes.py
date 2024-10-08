@@ -2,7 +2,8 @@
 Этот модуль содержит различные узлы бинарных деревьев.
 Эти узы используются в , но их также можно использовать отдельно.
 У узлов :class:`~BinaryNode`
-и :class:`~BalancingNode` нет своих деревьев.
+и :class:`~BalancingNode` нет своих деревьев, но их можно использовать отдельно.
+**Остальные узлы использовать отдельно не рекомендуется**.
 """
 
 
@@ -33,6 +34,9 @@ class Node(ABC):
     @property
     @abstractmethod
     def parent(self):
+        """
+        Родитель элемента.
+        """
         raise NotImplementedError
 
     @parent.setter
@@ -43,6 +47,9 @@ class Node(ABC):
     @property
     @abstractmethod
     def left(self):
+        """
+        Левый ребёнок элемента.
+        """
         raise NotImplementedError
 
     @left.setter
@@ -53,6 +60,9 @@ class Node(ABC):
     @property
     @abstractmethod
     def right(self):
+        """
+        Правый ребёнок элемента.
+        """
         raise NotImplementedError
 
     @right.setter
@@ -62,11 +72,17 @@ class Node(ABC):
 
     @abstractmethod
     def maintain(self):
+        """
+        Обработка дерева после определённых действий (при необходимости).
+        """
         raise NotImplementedError
 
     @property
     @abstractmethod
     def data(self):
+        """
+        Данные, хранящиеся внутри узла.
+        """
         raise NotImplementedError
 
     @data.setter
@@ -625,12 +641,18 @@ class RedBlackNode(SearchNode):
 
     @property
     def grandparent(self):
+        """
+        Найти прародителя.
+        """
         if self.parent is None:
             return None
         return self.parent.parent
 
     @property
     def sibling(self):
+        """
+        Найти брата.
+        """
         if self.parent is None:
             return None
         if self == self.parent.left:
@@ -639,6 +661,9 @@ class RedBlackNode(SearchNode):
 
     @property
     def uncle(self):
+        """
+        Найти дядю.
+        """
         if self.parent is None:
             return None
         return self.parent.sibling
@@ -709,7 +734,7 @@ class AVLNode(BalancingNode, SearchNode):
 
 class TrieNode:
     """
-    Узел в структуре данных Trie.
+    Узел префиксного дерева.
     """
 
     def __init__(self):
@@ -769,6 +794,9 @@ class TwoThreeTreeNode:
     Узел 2-3 дерева.
     """
     def __init__(self, keys=None, children=None):
+        """
+        Инициализатор принимает списки значений и детей.
+        """
         self.keys = keys if keys else []
         self.children = children if children else []
 
@@ -776,9 +804,15 @@ class TwoThreeTreeNode:
         return f"Node({self.keys})"
 
     def is_leaf(self):
+        """
+        Проверяет, является ли узел листом.
+        """
         return len(self.children) == 0
 
-    def is_full(self):
+    def is_full(self) -> bool:
+        """
+        Проверяет узел на полноту (3 элемента).
+        """
         return len(self.keys) == 3
 
 
@@ -787,6 +821,9 @@ class HuffmanNode:
     Узел дерева Хаффмана.
     """
     def __init__(self, char, freq):
+        """
+        Инициализатор принимает кодируемый символ и количество встречаемых раз.
+        """
         self.data = char
         self.right = None
         self.left = None

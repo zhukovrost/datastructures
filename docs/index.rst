@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Python DataStructures by slav_EEik documentation!
-================================================================
+Добро пожаловать в документацию DataStructures by slav_EEik!
+============================================================
 
 .. toctree::
    :maxdepth: 3
@@ -13,8 +13,8 @@ Welcome to Python DataStructures by slav_EEik documentation!
    complexity.rst
    modules.rst
 
-Indices and tables
-==================
+Дополнительно
+=============
 
 * :ref:`genindex`
 * :ref:`modindex`

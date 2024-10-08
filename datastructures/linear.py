@@ -255,8 +255,8 @@ class DoublyLinkedListNode(SinglyLinkedListNode):
 
         :param data: данные, которые хранит узел
         """
-        super().__init__(data)
         self.previous = None
+        super().__init__(data)
 
     def earlier_node(self, i: int):
         """

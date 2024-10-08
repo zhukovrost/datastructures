@@ -24,7 +24,10 @@ def is_sorted(arr):
 
     return True
 
-def merge(arr1, arr2):
+def merge(arr1, arr2) -> list:
+    """
+    Сливает два массива в один по возрастанию значений.
+    """
     arr = []
     i = j = 0
 

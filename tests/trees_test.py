@@ -272,3 +272,7 @@ class TestHuffman:
     def test_empty_text_encoding(self, huffman_tree):
         encoded_text = huffman_tree.encode("")
         assert encoded_text == ""
+
+    def test_frequency_map(self):
+        s = "aababbbbcbb bbbcbbbbb"
+        assert {'a': 3, 'b': 15, 'c': 2, ' ': 1} == HuffmanTree.get_frequency_map(s)

@@ -290,6 +290,7 @@ class PriorityQueueNode:
 class PriorityQueue(MinHeap):
     """
     Приоритетная очередь, реализованная на основе мин-кучи.
+    Узлы двигаются в очереди по приоритету.
     """
 
     def enqueue(self, item, priority=0):

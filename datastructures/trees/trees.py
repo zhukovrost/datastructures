@@ -1,10 +1,12 @@
 """
-Этот модуль содержит реализации различных бинарных деревьев.
+Этот модуль содержит реализации различных бинарных и не только деревьев.
 """
 
 
 from abc import ABC
-from .nodes import BinaryNode, SearchNode, SegmentNode, AVLNode, TrieNode, RedBlackNode, TwoThreeTreeNode, HuffmanNode
+from collections import defaultdict
+from .nodes import BinaryNode, SearchNode, SegmentNode, \
+    AVLNode, TrieNode, RedBlackNode, TwoThreeTreeNode, HuffmanNode
 from ..heap import MinHeap
 
 
@@ -188,90 +190,98 @@ class RedBlackTree(SearchTree):
     3. Все листья (NULL узлы) черные.
     4. Оба ребенка каждого красного узла черные.
     5. Любой путь от узла до листьев имеет одинаковое количество черных узлов.
+
+    .. image:: images/redblack.png
+
     """
 
     def __init__(self):
+        """
+        Инициализатор.
+        """
         super().__init__(tree_node_type=RedBlackNode)
 
     def _insert_fix(self, node):
-        while node.parent and node.parent.color == True:
+        while node.parent and node.parent.color is RedBlackNode.RED:
             if node.parent == node.grandparent.left:
                 uncle = node.uncle
-                if uncle and uncle.color == True:
-                    node.parent.color = False
-                    uncle.color = False
-                    node.grandparent.color = True
+                if uncle and uncle.color is RedBlackNode.RED:
+                    node.parent.color = RedBlackNode.BLACK
+                    uncle.color = RedBlackNode.BLACK
+                    node.grandparent.color = RedBlackNode.RED
                     node = node.grandparent
                 else:
                     if node == node.parent.right:
                         node = node.parent
                         self._rotate_left(node)
-                    node.parent.color = False
-                    node.grandparent.color = True
+                    node.parent.color = RedBlackNode.BLACK
+                    node.grandparent.color = RedBlackNode.RED
                     self._rotate_right(node.grandparent)
             else:
                 uncle = node.uncle
-                if uncle and uncle.color == True:
-                    node.parent.color = False
-                    uncle.color = False
-                    node.grandparent.color = True
+                if uncle and uncle.color is RedBlackNode.RED:
+                    node.parent.color = RedBlackNode.BLACK
+                    uncle.color = RedBlackNode.BLACK
+                    node.grandparent.color = RedBlackNode.RED
                     node = node.grandparent
                 else:
                     if node == node.parent.left:
                         node = node.parent
                         self._rotate_right(node)
-                    node.parent.color = False
-                    node.grandparent.color = True
+                    node.parent.color = RedBlackNode.BLACK
+                    node.grandparent.color = RedBlackNode.RED
                     self._rotate_left(node.grandparent)
-        self.root.color = False
+        self.root.color = RedBlackNode.BLACK
 
     def _delete_fix(self, node):
-        while node != self.root and node.color == False:
+        while node != self.root and node.color is RedBlackNode.BLACK:
             if node == node.parent.left:
                 sibling = node.sibling
-                if sibling.color is True:
-                    sibling.color = False
-                    node.parent.color = True
+                if sibling.color is RedBlackNode.RED:
+                    sibling.color = RedBlackNode.BLACK
+                    node.parent.color = RedBlackNode.RED
                     self._rotate_left(node.parent)
                     sibling = node.sibling
-                if (sibling.left is None or sibling.left.color == False) and (sibling.right is None or sibling.right.color == False):
-                    sibling.color = True
+                if (sibling.left is None or sibling.left.color is RedBlackNode.BLACK) \
+                        and (sibling.right is None or sibling.right.color is RedBlackNode.BLACK):
+                    sibling.color = RedBlackNode.RED
                     node = node.parent
                 else:
-                    if sibling.right is None or sibling.right.color == False:
-                        sibling.left.color = False
-                        sibling.color = True
+                    if sibling.right is None or sibling.right.color is RedBlackNode.BLACK:
+                        sibling.left.color = RedBlackNode.BLACK
+                        sibling.color = RedBlackNode.RED
                         self._rotate_right(sibling)
                         sibling = node.sibling
                     sibling.color = node.parent.color
-                    node.parent.color = False
+                    node.parent.color = RedBlackNode.BLACK
                     if sibling.right:
-                        sibling.right.color = False
+                        sibling.right.color = RedBlackNode.BLACK
                     self._rotate_left(node.parent)
                     node = self.root
             else:
                 sibling = node.sibling
-                if sibling.color is True:
-                    sibling.color = False
-                    node.parent.color = True
+                if sibling.color is RedBlackNode.RED:
+                    sibling.color = RedBlackNode.BLACK
+                    node.parent.color = RedBlackNode.RED
                     self._rotate_right(node.parent)
                     sibling = node.sibling
-                if (sibling.left is None or sibling.left.color == False) and (sibling.right is None or sibling.right.color == False):
-                    sibling.color = True
+                if (sibling.left is None or sibling.left.color is RedBlackNode.BLACK) and \
+                        (sibling.right is None or sibling.right.color is RedBlackNode.BLACK):
+                    sibling.color = RedBlackNode.RED
                     node = node.parent
                 else:
-                    if sibling.left is None or sibling.left.color == False:
-                        sibling.right.color = False
-                        sibling.color = True
+                    if sibling.left is None or sibling.left.color is RedBlackNode.BLACK:
+                        sibling.right.color = RedBlackNode.BLACK
+                        sibling.color = RedBlackNode.RED
                         self._rotate_left(sibling)
                         sibling = node.sibling
                     sibling.color = node.parent.color
-                    node.parent.color = False
+                    node.parent.color = RedBlackNode.BLACK
                     if sibling.left:
-                        sibling.left.color = False
+                        sibling.left.color = RedBlackNode.BLACK
                     self._rotate_right(node.parent)
                     node = self.root
-        node.color = False
+        node.color = RedBlackNode.BLACK
 
     def _rotate_left(self, node):
         right_child = node.right
@@ -448,6 +458,7 @@ class SegmentTree(_BinaryTree):
 class AVLTree(SearchTree):
     """
     AVL дерево - бинарное балансирующее дерево поиска.
+    Балансировка осуществляется засчёт поворотов дерева.
     """
     def __init__(self, tree_node_type=AVLNode):
         super().__init__(tree_node_type)
@@ -541,20 +552,36 @@ class TwoThreeTree:
 
     Свойства дерева 2-3:
 
-     - Узлы с двумя дочерними элементами называются 2-узлами. 2-узлы имеют одно значение данных и два дочерних узла.
-     - Узлы с тремя детьми называются 3-узлами. 3-узлы имеют два значения данных и три дочерних узла.
+     - Узлы с двумя дочерними элементами называются 2-узлами. 2-узлы имеют одно \
+      значение данных и два дочерних узла.
+     - Узлы с тремя детьми называются 3-узлами. \
+     3-узлы имеют два значения данных и три дочерних узла.
      - Данные хранятся в отсортированном порядке.
      - Это сбалансированное дерево.
      - Все листовые узлы находятся на одном уровне.
      - Каждый узел может быть либо листом, либо 2-узловым, либо 3-узловым.
      - Вставка всегда выполняется в лист.
+
+    .. image:: images/2-3.jpg
+
     """
     def __init__(self):
+        """
+        Инициализатор.
+        """
         self.root = None
 
     def search(self, key, node=None) -> bool:
         """
-        Поиск по дереву.
+        Поиск ключа в дереве.
+
+        Выполняет рекурсивный поиск ключа в узлах дерева.
+        Если ключ найден, возвращает True, иначе - False.
+
+        :Сложность: O(logN)
+        :param key: Ключ, который нужно найти.
+        :param node: Узел, с которого начинается поиск (по умолчанию корневой узел).
+        :return: True, если ключ найден, иначе False.
         """
         if node is None:
             node = self.root
@@ -573,10 +600,14 @@ class TwoThreeTree:
 
     def insert(self, key):
         """
-        Вставить узел.
+        Вставка ключа в дерево 2-3.
+
+        Если дерево пустое, создается новый корневой узел.
+        Если в результате вставки происходит разделение узла,
+        то корень обновляется.
 
         :Сложность: O(log n)
-        :param key: значение нового ключа
+        :param key: Ключ, который нужно вставить.
         """
         if self.root is None:
             self.root = TwoThreeTreeNode([key])
@@ -588,13 +619,12 @@ class TwoThreeTree:
     def _insert(self, node, key):
         if node.is_leaf():
             return self._insert_into_leaf(node, key)
-        else:
-            i = 0
-            while i < len(node.keys) and key > node.keys[i]:
-                i += 1
-            new_node, new_key = self._insert(node.children[i], key)
-            if new_node:
-                return self._insert_into_internal(node, new_key, new_node)
+        i = 0
+        while i < len(node.keys) and key > node.keys[i]:
+            i += 1
+        new_node, new_key = self._insert(node.children[i], key)
+        if new_node:
+            return self._insert_into_internal(node, new_key, new_node)
         return None, None
 
     def _insert_into_leaf(self, node, key):
@@ -626,7 +656,9 @@ class TwoThreeTree:
 
 class HuffmanTree(_BinaryTree):
     """
-    Дерево Хаффмана.
+    Дерево Хаффмана - это структура, на которой держится алгоритм сжатия Хаффмана.
+    Алгоритм заключается в том, что мы кодируем элементы строки по-своему:
+    элементы, которые встречаются чаще, кодируются короче.
 
     .. image:: images/huffman_tree.png
 
@@ -634,12 +666,29 @@ class HuffmanTree(_BinaryTree):
     def __init__(self, tree_node_type=HuffmanNode):
         super().__init__(tree_node_type)
 
-    def build(self, frequency_map):
+    @staticmethod
+    def get_frequency_map(s: str) -> dict:
+        """
+        Статический метод для образования словаря частот.
+
+        :param s: строка, для которой нужен словарь частот
+        :return: Словарь, где ключи — символы, а значения — их частоты
+        """
+        res = defaultdict(int)
+        for char in s:
+            res[char] += 1
+        return dict(res)
+
+
+    def build(self, frequency_map=None):
         """
         Построение дерева Хаффмана из словаря частот символов.
 
         :param frequency_map: Словарь, где ключи — символы, а значения — их частоты.
         """
+        if frequency_map is None:
+            frequency_map = {}
+
         heap = MinHeap([HuffmanNode(char, freq) for char, freq in frequency_map.items()])
 
         while len(heap) > 1:
