@@ -398,6 +398,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.trees.trees.HuffmanTree.decode"><code class="docutils literal notranslate"><span class="pre">HuffmanTree.decode()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.trees.trees.HuffmanTree.encode"><code class="docutils literal notranslate"><span class="pre">HuffmanTree.encode()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#datastructures.trees.trees.HuffmanTree.generate_codes"><code class="docutils literal notranslate"><span class="pre">HuffmanTree.generate_codes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datastructures.trees.trees.HuffmanTree.get_frequency_map"><code class="docutils literal notranslate"><span class="pre">HuffmanTree.get_frequency_map()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#datastructures.trees.trees.RedBlackTree"><code class="docutils literal notranslate"><span class="pre">RedBlackTree</span></code></a><ul>
@@ -511,6 +512,7 @@
              
   <section id="id1">
 <h1>Модули<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<p>Здесь вы можете ознакомится со всеми реализованными структурами данных и алгоритмами.</p>
 <div class="toctree-wrapper compound">
 </div>
 <section id="module-datastructures.sorts">
@@ -547,6 +549,7 @@
 <dt class="sig sig-object py" id="datastructures.sorts.heap_sort">
 <span class="sig-prename descclassname"><span class="pre">datastructures.sorts.</span></span><span class="sig-name descname"><span class="pre">heap_sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.sorts.heap_sort" title="Ссылка на это определение"></a></dt>
 <dd><p>Сортирует входной список с использованием алгоритма сортировки кучей.</p>
+<img alt="_images/heapsort.gif" src="_images/heapsort.gif" />
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
 <dd class="field-odd"><p>O(N log N)</p>
@@ -1902,7 +1905,8 @@
 <dt class="sig sig-object py" id="datastructures.heap.PriorityQueue">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.heap.</span></span><span class="sig-name descname"><span class="pre">PriorityQueue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.heap.PriorityQueue" title="Ссылка на это определение"></a></dt>
 <dd><p>Базовые классы: <a class="reference internal" href="#datastructures.heap.MinHeap" title="datastructures.heap.MinHeap"><code class="xref py py-class docutils literal notranslate"><span class="pre">MinHeap</span></code></a></p>
-<p>Приоритетная очередь, реализованная на основе мин-кучи.</p>
+<p>Приоритетная очередь, реализованная на основе мин-кучи.
+Узлы двигаются в очереди по приоритету.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.heap.PriorityQueue.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.heap.PriorityQueue.__init__" title="Ссылка на это определение"></a></dt>
@@ -2228,7 +2232,8 @@
 <p>Этот модуль содержит различные узлы бинарных деревьев.
 Эти узы используются в , но их также можно использовать отдельно.
 У узлов <a class="reference internal" href="#datastructures.trees.nodes.BinaryNode" title="datastructures.trees.nodes.BinaryNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinaryNode</span></code></a>
-и <a class="reference internal" href="#datastructures.trees.nodes.BalancingNode" title="datastructures.trees.nodes.BalancingNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">BalancingNode</span></code></a> нет своих деревьев.</p>
+и <a class="reference internal" href="#datastructures.trees.nodes.BalancingNode" title="datastructures.trees.nodes.BalancingNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">BalancingNode</span></code></a> нет своих деревьев, но их можно использовать отдельно.
+<strong>Остальные узлы использовать отдельно не рекомендуется</strong>.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.AVLNode">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.trees.nodes.</span></span><span class="sig-name descname"><span class="pre">AVLNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.trees.nodes.AVLNode" title="Ссылка на это определение"></a></dt>
@@ -2252,7 +2257,8 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.AVLNode.data">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#datastructures.trees.nodes.AVLNode.data" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Данные, хранящиеся внутри узла.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.AVLNode.inorder_traversal">
@@ -2287,7 +2293,8 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.AVLNode.left">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">left</span></span><a class="headerlink" href="#datastructures.trees.nodes.AVLNode.left" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Левый ребёнок элемента.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.AVLNode.level_order_traversal">
@@ -2327,7 +2334,8 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.AVLNode.parent">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parent</span></span><a class="headerlink" href="#datastructures.trees.nodes.AVLNode.parent" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Родитель элемента.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.AVLNode.postorder_traversal">
@@ -2431,7 +2439,8 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.AVLNode.right">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">right</span></span><a class="headerlink" href="#datastructures.trees.nodes.AVLNode.right" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Правый ребёнок элемента.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.AVLNode.skew">
@@ -2707,7 +2716,8 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.BalancingNode.data">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#datastructures.trees.nodes.BalancingNode.data" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Данные, хранящиеся внутри узла.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.BalancingNode.inorder_traversal">
@@ -2742,7 +2752,8 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.BalancingNode.left">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">left</span></span><a class="headerlink" href="#datastructures.trees.nodes.BalancingNode.left" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Левый ребёнок элемента.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.BalancingNode.level_order_traversal">
@@ -2782,7 +2793,8 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.BalancingNode.parent">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parent</span></span><a class="headerlink" href="#datastructures.trees.nodes.BalancingNode.parent" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Родитель элемента.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.BalancingNode.postorder_traversal">
@@ -2886,7 +2898,8 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.BalancingNode.right">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">right</span></span><a class="headerlink" href="#datastructures.trees.nodes.BalancingNode.right" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Правый ребёнок элемента.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.BalancingNode.skew">
@@ -3096,7 +3109,8 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.BinaryNode.data">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#datastructures.trees.nodes.BinaryNode.data" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Данные, хранящиеся внутри узла.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.BinaryNode.inorder_traversal">
@@ -3131,7 +3145,8 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.BinaryNode.left">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">left</span></span><a class="headerlink" href="#datastructures.trees.nodes.BinaryNode.left" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Левый ребёнок элемента.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.BinaryNode.level_order_traversal">
@@ -3165,7 +3180,8 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.BinaryNode.parent">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parent</span></span><a class="headerlink" href="#datastructures.trees.nodes.BinaryNode.parent" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Родитель элемента.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.BinaryNode.postorder_traversal">
@@ -3242,7 +3258,8 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.BinaryNode.right">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">right</span></span><a class="headerlink" href="#datastructures.trees.nodes.BinaryNode.right" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Правый ребёнок элемента.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.BinaryNode.subtree_delete">
@@ -3362,7 +3379,8 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.HuffmanNode.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">char</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.trees.nodes.HuffmanNode.__init__" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Инициализатор принимает кодируемый символ и количество встречаемых раз.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -3379,27 +3397,32 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.Node.data">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#datastructures.trees.nodes.Node.data" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Данные, хранящиеся внутри узла.</p>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.Node.left">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">left</span></span><a class="headerlink" href="#datastructures.trees.nodes.Node.left" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Левый ребёнок элемента.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.Node.maintain">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">maintain</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.trees.nodes.Node.maintain" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Обработка дерева после определённых действий (при необходимости).</p>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.Node.parent">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parent</span></span><a class="headerlink" href="#datastructures.trees.nodes.Node.parent" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Родитель элемента.</p>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.Node.right">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">right</span></span><a class="headerlink" href="#datastructures.trees.nodes.Node.right" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Правый ребёнок элемента.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -3432,12 +3455,14 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.RedBlackNode.data">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#datastructures.trees.nodes.RedBlackNode.data" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Данные, хранящиеся внутри узла.</p>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.RedBlackNode.grandparent">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">grandparent</span></span><a class="headerlink" href="#datastructures.trees.nodes.RedBlackNode.grandparent" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Найти прародителя.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.RedBlackNode.inorder_traversal">
@@ -3472,7 +3497,8 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.RedBlackNode.left">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">left</span></span><a class="headerlink" href="#datastructures.trees.nodes.RedBlackNode.left" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Левый ребёнок элемента.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.RedBlackNode.level_order_traversal">
@@ -3506,7 +3532,8 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.RedBlackNode.parent">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parent</span></span><a class="headerlink" href="#datastructures.trees.nodes.RedBlackNode.parent" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Родитель элемента.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.RedBlackNode.postorder_traversal">
@@ -3583,12 +3610,14 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.RedBlackNode.right">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">right</span></span><a class="headerlink" href="#datastructures.trees.nodes.RedBlackNode.right" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Правый ребёнок элемента.</p>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.RedBlackNode.sibling">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sibling</span></span><a class="headerlink" href="#datastructures.trees.nodes.RedBlackNode.sibling" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Найти брата.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.RedBlackNode.subtree_delete">
@@ -3767,7 +3796,8 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.RedBlackNode.uncle">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">uncle</span></span><a class="headerlink" href="#datastructures.trees.nodes.RedBlackNode.uncle" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Найти дядю.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -3790,7 +3820,8 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.SearchNode.data">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#datastructures.trees.nodes.SearchNode.data" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Данные, хранящиеся внутри узла.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.SearchNode.inorder_traversal">
@@ -3825,7 +3856,8 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.SearchNode.left">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">left</span></span><a class="headerlink" href="#datastructures.trees.nodes.SearchNode.left" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Левый ребёнок элемента.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.SearchNode.level_order_traversal">
@@ -3859,7 +3891,8 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.SearchNode.parent">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parent</span></span><a class="headerlink" href="#datastructures.trees.nodes.SearchNode.parent" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Родитель элемента.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.SearchNode.postorder_traversal">
@@ -3936,7 +3969,8 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.SearchNode.right">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">right</span></span><a class="headerlink" href="#datastructures.trees.nodes.SearchNode.right" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Правый ребёнок элемента.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.SearchNode.subtree_delete">
@@ -4134,7 +4168,8 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.SegmentNode.data">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#datastructures.trees.nodes.SegmentNode.data" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Данные, хранящиеся внутри узла.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.SegmentNode.inorder_traversal">
@@ -4169,7 +4204,8 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.SegmentNode.left">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">left</span></span><a class="headerlink" href="#datastructures.trees.nodes.SegmentNode.left" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Левый ребёнок элемента.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.SegmentNode.level_order_traversal">
@@ -4209,7 +4245,8 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.SegmentNode.parent">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parent</span></span><a class="headerlink" href="#datastructures.trees.nodes.SegmentNode.parent" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Родитель элемента.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.SegmentNode.postorder_traversal">
@@ -4313,7 +4350,8 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.SegmentNode.right">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">right</span></span><a class="headerlink" href="#datastructures.trees.nodes.SegmentNode.right" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Правый ребёнок элемента.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.SegmentNode.skew">
@@ -4530,7 +4568,7 @@
 <dt class="sig sig-object py" id="datastructures.trees.nodes.TrieNode">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.trees.nodes.</span></span><span class="sig-name descname"><span class="pre">TrieNode</span></span><a class="headerlink" href="#datastructures.trees.nodes.TrieNode" title="Ссылка на это определение"></a></dt>
 <dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Узел в структуре данных Trie.</p>
+<p>Узел префиксного дерева.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.TrieNode.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.trees.nodes.TrieNode.__init__" title="Ссылка на это определение"></a></dt>
@@ -4563,17 +4601,20 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.TwoThreeTreeNode.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">children</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.trees.nodes.TwoThreeTreeNode.__init__" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Инициализатор принимает списки значений и детей.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.TwoThreeTreeNode.is_full">
-<span class="sig-name descname"><span class="pre">is_full</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.trees.nodes.TwoThreeTreeNode.is_full" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">is_full</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#datastructures.trees.nodes.TwoThreeTreeNode.is_full" title="Ссылка на это определение"></a></dt>
+<dd><p>Проверяет узел на полноту (3 элемента).</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.nodes.TwoThreeTreeNode.is_leaf">
 <span class="sig-name descname"><span class="pre">is_leaf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.trees.nodes.TwoThreeTreeNode.is_leaf" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Проверяет, является ли узел листом.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -4599,12 +4640,13 @@
 </section>
 <section id="module-datastructures.trees.trees">
 <span id="datastructures-trees-trees-module"></span><h2>datastructures.trees.trees module<a class="headerlink" href="#module-datastructures.trees.trees" title="Permalink to this heading"></a></h2>
-<p>Этот модуль содержит реализации различных бинарных деревьев.</p>
+<p>Этот модуль содержит реализации различных бинарных и не только деревьев.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="datastructures.trees.trees.AVLTree">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.trees.trees.</span></span><span class="sig-name descname"><span class="pre">AVLTree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree_node_type=&lt;class</span> <span class="pre">'datastructures.trees.nodes.AVLNode'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.trees.trees.AVLTree" title="Ссылка на это определение"></a></dt>
 <dd><p>Базовые классы: <a class="reference internal" href="#datastructures.trees.trees.SearchTree" title="datastructures.trees.trees.SearchTree"><code class="xref py py-class docutils literal notranslate"><span class="pre">SearchTree</span></code></a></p>
-<p>AVL дерево - бинарное балансирующее дерево поиска.</p>
+<p>AVL дерево - бинарное балансирующее дерево поиска.
+Балансировка осуществляется засчёт поворотов дерева.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.trees.AVLTree.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree_node_type=&lt;class</span> <span class="pre">'datastructures.trees.nodes.AVLNode'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.trees.trees.AVLTree.__init__" title="Ссылка на это определение"></a></dt>
@@ -4744,7 +4786,9 @@
 <dt class="sig sig-object py" id="datastructures.trees.trees.HuffmanTree">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datastructures.trees.trees.</span></span><span class="sig-name descname"><span class="pre">HuffmanTree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree_node_type=&lt;class</span> <span class="pre">'datastructures.trees.nodes.HuffmanNode'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.trees.trees.HuffmanTree" title="Ссылка на это определение"></a></dt>
 <dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">_BinaryTree</span></code></p>
-<p>Дерево Хаффмана.</p>
+<p>Дерево Хаффмана - это структура, на которой держится алгоритм сжатия Хаффмана.
+Алгоритм заключается в том, что мы кодируем элементы строки по-своему:
+элементы, которые встречаются чаще, кодируются короче.</p>
 <img alt="_images/huffman_tree.png" src="_images/huffman_tree.png" />
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.trees.HuffmanTree.__init__">
@@ -4759,7 +4803,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.trees.HuffmanTree.build">
-<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frequency_map</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.trees.trees.HuffmanTree.build" title="Ссылка на это определение"></a></dt>
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frequency_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.trees.trees.HuffmanTree.build" title="Ссылка на это определение"></a></dt>
 <dd><p>Построение дерева Хаффмана из словаря частот символов.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Параметры<span class="colon">:</span></dt>
@@ -4807,6 +4851,20 @@
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="datastructures.trees.trees.HuffmanTree.get_frequency_map">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_frequency_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#datastructures.trees.trees.HuffmanTree.get_frequency_map" title="Ссылка на это определение"></a></dt>
+<dd><p>Статический метод для образования словаря частот.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>s</strong> – строка, для которой нужен словарь частот</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Словарь, где ключи — символы, а значения — их частоты</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -4822,10 +4880,11 @@
 <li><p>Оба ребенка каждого красного узла черные.</p></li>
 <li><p>Любой путь от узла до листьев имеет одинаковое количество черных узлов.</p></li>
 </ol>
+<img alt="_images/redblack.png" src="_images/redblack.png" />
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.trees.RedBlackTree.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.trees.trees.RedBlackTree.__init__" title="Ссылка на это определение"></a></dt>
-<dd><p>Инициализатор дерева с типом узлов <code class="xref py py-class docutils literal notranslate"><span class="pre">BSTNode</span></code>.</p>
+<dd><p>Инициализатор.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -5334,8 +5393,8 @@
 <p>Свойства дерева 2-3:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Узлы с двумя дочерними элементами называются 2-узлами. 2-узлы имеют одно значение данных и два дочерних узла.</p></li>
-<li><p>Узлы с тремя детьми называются 3-узлами. 3-узлы имеют два значения данных и три дочерних узла.</p></li>
+<li><p>Узлы с двумя дочерними элементами называются 2-узлами. 2-узлы имеют одно       значение данных и два дочерних узла.</p></li>
+<li><p>Узлы с тремя детьми называются 3-узлами.      3-узлы имеют два значения данных и три дочерних узла.</p></li>
 <li><p>Данные хранятся в отсортированном порядке.</p></li>
 <li><p>Это сбалансированное дерево.</p></li>
 <li><p>Все листовые узлы находятся на одном уровне.</p></li>
@@ -5343,21 +5402,26 @@
 <li><p>Вставка всегда выполняется в лист.</p></li>
 </ul>
 </div></blockquote>
+<img alt="_images/2-3.jpg" src="_images/2-3.jpg" />
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.trees.TwoThreeTree.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.trees.trees.TwoThreeTree.__init__" title="Ссылка на это определение"></a></dt>
-<dd></dd></dl>
+<dd><p>Инициализатор.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.trees.TwoThreeTree.insert">
 <span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datastructures.trees.trees.TwoThreeTree.insert" title="Ссылка на это определение"></a></dt>
-<dd><p>Вставить узел.</p>
+<dd><p>Вставка ключа в дерево 2-3.</p>
+<p>Если дерево пустое, создается новый корневой узел.
+Если в результате вставки происходит разделение узла,
+то корень обновляется.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
 <dd class="field-odd"><p>O(log n)</p>
 </dd>
 <dt class="field-even">Параметры<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>key</strong> – значение нового ключа</p>
+<dd class="field-even"><p><strong>key</strong> – Ключ, который нужно вставить.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -5365,7 +5429,23 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="datastructures.trees.trees.TwoThreeTree.search">
 <span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#datastructures.trees.trees.TwoThreeTree.search" title="Ссылка на это определение"></a></dt>
-<dd><p>Поиск по дереву.</p>
+<dd><p>Поиск ключа в дереве.</p>
+<p>Выполняет рекурсивный поиск ключа в узлах дерева.
+Если ключ найден, возвращает True, иначе - False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Сложность<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O(logN)</p>
+</dd>
+<dt class="field-even">Параметры<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>key</strong> – Ключ, который нужно найти.</p></li>
+<li><p><strong>node</strong> – Узел, с которого начинается поиск (по умолчанию корневой узел).</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True, если ключ найден, иначе False.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -5402,7 +5482,7 @@
 <img alt="_images/a_star.gif" src="_images/a_star.gif" />
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O((V + E) log V), где V - количество вершин, а E - количество рёбер в худшем случае</p>
+<dd class="field-odd"><p>O((V + E) log V), где V - количество вершин,         а E - количество рёбер в худшем случае</p>
 </dd>
 <dt class="field-even">Параметры<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
@@ -5414,7 +5494,7 @@
 <dt class="field-odd">Результат<span class="colon">:</span></dt>
 <dd class="field-odd"><p>tuple (int, list)
 - Первый элемент – это минимальная длина маршрута
-- Второй элемент – это кратчайший маршрут: последовательность индексов, которые нужно посетить</p>
+- Второй элемент – это кратчайший маршрут: последовательность индексов,             которые нужно посетить</p>
 </dd>
 </dl>
 </dd></dl>
@@ -5591,7 +5671,7 @@
 <img alt="_images/a_star.gif" src="_images/a_star.gif" />
 <dl class="field-list simple">
 <dt class="field-odd">Сложность<span class="colon">:</span></dt>
-<dd class="field-odd"><p>O((V + E) log V), где V - количество вершин, а E - количество рёбер в худшем случае</p>
+<dd class="field-odd"><p>O((V + E) log V), где V - количество вершин,         а E - количество рёбер в худшем случае</p>
 </dd>
 <dt class="field-even">Параметры<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
@@ -5603,7 +5683,7 @@
 <dt class="field-odd">Результат<span class="colon">:</span></dt>
 <dd class="field-odd"><p>tuple (int, list)
 - Первый элемент – это минимальная длина маршрута
-- Второй элемент – это кратчайший маршрут: последовательность индексов, которые нужно посетить</p>
+- Второй элемент – это кратчайший маршрут: последовательность индексов,             которые нужно посетить</p>
 </dd>
 </dl>
 </dd></dl>
