@@ -228,3 +228,47 @@ class TestTwoThreeTree:
 
         assert tree.search(70) is True
         assert tree.search(35) is False  # 35 is not in the tree
+
+class TestHuffman:
+    @fixture
+    def huffman_tree(self):
+        """Фикстура для инициализации дерева Хаффмана с частотами символов."""
+        frequency_map = {
+            'a': 5,
+            'b': 9,
+            'c': 12,
+            'd': 13,
+            'e': 16,
+            'f': 45
+        }
+        huffman_tree = HuffmanTree()
+        huffman_tree.build(frequency_map)
+        return huffman_tree
+
+    def test_generate_codes(self, huffman_tree):
+        expected_codes = {
+            'f': '0',
+            'c': '100',
+            'd': '101',
+            'a': '1100',
+            'b': '1101',
+            'e': '111'
+        }
+        codes = huffman_tree.generate_codes()
+        assert codes == expected_codes
+
+    def test_encode(self, huffman_tree):
+        text = "abcde"
+        encoded_text = huffman_tree.encode(text)
+        assert isinstance(encoded_text, str)
+        assert len(encoded_text) > len(text) * 1.5  # Код должен быть короче оригинала
+
+    def test_decode(self, huffman_tree):
+        original_text = "abcde"
+        encoded_text = huffman_tree.encode(original_text)
+        decoded_text = huffman_tree.decode(encoded_text)
+        assert decoded_text == original_text
+
+    def test_empty_text_encoding(self, huffman_tree):
+        encoded_text = huffman_tree.encode("")
+        assert encoded_text == ""

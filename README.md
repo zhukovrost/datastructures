@@ -24,6 +24,7 @@ Here are all implemented datastructures:
 
 - Trees and Tree Nodes
   - Binary Tree
+  - Huffman Tree
   - Balancing Tree
   - Binary Search Tree
   - Red Black Tree
@@ -54,6 +55,7 @@ Here are all implemented algorithms:
   
 - Tree Algorithms:
   - Tree balancing
+  - Huffman Coding
 
 - Graphs Algorithms:
   - Dijkstra algorithm

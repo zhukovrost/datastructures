@@ -7,9 +7,6 @@
 
 
 from abc import ABC, abstractmethod
-
-from aptdaemon.logger import BLACK
-
 from ..linear import Queue
 
 
@@ -776,10 +773,36 @@ class TwoThreeTreeNode:
         self.children = children if children else []
 
     def __repr__(self):
-        return f"Node({self.keys}})"
+        return f"Node({self.keys})"
 
     def is_leaf(self):
         return len(self.children) == 0
 
     def is_full(self):
         return len(self.keys) == 3
+
+
+class HuffmanNode:
+    """
+    Узел дерева Хаффмана.
+    """
+    def __init__(self, char, freq):
+        self.data = char
+        self.right = None
+        self.left = None
+        self.freq = freq
+
+    def __repr__(self):
+        return f"HuffmanNode({self.data}:{self.freq})"
+
+    def __lt__(self, other):
+        return self.freq < other.freq
+
+    def __eq__(self, other):
+        return self.freq == other.freq
+
+    def __le__(self, other):
+        return self.freq <= other.freq
+
+    def __add__(self, other):
+        return self.freq + other.freq

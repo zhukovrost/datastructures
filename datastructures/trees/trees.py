@@ -4,7 +4,8 @@
 
 
 from abc import ABC
-from .nodes import BinaryNode, SearchNode, SegmentNode, AVLNode, TrieNode, RedBlackNode, TwoThreeTreeNode
+from .nodes import BinaryNode, SearchNode, SegmentNode, AVLNode, TrieNode, RedBlackNode, TwoThreeTreeNode, HuffmanNode
+from ..heap import MinHeap
 
 
 class _BinaryTree(ABC):
@@ -309,6 +310,7 @@ class RedBlackTree(SearchTree):
 
         left_child.right = node
         node.parent = left_child
+
 
 class SegmentTree(_BinaryTree):
     """
@@ -621,3 +623,88 @@ class TwoThreeTree:
         node.children = node.children[:2] if node.children else []
         return new_node, mid_key
 
+
+class HuffmanTree(_BinaryTree):
+    """
+    Дерево Хаффмана.
+
+    .. image:: images/huffman_tree.png
+
+    """
+    def __init__(self, tree_node_type=HuffmanNode):
+        super().__init__(tree_node_type)
+
+    def build(self, frequency_map):
+        """
+        Построение дерева Хаффмана из словаря частот символов.
+
+        :param frequency_map: Словарь, где ключи — символы, а значения — их частоты.
+        """
+        heap = MinHeap([HuffmanNode(char, freq) for char, freq in frequency_map.items()])
+
+        while len(heap) > 1:
+            left = heap.poll()
+            right = heap.poll()
+
+            merged_node = HuffmanNode(None, left.freq + right.freq)
+            merged_node.left = left
+            merged_node.right = right
+
+            heap.add(merged_node)
+
+        self.root = heap.poll()  # Устанавливаем корень дерева
+        self.size = len(frequency_map)
+
+    def generate_codes(self):
+        """
+        Генерация кодов Хаффмана для каждого символа на основе дерева.
+
+        :return: Словарь, где ключ — символ, значение — его код Хаффмана.
+        """
+        codes = {}
+
+        def _generate_codes(node, current_code=""):
+            if node is None:
+                return
+
+            # Если это листовой узел, сохраняем код
+            if node.data is not None:
+                codes[node.data] = current_code
+
+            _generate_codes(node.left, current_code + "0")
+            _generate_codes(node.right, current_code + "1")
+
+        _generate_codes(self.root)
+        return codes
+
+    def encode(self, text):
+        """
+        Кодирование текста с использованием дерева Хаффмана.
+
+        :param text: Текст, который нужно закодировать.
+        :return: Закодированная строка.
+        """
+        codes = self.generate_codes()
+        return ''.join(codes[char] for char in text)
+
+    def decode(self, encoded_text):
+        """
+        Декодирование строки, используя дерево Хаффмана.
+
+        :param encoded_text: Закодированная строка.
+        :return: Декодированная строка.
+        """
+        decoded_text = []
+        current_node = self.root
+
+        for bit in encoded_text:
+            if bit == '0':
+                current_node = current_node.left
+            else:
+                current_node = current_node.right
+
+            if current_node.data is not None:  # Листовой узел
+                decoded_text.append(current_node.data)
+                current_node = self.root
+
+        return ''.join(decoded_text)
