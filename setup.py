@@ -1,6 +1,6 @@
 import setuptools
 
-VERSION = "1"
+VERSION = "1.1"
 
 NAME = "slav-eeik-datastructures"
 
@@ -39,7 +39,7 @@ setuptools.setup(
 
     install_requires=INSTALL_REQUIRES,
     extras_require=EXTRAS_REQUIRE,
-    packages=["datastructures"],
+    packages=setuptools.find_packages(),
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
 )
